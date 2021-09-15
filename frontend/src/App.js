@@ -7,6 +7,9 @@ import {
 	Link
   } from "react-router-dom";
 
+import {Login} from "./components/login/Login"
+
+
 function App() {
   return (
     <AuthProvider>
@@ -17,7 +20,7 @@ function App() {
 					<Login />
 				</Route>
 				<Route path="/users">
-					<Users />
+					<div>Users</div>
 				</Route>
 			</Switch>
 		</Router>

@@ -1,0 +1,18 @@
+.body{
+    height: 100vh;
+    width: 100wh;
+}
+
+.login-menu{
+    justify-content: space-around;
+}
+
+.login-image{
+    justify-content: center;
+    align-items: center;
+}
+
+.login-body{
+    display: flex;
+    flex-direction: column;
+}
