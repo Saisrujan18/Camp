@@ -1,10 +1,23 @@
-.body{
+.body
+{
+    background-color:#F2F4F9;
+    /* margin-top: 5vh; */
+    /* margin-bottom: 5vh; */
+    /* margin-left: 5vh; */
+    /* margin-right: 5vh; */
     height: 100vh;
     width: 100wh;
+    /* border-radius: 2.5vh; */
 }
 
-.login-menu{
+.login-menu
+{
     justify-content: space-around;
+    /* background-color: #F2F; */
+    /* margin-top: 5%; */
+    /* margin-bottom:5%; */
+    /* margin-left: 5%; */
+    /* margin-right: 5%; */
 }
 
 .login-image{
