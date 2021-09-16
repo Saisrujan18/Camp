@@ -4,13 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        white:"#F2F4F9",
-        lightBlue:"#ADC9FE",
-        black:"#070809",
-        darkBlue:"#4171E5",
-        grey:"#54575B",
-        darkOrange:"#F86E25",
-        orange:"#D59055"
+        whit:"#F2F4F9",
+        lightBlu:"#ADC9FE",
+        blac:"#070809",
+        darkBlu:"#4171E5",
+        gre:"#54575B",
+        darkOrang:"#F86E25",
+        orang:"#D59055"
       }
     },
     flex:{

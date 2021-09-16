@@ -1,19 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 .body
 {
-    background-color:#F2F4F9;
-    /* margin-top: 5vh; */
-    /* margin-bottom: 5vh; */
-    /* margin-left: 5vh; */
-    /* margin-right: 5vh; */
-    height: 100vh;
-    width: 100wh;
+    background-color:white;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    height: 95vh;
+    width: 98vw;
+    font-family: 'Source Sans Pro', sans-serif;
     /* border-radius: 2.5vh; */
 }
 
 .login-menu
 {
     justify-content: space-around;
-    /* background-color: #F2F; */
     /* margin-top: 5%; */
     /* margin-bottom:5%; */
     /* margin-left: 5%; */
@@ -28,4 +30,15 @@
 .login-body{
     display: flex;
     flex-direction: column;
+}
+
+.imagee
+{
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    padding-top: 2.5%;
+    height: 95%;
+    width: 95%;
+    margin: auto;
 }
