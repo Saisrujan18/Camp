@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged} from "firebase/auth";
 import app from "../firebase";
 import {auth} from "../firebase";
 
@@ -20,11 +20,11 @@ export function AuthProvider({ children }) {
     }
 
     function logOut() {
-        return auth.signOut();
+        return signOut(auth);
     }
 
     useEffect(() => {
-        const unmount = auth.onAuthStateChanged(user => { setUser(user); setLoading(false);})
+        const unmount = onAuthStateChanged(auth, user => { setUser(user); setLoading(false);})
         return unmount;
     } , [])
     

@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 import {Login} from "./components/login/Login"
-
+import {Home} from "./components/home/Home";
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
 				<Route exact path={["/login","/"]}>
 					<Login />
 				</Route>
-				<Route path="/users">
-					<div>Users</div>
+				<Route path="/home">
+					<Home />
 				</Route>
 			</Switch>
 		</Router>
