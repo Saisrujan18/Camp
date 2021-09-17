@@ -29,6 +29,7 @@ export function AuthProvider({ children }) {
     } , [])
     
     let value = {
+        auth,
         signInWithGoogle,
         loading,
         user,

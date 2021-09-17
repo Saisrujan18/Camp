@@ -30,7 +30,7 @@ export function Login()
 {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const {user, signInWithGoogle} = useAuth();
+    const {auth, signInWithGoogle} = useAuth();
     const history = useHistory();
     // let the user login using google Auth
     // take him to another page and check for the email there
@@ -39,7 +39,7 @@ export function Login()
         try{
             setLoading(true);
             await signInWithGoogle(); 
-            console.log(user.email);
+            console.log(auth.currentUser.email);
             setLoading(false);
             history.push("/home");
         }
