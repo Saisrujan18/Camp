@@ -14,7 +14,7 @@ const styles =
     login_body: "login-body rounded-l h-full",
     logo: "logo my-14 mx-auto flex items-center gap-x-2",
     login_header: "login-header my-5 mx-auto text-xl font-semibold",
-    login_button: "login-button my-2 mx-auto bg-blue-500 text-gray-50 px-10 py-2",
+    login_button: "login-button my-2 mx-auto bg-blue-500 text-gray-50 px-10 py-2 login-btn",
     login_image: "login-image hidden md:block md:flex-2 lg:flex-3 bg-whit  rounded-r-lg",
     logofont:"subpixel-antialiased font-bold text-2xl" 
 }
