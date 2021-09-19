@@ -59,9 +59,9 @@ function Sidebar() {
             </aside>
 
             {/* Main Content */}
-            <div className='p-10 text-2xl font-bold flex-1'>
+            {/* <div className='p-10 text-2xl font-bold flex-1'>
                 Content
-            </div>
+            </div>  */}
         </div>
     )
 }

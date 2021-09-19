@@ -1,0 +1,29 @@
+.main
+{
+    background-image: url("./assets/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    background-size: 75% 90%;
+
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    height: 95vh;
+    width: 98vw;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.imagee
+{
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

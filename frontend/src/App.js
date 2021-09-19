@@ -9,6 +9,8 @@ import {
 
 import {Login} from "./components/login/Login"
 import {Home} from "./components/home/Home";
+import Sidebar from "./components/Sidebar";
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -19,9 +21,15 @@ function App() {
 				<Route exact path={["/login","/"]}>
 					<Login />
 				</Route>
-				<Route path="/home">
-					<Home />
-				</Route>
+				
+				<ProtectedRoute path="/campcollab">
+					<Sidebar/>
+				</ProtectedRoute> 
+				
+				<ProtectedRoute path="/home">
+					<Home/>
+				</ProtectedRoute>
+			
 			</Switch>
 		</Router>
     </AuthProvider>
