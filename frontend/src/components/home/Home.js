@@ -6,14 +6,21 @@ import bg from "./assets/BG.png";
 
 export function Home() {
     return (
-        <div className="main grid gap-4 grid-cols-1 md:grid-cols-2  place-content-center  place-items-center bg-whit m-3 rounded-lg">
-            {/* <img src={bg} className="max-w-full max-h-full bg-contain imagee" /> */}
-            <BigTile title={"Internships"} />
-            <BigTile title={"CampCollab"}/>
-            <Tile title={"Digital Wizards"} description={"Something"}/>
-            <Tile title={"Cam"}  description={"Something"}/>
-            <Tile title={"Ca"}  description={"Something"}/>
+
+        <div className=" main flex justify-center items-center min-h-screen">
+            <div className="flex max-w-3xl md:max-w-auto p-16">
+                <div className="grid md:grid-cols-2 grid-rows-auto grid-cols-1 place-content-center place-items-center gap-x-6 gap-y-4">
+                    <BigTile title={"Internships"}/>
+                    <BigTile title={"CampCollab"}/>
+                    <Tile title={"Digital Wizards"}/>
+                    <Tile title={"TechManiacs"}/>
+                    <Tile title={"Gagan Vedhi"}/>
+                    <Tile title={"Something"}/>            
+                </div>
+            </div>
         </div>
+        
+
     )
 }
 

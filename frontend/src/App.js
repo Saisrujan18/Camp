@@ -9,6 +9,8 @@ import {
 
 import {Login} from "./components/login/Login"
 import {Home} from "./components/home/Home";
+import Home2 from './components/home2/Home2'
+
 import Sidebar from "./components/Sidebar";
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -26,6 +28,10 @@ function App() {
 					<Sidebar/>
 				</ProtectedRoute> 
 				
+				<ProtectedRoute path="/home2">
+					<Home2/>
+				</ProtectedRoute>
+
 				<ProtectedRoute path="/home">
 					<Home/>
 				</ProtectedRoute>
