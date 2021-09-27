@@ -1,9 +1,14 @@
 import React from 'react'
 import { useLayoutEffect, useState, useEffect } from 'react'
 import fire from "../components/login/assets/Camp.png"
+import {useAuth} from "../authContext/AuthContext";
+import { useHistory } from 'react-router';
+
 
 function Sidebar() {
 
+    let {logOut}=useAuth();
+    const history=useHistory();
     const [open, setOpen] = useState(true)
 
     useLayoutEffect(() => {
@@ -17,10 +22,16 @@ function Sidebar() {
         }
 
         window.addEventListener("resize", updateOpen)
-        console.log(window.innerWidth)
+        // console.log(window.innerWidth)
         updateOpen()
         return () => window.removeEventListener("resize", updateOpen)
     }, [])
+
+    function logOu()
+    {
+        logOut();
+        history.replace("/");
+    }
 
     return (
 
@@ -56,6 +67,7 @@ function Sidebar() {
                     <a href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Clubs</a>
                     <a href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</a>
                 </nav>
+                <button onClick={logOu}>logout</button>
             </aside>
 
             {/* Main Content */}

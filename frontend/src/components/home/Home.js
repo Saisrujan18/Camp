@@ -30,14 +30,14 @@ export function Home()
         pos%=2
         if(index===bigTiles.length-1 && bigTiles.length%2===1)
         {
-            console.log(index+" last case")
+            // console.log(index+" last case")
             return(
                 <div className={`bigTile col-start-1 col-span-1 md:col-start-1 md:col-span-2`} key={bigTile.id}><BigTile title={bigTile.title}/></div>
             )
         }
         else
         {
-            console.log(index+" normal case")
+            // console.log(index+" normal case")
             return(
                 <div className={`bigTile col-start-1 col-span-1 md:col-start-{pos} md:col-span-1`} key={bigTile.id}><BigTile title={bigTile.title}/></div>
             )

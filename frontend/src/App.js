@@ -17,21 +17,19 @@ function App() {
   return (
     <AuthProvider>
 		<Router>
-			<Switch>
-				{/* Routes for login, homepage, etc. */}
-				<Route exact path={["/login","/"]}>
-					<Login />
-				</Route>
-				
-				<ProtectedRoute path="/campcollab">
-					<Sidebar/>
-				</ProtectedRoute> 
 
-				<ProtectedRoute path="/home">
-					<Home/>
-				</ProtectedRoute>
-			
+			<Switch>
+				
+				<Route exact path={["/login","/"]}><Login /></Route>
+				<ProtectedRoute exact path="/home" component={Home}/>
+				<ProtectedRoute exact path="/collab" component={Sidebar}/>
+				<ProtectedRoute exact path="/companies" component={Home}/>
+				<ProtectedRoute exact path="/club" component={Home}/>
+				
+				{/* <ProtectedRoute exact path="/digitalwizards" component={Home}/> */}
+				
 			</Switch>
+
 		</Router>
     </AuthProvider>
   );
