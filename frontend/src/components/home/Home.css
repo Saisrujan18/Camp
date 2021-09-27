@@ -1,14 +1,28 @@
-.main
+/* .main
 {
-    background-image: url("./assets/BG.png");
-    background-position: center;
+    /* background-image: url("./assets/BG.png"); */
+    /* background-position: center;
     background-repeat: no-repeat;
     background-size: 80% 85%;
 
     margin-left: 1px;
     margin-right: 1px;
     font-family: 'Source Sans Pro', sans-serif;
+} */ */
+.body{
+    background-image: url("./assets/BG.png");
+    background-repeat: no-repeat;
+    background-size: 80% 85%;
+    /* background-color:white; */
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    height: 95vh;
+    width: 98vw;
+    font-family: 'Source Sans Pro', sans-serif;
 }
+
 /* 
 .imagee
 {

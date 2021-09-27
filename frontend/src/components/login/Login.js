@@ -33,6 +33,7 @@ export function Login()
     // let the user login using google Auth
     // take him to another page and check for the email there
     // then navigate to appropriate page if email doesnot belong to any organisation.
+
     const handleLogin = async () => {
         try{
             setLoading(true);
