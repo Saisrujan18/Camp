@@ -3,10 +3,11 @@ import React from 'react'
 export default function CollabCard(props) {
     const { title, author, description} = props;
     return (
-        <div className="w-3/4 md:w-1/2 lg:w-1/3 bg-whit">
-          <div className="text-2xl">{title}</div> 
-          <div className="text-sm">{author}</div>
-          <div className="text-lg">{description}</div>
+        <div className="flex flex-col w-1/2 md:w-1/3 lg:w-1/4 bg-white p-3 max-h-36 rounded-md shadow-md">
+          <div className="text-xl font-bold">{title}</div> 
+          <div className="text-xs text-gray-500">{author}</div>
+          <div className="text-sm my-1">{description}</div>
+          <div className="ml-auto text-sm font-bold rounded-full w-5 bg-blue-500 bg-opacity-2 text-center text-white">+</div>
         </div>
     )
 }

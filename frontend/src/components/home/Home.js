@@ -19,7 +19,6 @@ export function Home() {
                         <Tile title={"Something"}/>            
                     </div>
                 </div>
-                {/* <CollabCard title={"project title"} author={"someone"} description={"New project"} /> */}
             </div>
         </div>
 
