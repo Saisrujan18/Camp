@@ -20,10 +20,6 @@ const styles =
     logofont:"subpixel-antialiased font-bold text-2xl" 
 }
 
-const fonts = {
-    header_font: "text-xl font-semibold"
-}
-
 export function Login() 
 {
     const [error, setError] = useState("");
