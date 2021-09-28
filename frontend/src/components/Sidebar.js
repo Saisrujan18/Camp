@@ -3,6 +3,7 @@ import { useLayoutEffect, useState, useEffect } from 'react'
 import fire from "../components/login/assets/Camp.png"
 import {useAuth} from "../authContext/AuthContext";
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 function Sidebar() {
@@ -14,7 +15,7 @@ function Sidebar() {
     useLayoutEffect(() => {
 
         function updateOpen() {
-            if(window.innerWidth < 780){
+            if(window.innerWidth < 768){
                 setOpen(false)
             }
             else
@@ -63,11 +64,13 @@ function Sidebar() {
                 </div>
 
                 <nav> 
-                    <a href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Internships</a>
-                    <a href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Clubs</a>
-                    <a href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</a>
+                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Internships</Link>
+                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Clubs</Link>
+                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link>
+                
+                    <button className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded' onClick={logOu}>logout</button>
                 </nav>
-                <button onClick={logOu}>logout</button>
+                
             </aside>
 
             {/* Main Content */}
