@@ -15,32 +15,15 @@ export function Home()
     const [bigTiles, setBigTile] =  useState([
         {title:'Internship', id:1},
         {title:'CampCollab', id:2},
-        {title:'One More', id:7},
-        {title:'2 more', id:9},
-        {title:'2 more', id:10},
-        {title:'2 more', id:11},
-        {title:'2 more', id:12},
-        {title:'2 more', id:13},
-        {title:'2 more', id:14},
-        {title:'2 more', id:15},
-        {title:'2 more', id:16},
-        {title:'2 more', id:17},
-        {title:'2 more', id:18},
-        {title:'2 more', id:19},
-        {title:'2 more', id:20},
-        {title:'2 more', id:21},
-        {title:'2 more', id:22},
-        {title:'2 more', id:23},
-        {title:'2 more', id:24},
-        {title:'2 more', id:25},
-        {title:'2 more', id:26}
+        
+        
     ])
     const [tiles, setTiles] = useState([
         {title:'Digital Wizards', id:3},
         {title:'TechManiacs', id:4},
         {title:'Gagan Vedhi', id:5},
-        {title:'Something', id:6},
-        {title:'Something', id:8}
+        {title:'IDEA-Square', id:6},
+        {title:'Artista', id:7}
     ])
     const getBigTile = (bigTile, index) => {
         pos+=1
@@ -76,13 +59,12 @@ export function Home()
             )
         }
     }
-    return (
-        <div className="outer rounded-lg bg-darkBlu h-full">
-            
+    const getContent = () => {
+        return ( 
             <div className="main flex justify-center h-full">
-                <div className="content flex flex-col h-full justify-center max-w-2xl md:max-w-auto p-16">
+                <div className="content flex flex-col h-full justify-center max-w-auto p-16">
 
-                    <div className="my-14 mx-auto flex items-center gap-x-2 text-white">
+                    <div className="my-14 mx-auto flex items-center gap-x-2 text-whit">
                         <div className="subpixel-antialiased font-bold text-2xl">Welcome to </div>
                         <img src={fire} className="w-9" alt="Not found"></img>
                         <div className="subpixel-antialiased font-bold text-2xl">Camp</div>
@@ -103,7 +85,31 @@ export function Home()
                 
                 </div>
             </div>
-        
-        </div>
+        )
+    }
+    const getHomeScreen = (limit) => {
+
+        console.log(window.innerHeight)
+        console.log(bigTiles.length+tiles.length)
+        if(bigTiles.length+tiles.length <=limit)
+        {
+            return (
+                <div className="outer rounded-lg bg-darkBlu h-full md:h-screen">
+                {getContent()}
+                </div>
+            )
+        }
+        else
+        {
+            return (
+                <div className="outer rounded-lg bg-darkBlu h-full">
+                {getContent()}
+                </div>
+            )
+        }
+    }
+
+    return (
+        getHomeScreen(20)
     );
 }
