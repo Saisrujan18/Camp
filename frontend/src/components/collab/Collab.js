@@ -35,13 +35,13 @@ export function Collab() {
                             </div>
 
                             <div className='flex'>
-                                <Link to='/campcollab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
+                                <Link to='/collab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
                                 transition duration-500 ease-in-out'> Info </Link>
 
-                                <Link to='/campcollab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
+                                <Link to='/collab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
                                 transition duration-500 ease-in-out'> Members </Link>
 
-                                <Link to='/campcollab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
+                                <Link to='/collab' className='rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-blue-500 
                                 transition duration-500 ease-in-out'> Chat </Link>
 
                                 <button className='rounded-lg text-md m-2 pl-4 pr-4 p-1 bg-blue-400 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'> Join </button>
@@ -50,7 +50,7 @@ export function Collab() {
                             <hr className='bg-blue-500 h-0.5 border-none rounded-xl'></hr>
                     </div>
                 
-                </div >
+                </div>
 
                 {/* below of center */}
                 <main className="flex-1 overflow-y-auto p-2 bg-blue-200">
@@ -102,9 +102,9 @@ export function Collab() {
 
                         <div>
                             <ul className='m-2 space-y-1'>
-                                <li className='bg-blue-400 rounded-lg p-4'> <a href=''> Github </a> </li>
-                                <li className='bg-blue-400 rounded-lg p-4'> <a href=''> Linkdin </a> </li>
-                                <li className='bg-blue-400 rounded-lg p-4'> <a href=''> Any other </a> </li>
+                                <li className='bg-blue-400 rounded-lg p-4'> <a href='#'> Github </a> </li>
+                                <li className='bg-blue-400 rounded-lg p-4'> <a href='#'> Linkdin </a> </li>
+                                <li className='bg-blue-400 rounded-lg p-4'> <a href='#'> Any other </a> </li>
                             </ul>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ import {Login} from "./components/login/Login"
 import {Home} from "./components/home/Home";
 
 import { ProtectedRoute } from './components/ProtectedRoute';
-import {Collab} from './components/collab/Collab';
+import CollabHome from "./components/collab/CollabHome";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
 				
 				<Route exact path={["/login","/"]}><Login /></Route>
 				<ProtectedRoute exact path="/home" component={Home}/>
-				<ProtectedRoute exact path="/collab" component={Collab}/>
+				<ProtectedRoute exact path="/collab" component={CollabHome}/>
 				<ProtectedRoute exact path="/companies" component={Home}/>
 				<ProtectedRoute exact path="/club" component={Home}/>
 				
