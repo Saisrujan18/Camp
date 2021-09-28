@@ -60,10 +60,10 @@ export function Home()
         }
     }
     return (
-        <div className="outer rounded-lg bg-darkBlu">
+        <div className="outer rounded-lg bg-darkBlu h-full md:h-screen">
             
-            <div className="main flex justify-center items-center h-full">
-                <div className="content flex flex-col h-full max-w-2xl md:max-w-auto p-16">
+            <div className="main flex justify-center h-full">
+                <div className="content flex flex-col h-full justify-center max-w-2xl md:max-w-auto p-16">
 
                     <div className="my-14 mx-auto flex items-center gap-x-2 text-white">
                         <div className="subpixel-antialiased font-bold text-2xl">Welcome to </div>
