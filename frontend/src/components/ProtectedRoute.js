@@ -11,7 +11,10 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         if (loading)
             return <Spinner/>
         else
-            return user?<Component {...props}/>:<Redirect to="/login"/>;
+        {
+            // if(user.endsWith("@iittp.ac.in")===false){return(<Redirect to="/login"/>);}
+            return user?(user.email.endsWith("@iittp.ac.in")?<Component {...props}/>:<Redirect to="/login"/>):<Redirect to="/login"/>;
+        }
     }
 
     return (

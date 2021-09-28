@@ -51,7 +51,7 @@ function Sidebar() {
             <aside className={"bg-blue-900 text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0" +
             " left-0 transform md:relative transition duration-200 ease-in-out " + (open ? "translate-x-0" : "-translate-x-full")}>
                 <div className="flex justify-between">
-                    <a href='#' className='text-white flex items-center space-x-2'>
+                    <a href='/home' className='text-white flex items-center space-x-2'>
                     <img src={fire} className="w-9" alt="Not found"></img>
                     
                     <span className='text-2xl font-extrabold'>Camp</span>
@@ -64,9 +64,11 @@ function Sidebar() {
                 </div>
 
                 <nav> 
-                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Internships</Link>
-                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Clubs</Link>
-                    <Link href='#' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link>
+                    <Link href='/experiences' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Experiences</Link>
+                    <Link href='/collab' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Collab</Link>
+                    <Link href='/digitalwizards' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Digital Wizards</Link>
+                    <Link href='/sports' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Sports</Link>
+                    <Link href='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link>
                 
                     <button className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded' onClick={logOu}>logout</button>
                 </nav>
