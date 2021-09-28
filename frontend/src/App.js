@@ -12,6 +12,7 @@ import {Home} from "./components/home/Home";
 
 import { ProtectedRoute } from './components/ProtectedRoute';
 import CollabHome from "./components/collab/CollabHome";
+import { Collab } from './components/collab/Collab';
 
 function App() {
   return (

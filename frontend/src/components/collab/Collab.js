@@ -22,7 +22,7 @@ export function Collab() {
 
 
             {/* center part */}
-            <div className=" flex-grow flex-1 flex flex-col">
+            <div className=" flex-grow flex-1 flex flex-col max-w-screen-lg p-3">
                 {/* above of center */}
                 <div className="m-4 pb-2 border-gray-200">
                     <div>
@@ -54,7 +54,7 @@ export function Collab() {
 
                 {/* below of center */}
                 <main className="flex-1 overflow-y-auto p-2 bg-blue-200">
-                    <div className="relative">
+                    {/* <div className="relative"> */}
                         <p className='bg-blue-400 rounded-lg text-1xl p-2 m-2'> Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit. Vestibulum non tellus lobortis felis tristique maximus quis sit amet odio.
                             Pellentesque vulputate lectus vel sem imperdiet, ultrices tristique lorem venenatis. Sed a
@@ -106,13 +106,13 @@ export function Collab() {
                                 <li className='bg-blue-400 rounded-lg p-4'> <a href='#'> Linkdin </a> </li>
                                 <li className='bg-blue-400 rounded-lg p-4'> <a href='#'> Any other </a> </li>
                             </ul>
-                        </div>
+                        {/* </div> */}
                     </div>
                 </main>
             </div>
 
             {/* right sidebar */}
-            <Sidebar />
+            {/* <Sidebar /> */}
         </div>
     )
 }

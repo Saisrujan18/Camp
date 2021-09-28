@@ -5,7 +5,7 @@ function CollabHome() {
     return (
         <div className="flex flex-row">
             <Sidebar/>
-            <div className="flex-grow bg-white rounded-lg m-2 flex flex-col">
+            <div className="flex-grow bg-white rounded-lg m-2 flex flex-col max-w-screen-lg">
                 <div className="flex flex-row">
                     <div className="m-2 ml-4 mb-4 text-3xl text-left font-bold">
                         Collab
@@ -23,7 +23,7 @@ function CollabHome() {
                     <CollabCard title={"No"} description={"something"} author={"YOU"}/> 
                 </div>
             </div>
-            <Sidebar/>
+            {/* <Sidebar/> */}
         </div>
     )
 }
