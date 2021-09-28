@@ -16,7 +16,24 @@ export function Home()
         {title:'Internship', id:1},
         {title:'CampCollab', id:2},
         {title:'One More', id:7},
-        {title:'2 more', id:9}
+        {title:'2 more', id:9},
+        {title:'2 more', id:10},
+        {title:'2 more', id:11},
+        {title:'2 more', id:12},
+        {title:'2 more', id:13},
+        {title:'2 more', id:14},
+        {title:'2 more', id:15},
+        {title:'2 more', id:16},
+        {title:'2 more', id:17},
+        {title:'2 more', id:18},
+        {title:'2 more', id:19},
+        {title:'2 more', id:20},
+        {title:'2 more', id:21},
+        {title:'2 more', id:22},
+        {title:'2 more', id:23},
+        {title:'2 more', id:24},
+        {title:'2 more', id:25},
+        {title:'2 more', id:26}
     ])
     const [tiles, setTiles] = useState([
         {title:'Digital Wizards', id:3},
@@ -60,7 +77,7 @@ export function Home()
         }
     }
     return (
-        <div className="outer rounded-lg bg-darkBlu h-full md:h-screen">
+        <div className="outer rounded-lg bg-darkBlu h-full">
             
             <div className="main flex justify-center h-full">
                 <div className="content flex flex-col h-full justify-center max-w-2xl md:max-w-auto p-16">
