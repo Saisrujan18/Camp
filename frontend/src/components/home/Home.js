@@ -63,7 +63,7 @@ export function Home()
         <div className="outer rounded-lg bg-darkBlu">
             
             <div className="main flex justify-center items-center h-full">
-                <div className="content flex flex-col max-w-3xl md:max-w-auto p-16 rounded-lg">
+                <div className="content flex flex-col h-full max-w-2xl md:max-w-auto p-16">
 
                     <div className="my-14 mx-auto flex items-center gap-x-2 text-white">
                         <div className="subpixel-antialiased font-bold text-2xl">Welcome to </div>
