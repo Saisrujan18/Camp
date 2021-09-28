@@ -36,7 +36,7 @@ function Sidebar() {
 
     return (
 
-        <div className='relative min-h-screen md:flex'>
+        <div className='absolute md:relative min-h-screen md:flex'>
 
             {/* Top Bar */}
             <div className='bg-gray-800 text-gray-100 md:hidden'>
@@ -64,11 +64,11 @@ function Sidebar() {
                 </div>
 
                 <nav> 
-                    <Link href='/experiences' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Experiences</Link>
-                    <Link href='/collab' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Collab</Link>
-                    <Link href='/digitalwizards' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Digital Wizards</Link>
-                    <Link href='/sports' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Sports</Link>
-                    <Link href='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link>
+                    <Link href='/home' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Experiences</Link>
+                    <Link to='/collab' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Collab</Link>
+                    <Link to='/digitalwizards' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Digital Wizards</Link>
+                    <Link to='/sports' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>Sports</Link>
+                    <Link to='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link>
                 
                     <button className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded' onClick={logOu}>logout</button>
                 </nav>

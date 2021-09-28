@@ -3,7 +3,7 @@ import Sidebar from '../Sidebar';
 import CollabCard from './CollabCard';
 function CollabHome() {
     return (
-        <div className="flex flex-row">
+        <div className="h-screen flex flex-row">
             <Sidebar/>
             <div className="flex-grow bg-white rounded-lg m-2 flex flex-col max-w-screen-lg">
                 
