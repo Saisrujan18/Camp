@@ -1,1 +1,13 @@
 Home page responsive
+
+collab page
+    - new collab modal
+
+club page
+profile page
+
+
+backend - routers, server setup, models.
+
+
+
