@@ -10,6 +10,6 @@ const collabSchema = new Schema ({
     members: {type: [String]}
 });
   
-const CollabModel = mongoose.model('collaboration', collabSchema);
+const CollabModel = mongoose.model('collaborations', collabSchema);
   
 module.exports = CollabModel;
