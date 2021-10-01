@@ -10,16 +10,15 @@ function CollabHome() {
   const [collabData, setCollabData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // get the data for collabCards.
-  useEffect(() => {
+	useEffect(() => {
     axios
-      .get("http://localhost:3001/collab")
+      .get("http://localhost:3001/api/collab")
       .then((res) => {
         setCollabData(res.data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+	},[]);
 
   function addNewCollab(e) 
   {
@@ -29,20 +28,26 @@ function CollabHome() {
 
   return (
     <div className="h-screen flex flex-row">
+      
       <Sidebar />
-      <div className="flex-grow bg-whit rounded-r-lg my-2 mr-2 flex flex-col max-w-screen-lg pl-1">
-        <div className="flex flex-row">
+      
+	  <div className="flex-grow bg-white rounded-r-lg my-2 mr-2 flex flex-col max-w-screen-lg pl-1">
+        
+		<div className="flex flex-row">
           <div className="m-2 ml-4 mb-4 text-3xl text-left font-bold">
             Collab
           </div>
-          <div className="flex-grow"></div>
-          <button
-            className="place-self-end block p-2 m-1  hover:text-white hover:bg-blue-700 rounded font-bold"
+        
+		  <div className="flex-grow"></div>
+        
+		  <button
+            className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded font-bold"
             onClick={addNewCollab}
           >
             + New Collab
           </button>
-        </div>
+        
+		</div>
         {/* Loading - show the spinner
          * else - show the collabData
          */}
