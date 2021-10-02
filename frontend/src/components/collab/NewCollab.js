@@ -26,17 +26,6 @@ function NewCollab(props)
 		props.addCollab(collab)
 		event.preventDefault();
 	}
-	const onTabClick = (number) => {
-		setTabNumber(number)
-	}
-
-	const Tab = (props) => {
-		return (
-			<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={onTabClick(props.number)}>
-				{props.text}
-			</button>
-		);
-	}
 	const tab1 = () => {
 		return (
 			<div className={`modalContent flex flex-col justify-start rounded-r-lg p-10 sm-custom:w-{240} md:w-6/12 lg:w-5/12 xl:w-4/12 h-1/2 bg-white`}>
@@ -71,38 +60,30 @@ function NewCollab(props)
 			</div>
 		);
 	}
-	const Tabs=[tab1(), tab2()]
+
+	function setTab(e,props)
+	{
+		e.preventDefault();
+		setTabNumber(props);
+	}
+
 	const SideTabMini = () => {
 			return (
 			<aside className=" bg-whit text-blue-100 w-20 h-1/2 space-y-6 px-2 py-4 rounded-l-lg">
 				<nav className="text-blac">
-				<Tab text="Overview" number={0}/>
-				<Tab text="Description" number={1}/>
+				<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={(e)=>setTab(e,0)} value={0}>
+				{"Overview"}</button>
+				<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={(e)=>setTab(e,1)} value={1}>
+				{"Description"}</button>
+
 				</nav>
 			</aside>
 		);
 	}
-    
-	// const useWindowSize = () =>
-	// {
-	// 	const [size, setSize] = useState([0, 0])
-	// 	useLayoutEffect(() => {
-	// 	function updateSize() {
-	// 		setSize([window.innerWidth, window.innerHeight]);
-	// 	}
-	// 	window.addEventListener('resize', updateSize);
-	// 	updateSize();
-	// 	return () => window.removeEventListener('resize', updateSize);
-	// 	}, []);
-	// 	return size;
-	// }
-
-	// const [width, height] = useWindowSize()
-    // console.log(width+" "+height)
     return ( 
-        <div className="modalBackground flex flex-row w-screen h-screen rounded-lg my-2 bg-gray-200 fixed justify-center items-center">
+		<div className="modalBackground flex flex-row w-screen h-screen rounded-lg my-2 bg-gray-200 fixed justify-center items-center">
 			<SideTabMini/>
-			{Tabs[tabNumber]}
+			{tabNumber===0?tab1():tab2()}
     	</div>
     );
 }
