@@ -23,13 +23,16 @@ function CollabHome() {
 		.catch((err) => console.log(err));
 	},[]);
 
-	function addNewCollab(e) 
+	function showPopup(e) 
 	{
 		setVisibility(true);
 		e.preventDefault();
 		console.log("ADD");
 	}
-	
+
+	const addNewCollab = (collab) => {
+		console.log(collab)
+	}
 	const renderCard = (collab) => {
 		return (
 		<CollabCard
@@ -51,10 +54,10 @@ function CollabHome() {
 		)
 	}
 
-	const showPopup = () => {
-		return (popupVisible && <NewCollab visibility={setVisibility}/>);
+	const renderPopup = () => {
+		return (popupVisible && <NewCollab visibility={setVisibility} addCollab={addNewCollab}/>);
 	}
-	const showContent = () => {
+	const renderContent = () => {
 		return (!popupVisible &&
 		<div className="h-screen flex flex-row">
 			<Sidebar />
@@ -66,7 +69,7 @@ function CollabHome() {
 					<div className="flex-grow"></div>
 					<button
 						className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-						onClick={addNewCollab}
+						onClick={showPopup}
 					>
 						+ New Collab
 					</button>	
@@ -81,8 +84,8 @@ function CollabHome() {
 
 	return (
 		<div>
-		{showPopup()}
-		{showContent()}
+		{renderPopup()}
+		{renderContent()}
 		</div>
 	);
 }
