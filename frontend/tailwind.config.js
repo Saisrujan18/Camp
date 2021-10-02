@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -22,6 +23,10 @@ module.exports = {
        '2': '2 2 0%',
        '3': '3 3 0%',
     },
+    screens:{
+      'sm-custom':{'min': '300px', 'max': '767px'},
+      ...defaultTheme.screens
+    }
   },
   variants: {
     extend: {},
