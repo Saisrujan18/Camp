@@ -54,10 +54,8 @@ function CollabHome() {
 	const showPopup = () => {
 		return (popupVisible && <NewCollab visibility={setVisibility}/>);
 	}
-
-	return (
-		<div>
-		{showPopup()}
+	const showContent = () => {
+		return (!popupVisible &&
 		<div className="h-screen flex flex-row">
 			<Sidebar />
 			<div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg pl-1">
@@ -78,7 +76,13 @@ function CollabHome() {
 				*/}
 				{collabContent(loading)}
 			</div>
-		</div>
+		</div>);
+	}
+
+	return (
+		<div>
+		{showPopup()}
+		{showContent()}
 		</div>
 	);
 }
