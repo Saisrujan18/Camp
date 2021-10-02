@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState } from 'react';
 import { AuthProvider } from '../../authContext/AuthContext';
 
 function NewCollab(props)
@@ -10,7 +10,6 @@ function NewCollab(props)
 		description: "",
 		links: "",
 	});
-
 	const handleChange = (event) => {
 		
 		const {name, value} = event.target
@@ -25,6 +24,19 @@ function NewCollab(props)
 		props.visibility(false)
 		props.addCollab(collab)
 		event.preventDefault();
+	}
+	const setTab = (event,number) =>
+	{
+		if(number!==tabNumber)
+			setTabNumber(number);
+		event.preventDefault();
+	}
+	const Tab = (props) => {
+		return (
+			<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={(event) => {setTab(event, props.number)}}>
+				{props.text}
+			</button>
+		);
 	}
 	const tab1 = () => {
 		return (
@@ -60,22 +72,13 @@ function NewCollab(props)
 			</div>
 		);
 	}
-
-	function setTab(e,props)
-	{
-		e.preventDefault();
-		setTabNumber(props);
-	}
-
+	const Tabs = [tab1(), tab2()]
 	const SideTabMini = () => {
 			return (
-			<aside className=" bg-whit text-blue-100 w-20 h-1/2 space-y-6 px-2 py-4 rounded-l-lg">
+			<aside className=" bg-whit text-blue-100 w-25 h-1/2 space-y-6 px-2 py-4 rounded-l-lg">
 				<nav className="text-blac">
-				<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={(e)=>setTab(e,0)} value={0}>
-				{"Overview"}</button>
-				<button className="block py-2 pr-1 w-full hover:text-darkBlu hover:bg-gray-200 font-bold text-xs rounded" onClick={(e)=>setTab(e,1)} value={1}>
-				{"Description"}</button>
-
+				<Tab number={0} text="Overview"/>
+				<Tab number={1} text="Description"/>
 				</nav>
 			</aside>
 		);
@@ -83,9 +86,9 @@ function NewCollab(props)
     return ( 
 		<div className="modalBackground flex flex-row w-screen h-screen rounded-lg my-2 bg-gray-200 fixed justify-center items-center">
 			<SideTabMini/>
-			{tabNumber===0?tab1():tab2()}
+			{Tabs[tabNumber]}
     	</div>
     );
 }
- 
+
 export default NewCollab;
