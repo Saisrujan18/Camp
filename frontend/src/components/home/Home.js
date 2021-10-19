@@ -84,7 +84,7 @@ export function Home()
     const getHomeScreen = () => {
 
         return (
-            <div className="BG bg-fixed h-screen w-screen">
+            <div className="BG bg-fixed h-screen w-screen overflow-y-scroll">
                 <div className="flex flex-col justify-center">
                     <div className="bg-darkBlu80 p-5 h-1/3 mx-10 rounded-t-lg w-auto">
                         <div className="flex flex-row justify-start">
