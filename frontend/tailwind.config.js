@@ -12,11 +12,21 @@ module.exports = {
         gre:"#54575B",
         darkOrang:"#F86E25",
         orang:"#D59055",
+
         whit80:"#F2F4F9CC",
-        darkBlu80:"#08109ACC"
+        darkBlu80:"#4171E5CC",
+        darkBlue80:"#08109ACC",
+
+        whit85:"#F2F4F9D9",
+        darkBlu85:"#4171E5D9",
+        darkBlue85:"#08109AD9"
       },
       fontFamily:{
-        camp: ['Bangers'],
+        camp: ['Bangers']
+      },
+      minHeight:{
+        'home-content':'75vh',
+        'home-title':'20vh'
       }
     },
     flex:{
