@@ -11,7 +11,12 @@ module.exports = {
         darkBlu:"#4171E5",
         gre:"#54575B",
         darkOrang:"#F86E25",
-        orang:"#D59055"
+        orang:"#D59055",
+        whit80:"#F2F4F9CC",
+        darkBlu80:"#08109ACC"
+      },
+      fontFamily:{
+        camp: ['Bangers'],
       }
     },
     flex:{
