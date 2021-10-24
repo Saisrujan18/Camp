@@ -1,9 +1,9 @@
 import { useState, React } from 'react'
 
-import "./Home.css";
+import "./Home.css"
 
 import BigTile from "./BigTile"
-import Tile from "./Tile";
+import Tile from "./Tile"
 
 import fire from "../home/assets/Camp.png"
 
@@ -20,17 +20,28 @@ export function Home()
         {title:'IDEA-Square', id:6},
         {title:'Artista', id:7}
     ])
+    const [loading_id, setLoading] = useState(5)
+    const handleClick = (event, id) => {
+        setLoading(id)
+        event.preventDefault();
+    }
     const getBigTile = (bigTile, index) => {
         if(index===bigTiles.length-1 && bigTiles.length%2===1)
         {
             return(
-                <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={bigTile.id}><BigTile title={bigTile.title}/></div>
+                <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={bigTile.id}
+                    onClick={(event) => {handleClick(event, bigTile.id)}}>
+                    <BigTile title={bigTile.title} id={bigTile.id} loading_id={loading_id}/>
+                </div>
             )
         }
         else
         {
             return(
-                <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={bigTile.id}><BigTile title={bigTile.title}/></div>
+                <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={bigTile.id}
+                    onClick={(event) => {handleClick(event, bigTile.id)}}>
+                    <BigTile title={bigTile.title} id={bigTile.id} loading_id={loading_id}/>
+                </div>
             )
         }
     }
@@ -38,13 +49,19 @@ export function Home()
         if(index===tiles.length-1 && tiles.length%2===1)
         {
             return(
-                <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={tile.id}><Tile title={tile.title}/></div>
+                <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={tile.id}
+                onClick={(event) => {handleClick(event, tile.id)}}>
+                    <Tile title={tile.title} id={tile.id} loading_id={loading_id}/>
+                </div>
             )
         }
         else
         {
             return(
-                <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={tile.id}><Tile title={tile.title}/></div>
+                <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={tile.id}
+                onClick={(event) => {handleClick(event, tile.id)}}>
+                    <Tile title={tile.title} id={tile.id} loading_id={loading_id}/>
+                </div>
             )
         }
     }
@@ -91,5 +108,5 @@ export function Home()
 
     return (
         getHomeScreen(14)
-    );
+    )
 }
