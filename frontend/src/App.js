@@ -13,6 +13,7 @@ import {Home} from "./components/home/Home";
 import { ProtectedRoute } from './components/ProtectedRoute';
 import CollabHome from "./components/collab/CollabHome";
 import  Experiences  from './components/experiences/Experiences';
+import { Collab } from './components/collab/Collab';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
 				<ProtectedRoute exact path="/club" component={Home}/>
 				
 				{/* <ProtectedRoute exact path="/digitalwizards" component={Home}/> */}
-				
+				<ProtectedRoute exact path="/collab1" component={Collab}/>
 			</Switch>
 
 		</Router>
