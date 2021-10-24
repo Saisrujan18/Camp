@@ -24,12 +24,12 @@ function App() {
 				
 				<Route exact path={["/login","/"]}><Login /></Route>
 				<ProtectedRoute exact path="/home" component={Home}/>
+				<ProtectedRoute exact path="/collab/:id" component={Collab}/>
 				<ProtectedRoute exact path="/collab" component={CollabHome}/>
 				<ProtectedRoute exact path="/experiences" component={Experiences}/>
 				<ProtectedRoute exact path="/club" component={Home}/>
 				
 				{/* <ProtectedRoute exact path="/digitalwizards" component={Home}/> */}
-				<ProtectedRoute exact path="/collab1" component={Collab}/>
 			</Switch>
 
 		</Router>
