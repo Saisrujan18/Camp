@@ -1,4 +1,5 @@
-import { useState, React } from 'react'
+import {useState, React} from 'react'
+import {useHistory} from "react-router"
 
 import "./Home.css"
 
@@ -10,27 +11,31 @@ import fire from "../home/assets/Camp.png"
 export function Home() 
 {
     const [bigTiles, setBigTile] =  useState([
-        {title:'Internship ExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncated', id:1},
-        {title:'CampCollab', id:2}
+        {title:'Internship ExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncatedExtraTextisTruncated', path:'/experiences', id:1},
+        {title:'CampCollab', path:'/collab', id:2}
     ])
     const [tiles, setTiles] = useState([
-        {title:'Digital Wizards', id:3},
-        {title:'TechManiacs', id:4},
-        {title:'Gagan Vedhi', id:5},
-        {title:'IDEA-Square', id:6},
-        {title:'Artista', id:7}
+        {title:'Digital Wizards', path:'/digitalwizards', id:3},
+        {title:'TechManiacs', path:'/', id:4},
+        {title:'Gagan Vedhi', path:'/', id:5},
+        {title:'IDEA-Square', path:'/', id:6},
+        {title:'Artista', path:'/', id:7}
     ])
-    const [loading_id, setLoading] = useState(5)
-    const handleClick = (event, id) => {
-        setLoading(id)
-        event.preventDefault();
+    const [loading_id, setLoading] = useState(-1)
+    const history=useHistory();
+    const handleClick = (event, id, path) => {
+        if(path!=='/')
+            history.push(path)
+        else
+            setLoading(id)
+        event.preventDefault()
     }
     const getBigTile = (bigTile, index) => {
         if(index===bigTiles.length-1 && bigTiles.length%2===1)
         {
             return(
                 <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={bigTile.id}
-                    onClick={(event) => {handleClick(event, bigTile.id)}}>
+                    onClick={(event) => {handleClick(event, bigTile.id, bigTile.path)}}>
                     <BigTile title={bigTile.title} id={bigTile.id} loading_id={loading_id}/>
                 </div>
             )
@@ -39,7 +44,7 @@ export function Home()
         {
             return(
                 <div className={`bigTile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={bigTile.id}
-                    onClick={(event) => {handleClick(event, bigTile.id)}}>
+                    onClick={(event) => {handleClick(event, bigTile.id, bigTile.path)}}>
                     <BigTile title={bigTile.title} id={bigTile.id} loading_id={loading_id}/>
                 </div>
             )
@@ -50,7 +55,7 @@ export function Home()
         {
             return(
                 <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-2`} key={tile.id}
-                onClick={(event) => {handleClick(event, tile.id)}}>
+                onClick={(event) => {handleClick(event, tile.id, tile.path)}}>
                     <Tile title={tile.title} id={tile.id} loading_id={loading_id}/>
                 </div>
             )
@@ -59,7 +64,7 @@ export function Home()
         {
             return(
                 <div className={`tile w-full h-full col-start-1 col-span-1 lg:col-span-1`} key={tile.id}
-                onClick={(event) => {handleClick(event, tile.id)}}>
+                onClick={(event) => {handleClick(event, tile.id, tile.path)}}>
                     <Tile title={tile.title} id={tile.id} loading_id={loading_id}/>
                 </div>
             )
