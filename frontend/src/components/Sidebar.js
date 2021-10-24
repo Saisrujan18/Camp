@@ -33,7 +33,7 @@ function Sidebar() {
       {/* Top Bar */}
       <div
         className={
-          "bg-gray-800 text-gray-100 md:hidden" + (open ? " hidden" : "")
+          "bg-gray-800 text-gray-100 md:hidden " + (open ? " hidden" : "")
         }
       >
         <button
@@ -101,29 +101,40 @@ function Sidebar() {
         <nav className="text-blac">
           {/* bg-blue-700 */}
           <Link
-            href="/home"
+            to="/home"
+            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold  rounded"
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/experiences"
             className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold  rounded"
           >
             Experiences
           </Link>
+
           <Link
             to="/collab"
             className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
           >
             Collab
           </Link>
+
           <Link
             to="/digitalwizards"
             className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
           >
             Digital Wizards
           </Link>
+
           <Link
             to="/sports"
             className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
           >
             Sports
           </Link>
+
           <Link
             to="/aboutus"
             className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
