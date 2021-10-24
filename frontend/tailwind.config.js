@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         whit:"#F2F4F9",
         lightBlu:"#ADC9FE",
+        lightestBlu:"#E6F5FF",
         blac:"#070809",
         darkBlu:"#4171E5",
         gre:"#54575B",
@@ -22,7 +23,8 @@ module.exports = {
         darkBlue85:"#08109AD9"
       },
       fontFamily:{
-        camp: ['Bangers']
+        camp: ['Bangers'],
+        hometext:['Akaya Kanadaka', 'Kanit:ital@0;1']
       },
       minHeight:{
         'home-content':'75vh',
