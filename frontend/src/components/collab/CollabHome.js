@@ -18,7 +18,9 @@ function CollabHome() {
 	const [loading, setLoading] = useState(true);
 	const [popupVisible, setVisibility] = useState(false);
 	const history = useHistory();
+
 	// get the data for collabCards.
+	
 	useEffect(() => {
 		axios
 		.get("http://localhost:3001/api/collab")
@@ -33,16 +35,18 @@ function CollabHome() {
 	{
 		setVisibility(true);
 		e.preventDefault();
-		console.log("ADD");
 	}
 
-	const addNewCollab = async (collab) => {
+	const addNewCollab = async (collab) => 
+	{
+
 		let updatedCollabData = [...collabData];
 		updatedCollabData.push(collab);
 		setCollabData(updatedCollabData);
 		// redirect to the post.
-		await axios.post("http://localhost:3001/api/collab", collab)
+		await axios.post("http://localhost:3001/api/collab",collab)
 	}
+
 	const renderCard = (collab) => {
 		const navigate = (collab_id) => {
 			history.push("/collab/"+collab_id)

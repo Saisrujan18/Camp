@@ -121,26 +121,6 @@ function Sidebar() {
             Collab
           </Link>
 
-          <Link
-            to="/digitalwizards"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-          >
-            Digital Wizards
-          </Link>
-
-          <Link
-            to="/sports"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-          >
-            Sports
-          </Link>
-
-          <Link
-            to="/aboutus"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-          >
-            AboutUS
-          </Link>
 
           {/* <Link to='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link> */}
 
@@ -162,3 +142,28 @@ function Sidebar() {
 }
 
 export default Sidebar;
+
+
+
+
+
+/* <Link
+  to="/digitalwizards"
+  className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+>
+  Digital Wizards
+</Link>
+
+<Link
+  to="/sports"
+  className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+>
+  Sports
+</Link>
+
+<Link
+  to="/aboutus"
+  className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+>
+  AboutUS
+</Link> */

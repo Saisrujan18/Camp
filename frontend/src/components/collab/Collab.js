@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { useParams } from "react-router";
 import Sidebar from '../Sidebar'
 import axios from "axios";
+import { useAuth } from '../../authContext/AuthContext';
 import './Collab.css'
+import Spinner from '../Spinner';
 
 export function Collab() {
+
+    const {user}=useAuth()
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
     const [collabData, setCollabData] = useState({});
@@ -13,17 +17,19 @@ export function Collab() {
     const [showMembers, setShowMembers] = useState(false);
     
     useEffect(() => {
-        axios.post("http://localhost:3001/api/collab/id", id)
+        axios.post("http://localhost:3001/api/collab/id", {id})
         .then((res) => {
+
             // receive the data.
 			setCollabData(res.data);
 			setLoading(false);
 		})
         .catch((err) => console.log(err));
-    });
-    // const [showChat, setShowChat] = useState(false);
+    },[]);
 
+    // const [showChat, setShowChat] = useState(false);
     // Shows the current contributors for the project
+
     const getMember = (member) => {
         return (
             <div className='bg-white rounded-lg p-4 shadow-lg border '>
@@ -42,15 +48,31 @@ export function Collab() {
     }
 
 
+    async function addMember()
+    {
+        const {email} =user;
+        const {members}=collabData;
+        axios.post("http://localhost:3001/api/collab/id/join", {email,id,members})
+        .then((res) => {
+            const newCollabData=collabData
+            newCollabData.members=[...res.data];
+			console.log(res.data);
+            setCollabData(newCollabData);
+			setLoading(false);
+		})
+        .catch((err) => console.log(err));
+    }
+
     return (
         // total screen
-        <div className='h-screen flex '>
+       <div className='h-screen flex '>
+            
             {/* left sidebar */}
+            
             <Sidebar />
 
-
-
             {/* center part */}
+            {loading?<Spinner/>:
             <div className=" overflow-y-auto flex-grow flex-1 flex flex-col max-w-screen-lg p-3 bg-white my-2 mr-2 rounded-r-lg">
                 {/* above of center */}
                 <div className=" border-gray-200">
@@ -76,7 +98,8 @@ export function Collab() {
                                 {/* <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' +
                                 ' transition duration-500 ease-in-out ' + (showChat ? " bg-gray-200 transform scale-110" : '')} onClick={() => {setShowInfo(false); setShowChat(true); setShowMembers(false)}}> Chat </button> */}
 
-                                <button className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'}> Join </button>
+                                {!collabData.members.includes(user.email)  && <button className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'} onClick={addMember}> Join </button>}
+                            
                             </div>
                         </div>
 
@@ -102,11 +125,11 @@ export function Collab() {
 
                         {/* Members */}
                         <div className={(showMembers ? "space-y-1 m-2" : "hidden")}>
-                            {/* {
+                            {
                                 collabData.members.map(member => (
                                     getMember(member)
                                 ))
-                            } */}
+                            }
                         </div>
 
                         {/* Chat */}
@@ -118,6 +141,7 @@ export function Collab() {
                         
                 </main>
             </div>
+        }
         </div>
     )
 }

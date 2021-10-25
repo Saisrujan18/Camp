@@ -1,4 +1,5 @@
 const express = require("express");
+const CollabModel = require("../models/collabModel");
 const router = express.Router();
 
 const collabModel = require("../models/collabModel");
@@ -19,9 +20,23 @@ router.get("/", (req, res) => {
 /// res.json(document) -> to frontend
 
 router.post("/id", (req,res) => {
-    const id = req.body;
-    
+    const {id}=req.body;
+    collabModel.findById(id)
+             .then(response=>{res.json(response)})
+             .catch(err=>{console.log(err)})    
 })
+
+router.post("/id/join",(req,res)=>{
+    const {email}=req.body;
+    const {id}=req.body;
+    const {members}=req.body;
+    members.push(email);
+    CollabModel.findByIdAndUpdate(id, { $set: { members: members }})
+                .then(resp=>{res.json(members)})
+                .catch(err=>{console.log(err);})
+})
+
+
 router.post("/", (req, res) => 
 {   
     const collab = req.body;
