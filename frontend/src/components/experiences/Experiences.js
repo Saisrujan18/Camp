@@ -1,106 +1,104 @@
-import React,{useEffect,useState} from 'react'
-import axios from 'axios'
-import Sidebar from '../Sidebar'
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 
-export default function Experiences() 
+import Sidebar from "../Sidebar";
+import ExpCard from "./ExpCard";
+import Spinner from "../Spinner";
+import NewExperience from "./NewExperience";
+
+function Experiences() 
 {
-    // The state of this component contains:
-    // 1. Name of the company
-    // 2. The experience of a particular person.
-    // 3. Links to the social media accounts of that person.
-    // 4. Chats if any 
-    const [expData, setExpData] = useState([]);
-    const [loading, setLoading] = useState(true);
+	const [expData, setexpData] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [popupVisible, setVisibility] = useState(false);
+	const history = useHistory();
 
-    const [companyName, setProjName] = useState("Deliotte");
-    const [author, setOwner] = useState("ABC");
-    
-    const [links, setLinks] = useState(["Github", "LinkedIn"]);
-    const [showExp, setShowExp] = useState(true);
-    const [showChat, setShowChat] = useState(false);
+	useEffect(() => {
+		axios
+		.get("http://localhost:3001/api/experiences")
+		.then((res) => {
+			setexpData(res.data);
+			setLoading(false);
+		})
+		.catch((err) => console.log(err));
+	},[]);
 
-    // On loading, this gets the data related to the experiences.
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/experiences")
-      .then((res) => {
-            setExpData(res.data);
-            setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  },[]);
+	function showPopup(e) 
+	{
+		setVisibility(true);
+		e.preventDefault();
+	}
 
-    // Links
-    const getLinks = (link) => {
-        return (
-            <li className='bg-white rounded-lg p-4 shadow-lg border'> 
-                <a href='/'> {link} </a>
-            </li>
-        )
-    }
+	const addNewExp = async (exp) => 
+	{
 
-    return (
-        <div className="flex flex-row">
-            {/* Sidebar */}
-            <Sidebar/>
-            {/* Name of the company */}
-            <div>
-                {expData.map((collab) => (
-                    <h1>{collab.title}</h1>
-                ))}
-            </div>
+		let updatedexpData = [...expData];
+		updatedexpData.push(exp);
+		setexpData(updatedexpData);
+		// redirect to the post.
+		await axios.post("http://localhost:3001/api/experiences",exp)
+	}
 
-            <div className=" overflow-y-auto flex-grow flex-1 flex flex-col max-w-screen-lg p-3 bg-white my-2 mr-2 rounded-r-lg">
-                {/* above of center */}
-                <div className=" border-gray-200">
-                    <div>
-                        <div className='bg-whit rounded-lg m-2 '>
-                            <div className='rounded-xl text-5xl m-2 justify-center flex '>
-                                <p className='text-5xl p-3 m-1 font-serif font-bold'> {companyName} </p>
-                            </div>
+	const renderCard = (exp) => {
+		const navigate = (exp_id) => {
+			history.push("/experiences/"+exp_id)
+		}
 
-                            <div className='flex place-content-end'>
-                                <p className=' rounded-lg text-lg m-2 pl-4 pr-4 p-1 font-bold '> {author} </p>
-                            </div>
+		return (
+		<ExpCard
+		_id = {exp._id}
+		navigate = {navigate}
+		title={exp.title}
+		company={exp.company}
+		description={exp.description}
+        type={exp.type}
+		author={exp.author}/>);
+	}
+	const expContent = (loading) => {
+		if(loading)
+			return(
+				<Spinner/>
+			)
+		return(
+			<div className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around bg-white p-2 rounded-lg flex-grow items-center">
+				{expData.map((exp) => (
+					renderCard(exp)
+				))}
+			</div>
+		)
+	}
 
-                            <div className='flex'>
-                                <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' + 
-                                'transition duration-500 ease-in-out ' + (showExp? ' bg-gray-200 transform scale-110' : '')} onClick={() => {setShowExp(true); setShowChat(false);}}> Experience </button>
+	const renderPopup = () => {
+		return (popupVisible && <NewExperience visibility={setVisibility} addExp={addNewExp}/>);
+	}
+	const renderContent = () => {
+		return (!popupVisible &&
+		<div className="h-screen flex flex-row">
+			<Sidebar />
+			<div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg pl-1">
+				<div className="flex flex-row">
+					<div className="m-2 ml-4 mb-4 text-3xl text-left font-bold">
+						Experiences
+					</div>
+					<div className="flex-grow"></div>
+					<button
+						className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+						onClick={showPopup}
+					>
+						+ New Experience
+					</button>	
+				</div>
+				{expContent(loading)}
+			</div>
+		</div>);
+	}
 
-                                <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' +
-                                ' transition duration-500 ease-in-out ' + (showChat ? " bg-gray-200 transform scale-110" : '')} onClick={() => {setShowExp(false); setShowChat(true);}}> Chat </button>
-
-                                <button className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'}> Follow </button>
-                            </div>
-                        </div>
-
-                            <hr className='bg-gray-500 h-0.5 border-none rounded-xl'></hr>
-                    </div>
-                
-                </div>
-
-                {/* below of center */}
-                <main className="flex-1 p-2 bg-white ">
-                        <h1 className={'font-bold m-1 ' + (showExp ? '' : ' hidden')}> Experience </h1>
-                        <p className={'bg-white rounded-lg text-1xl p-2 shadow-md font-sans ' + (showExp ? "" : "hidden")}> {expData} </p>
-
-                        {/* Chat */}
-                        <div className={(showChat ? "space-y-1 m-2" : "hidden")}>
-                            Nothing to show for now
-                        </div>
-
-                        {/* displays links */}
-                        <div className={(showChat ? "space-y-1 m-2" : "hidden")}>
-                            <h1 className='m-1 font-bold'> Links </h1>
-                            {
-                                links.map(link => (
-                                    getLinks(link)
-                                ))
-                            }
-                        </div>
-
-                </main>
-            </div>
-        </div>
-    )
+	return (
+		<div>
+		{renderPopup()}
+		{renderContent()}
+		</div>
+	);
 }
+export default Experiences;
