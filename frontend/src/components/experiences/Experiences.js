@@ -9,11 +9,14 @@ import NewExperience from "./NewExperience";
 
 function Experiences() 
 {
+	// All the neccessary variables are declared over here.
+
 	const [expData, setexpData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [popupVisible, setVisibility] = useState(false);
 	const history = useHistory();
 
+	// Fetching all the content at the beggining itself.
 	useEffect(() => {
 		axios
 		.get("http://localhost:3001/api/experiences")
@@ -24,15 +27,16 @@ function Experiences()
 		.catch((err) => console.log(err));
 	},[]);
 
+	// Triggers the popup visibility
 	function showPopup(e) 
 	{
 		setVisibility(true);
 		e.preventDefault();
 	}
 
+	// Handles the request to add new experience
 	const addNewExp = async (exp) => 
 	{
-
 		let updatedexpData = [...expData];
 		updatedexpData.push(exp);
 		setexpData(updatedexpData);
@@ -40,6 +44,7 @@ function Experiences()
 		await axios.post("http://localhost:3001/api/experiences",exp)
 	}
 
+	// A function to render the contents of all experiences
 	const renderCard = (exp) => {
 		const navigate = (exp_id) => {
 			history.push("/experiences/"+exp_id)
@@ -55,6 +60,8 @@ function Experiences()
         type={exp.type}
 		author={exp.author}/>);
 	}
+	// Loads a spinner if the content is being fetched
+	// or else renders the content in a certain format. 
 	const expContent = (loading) => {
 		if(loading)
 			return(
@@ -69,9 +76,11 @@ function Experiences()
 		)
 	}
 
+	// Renders the popup
 	const renderPopup = () => {
 		return (popupVisible && <NewExperience visibility={setVisibility} addExp={addNewExp}/>);
 	}
+	// Renders the content if the popup visibility is false.
 	const renderContent = () => {
 		return (!popupVisible &&
 		<div className="h-screen flex flex-row">
@@ -93,7 +102,7 @@ function Experiences()
 			</div>
 		</div>);
 	}
-
+	// rendering of whole is done over here. 
 	return (
 		<div>
 		{renderPopup()}

@@ -26,6 +26,7 @@ export function Login()
     const [loading, setLoading] = useState(false);
     const {auth, signInWithGoogle} = useAuth();
     const history = useHistory();
+    
     // let the user login using google Auth
     // take him to another page and check for the email there
     // then navigate to appropriate page if email doesnot belong to any organisation.

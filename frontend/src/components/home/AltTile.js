@@ -1,4 +1,8 @@
 /* eslint-disable no-unused-vars */
+
+// These are the reusable components that are used in the Home page
+// Created a seperate component to avoid code repetition. 
+
 import {Link,Redirect} from "react-router-dom";
 const AltTile = (props) => {
     return ( 

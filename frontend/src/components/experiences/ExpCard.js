@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-
+// A reusable card to the contents of different Experiences.
 export default function ExpCard(props) 
 {
 	const { title, author, description, _id, navigate, type } = props;

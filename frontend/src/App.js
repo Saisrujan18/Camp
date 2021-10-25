@@ -26,12 +26,18 @@ function App() {
 			<Switch>
 				
 				<Route exact path={["/login","/"]}><Login /></Route>
+				
+				{/* Protected Route checks whether a user is logined or not.
+					If user is not logged in ,then we redirect to the login page */}
+				
 				<ProtectedRoute exact path="/home" component={AltHome}/>
 				<ProtectedRoute exact path="/collab/:id" component={Collab}/>
 				<ProtectedRoute exact path="/collab" component={CollabHome}/>
 				<ProtectedRoute exact path="/experiences/:id" component={SingleExp}/>				
 				<ProtectedRoute exact path="/experiences" component={Experiences}/>
 				
+				{/*Routing to different pages of the webapp is done over here.*/}
+
 			</Switch>
 
 		</Router>

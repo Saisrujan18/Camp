@@ -9,6 +9,8 @@ import Spinner from '../Spinner';
 
 export function Collab() {
 
+    // All the useState variables that might be used are declared over here.
+
     const {user}=useAuth()
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
@@ -16,6 +18,7 @@ export function Collab() {
     const [showInfo, setShowInfo] = useState(true);
     const [showMembers, setShowMembers] = useState(false);
     
+    // Fetching all the data required to show in this page
     useEffect(() => {
         axios.post("http://localhost:3001/api/collab/id", {id})
         .then((res) => {
@@ -27,9 +30,7 @@ export function Collab() {
         .catch((err) => console.log(err));
     },[]);
 
-    // const [showChat, setShowChat] = useState(false);
-    // Shows the current contributors for the project
-
+    // A resuable component to show the members of the collab.
     const getMember = (member) => {
         return (
             <div className='bg-white rounded-lg p-4 shadow-lg border '>
@@ -38,7 +39,7 @@ export function Collab() {
         )
     }
 
-    // Returns the important links included by the project owner
+    // A resuable component to show the links related to the collab.
     const getLinks = (link) => {
         return (
             <li className='bg-white rounded-lg p-4 shadow-lg border'> 
@@ -47,7 +48,7 @@ export function Collab() {
         )
     }
 
-
+    // The join request  of a specific user is handled over here. 
     async function addMember()
     {
         const {email} =user;
@@ -64,21 +65,25 @@ export function Collab() {
     }
 
     return (
-        // total screen
+
        <div className='h-screen flex '>
             
-            {/* left sidebar */}
-            
+            {/* Side bar appears on the left as default.*/}
             <Sidebar />
+            
+            {/* If the data is being processed we render a loading spinner */}
+            {/* Or else we show the content of the page */}
+            
 
-            {/* center part */}
             {loading?<Spinner/>:
+            
             <div className=" overflow-y-auto flex-grow flex-1 flex flex-col max-w-screen-lg p-3 bg-white my-2 mr-2 rounded-r-lg">
-                {/* above of center */}
+                
                 <div className=" border-gray-200">
                     {/* The Whole Project Description */}
                     <div>
                         <div className='bg-whit rounded-lg m-2 '>
+                           
                             <div className='rounded-xl text-5xl m-2 justify-center flex '>
                                 <p className='text-5xl p-3 m-1 font-serif font-bold'> {collabData.title} </p>
                             </div>
@@ -101,26 +106,19 @@ export function Collab() {
                                 {!collabData.members.includes(user.email)  && <button className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'} onClick={addMember}> Join </button>}
                             
                             </div>
+                        
                         </div>
 
                             <hr className='bg-gray-500 h-0.5 border-none rounded-xl'></hr>
+                    
                     </div>
-                
                 </div>
 
-                {/* below of center */}
                 <main className="flex-1 p-2 bg-white ">
+                        {/* Description*/}
                         <h1 className={'font-bold m-1 ' + (showInfo ? '' : ' hidden')}> Description </h1>
                         <div className={'bg-white rounded-lg text-1xl p-2 shadow-md font-sans ' + (showInfo ? "" : "hidden")}> 
                             <p>{collabData.description} </p>
-                            {/* <div className=' space-y-1'>
-                                <h1 className='m-1 font-bold'> Links </h1>
-                                {
-                                    links.map(link => (
-                                        getLinks(link)
-                                    ))
-                                }
-                            </div> */}
                         </div>
 
                         {/* Members */}
@@ -131,15 +129,8 @@ export function Collab() {
                                 ))
                             }
                         </div>
-
-                        {/* Chat */}
-                        {/* <div className={(showChat ? "space-y-1 m-2" : "hidden")}>
-                            I dont know what chat includes
-                        </div> */}
-
-
-                        
                 </main>
+            
             </div>
         }
         </div>

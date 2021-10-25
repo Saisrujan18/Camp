@@ -7,12 +7,11 @@ import CollabCard from "./CollabCard";
 import Spinner from "../Spinner";
 import NewCollab from "./NewCollab";
 
-// HOME - Front, Routes.
-// Sidebar
-// Collab - Frontend - layout, card; Backend Add Collab and (fetch the collab and route ---- add/register).
-// Experiences - same as above but entire thing
 
-function CollabHome() {
+function CollabHome() 
+{
+
+	// All the neccessary useState variables are declared over here.
 
 	const [collabData, setCollabData] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -20,7 +19,6 @@ function CollabHome() {
 	const history = useHistory();
 
 	// get the data for collabCards.
-	
 	useEffect(() => {
 		axios
 		.get("http://localhost:3001/api/collab")
@@ -31,12 +29,14 @@ function CollabHome() {
 		.catch((err) => console.log(err));
 	},[]);
 
+	// Triggers the popup
 	function showPopup(e) 
 	{
 		setVisibility(true);
 		e.preventDefault();
 	}
 
+	// Handles the request of adding a new collaboration
 	const addNewCollab = async (collab) => 
 	{
 
@@ -47,6 +47,7 @@ function CollabHome() {
 		await axios.post("http://localhost:3001/api/collab",collab)
 	}
 
+	// A function to render all the collaborations in the community
 	const renderCard = (collab) => {
 		const navigate = (collab_id) => {
 			history.push("/collab/"+collab_id)
@@ -60,6 +61,9 @@ function CollabHome() {
 		description={collab.description}
 		author={collab.author}/>);
 	}
+
+	// Loads a spinner if the the data is still processing 
+	// Renders the collaborations if its not loading.
 	const collabContent = (loading) => {
 		if(loading)
 			return(
@@ -73,10 +77,11 @@ function CollabHome() {
 			</div>
 		)
 	}
-
+	// Renders the popup when triggered.
 	const renderPopup = () => {
 		return (popupVisible && <NewCollab visibility={setVisibility} addCollab={addNewCollab}/>);
 	}
+	// Renders the content of the page when popup is not triggered.
 	const renderContent = () => {
 		return (!popupVisible &&
 		<div className="h-screen flex flex-row">

@@ -6,6 +6,11 @@ import {auth} from "../firebase";
 const AuthContext = React.createContext();
 const provider = new GoogleAuthProvider();
 
+//  We used firebase for authentication
+
+//  useAuth is exported and is used in different js files to get the infromation about the 
+//  logined user.
+
 export function useAuth() {
     return useContext(AuthContext);
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-
+// A resuable to show all the ongoing collaborations in the community.
 export default function CollabCard(props) {
     const { title, author, description, _id, navigate} = props;
     return (

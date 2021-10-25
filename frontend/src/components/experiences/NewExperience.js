@@ -5,6 +5,7 @@ import { AuthProvider } from "../../authContext/AuthContext";
 
 function NewExperience(props) 
 {
+    // Variables required for the popup are declared over here.
     const [tabNumber, setTabNumber] = useState(0);
     const [exp, setExp] = useState({
         title: "",
@@ -13,7 +14,7 @@ function NewExperience(props)
         type:"",
         description: "",
     });
-  
+    //  Handles the change in content of the experiences.
     const handleChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -25,13 +26,16 @@ function NewExperience(props)
         });
     };
   
+    // Closes the popup and renders the content of experiences page
     const closePopup = () => {props.visibility(false)};
-  
+
+    // Function to handle the change in tans of the popup.
     const setTab = (event, number) => {
         if (number !== tabNumber){setTabNumber(number);}
         event.preventDefault();
     };
 
+    // Tab is the left side of the popup which renders the content of all tabs .
     const Tab = (props) => {
         return (
             <button
@@ -44,7 +48,7 @@ function NewExperience(props)
             </button>
         );
     };
-
+    // ALl the contents tab1 ,rendering and fucntionality are taken care of
     const tab1 = () => {
         return (
         <div className={`modalContent flex flex-col justify-start rounded-r-lg p-10 sm-custom:w-{240} md:w-6/12 lg:w-5/12 xl:w-4/12 h-1/2 bg-white`}>
@@ -93,6 +97,7 @@ function NewExperience(props)
       </div>
     );
   };
+  // ALl the contents tab2 ,rendering and fucntionality are taken care of
   const tab2 = () => {
     return (
       <div
@@ -135,9 +140,10 @@ function NewExperience(props)
       </div>
     );
   };
-    
-    const Tabs = [tab1(), tab2()];
 
+    // An array to help switching in between tabs.  
+    const Tabs = [tab1(), tab2()];
+  //  This consists of the leftside of the popup.
     const SideTabMini = () => {
     return (
         <aside className=" bg-whit text-blue-100 w-25 h-1/2 space-y-6 px-2 py-4 rounded-l-lg">
@@ -148,7 +154,7 @@ function NewExperience(props)
         </aside>
     );
     };
-
+    // Rendering the popup
     return (
         <div className="modalBackground flex flex-row w-screen h-screen rounded-lg my-2 bg-gray-200 fixed justify-center items-center">
             <SideTabMini />
