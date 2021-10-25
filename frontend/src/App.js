@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 import {Login} from "./components/login/Login"
-import {Home} from "./components/home/Home";
+import {AltHome} from "./components/home/AltHome";
 
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -26,7 +26,7 @@ function App() {
 			<Switch>
 				
 				<Route exact path={["/login","/"]}><Login /></Route>
-				<ProtectedRoute exact path="/home" component={Home}/>
+				<ProtectedRoute exact path="/home" component={AltHome}/>
 				<ProtectedRoute exact path="/collab/:id" component={Collab}/>
 				<ProtectedRoute exact path="/collab" component={CollabHome}/>
 				<ProtectedRoute exact path="/experiences/:id" component={SingleExp}/>				

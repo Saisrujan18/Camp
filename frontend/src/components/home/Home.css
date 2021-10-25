@@ -11,3 +11,28 @@
 {
     opacity: 1;
 }
+
+
+.bod
+{
+    background-image: url("./assets/BG.png");
+    background-repeat: no-repeat;
+    background-size: 96% 90%;
+    background-position: center;
+
+    opacity: 0.95;
+
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    height: 94vh;
+    width: 96vw;
+    
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.whole
+{
+    opacity: 1;
+}
