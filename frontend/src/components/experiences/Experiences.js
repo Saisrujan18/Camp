@@ -68,7 +68,8 @@ function Experiences()
 				<Spinner/>
 			)
 		return(
-			<div className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around bg-white p-2 rounded-lg flex-grow items-center">
+			<div 
+			className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around p-2  items-center bg-whit">
 				{expData.map((exp) => (
 					renderCard(exp)
 				))}
@@ -85,8 +86,8 @@ function Experiences()
 		return (!popupVisible &&
 		<div className="h-screen flex flex-row">
 			<Sidebar />
-			<div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg pl-1">
-				<div className="flex flex-row">
+			<div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg ">
+				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2">
 					<div className="m-2 ml-4 mb-4 text-3xl text-left font-bold">
 						Experiences
 					</div>
@@ -95,10 +96,11 @@ function Experiences()
 						className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
 						onClick={showPopup}
 					>
-						+ New Experience
+						+New
 					</button>	
 				</div>
 				{expContent(loading)}
+				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>
 		</div>);
 	}
