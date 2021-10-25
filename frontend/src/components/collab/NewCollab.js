@@ -19,9 +19,11 @@ function NewCollab(props) {
       };
     });
   };
+  
   const closePopup = () => {
     props.visibility(false)
   };
+
   const setTab = (event, number) => {
     if (number !== tabNumber) setTabNumber(number);
     event.preventDefault();

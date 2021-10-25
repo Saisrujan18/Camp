@@ -1,5 +1,7 @@
 const mongoose = require ('mongoose');
 
+// This is the schema for an experience
+
 const Schema = mongoose.Schema;
 
 const expSchema = new Schema ({

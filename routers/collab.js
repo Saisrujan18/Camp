@@ -1,55 +1,54 @@
 const express = require("express");
-const CollabModel = require("../models/collabModel");
 const router = express.Router();
 
-const collabModel = require("../models/collabModel");
+// This handles all the requests to "url/api/collab"
+
+// Importing the collaboration model
+const CollabModel = require("../models/collabModel");
 
 router.use(express.json());
 
-// "/collab/<here>"
-// here we are fetching the entire data, maybe 
-
+// here we are fetching the entire data (i.e all the collaborations)
 router.get("/", (req, res) => {
-    collabModel.find({}).sort({createdAt: 'asc'})
+    CollabModel.find({}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
-
-/// first find the document with _id = id;
-/// res.json(document) -> to frontend
-
+// This for fetching data of a particular collaboration (given: id)
 router.post("/id", (req,res) => {
     const {id}=req.body;
-    collabModel.findById(id)
+    CollabModel.findById(id)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    
 })
 
+// This will add the current user to the collaboration if not already.
 router.post("/id/join",(req,res)=>{
-    const {email}=req.body;
-    const {id}=req.body;
-    const {members}=req.body;
+    // extracting the data from the request
+    const {email, id, members}=req.body;
+    // adding the new member
     members.push(email);
     CollabModel.findByIdAndUpdate(id, { $set: { members: members }})
                 .then(resp=>{res.json(members)})
                 .catch(err=>{console.log(err);})
 })
 
-
+// This adds a new collaboration to the database
 router.post("/", (req, res) => 
 {   
+    // extracting the data from the request
     const collab = req.body;
-    console.log("Collab");
-    console.log(collab);
 
-    const newCollab = new collabModel({
+    // creating a new document
+    const newCollab = new CollabModel({
         title: collab.title, 
         author: collab.author,
         description: collab.description,
         members: collab.members
     });
     
+    // saving it.
     newCollab
         .save ()
         .then (result => {console.log (result); console.log("New collab added");})

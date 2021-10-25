@@ -1,30 +1,35 @@
 const express = require("express");
 const router = express.Router();
-
 router.use(express.json());
 
-const expModel = require("../models/expModel");
+// Importing the collaboration model
+const ExpModel = require("../models/expModel");
 
+// fetching all the experiences
 router.get("/", (req, res) => {
-    expModel.find({})
+    ExpModel.find({})
         .then(experiences => res.json(experiences))
         .catch(err => console.log(err));  
 });
 
+// This for fetching data of a particular collaboration (given: id)
+
 router.post("/id", (req,res) => {
     console.log(req);
     const {id}=req.body;
-    expModel.findById(id)
+    ExpModel.findById(id)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    
-})
-
+}
+)
+// This adds a new collaboration to the database
 router.post("/", (req, res) => 
 {   
+    // extracting the data.
     const exp = req.body;
-    console.log(exp);
 
-    const newExp = new expModel({
+    // creating a new document
+    const newExp = new ExpModel({
         title: exp.title, 
         author: exp.author,
         description: exp.description,
@@ -33,6 +38,7 @@ router.post("/", (req, res) =>
         tags:exp.tags
     });
     
+    // saving it to the database
     newExp
         .save ()
         .then (result => {console.log (result); console.log("New experience added");})
