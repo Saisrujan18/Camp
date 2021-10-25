@@ -1,10 +1,16 @@
 import { React, useState } from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar'
 import './Collab.css'
 
 export function Collab() {
 
+    // State of this component contains:
+    // 1. Name of the project
+    // 2. Owner of the project
+    // 3. Project Description
+    // 4. Some important links eg:github
+    // 5. Current Contributers
     const [projName, setProjName] = useState("Project Name");
     const [owner, setOwner] = useState("Owner");
     const [description, setDescription] = useState(`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non tellus lobortis felis tristique maximus quis sit amet odio.
@@ -54,7 +60,7 @@ export function Collab() {
     const [showMembers, setShowMembers] = useState(false);
     const [showChat, setShowChat] = useState(false);
 
-
+    // Shows the current contributors for the project
     const getMember = (member) => {
         return (
             <div className='bg-white rounded-lg p-4 shadow-lg border '>
@@ -63,6 +69,7 @@ export function Collab() {
         )
     }
 
+    // Returns the important links included by the project owner
     const getLinks = (link) => {
         return (
             <li className='bg-white rounded-lg p-4 shadow-lg border'> 
@@ -84,6 +91,7 @@ export function Collab() {
             <div className=" overflow-y-auto flex-grow flex-1 flex flex-col max-w-screen-lg p-3 bg-white my-2 mr-2 rounded-r-lg">
                 {/* above of center */}
                 <div className=" border-gray-200">
+                    {/* The Whole Project Description */}
                     <div>
                         <div className='bg-whit rounded-lg m-2 '>
                             <div className='rounded-xl text-5xl m-2 justify-center flex '>
@@ -94,6 +102,7 @@ export function Collab() {
                                 <p className=' rounded-lg text-lg m-2 pl-4 pr-4 p-1 font-bold '> {owner} </p>
                             </div>
 
+                            {/* Inpage navigation */}
                             <div className='flex'>
                                 <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' + 
                                 'transition duration-500 ease-in-out ' + (showInfo? ' bg-gray-200 transform scale-110' : '')} onClick={() => {setShowInfo(true); setShowChat(false); setShowMembers(false)}}> Info </button>
@@ -115,7 +124,6 @@ export function Collab() {
 
                 {/* below of center */}
                 <main className="flex-1 p-2 bg-white ">
-                    {/* <div className="relative"> */}
                         <h1 className={'font-bold m-1 ' + (showInfo ? '' : ' hidden')}> Description </h1>
                         <p className={'bg-white rounded-lg text-1xl p-2 shadow-md font-sans ' + (showInfo ? "" : "hidden")}> {description} </p>
 
@@ -130,7 +138,7 @@ export function Collab() {
 
                         {/* Chat */}
                         <div className={(showChat ? "space-y-1 m-2" : "hidden")}>
-                            I dont know what chat includes
+                            Nothing to show
                         </div>
 
 
@@ -144,9 +152,6 @@ export function Collab() {
                         </div>
                 </main>
             </div>
-
-            {/* right sidebar */}
-            {/* <Sidebar /> */}
         </div>
     )
 }
