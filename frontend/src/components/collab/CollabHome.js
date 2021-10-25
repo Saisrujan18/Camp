@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
 
 import Sidebar from "../Sidebar";
@@ -6,12 +7,17 @@ import CollabCard from "./CollabCard";
 import Spinner from "../Spinner";
 import NewCollab from "./NewCollab";
 
+// HOME - Front, Routes.
+// Sidebar
+// Collab - Frontend - layout, card; Backend Add Collab and (fetch the collab and route ---- add/register).
+// Experiences - same as above but entire thing
+
 function CollabHome() {
 
 	const [collabData, setCollabData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [popupVisible, setVisibility] = useState(false);
-
+	const history = useHistory();
 	// get the data for collabCards.
 	useEffect(() => {
 		axios
@@ -30,12 +36,22 @@ function CollabHome() {
 		console.log("ADD");
 	}
 
-	const addNewCollab = (collab) => {
-		console.log(collab)
+	const addNewCollab = async (collab) => {
+		let updatedCollabData = [...collabData];
+		updatedCollabData.push(collab);
+		setCollabData(updatedCollabData);
+		// redirect to the post.
+		await axios.post("http://localhost:3001/api/collab", collab)
 	}
 	const renderCard = (collab) => {
+		const navigate = (collab_id) => {
+			history.push("/collab/"+collab_id)
+		}
+
 		return (
 		<CollabCard
+		_id = {collab._id}
+		navigate = {navigate}
 		title={collab.title}
 		description={collab.description}
 		author={collab.author}/>);
@@ -48,7 +64,7 @@ function CollabHome() {
 		return(
 			<div className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around bg-white p-2 rounded-lg flex-grow items-center">
 				{collabData.map((collab) => (
-				renderCard(collab)
+					renderCard(collab)
 				))}
 			</div>
 		)

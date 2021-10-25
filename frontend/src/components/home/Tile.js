@@ -1,16 +1,11 @@
-// const Tile = (props) => {
-//     return ( 
-//         <div className="Tile">
-//             <div className="w-auto h-auto bg-whit justify-center rounded-lg pt-3 pb-3">
-//                 <a className="truncate mr-2 ml-2" href="/">{props.title}</a>
-//             </div>
-//         </div>
-//     );
-// }
+import Spinner from '../Spinner';
 const Tile = (props) => {
     return ( 
-        <div className="w-full h-full bg-whit rounded-lg py-2 px-10">
-            <p className="overflow-ellipsis overflow-hidden mr-2 ml-2">{props.title}</p>
+        <div className="flex flex-row w-full h-full bg-whit rounded-lg py-2 px-10 content-center cursor-pointer">
+            <p className="font-hometext font-bold text-md text-darkOrang overflow-ellipsis overflow-hidden flex-grow self-center cursor-pointer mr-1 ml-2">{props.title}</p>
+            <div className="loading justify-self-end self-center ml-1 mr-2">
+                {(props.loading_id===props.id) && <Spinner/>}
+            </div>
         </div>
     );
 }
