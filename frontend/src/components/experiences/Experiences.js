@@ -16,6 +16,7 @@ export default function Experiences()
     const [author, setOwner] = useState("ABC");
     
     const [links, setLinks] = useState(["Github", "LinkedIn"]);
+    const [showExp, setShowExp] = useState(true);
     const [showChat, setShowChat] = useState(false);
 
     // On loading, this gets the data related to the experiences.
@@ -64,10 +65,10 @@ export default function Experiences()
 
                             <div className='flex'>
                                 <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' + 
-                                'transition duration-500 ease-in-out ' + (showInfo? ' bg-gray-200 transform scale-110' : '')} onClick={() => {setShowInfo(true); setShowChat(false); setShowMembers(false)}}> Experience </button>
+                                'transition duration-500 ease-in-out ' + (showExp? ' bg-gray-200 transform scale-110' : '')} onClick={() => {setShowExp(true); setShowChat(false);}}> Experience </button>
 
                                 <button to='/collab' className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 hover:bg-gray-200 ' +
-                                ' transition duration-500 ease-in-out ' + (showChat ? " bg-gray-200 transform scale-110" : '')} onClick={() => {setShowInfo(false); setShowChat(true); setShowMembers(false)}}> Chat </button>
+                                ' transition duration-500 ease-in-out ' + (showChat ? " bg-gray-200 transform scale-110" : '')} onClick={() => {setShowExp(false); setShowChat(true);}}> Chat </button>
 
                                 <button className={'font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out'}> Follow </button>
                             </div>
@@ -80,8 +81,8 @@ export default function Experiences()
 
                 {/* below of center */}
                 <main className="flex-1 p-2 bg-white ">
-                        <h1 className={'font-bold m-1 ' + (showInfo ? '' : ' hidden')}> Description </h1>
-                        <p className={'bg-white rounded-lg text-1xl p-2 shadow-md font-sans ' + (showInfo ? "" : "hidden")}> {description} </p>
+                        <h1 className={'font-bold m-1 ' + (showExp ? '' : ' hidden')}> Experience </h1>
+                        <p className={'bg-white rounded-lg text-1xl p-2 shadow-md font-sans ' + (showExp ? "" : "hidden")}> {expData} </p>
 
                         {/* Chat */}
                         <div className={(showChat ? "space-y-1 m-2" : "hidden")}>
