@@ -6,10 +6,9 @@ import { useAuth } from "../authContext/AuthContext";
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
 
     let { user, loading } = useAuth();
-
     let Comp = (props) => {
         if (loading)
-            return <Spinner/>
+        return <Spinner/>
         else
         {
             // Check for invalid domain
