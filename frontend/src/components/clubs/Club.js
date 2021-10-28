@@ -6,7 +6,7 @@ export default function Club(props)
 {
     useEffect(() => {
 		axios
-		.get("http://localhost:3001/api/club")
+		.get("http://localhost:3001/api/clubs")
 		.then((res) => {
 			
 		})

@@ -21,6 +21,8 @@ import {SingleExp} from "./components/experiences/SingleExp";
 import Club from "./components/clubs/Club";
 import Sidebar from './components/Sidebar';
 
+export const SidebarH = () => <Sidebar />
+
 function App() {
 	
   return (
