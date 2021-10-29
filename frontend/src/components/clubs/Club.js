@@ -1,17 +1,24 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import axios from 'axios';
 import Sidebar from '../Sidebar'
+import Post from './Post';
+import Spinner from '../Spinner';
 
 export default function Club(props) 
 {
+	const [postsData,updatePosts]=useState({});
+	const [loading,setLoading]=useState(true);
+
     useEffect(() => {
 		axios
-		.get("http://localhost:3001/api/clubs")
+		.get("http://localhost:3001/api/clubs/"+props)
 		.then((res) => {
-			
+			updatePosts(res);
+			setLoading(false);
 		})
 		.catch((err) => console.log(err));
 	},[]);
+
     return (
         <div className="flex flex-row">
             <Sidebar/>
@@ -27,7 +34,8 @@ export default function Club(props)
 						+New
 					</button>	
 				</div>
-				<div className="bg-red-200"> yo</div>
+				{loading?<Spinner/>:<div className="bg-red-200"> yo</div>
+}
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>
         </div>

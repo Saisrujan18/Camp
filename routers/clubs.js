@@ -12,8 +12,27 @@ router.use(express.json());
 // Clubs - DigitalWizards -> DW
 //       - TechManiacs -> TM
 //       - LL
-router.get("/DW", (req, res) => {
-    CollabModel.find({club: "DW"}).sort({createdAt: 'asc'})
+
+router.get("/DigitalWizards", (req, res) => {
+    PostModel.find({club: "DigitalWizards"}).sort({createdAt: 'asc'})
+    .then(collaborations => res.json(collaborations))
+    .catch(err => console.log(err));  
+});
+
+router.get("/Sports", (req, res) => {
+    PostModel.find({club: "Sports"}).sort({createdAt: 'asc'})
+    .then(collaborations => res.json(collaborations))
+    .catch(err => console.log(err));  
+});
+
+router.get("/Techmaniacs", (req, res) => {
+    PostModel.find({club: "Techmaniacs"}).sort({createdAt: 'asc'})
+    .then(collaborations => res.json(collaborations))
+    .catch(err => console.log(err));  
+});
+
+router.get("/Sargam", (req, res) => {
+    PostModel.find({club: "Sargam"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
@@ -38,7 +57,7 @@ router.post("/DW/id/register",(req,res)=>{
 })
 
 // This adds a new collaboration to the database
-router.post("/DW", (req, res) => 
+router.post("/clubs", (req, res) => 
 {   
     // extracting the data from the request
     const post = req.body;
@@ -46,7 +65,7 @@ router.post("/DW", (req, res) =>
     // creating a new document 
     // TODO: add image field
     const newPost = new PostModel({
-        club: "DW",
+        club: post.club,
         title: post.title, 
         author: post.author,
         description: post.description,

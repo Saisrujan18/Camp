@@ -42,10 +42,10 @@ function App() {
 				<ProtectedRoute exact path="/experiences/:id" component={SingleExp}/>				
 				<ProtectedRoute exact path="/experiences" component={Experiences}/>
 				
-				<ProtectedRoute exact path="/sports" component={()=>{return Club("sports")}}/>
-				<ProtectedRoute exact path="/digitalwizards" component={()=>{return Club("digitalwizards")}}/>
-				<ProtectedRoute exact path="/sargam" component={()=>{return Club("sargam")}}/>
-				<ProtectedRoute exact path="/techmaniacs" component={()=>{return Club("techmaniacs")}}/>
+				<ProtectedRoute exact path="/Sports" component={()=>{return Club("Sports")}}/>
+				<ProtectedRoute exact path="/DigitalWizards" component={()=>{return Club("DigitalWizards")}}/>
+				<ProtectedRoute exact path="/Sargam" component={()=>{return Club("Sargam")}}/>
+				<ProtectedRoute exact path="/Techmaniacs" component={()=>{return Club("Techmaniacs")}}/>
 
 				{/*Routing to different pages of the webapp is done over here.*/}
 
