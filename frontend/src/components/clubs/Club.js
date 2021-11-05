@@ -34,8 +34,8 @@ export default function Club(props)
 						+New
 					</button>	
 				</div>
-				{loading?<Spinner/>:<div className="bg-red-200"> yo</div>
-}
+				{loading?<Spinner/>:<div className="bg-red-200"> yo</div>}
+				<Post displayName="Srujan" username="none" verified="no" text="yo"/>
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>
         </div>
