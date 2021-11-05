@@ -9,6 +9,8 @@ import NewExperience from "./NewExperience";
 import { SidebarH } from "../../App";
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 
+import Edit from "../Edit";
+
 function Experiences() {
   // All the neccessary variables are declared over here.
 

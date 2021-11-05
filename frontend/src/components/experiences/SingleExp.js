@@ -9,6 +9,7 @@ import { useAuth } from "../../authContext/AuthContext";
 import Sidebar from "../Sidebar";
 import Spinner from "../Spinner";
 import "./Experiences.css";
+import Edit from "../Edit";
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
@@ -92,6 +93,7 @@ export function SingleExp() {
                 {" "}
                 Description{" "}
               </h1>
+              <Edit />
               <div
                 className={
                   "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +
