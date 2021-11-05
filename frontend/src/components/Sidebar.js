@@ -124,17 +124,12 @@ function Sidebar() {
               onClick={() => {
                 setDrop(!drop);
               }}
-              className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+              className="block mb-0 py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
             >
-              {/* <img
-                className={"transform rotate-" + drop ? "45" : "0"}
-                src={fire}
-                alt="nothing"
-              ></img>{" "} */}
               Clubs
             </div>
 
-            <div className="relative " hidden={!drop}>
+            <div className="relative" hidden={!drop}>
               <Link
                 to="/sports"
                 className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
@@ -167,7 +162,7 @@ function Sidebar() {
           {/* <Link to='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link> */}
         </div>
         <div
-          className="text-blac py-2.5 px-4 hover:text-red-500 hover:bg-red-200 font-bold rounded cursor-pointer"
+          className="text-blac py-2.5 px-4 hover:text-red-500 hover:bg-red-200 block font-bold rounded cursor-pointer justify-self-end"
           onClick={handleLogOut}
         >
           logout

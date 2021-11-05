@@ -3,6 +3,14 @@ import React, {useState} from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+// THINGS TO NOTE
+// CONTENT page - blogs
+// SCHEMA: info : [strings] -> editable div
+// 1) the editor should be used to add new blocks of content
+// 2) on save, the content should be saved to backend and render as an <Editable> div in the front.
+// 3) should be able to delete/edit one.
+// this will take years now.
+
 function Edit() {
 
     const [btnText, setBtnText] = useState("Add");
