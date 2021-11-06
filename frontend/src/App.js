@@ -9,6 +9,7 @@ import {
 
 import {Login} from "./components/login/Login"
 import {AltHome} from "./components/home/AltHome";
+import {homepage_anim} from  "./Animations/src/first"
 
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -24,7 +25,6 @@ import Sidebar from './components/Sidebar';
 export const SidebarH = () => <Sidebar />
 
 function App() {
-	
   return (
     <AuthProvider>
 		<Router>
@@ -46,6 +46,7 @@ function App() {
 				<ProtectedRoute exact path="/DigitalWizards" component={()=>{return Club("DigitalWizards")}}/>
 				<ProtectedRoute exact path="/Sargam" component={()=>{return Club("Sargam")}}/>
 				<ProtectedRoute exact path="/Techmaniacs" component={()=>{return Club("Techmaniacs")}}/>
+				<ProtectedRoute exact path="/Testing3D" component={homepage_anim}/>
 
 				{/*Routing to different pages of the webapp is done over here.*/}
 
