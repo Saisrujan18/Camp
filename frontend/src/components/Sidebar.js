@@ -17,7 +17,7 @@ function Sidebar()
 
 	useLayoutEffect(() => {
 		function updateOpen() {
-			if (window.innerWidth < 768) {
+			if (window.innerWidth < 1024) {
 			setOpen(false);
 			} else setOpen(true);
 		}
@@ -34,11 +34,11 @@ function Sidebar()
 	}
 
   return (
-    <div className="absolute md:relative min-h-screen md:flex">
+    <div className="absolute medium_u:relative min-h-screen medium_u:flex">
       {/* Top Bar */}
       <div
         className={
-          "bg-gray-800 text-gray-100 md:hidden " + (open ? " hidden" : "")
+          "bg-gray-800 text-gray-100 medium_u:hidden " + (open ? " hidden" : "")
         }
       >
         <button
@@ -66,7 +66,7 @@ function Sidebar()
       <aside
         className={
           " bg-whit text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0" +
-          " left-0 transform md:relative transition duration-200 ease-in-out " +
+          " left-0 transform medium_u:relative transition duration-200 ease-in-out " +
           (open
             ? " translate-x-0 mt-2 mb-2 ml-2 rounded-l-lg border-r-2"
             : "-translate-x-full")
@@ -80,7 +80,7 @@ function Sidebar()
           </a>
 
           <button
-            className="p-2 hover:bg-gray-200 rounded focus:outline-none md:hidden"
+            className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_u:hidden"
             onClick={() => setOpen(!open)}
           >
             <svg

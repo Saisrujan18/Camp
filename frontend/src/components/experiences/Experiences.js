@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 
-import Sidebar from "../Sidebar";
 import ExpCard from "./ExpCard";
 import Spinner from "../Spinner";
 import NewExperience from "./NewExperience";
@@ -68,7 +67,7 @@ function Experiences() {
   const expContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around p-2  items-center bg-whit">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center">
         {expData.map((exp) => renderCard(exp))}
       </div>
     );

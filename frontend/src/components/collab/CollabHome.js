@@ -64,7 +64,7 @@ function CollabHome() {
   const collabContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-2 md:grid-cols-3 place-content-stretch content-around bg-white p-2 items-center bg-whit">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center">
         {collabData.map((collab) => renderCard(collab))}
       </div>
     );
