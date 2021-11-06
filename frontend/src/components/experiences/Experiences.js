@@ -68,7 +68,7 @@ function Experiences() {
   const expContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2">
         {expData.map((exp) => renderCard(exp))}
       </div>
     );
