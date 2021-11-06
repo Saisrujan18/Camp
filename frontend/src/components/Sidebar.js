@@ -5,33 +5,36 @@ import { useAuth } from "../authContext/AuthContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-function Sidebar() {
-  let { logOut } = useAuth();
-  const history = useHistory();
-  const [open, setOpen] = useState(true);
-  const [drop, setDrop] = useState(false);
-  // false for closed.
+function Sidebar() 
+{
+	let { logOut } = useAuth();
+	const history = useHistory();
+	const [open, setOpen] = useState(true);
+	const [drop, setDrop] = useState(false);
 
-  useLayoutEffect(() => {
-    function updateOpen() {
-      if (window.innerWidth < 768) {
-        setOpen(false);
-      } else setOpen(true);
-    }
+	let labelCss="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold  rounded ";
+	// false for closed.
 
-    window.addEventListener("resize", updateOpen);
-    // console.log(window.innerWidth)
-    updateOpen();
-    return () => window.removeEventListener("resize", updateOpen);
-  }, []);
+	useLayoutEffect(() => {
+		function updateOpen() {
+			if (window.innerWidth < 768) {
+			setOpen(false);
+			} else setOpen(true);
+		}
 
-  function handleLogOut() {
-    logOut();
-    history.replace("/");
-  }
+		window.addEventListener("resize", updateOpen);
+		updateOpen();
+		return () => window.removeEventListener("resize", updateOpen);
+	}, []);
+
+	function handleLogOut()
+	{
+		logOut();
+		history.replace("/");
+	}
 
   return (
-    <div className="absolute md:relative min-h-screen md:flex ">
+    <div className="absolute md:relative min-h-screen md:flex">
       {/* Top Bar */}
       <div
         className={
@@ -96,77 +99,29 @@ function Sidebar() {
             </svg>
           </button>
         </div>
-
         <div className="text-blac overflow-y-auto max-h-96">
-          <Link
-            to="/home"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold  rounded"
-          >
-            Home
-          </Link>
+          
+			<Link to="/home" className={labelCss}>Home</Link>
+			<Link to="/experiences" className={labelCss}>Experiences</Link>
+			<Link to="/collab" className={labelCss}>Collab</Link>
+		
+			<div onClick={() =>{setDrop(!drop);}} className={labelCss}>Clubs</div>
 
-          <Link
-            to="/experiences"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold  rounded"
-          >
-            Experiences
-          </Link>
+			<div  hidden={!drop} className="relative">
+			
+				<Link to="/sports" className={labelCss}>Sports</Link>
+				<Link to="/digitalwizards" className={labelCss}>Digital Wizards</Link>
+				<Link to="/sargam" className={labelCss}>Sargam</Link>
+				<Link to="/techmaniacs" className={labelCss}>Techmaniacs</Link>
 
-          <Link
-            to="/collab"
-            className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-          >
-            Collab
-          </Link>
+			</div>
+			<Link to="/profile" className={labelCss}>Profile</Link>
+			<Link to="/AboutUs" className={labelCss}>AboutUs</Link>
 
-          <div className="">
-            <div
-              onClick={() => {
-                setDrop(!drop);
-              }}
-              className="block mb-0 py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-            >
-              Clubs
-            </div>
-
-            <div className="relative" hidden={!drop}>
-              <Link
-                to="/sports"
-                className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-              >
-                Sports
-              </Link>
-
-              <Link
-                to="/digitalwizards"
-                className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-              >
-                Digital wizards
-              </Link>
-
-              <Link
-                to="/sargam"
-                className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-              >
-                Sargam
-              </Link>
-
-              <Link
-                to="/techmaniacs"
-                className="block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-              >
-                Techmaniacs
-              </Link>
-            </div>
-          </div>
-          {/* <Link to='/aboutus' className='block py-2.5 px-4 hover:text-white hover:bg-blue-700 rounded'>AboutUS</Link> */}
-        </div>
-        <div
-          className="text-blac py-2.5 px-4 hover:text-red-500 hover:bg-red-200 block font-bold rounded cursor-pointer justify-self-end"
-          onClick={handleLogOut}
-        >
-          logout
-        </div>
+			<Link	className="text-blac py-2.5 px-4 hover:text-red-500 hover:bg-red-200 block font-bold rounded "
+					onClick={handleLogOut}
+			>Logout</Link>
+		</div>
       </aside>
     </div>
   );

@@ -95,13 +95,14 @@ function Experiences() {
               </div>
               <div className="flex-grow"></div>
               <button
-                className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+                className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
                 onClick={showPopup}
               >
-                +New
+                + Add New
               </button>
             </div>
             {expContent(loading)}
+            
             <div className="flex-grow bg-whit rounded-br-lg"></div>
             <div className="flex flex-row place-content-center bg-whit p-1 rounded-lg">
               <button className="hover:bg-red-200 py-1"> <BsCaretLeft /> </button>
