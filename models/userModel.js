@@ -7,7 +7,8 @@ const userSchema = new Schema ({
     email: {type: String, require: true, unique: true}, 
     avatar: {type: String},
     skill: {type: Number},
-    badge: {type: [String]}
+    badge: {type: [String]},
+    coins:{type:Number,default:100}
 });
   
 const UserModel = mongoose.model('user', userSchema);

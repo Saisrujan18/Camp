@@ -18,6 +18,8 @@ function Experiences() {
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
   const history = useHistory();
+  const [curr,setCurr]=useState(0);
+  const [len,setLen]=useState(0);
 
   // Fetching all the content at the beggining itself.
   useEffect(() => {
@@ -25,6 +27,8 @@ function Experiences() {
       .get("http://localhost:3001/api/experiences")
       .then((res) => {
         setexpData(res.data);
+        setLen(res.data.length);
+        setCurr(0);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -38,11 +42,22 @@ function Experiences() {
 
   // Handles the request to add new experience
   const addNewExp = async (exp) => {
-    let updatedexpData = [...expData];
-    updatedexpData.push(exp);
-    setexpData(updatedexpData);
+    // let updatedexpData = [...expData];
+    // updatedexpData.push(exp);
+    // setexpData(updatedexpData);
     // redirect to the post.
-    await axios.post("http://localhost:3001/api/experiences", exp);
+    setLoading(true);
+    await axios.post("http://localhost:3001/api/experiences",exp);
+
+    await axios.get("http://localhost:3001/api/experiences")
+                .then((res) => {
+                      setexpData(res.data);
+                      setLen(res.data.length);
+                      setCurr(0);
+                      setLoading(false);
+                    })
+                .catch((err) => console.log(err));
+    
   };
 
   // A function to render the contents of all experiences
@@ -63,16 +78,18 @@ function Experiences() {
       />
     );
   };
+
   // Loads a spinner if the content is being fetched
   // or else renders the content in a certain format.
   const expContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2">
-        {expData.map((exp) => renderCard(exp))}
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4">
+        {expData.map((exp,index) =>  index>=9*curr && index<9*curr+9 && renderCard(exp))}
       </div>
     );
   };
+        // {/* {expData.map((exp,index) => console.log(index,exp))} */}
 
   // Renders the popup
   const renderPopup = () => {
@@ -82,14 +99,37 @@ function Experiences() {
       )
     );
   };
+
+  function max(l,r)
+  {
+    if(l<=r)return r;
+    return l;
+  }
+  function min(l,r)
+  {
+    if(l<=r)return l;
+    return r;
+  }
+
+
+  function handleL()
+  {
+    let temp=max(0,curr-1);
+    setCurr(temp);
+  }
+  function handleR()
+  {
+    let temp=min(curr+1,(len-len%6)/6);
+    setCurr(temp);
+  }
   // Renders the content if the popup visibility is false.
   const renderContent = () => {
     return (
       !popupVisible && (
         <div className="h-screen flex flex-row">
           <SidebarH />
-          <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg ">
-            <div className="flex flex-row bg-whit rounded-tr-lg border-b-2">
+          <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+            <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
             <div className="flex-grow"></div>
               <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
@@ -109,19 +149,22 @@ function Experiences() {
               </svg>
               </button>
             </div>
-            {expContent(loading)}
-            
-            <div className="flex-grow bg-whit rounded-br-lg"></div>
+              
+              {expContent(loading)}
+              <div className="flex-grow bg-whit rounded-br-lg"></div>
+              
 
-            <div className="flex flex-row place-content-center bg-whit p-1 rounded-lg">
-              <button className="hover:bg-gray-200 py-1"> <BsCaretLeft size={20}/></button>
-              <button className="hover:bg-gray-200 py-1"> <BsCaretRight size={20}/></button>
+            <div className="flex flex-row place-content-center bg-whit p-1 rounded-lg sticky bottom-0">
+              <button className="hover:bg-gray-200 py-1" onClick={handleL}> <BsCaretLeft size={20}/></button>
+              <button className="hover:bg-gray-200 py-1" onClick={handleR}> <BsCaretRight size={20}/></button>
             </div>
           </div>
         </div>
       )
     );
   };
+
+
   // rendering of whole is done over here.
   return (
     <div>

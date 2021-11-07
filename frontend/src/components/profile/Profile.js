@@ -25,7 +25,7 @@ export default function Profile()
             <Sidebar/>
             <div className="flex-grow bg-whit md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
                 <div>
-
+                
                 </div>
             </div>
             
