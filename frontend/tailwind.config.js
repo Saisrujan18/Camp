@@ -43,9 +43,9 @@ module.exports = {
     screens:{
       'sm-custom':{'min': '300px', 'max': '767px'},
       
-      'small':{'min': '700px', 'max': '1199px'},
-      'medium':{'min': '1200px', 'max': '1599px'},
-      'medium_u':{'min':'1024px'},
+      'small':{'min': '700px', 'max': '1099px'},
+      'medium':{'min': '1100px', 'max': '1599px'},
+      'medium_l':{'min':'1100px'},
       'large':{'min': '1600px'},
       ...defaultTheme.screens
     }
