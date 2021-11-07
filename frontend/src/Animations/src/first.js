@@ -43,8 +43,8 @@ export function homepage_anim()
 
         renderer = new THREE.WebGLRenderer()
         renderer.setSize(window.innerWidth, window.innerHeight)
-
         document.body.appendChild(renderer.domElement)
+        
         window.addEventListener('resize', onResize, false)
         update()
     }

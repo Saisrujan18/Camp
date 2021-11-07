@@ -27,6 +27,12 @@ function Sidebar()
 		return () => window.removeEventListener("resize", updateOpen);
 	}, []);
 
+	// function escToClose(event)
+	// {
+	// 	if(event.key === 'Escape' && window.innerWidth < 1100)
+	// 		setOpen(open)
+	// 	event.preventDefault()
+	// }
 	function handleLogOut()
 	{
 		logOut();
@@ -34,7 +40,8 @@ function Sidebar()
 	}
 
   return (
-    <div className="absolute medium_l:relative min-h-screen medium_l:flex">
+    // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
+	<div className="absolute medium_l:relative min-h-screen medium_l:flex">
       {/* Top Bar */}
       <div
         className={

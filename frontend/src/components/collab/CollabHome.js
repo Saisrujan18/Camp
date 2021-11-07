@@ -126,7 +126,7 @@ function CollabHome() {
         <div className="h-screen flex flex-row">
           {/* <SidebarH /> */}
           <SidebarH />
-          <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+          <div className="flex-grow bg-white medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
           <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
             <div className="flex-grow"></div>
