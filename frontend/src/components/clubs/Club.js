@@ -6,18 +6,34 @@ import Spinner from '../Spinner';
 
 export default function Club(props) 
 {
-	const [postsData,updatePosts]=useState({});
+	const [postsData,updatePosts]=useState([]);
 	const [loading,setLoading]=useState(true);
 
     useEffect(() => {
 		axios
 		.get("http://localhost:3001/api/clubs/"+props)
 		.then((res) => {
-			updatePosts(res);
+			updatePosts(res.data);
 			setLoading(false);
 		})
 		.catch((err) => console.log(err));
 	},[]);
+
+	function renderCard(props)
+	{
+		return (
+			<Post
+				club={props.club}
+				image={props.image}
+				imageData={props.imageData}
+				title={props.title}
+				author={props.author}
+				description={props.description}
+				registerable={props.registerable}
+				registered= {props.registered}
+			/>
+		);
+	}
 
     return (
         <div className="flex flex-row">
@@ -35,7 +51,12 @@ export default function Club(props)
 					</button>	
 				</div>
 				{/* Minor change */}
-				{loading?<Spinner/>:<div className="bg-red-200"> yo</div>}
+				{loading?<Spinner/>:
+					<div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2">
+        				{postsData.map((exp) => renderCard(exp))}
+      				</div>
+				}
+
 				<Post displayName="Srujan" username="none" verified="no" text="yo"/>
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>

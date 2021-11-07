@@ -13,25 +13,25 @@ router.use(express.json());
 //       - TechManiacs -> TM
 //       - LL
 
-router.get("/DigitalWizards", (req, res) => {
+router.get("/digitalwizards", (req, res) => {
     PostModel.find({club: "DigitalWizards"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
-router.get("/Sports", (req, res) => {
+router.get("/sports", (req, res) => {
     PostModel.find({club: "Sports"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
-router.get("/Techmaniacs", (req, res) => {
+router.get("/techmaniacs", (req, res) => {
     PostModel.find({club: "Techmaniacs"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
-router.get("/Sargam", (req, res) => {
+router.get("/sargam", (req, res) => {
     PostModel.find({club: "Sargam"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
