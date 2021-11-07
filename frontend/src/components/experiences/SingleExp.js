@@ -83,7 +83,7 @@ export function SingleExp() {
                 {" "}
                 Description{" "}
               </h1>
-              <Edit />
+              
               <div
                 className={
                   "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +
@@ -92,6 +92,7 @@ export function SingleExp() {
               >
                 <p>{expData.description} </p>
               </div>
+              <Edit />
             </main>
           </div>
         )}

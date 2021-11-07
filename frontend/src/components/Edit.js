@@ -2,6 +2,9 @@ import { EditorState, convertToRaw } from 'draft-js';
 import React, {useState} from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import Parser from 'html-react-parser'
 
 // THINGS TO NOTE
 // CONTENT page - blogs
@@ -22,13 +25,24 @@ function Edit() {
         setEditorState(editorState);
         console.log(convertToRaw(editorState.getCurrentContent()));
         setEditorContent(convertToRaw(editorState.getCurrentContent()));
+        console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
     }
 
+    const renderContent = () => {
+        return (
+            (draftToHtml(convertToRaw(editorState.getCurrentContent())))
+        );
+    };
 
     return (
         
-        <div className="flex flex-col place-items-end">
-            <button className=" place-self-auto bg-gray-200 block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
+        <div className="flex flex-col ">
+
+            <div className = " mt-1 bg-white rounded-lg text-1xl p-2 shadow-md font-sans ">
+                {Parser(renderContent())}
+            </div>
+
+            <button className=" place-self-end bg-gray-200 block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
             onClick={() => {setShowEditor(!showEditor); (showEditor ? setBtnText("Add") : setBtnText("Close"));}}> {btnText} 
             </button>
 
