@@ -35,6 +35,7 @@ export function Login()
         try{
             setLoading(true);
             await signInWithGoogle(); 
+            // insert into the collection..
             console.log(auth.currentUser.email);
             history.push("/home");
         }

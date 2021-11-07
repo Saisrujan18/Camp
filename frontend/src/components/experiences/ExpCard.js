@@ -3,11 +3,20 @@ import React from 'react'
 // A reusable card to the contents of different Experiences.
 export default function ExpCard(props) 
 {
-	const { title, author, description, _id, navigate, type } = props;
+  let colors=["blue","green","pink","orange","gray","yellow","indigo","red"];
+  let selected=colors[Math.floor(Math.random()*colors.length)];
+  selected=" bg-"+selected+"-500";
+  let cssAuthor="bg-red-400 mr-auto truncate text-xs text-white font-semibold rounded-full py-1 px-2 mb-1 "+selected
+	const { title, author, description, _id, navigate, type,company } = props;
     return (
         <div className="card ml-1.5 mr-1.5 mt-1.5 mb-1.5 cursor-pointer">
           <div className="flex flex-col bg-white w-full h-full p-3 rounded-md shadow-md" onClick={() => navigate(_id)}>
-            <div className="mr-auto truncate text-xs text-gray-500 rounded bg-whit">{author}</div>
+            
+            <div className="flex flex-row">
+              <div className={cssAuthor}>{company}</div>
+              <div className="ml-auto truncate text-xs text-gray-500 rounded bg-whit self-center">{author}</div>
+            </div>
+            
             <div className="truncate text-xl font-bold">{title}</div> 
             <div className="flex-grow"></div>
             <div className="truncate text-sm my-1">{description}</div>
