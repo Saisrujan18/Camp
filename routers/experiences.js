@@ -12,6 +12,11 @@ router.get("/", (req, res) => {
         .catch(err => console.log(err));  
 });
 
+// router.get("/id", (req, res) => {
+//     ExpModel.findById(id)
+
+// })
+
 // This for fetching data of a particular collaboration (given: id)
 
 router.post("/id", (req,res) => {
@@ -22,6 +27,16 @@ router.post("/id", (req,res) => {
              .catch(err=>{console.log(err)})    
 }
 )
+
+router.post("/id/edit", (req,res) => {
+    console.log(req);
+    const {id, expData}=req.body;
+    ExpModel.findByIdAndUpdate(id, expData)
+             .then(response=>{res.json(response)})
+             .catch(err=>{console.log(err)})    
+}
+)
+
 // This adds a new collaboration to the database
 router.post("/", (req, res) => 
 {   

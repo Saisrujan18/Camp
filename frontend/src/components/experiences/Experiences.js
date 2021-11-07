@@ -9,6 +9,9 @@ import NewExperience from "./NewExperience";
 import { SidebarH } from "../../App";
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 
+import draftToHtml from 'draftjs-to-html'
+import Parser from 'html-react-parser'
+
 import Edit from "../Edit";
 
 function Experiences() {

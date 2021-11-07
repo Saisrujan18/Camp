@@ -10,6 +10,9 @@ import Sidebar from "../Sidebar";
 import Spinner from "../Spinner";
 import "./Experiences.css";
 import Edit from "../Edit";
+import draftToHtml from 'draftjs-to-html';
+import Parser from 'html-react-parser'
+
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
@@ -90,9 +93,14 @@ export function SingleExp() {
                   (showInfo ? "" : "hidden")
                 }
               >
-                <p>{expData.description} </p>
+                {Parser(draftToHtml(JSON.parse(expData.description)))}
+                {/* {expData.description} */}
               </div>
-              <Edit />
+              <Edit 
+                sendTo = {"http://localhost:3001/api/experiences/id"}
+                id = {id}
+                expData = {expData}
+              />
             </main>
           </div>
         )}
