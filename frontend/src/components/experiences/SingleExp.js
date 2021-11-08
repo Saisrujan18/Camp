@@ -93,7 +93,7 @@ export function SingleExp() {
                   (showInfo ? "" : "hidden")
                 }
               >
-                {Parser(draftToHtml(JSON.parse(expData.description)))}
+                {/* {Parser(draftToHtml(JSON.parse(expData.description)))} */}
                 {/* {expData.description} */}
               </div>
               <Edit 

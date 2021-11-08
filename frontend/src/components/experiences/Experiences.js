@@ -75,7 +75,7 @@ function Experiences() {
         navigate={navigate}
         title={exp.title}
         company={exp.company}
-        description={exp.description}
+        description={Parser(draftToHtml(JSON.parse(exp.description)))}
         type={exp.type}
         author={exp.author}
       />

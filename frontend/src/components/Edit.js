@@ -22,8 +22,8 @@ function Edit( {sendTo, id, expData} ) {
     const [btnText, setBtnText] = useState("Add");
     const [showEditor, setShowEditor] = useState(false);
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(expData.description))));
-    const [editorContent, setEditorContent] = useState(convertFromRaw(JSON.parse(expData.description)));
-
+    const [editorContent, setEditorContent] = useState();
+    // convertFromRaw(JSON.parse(expData.description))
     function onEditorStateChange(editorState) {
         setEditorState(editorState);
         // console.log(convertToRaw(editorState.getCurrentContent()));
@@ -52,9 +52,9 @@ function Edit( {sendTo, id, expData} ) {
             {!showEditor ? <div className = " mt-1 bg-white rounded-lg text-1xl p-2 shadow-md font-sans ">
                 {Parser(draftToHtml(convertToRaw(editorState.getCurrentContent())))}
             </div> : ""}
-            {console.log(EditorState.createEmpty())}
+            {/* {console.log(EditorState.createEmpty())}
             {console.log(expData.description)}
-            {console.log(convertFromRaw(JSON.parse(expData.description)))}
+            {console.log(convertFromRaw(JSON.parse(expData.description)))} */}
 
             <button className=" place-self-end bg-gray-200 block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
             onClick={() => {setShowEditor(!showEditor); (showEditor ? setBtnText("Add") : setBtnText("Close"));}}> {btnText} 
