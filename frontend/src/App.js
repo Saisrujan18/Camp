@@ -9,7 +9,7 @@ import {
 
 import {Login} from "./components/login/Login"
 import {AltHome} from "./components/home/AltHome";
-import {homepage_anim} from  "./Animations/src/second"
+import {homepage_anim} from  "./Animations/src/third"
 
 import { ProtectedRoute } from './components/ProtectedRoute';
 
