@@ -57,6 +57,7 @@ export default function Club(props)
 		e.preventDefault();
 	}
 
+
 	const addButton=
 		<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
 			onClick={showPopup}>
