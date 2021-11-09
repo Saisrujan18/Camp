@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import Sidebar from "../Sidebar";
-
+import { postsRef, uB } from "../../firebase";
+import { getDownloadURL } from "firebase/storage";
+import { useAuth } from "../../authContext/AuthContext";
 export default function AddNewEvent(props) {
-  // const [post,setPost]=useState({});
+
     const [des, setDes] = useState();
-  // console.log(props);
-  // const handleChange = (event) => {
-  //     event.preventDefault();
-  //     const { name, value } = event.target;
-  //     setExp((prevNote) => {
-  //     return {
-  //         ...prevNote,
-  //         [name]: value,
-  //     };
-  //     });
-  // };
-  
-const closePopup = () => {props.visibility(false)};
+    const [file, setfile] = useState();
+    const { user } = useAuth();
+
+  const handleFileChange = (e) => {
+    setfile(e.target.files[0]);
+  }
+  const handleUpload = async () =>{
+    let date = new Date().toISOString();
+    const filename = user.email + date;
+    let ref = postsRef(filename);
+    await uB(ref, file)
+    let url = await getDownloadURL(ref)
+    console.log(url)
+  }
+  const closePopup = () => {props.visibility(false)};
 
   return (
     <div className="flex flex-row">
@@ -49,7 +53,7 @@ const closePopup = () => {props.visibility(false)};
             <div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
             <label className="text-xl md:text-2xl text-justify mb-5" for="iamge">Choose an image to upload</label>
                 <input type="file" id="image" name="image"
-                    accept="image/png, image/jpeg" />
+                    accept="image/png, image/jpeg" onChange={handleFileChange}/>
             </div>
             <div className="flex flex-col p-4 border-2 rounded-lg">
             <label className="text-xl md:text-2xl text-justify mb-5" for="description">Description</label>
@@ -58,7 +62,7 @@ const closePopup = () => {props.visibility(false)};
 
             <button
             className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
-            onClick={console.log("hello")}
+            onClick={handleUpload}
             >
             Post
             </button>
