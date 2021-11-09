@@ -87,15 +87,6 @@ export function SingleExp() {
                 Description{" "}
               </h1>
               
-              <div
-                className={
-                  "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +
-                  (showInfo ? "" : "hidden")
-                }
-              >
-                {/* {Parser(draftToHtml(JSON.parse(expData.description)))} */}
-                {/* {expData.description} */}
-              </div>
               <Edit 
                 sendTo = {"http://localhost:3001/api/experiences/id"}
                 id = {id}
@@ -108,3 +99,13 @@ export function SingleExp() {
     </div>
   );
 }
+
+// <div
+//   className={
+//     "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +
+//     (showInfo ? "" : "hidden")
+//   }
+// >
+//   {/* {Parser(draftToHtml(JSON.parse(expData.description)))} */}
+//   {/* {expData.description} */}
+// </div>

@@ -122,7 +122,7 @@ function Experiences() {
   }
   function handleR()
   {
-    let temp=min(curr+1,(len-len%6)/6);
+    let temp=min(curr+1,(len-len%9)/9);
     setCurr(temp);
   }
   // Renders the content if the popup visibility is false.

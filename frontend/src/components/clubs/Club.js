@@ -5,11 +5,15 @@ import Sidebar from '../Sidebar'
 import Post from './Post';
 import Spinner from '../Spinner';
 import Event from './Event';
+import { useAuth } from '../../authContext/AuthContext';
+import AddNewEvent from './AddNewEvent';
 
 export default function Club(props) 
 {
+	let {user,loading}=useAuth();
 	const [postsData,updatePosts]=useState([]);
-	const [loading,setLoading]=useState(true);
+	const [Loading,setLoading]=useState(true);
+	const [ownerData,setOwnerData]=useState([]);
 	const dumy={
 			hasImage:true,
 			title:"First Post",
@@ -26,7 +30,20 @@ export default function Club(props)
 			setLoading(false);
 		})
 		.catch((err) => console.log(err));
+		axios.get("http://localhost:3001/api/clubs/"+props+"/access")
+			.then((res)=>{
+				setOwnerData(res.data[0].members);
+			})
+			.catch((err)=>console.log(err));
+
 	},[]);
+
+	const addButton=
+		<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
+			<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
+				<path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
+			</svg>
+		</button>;
 
 	function renderCard(props)
 	{
@@ -45,6 +62,7 @@ export default function Club(props)
 	}
 
     return (
+
         <div className="flex flex-row">
             <Sidebar/>
             <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
@@ -58,17 +76,11 @@ export default function Club(props)
 						{props}
               		</div>
               		<div className="flex-grow"></div>
-             		<button
-                			className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-              		>
-              			<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
-                			<path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
-              			</svg>
-              		</button>
+             		{loading?<Spinner/>:ownerData.includes(user.email) && addButton}
             	</div>
 				
 
-				{loading?<Spinner/>:
+				{Loading?<Spinner/>:
 					<div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 divide-y">
         				{postsData.map((exp) => renderCard(exp))}
       				</div>

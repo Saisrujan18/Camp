@@ -6,7 +6,7 @@ import draftToHtml from 'draftjs-to-html';
 // import htmlToDraft from 'html-to-draftjs';
 import Parser from 'html-react-parser'
 import axios from 'axios';
-import Experiences from './experiences/Experiences';
+
 
 // THINGS TO NOTE
 // CONTENT page - blogs

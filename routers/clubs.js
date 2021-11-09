@@ -4,8 +4,9 @@ const router = express.Router();
 // This handles all the requests to "url/api/club/?"
 
 // Importing the post model
-const PostModel = require("../models/postModel");
 
+const PostModel = require("../models/postModel");
+const ClubModel = require("../models/clubModel");
 router.use(express.json());
 
 // here we are fetching the entire data (i.e all the post which belong to a club)
@@ -14,29 +15,37 @@ router.use(express.json());
 //       - LL
 
 router.get("/digitalwizards", (req, res) => {
-    PostModel.find({club: "DigitalWizards"}).sort({createdAt: 'asc'})
+    PostModel.find({club: "digitalwizards"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
 router.get("/sports", (req, res) => {
-    PostModel.find({club: "Sports"}).sort({createdAt: 'asc'})
+    PostModel.find({club: "sports"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
+router.get("/sports/access", (req, res) => {
+    ClubModel.find({club: "sports"})
+    .then(club=> res.json(club))
+    .catch(err => console.log(err));  
+});
+
+
 router.get("/techmaniacs", (req, res) => {
-    PostModel.find({club: "Techmaniacs"}).sort({createdAt: 'asc'})
+    PostModel.find({club: "techmaniacs"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
 router.get("/sargam", (req, res) => {
-    PostModel.find({club: "Sargam"}).sort({createdAt: 'asc'})
+    PostModel.find({club: "sargam"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
+// .....
 // This for fetching data of a particular post (given: id)
 router.post("/DW/id", (req,res) => {
     const {id}=req.body;
@@ -81,5 +90,7 @@ router.post("/clubs", (req, res) =>
             return res.send ('Error while inserting collab');
         });
 })
+
+
 
 module.exports=router;
