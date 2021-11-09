@@ -1,19 +1,32 @@
 /* eslint-disable no-unused-vars */
 import React,{useEffect,useState} from 'react'
 import axios from 'axios';
+
 import Sidebar from '../Sidebar'
-import Post from './Post';
 import Spinner from '../Spinner';
+
+import Post from './Post';
 import Event from './Event';
-import { useAuth } from '../../authContext/AuthContext';
 import AddNewEvent from './AddNewEvent';
+
+import { useHistory } from "react-router";
+import { useAuth } from '../../authContext/AuthContext';
+
+
 
 export default function Club(props) 
 {
 	let {user,loading}=useAuth();
+
 	const [postsData,updatePosts]=useState([]);
 	const [Loading,setLoading]=useState(true);
 	const [ownerData,setOwnerData]=useState([]);
+	const {history} = useHistory();
+
+	const whichClub=props;
+
+	const [popup,setPopup]=useState(false);
+
 	const dumy={
 			hasImage:true,
 			title:"First Post",
@@ -38,34 +51,62 @@ export default function Club(props)
 
 	},[]);
 
+	function showPopup(e)
+	{
+		setPopup(true);
+		e.preventDefault();
+	}
+
 	const addButton=
-		<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
+		<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+			onClick={showPopup}>
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
 				<path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
 			</svg>
 		</button>;
 
-	function renderCard(props)
+	function renderPost(props)
 	{
+		const navigate = (exp_id) => {
+			history.push("/clubs/"+exp_id);
+		  };
 		return (
-			<Post
-				club={props.club}
-				image={props.image}
-				imageData={props.imageData}
-				title={props.title}
-				author={props.author}
-				description={props.description}
-				registerable={props.registerable}
-				registered= {props.registered}
-			/>
+			<Event dummy={dumy}/>
+			// <Post
+			// 	club={props.club}
+			// 	image={props.image}
+			// 	imageData={props.imageData}
+			// 	title={props.title}
+			// 	author={props.author}
+			// 	description={props.description}
+			// 	registerable={props.registerable}
+			// 	registered= {props.registered}
+			// 	navigate={navigate}
+			// />
 		);
 	}
 
-    return (
+	const addNewEvent = async (data) => {
+		setLoading(true);
+		await axios.post("http://localhost:3001/api/clubs",[data,props]);
+	
+		await axios.get("http://localhost:3001/api/clubs/"+props)
+					.then((res) => {
+						  updatePosts(res.data);
+						  setLoading(false);
+						})
+					.catch((err) => console.log(err));
+	  };
 
-        <div className="flex flex-row">
+	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub}/>);}
+
+    const renderContent = ()=>{
+		return(
+		!popup &&
+        (<div className="flex flex-row">
             <Sidebar/>
             <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
+			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
             		<div className="flex-grow"></div>
@@ -82,7 +123,7 @@ export default function Club(props)
 
 				{Loading?<Spinner/>:
 					<div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 divide-y">
-        				{postsData.map((exp) => renderCard(exp))}
+        				{postsData.map((exp) => renderPost(exp))}
       				</div>
 				}
 
@@ -90,6 +131,14 @@ export default function Club(props)
 				<Event dummy={dumy}/>
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>
-        </div>
-    )
+        </div>)
+		);
+	}
+
+	return(
+		<div>
+			{renderPopup()}
+			{renderContent()}
+		</div>
+	);
 }
