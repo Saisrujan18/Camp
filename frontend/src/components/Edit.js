@@ -2,10 +2,8 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import React, {useState} from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from 'draftjs-to-html';
-// import htmlToDraft from 'html-to-draftjs';
-import Parser from 'html-react-parser'
 import axios from 'axios';
+import Spinner from "./Spinner";
 
 
 // THINGS TO NOTE
@@ -19,9 +17,9 @@ import axios from 'axios';
 function Edit( {sendTo, id, expData} ) {
 
     // const [showEditor, setShowEditor] = useState(false);
-    const [btnText, setBtnText] = useState("Add");
-    const [showEditor, setShowEditor] = useState(false);
+    const [mode, setMode] = useState("readOnly");
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(expData.description))));
+    const [loading, setLoading] = useState(false);
     const [editorContent, setEditorContent] = useState();
     // convertFromRaw(JSON.parse(expData.description))
     function onEditorStateChange(editorState) {
@@ -33,11 +31,12 @@ function Edit( {sendTo, id, expData} ) {
 
     const sendData = async () => {
         expData.description = JSON.stringify(editorContent);
-
+        setLoading(true);
         console.log(id);
         await axios
         .post(sendTo+"/edit", {id, expData})
         .then((res) => {
+            setLoading(false);
             console.log(res);
         })
         .catch((err) => {
@@ -47,33 +46,37 @@ function Edit( {sendTo, id, expData} ) {
 
     return (
         
-        <div className="flex flex-col ">
+        <div className="flex flex-col mb-10">
 
-            {!showEditor ? <div className = " mt-1 bg-white rounded-lg text-1xl p-2 shadow-md font-sans ">
-                {Parser(draftToHtml(convertToRaw(editorState.getCurrentContent())))}
-            </div> : ""}
             {/* {console.log(EditorState.createEmpty())}
             {console.log(expData.description)}
             {console.log(convertFromRaw(JSON.parse(expData.description)))} */}
-
-            <button className=" place-self-end bg-gray-200 block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
-            onClick={() => {setShowEditor(!showEditor); (showEditor ? setBtnText("Add") : setBtnText("Close"));}}> {btnText} 
-            </button>
-
-            {showEditor ? 
-                <div className="flex flex-col place-items-end">
-                    <Editor
-                        editorState={editorState}
-                        toolbarClassName="toolbarClassName"
-                        wrapperClassName="wrapperClassName"
-                        editorClassName="editorClassName"
-                        onEditorStateChange={onEditorStateChange}
-                    />
-                
-                    <button className="place-self-end block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
-                    onClick = {() => {setShowEditor(false); setBtnText("Add"); sendData()}}> Save </button>
+            {mode == "readOnly"?
+                <button className=" place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
+                onClick={() => {setMode("readWrite")}}> Edit
+                </button>
+                : ""
+            }
+            <div className="flex flex-col place-items-end">
+                <Editor
+                    toolbarHidden={mode == "readOnly"}
+                    readOnly= {mode == "readOnly"}
+                    editorState={editorState}
+                    toolbarClassName="toolbarClassName"
+                    wrapperClassName="wrapperClassName"
+                    editorClassName="editorClassName"
+                    onEditorStateChange={onEditorStateChange}
+                />
+            {loading && <Spinner />}
+            {!loading && mode == "readWrite" ? <div className="flex place-self-end">
+                <button className=" block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
+                onClick = {() => {setMode("readOnly"); sendData()}}> Save </button> 
+                <button className="place-self-end block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+                onClick = {() => {setMode("readOnly")}}> Close </button>
                 </div>
-            : ""}
+                : ""
+            }
+            </div>
         </div>
     )
 }
