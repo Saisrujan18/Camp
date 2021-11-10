@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema ({
     club:{type:String,required:true},
     hasImage:{type:Boolean},
-    imageData:{type: String},
+    imageData:{type: String,unique:true},
     title:{type: String, required: true},
     author:{type: String, required: true},
     description: {type: [String], default: ["Description"]},

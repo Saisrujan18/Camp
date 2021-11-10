@@ -66,11 +66,10 @@ router.post("/DW/id/register",(req,res)=>{
 })
 
 // This adds a new collaboration to the database
-router.post("/clubs", (req, res) => 
+router.post("/newpost", (req, res) => 
 {   
     // extracting the data from the request
     const post = req.body;
-
     // creating a new document 
     // TODO: add image field
     const newPost = new PostModel({
@@ -87,11 +86,8 @@ router.post("/clubs", (req, res) =>
     // saving it.
     newPost
         .save ()
-        .then (result => {console.log (result); console.log("New Post added");})
-        .catch (err => {
-            console.log(err);
-            return res.send('Error while inserting post');
-        });
+        .then (result => {console.log("New Post added");res.json(result);})
+        .catch (err => {console.log(err);});
 })
 
 

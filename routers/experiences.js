@@ -56,7 +56,7 @@ router.post("/", (req, res) =>
     // saving it to the database
     newExp
         .save ()
-        .then (result => {console.log (result); console.log("New experience added");})
+        .then (result => {console.log("New experience added");})
         .catch (err => {
             console.log(err);
             return res.send ('Error while inserting experience');

@@ -15,7 +15,7 @@ export default function AddNewEvent(props)
 {
 	const [des, setDes] = useState();
 	const [file, setfile] = useState();
-	const [loading,setMegaLoading]=useState(false);
+	const [loading,setLoading]=useState(false);
 	
 	let {user}=useAuth();
 
@@ -48,33 +48,37 @@ export default function AddNewEvent(props)
 		else{temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
-  
-
 
 	const handleFileChange = (e) => {
 		setfile(e.target.files[0]);
 	}
 	const handleUpload = async () =>{
-		
-		closePopup();
-		
-		let date = new Date().toISOString();
-		const filename = user.email + date;
-		let ref = postsRef(filename);
-		await uB(ref, file)
-		let url = await getDownloadURL(ref)
+
+		setLoading(true);
 		let temp={...post};
-		temp.imageData=url;	
-		await axios.post("http://localhost:3001/api/clubs/clubs",temp)
-	
+		if(post.hasImage)
+		{
+			let date = new Date().toISOString();
+			const filename = user.email + date;
+			
+			let ref = postsRef(filename);
+			await uB(ref, file)
+			
+			let url = await getDownloadURL(ref)
+			temp.imageData=url;	
+		}
+		props.addEvent(temp);
+		closePopup();
+		// axios.post("http://localhost:3001/api/clubs/newpost",temp)
+		// 	.then((res)=>{closePopup();})
+		// 	.catch((err)=>{console.log(err);})
 	}
 	
 	const closePopup = () => {props.visibility(false)};
 
-  return (
+return (
     <div className="flex flex-row">
       	<Sidebar />
-		{loading?<Spinner/>:
 		<div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
@@ -157,17 +161,23 @@ export default function AddNewEvent(props)
 							accept="image/png, image/jpeg" onChange={handleFileChange}/>
 					</div>
 				}
+				{loading?
+					<button
+					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
+					>
+					<Spinner/>
+				</button>
+				:
 				<button
 					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
 					onClick={handleUpload}>
 					Post
 				</button>
-
+				}
 			</div>
 
 			<div className="flex-grow bg-whit"></div>
       	</div>
-		}
     </div>
   );
 }
