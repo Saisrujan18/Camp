@@ -7,11 +7,11 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema ({
     club:{type:String,required:true},
     hasImage:{type:Boolean},
-    imageData:{type: Buffer},
+    imageData:{type: String},
     title:{type: String, required: true},
     author:{type: String, required: true},
     description: {type: [String], default: ["Description"]},
-    registerable: {type: Boolean, required: true},
+    registrable: {type: Boolean, required: true},
     registered: {type:[String], default:[]}
 });
   
