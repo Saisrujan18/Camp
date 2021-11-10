@@ -78,7 +78,10 @@ router.post("/clubs", (req, res) =>
         title: post.title, 
         author: post.author,
         description: post.description,
-        registerable: post.registerable
+        registrable: post.registrable,
+        hasImage:post.hasImage,
+        imageData:post.imageData,
+        registered:post.registered
     });
     
     // saving it.
@@ -87,7 +90,7 @@ router.post("/clubs", (req, res) =>
         .then (result => {console.log (result); console.log("New Post added");})
         .catch (err => {
             console.log(err);
-            return res.send ('Error while inserting collab');
+            return res.send('Error while inserting post');
         });
 })
 

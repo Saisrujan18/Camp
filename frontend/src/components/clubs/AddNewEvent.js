@@ -7,12 +7,15 @@ import { useAuth } from "../../authContext/AuthContext";
 
 import TextField from '@mui/material/TextField';
 import Switch from '@mui/material/Switch';
+import axios from "axios";
+import Spinner from "../Spinner";
 
 
 export default function AddNewEvent(props) 
 {
 	const [des, setDes] = useState();
 	const [file, setfile] = useState();
+	const [loading,setMegaLoading]=useState(false);
 	
 	let {user}=useAuth();
 
@@ -31,26 +34,19 @@ export default function AddNewEvent(props)
         event.preventDefault();
         const { name, value } = event.target;
         setPost((prevNote) => {
-        return {
-            ...prevNote,
-            [name]: value,
-        };
+			return {
+				...prevNote,
+				[name]: value,
+			};
         });
     };
 
 	const handleToggle=(e) => 
 	{
-		console.log(post);
 		let temp={...post};
-		temp.registrable=!temp.registrable;
+		if(e.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
+		else{temp.registrable=!temp.registrable;}
 		setPost(temp);
-        // setPost((prevNote) => 
-		// {
-        // 	return {
-        //     	...prevNote,
-        //     	registrable: !prevNote.registrable,
-        // 	};
-        // });
     };
   
 
@@ -59,19 +55,27 @@ export default function AddNewEvent(props)
 		setfile(e.target.files[0]);
 	}
 	const handleUpload = async () =>{
+		
+		closePopup();
+		
 		let date = new Date().toISOString();
 		const filename = user.email + date;
 		let ref = postsRef(filename);
 		await uB(ref, file)
 		let url = await getDownloadURL(ref)
-		console.log(url)
+		let temp={...post};
+		temp.imageData=url;	
+		await axios.post("http://localhost:3001/api/clubs/clubs",temp)
+	
 	}
+	
 	const closePopup = () => {props.visibility(false)};
 
   return (
     <div className="flex flex-row">
       	<Sidebar />
-		<div className="flex-grow bg-white medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+		{loading?<Spinner/>:
+		<div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             	<div className="flex-grow"></div>
@@ -98,60 +102,75 @@ export default function AddNewEvent(props)
             </button>
             </div>
 			{/* Input fields */}
-			{/* <div className="max-w-3xl mx-auto pt-1">
-            	
-				<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
-            
-					<label className="text-xl md:text-2xl text-justify mb-5" for="iamge">Choose an image to upload</label>
-						<input type="file" id="image" name="image"
-						accept="image/png, image/jpeg" onChange={handleFileChange}/>
-            	</div>
-            	
-				<div className="flex flex-col p-4 border-2 rounded-lg">
-            
-					<label className="text-xl md:text-2xl text-justify mb-5" for="description">Description</label>
-						<textarea className="border-1 focus:outline-none focus:ring focus:border-darkBlu rounded-sm p-2" id="description" name="description" type="text" placeholder="write something.." value={des} onChange={(e) => setDes(e.target.value)}/>
-            	</div>
-
-				<button
-				className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
-				onClick={handleUpload}>
-				Post
-				</button>
-			</div> */}
-			<div className="flex flex-col p-3">
+			<div className="flex flex-col mt-3 place-content-center bg-whit">
 				
-				<div className="flex flex-row">
-					<div className="flex-grow"></div>
-					<Switch  
-						className="self-center"
-						name="registerable" 
-						checked={post.registrable}
-						onChange={handleToggle}
-						size="small"	
-						/>
-					<div className="self-center text-lg">Reg</div>
-					<div className="flex-grow"></div>
-					<div className="flex-grow"></div>
-					<div className="flex-grow"></div>
-				</div>
+				
+				<Switch  
+					className="self-center"
+					name="registrable" 
+					checked={post.registrable}
+					onChange={handleToggle}
+					size="small"	
+				/>
+				<TextField 
+					label="Author" 
+					className="m-10" 
+					id="outlined-basic"  
+					variant="filled" 
+					value={post.author} 
+					disabled
+				/>
+				<div className="mt-3"></div>
+				<TextField 
+					className="p-3"
+					id="outlined-basic" 
+					helperText="Please enter the title of the post"
+					label="Title" 
+					variant="outlined" 
+					name="title"
+					value={post.title} 
+					onChange={handleChange}
+				/>
+				<div className="mt-3"></div>
+				<TextField 
+					className="p-3"
+					id="outlined-basic" 
+					helperText="Please enter the description"
+					label="Description" 
+					variant="outlined"
+					name="description" 
+					value={post.description} 
+					onChange={handleChange}
+				/>
+				<Switch  
+					className="self-center"
+					name="hasImage" 
+					checked={post.hasImage}
+					onChange={handleToggle}
+					size="small"	
+				/>	
+				{post.hasImage && 
+				
+					<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
+						<label className="text-xl md:text-2xl text-justify mb-5" for="iamge">Choose an image to upload</label>
+							<input type="file" id="image" name="image"
+							accept="image/png, image/jpeg" onChange={handleFileChange}/>
+					</div>
+				}
+				<button
+					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
+					onClick={handleUpload}>
+					Post
+				</button>
 
-				<div className="flex flex-row max-w-2xl">
-					<div className="flex-grow"></div>
-					<TextField label="Author" className="m-10" id="outlined-basic"  variant="outlined" value={post.author} disabled/>
-					<div className="flex-grow"></div>
-					<div className="flex-grow"></div>
-					<div className="flex-grow"></div>
-				</div>
-				<TextField id="outlined-basic" label="Title" variant="outlined"/>
 			</div>
 
 			<div className="flex-grow bg-whit"></div>
       	</div>
+		}
     </div>
   );
 }
-
 
 // author uneditedable....email
 // Title ....input text
