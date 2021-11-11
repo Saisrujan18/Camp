@@ -97,7 +97,7 @@ export default function Club(props)
 		!popup &&
         (<div className="flex flex-row">
             <Sidebar/>
-            <div className="flex-grow bg-white md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
+            <div className="flex-grow bg-whit md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
@@ -114,9 +114,10 @@ export default function Club(props)
 				
 
 				{Loading?<Spinner/>:
-					<div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 divide-y">
-        				{postsData.map((exp) => renderPost(exp))}
-      				</div>
+
+				<div className="flex flex-col bg-whit divide-y space-y-4 justify-items-center">
+						{postsData.map((exp) => renderPost(exp))}
+				</div>
 				}
 
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
@@ -132,3 +133,4 @@ export default function Club(props)
 		</div>
 	);
 }
+		// <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 divide-y">

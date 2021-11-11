@@ -3,7 +3,7 @@ import React from 'react'
 export default function Event(props) 
 {
     return(
-        <div className="flex flex-col ">
+        <div className="flex flex-col  bg-whit">
             <div className="mr-auto p-1">{props.author}</div>
             <div className="">{props.title}</div>
             <div className="">{props.description}</div>
