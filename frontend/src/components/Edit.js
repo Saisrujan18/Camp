@@ -57,7 +57,7 @@ function Edit( {sendTo, id, expData} ) {
                 </button>
                 : ""
             }
-            <div className="flex flex-col place-items-end">
+            <div className="flex flex-col flex-1">
                 <Editor
                     toolbarHidden={mode == "readOnly"}
                     readOnly= {mode == "readOnly"}
