@@ -51,7 +51,7 @@ router.post("/", (req, res) =>
     // saving it.
     newCollab
         .save ()
-        .then (result => {console.log (result); console.log("New collab added");})
+        .then (result => {console.log("New collab added");})
         .catch (err => {
             console.log(err);
             return res.send ('Error while inserting collab');

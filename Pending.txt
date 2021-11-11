@@ -1,0 +1,16 @@
+HomePage,collab,Experiences
+
+1.Home page UI
+2.Single Experience Page UI
+3.whole Collab UI 
+4.New EXp/collab UI..
+
+CLubs
+1.Feed UI
+2.Post UI
+3.Upload UI
+
+AboutUS?
+
+Profile->avatars
+Academic Helper??

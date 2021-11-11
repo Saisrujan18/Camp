@@ -27,18 +27,11 @@ export default function Club(props)
 
 	const [popup,setPopup]=useState(false);
 
-	const dumy={
-			hasImage:true,
-			title:"First Post",
-			author:"CS",
-			description: "COntest",
-			registerable:false,
-	}
-
     useEffect(() => {
 		axios
 		.get("http://localhost:3001/api/clubs/"+props)
 		.then((res) => {
+			// console.log(res.data);
 			updatePosts(res.data);
 			setLoading(false);
 		})
@@ -48,7 +41,6 @@ export default function Club(props)
 				setOwnerData(res.data[0].members);
 			})
 			.catch((err)=>console.log(err));
-
 	},[]);
 
 	function showPopup(e)
@@ -72,24 +64,23 @@ export default function Club(props)
 			history.push("/clubs/"+exp_id);
 		  };
 		return (
-			<Event dummy={dumy}/>
-			// <Post
-			// 	club={props.club}
-			// 	image={props.image}
-			// 	imageData={props.imageData}
-			// 	title={props.title}
-			// 	author={props.author}
-			// 	description={props.description}
-			// 	registerable={props.registerable}
-			// 	registered= {props.registered}
-			// 	navigate={navigate}
-			// />
+			<Event
+				club={props.club}
+				hasImage={props.hasImage}
+				imageData={props.imageData}
+				title={props.title}
+				author={props.author}
+				description={props.description}
+				registrable={props.registrable}
+				registered= {props.registered}
+				navigate={navigate}
+			/>
 		);
 	}
 
 	const addNewEvent = async (data) => {
 		setLoading(true);
-		await axios.post("http://localhost:3001/api/clubs",[data,props]);
+		await axios.post("http://localhost:3001/api/clubs/newpost",data);
 	
 		await axios.get("http://localhost:3001/api/clubs/"+props)
 					.then((res) => {
@@ -99,7 +90,7 @@ export default function Club(props)
 					.catch((err) => console.log(err));
 	  };
 
-	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub}/>);}
+	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub} />);}
 
     const renderContent = ()=>{
 		return(
@@ -128,8 +119,6 @@ export default function Club(props)
       				</div>
 				}
 
-				{/* <Post displayName="Srujan" username="none" verified="no" text="yo"/> */}
-				<Event dummy={dumy}/>
 				<div className="flex-grow bg-whit rounded-br-lg"></div>
 			</div>
         </div>)
