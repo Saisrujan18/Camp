@@ -24,11 +24,26 @@ module.exports = {
       },
       fontFamily:{
         camp: ['Bangers'],
-        hometext:['Akaya Kanadaka', 'Kanit:ital@0;1']
+        title_1:['Akaya Kanadaka', 'cursive'],
+        title_2:['Kanit', 'sans-serif'],
+        title_3:['Lora', 'serif']
       },
       minHeight:{
         'home-content':'75vh',
         'home-title':'20vh'
+      },
+      minWidth:{
+        'post-feed':'600px'
+      },
+      maxWidth:{
+          'post-feed':'800px'
+      },
+      height:{
+        'avatar-dp':'100px'
+      },
+      width:{
+        'avatar-dp':'100px',
+        'post':'350px'
       }
     },
     flex:{

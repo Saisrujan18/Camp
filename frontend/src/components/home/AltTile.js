@@ -21,7 +21,7 @@ export const BigTile = (props) => {
     const redirection ="/"+props.title.toLowerCase()
     return ( 
         <Link className="flex flex-row w-full h-full bg-lightestBlu rounded-lg p-4 content-center cursor-pointer bg-whit" to={redirection} >
-            <p className="font-hometext font-bold text-lg  overflow-ellipsis overflow-hidden flex-grow self-center cursor-pointer mr-1 ml-2 bg-whit">{props.title}</p>
+            <p className="font-title_1 font-bold text-lg  overflow-ellipsis overflow-hidden flex-grow self-center cursor-pointer mr-1 ml-2 bg-whit">{props.title}</p>
         </Link>
     );
 }
