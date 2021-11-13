@@ -72,6 +72,7 @@ export default function Club(props)
 			title={props.title}
 			userid="cs19b043@iittp.ac.in"
 			username={props.author}
+			verified={true}
 			description={props.description}
 			registrable={props.registrable}
 			registered= {props.registered}
@@ -99,7 +100,7 @@ export default function Club(props)
 		!popup &&
 		(<div className="flex flex-row">
             <Sidebar/>
-            <div className="flex-grow bg-whit md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2 flex flex-col w-screen-lg">
+            <div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
@@ -117,7 +118,7 @@ export default function Club(props)
 
 				{Loading?<Spinner/>:
 
-				<div className="flex flex-col bg-whit divide-y space-y-4 items-stretch">
+				<div className="flex flex-col sm:mx-1 my-2 mx-0 bg-whit divide-y space-y-4 items-stretch overflow-y-scroll">
 						{postsData.map((exp) => renderPost(exp))}
 				</div>
 				}

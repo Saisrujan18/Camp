@@ -33,16 +33,18 @@ module.exports = {
         'home-title':'20vh'
       },
       minWidth:{
-        'post-feed':'600px'
+        'post-feed':'500px'
       },
       maxWidth:{
           'post-feed':'800px'
       },
       height:{
-        'avatar-dp':'100px'
+        'avatar-dp':'100px',
+        'avatar-dp-small':'70px'
       },
       width:{
         'avatar-dp':'100px',
+        'avatar-dp-small':'70px',
         'post':'350px'
       }
     },
