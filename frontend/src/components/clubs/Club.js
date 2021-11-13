@@ -117,7 +117,7 @@ export default function Club(props)
 
 				{Loading?<Spinner/>:
 
-				<div className="flex flex-col bg-whit divide-y space-y-4 items-stretch">
+				<div className="flex flex-col bg-whit divide-y space-y-4 items-stretch overflow-y-scroll">
 						{postsData.map((exp) => renderPost(exp))}
 				</div>
 				}
