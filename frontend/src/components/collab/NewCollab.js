@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { AuthProvider } from "../../authContext/AuthContext";
+import { TextField } from "@mui/material";
 
 function NewCollab(props) {
 
@@ -51,11 +52,24 @@ function NewCollab(props) {
 	// ALl the contents tab1 ,rendering and fucntionality are taken care of
 	const tab1 = () => {
     	return (
-			<div className={`modalContent flex flex-col justify-start rounded-r-lg p-10 sm-custom:w-{240} md:w-6/12 lg:w-5/12 xl:w-4/12 h-1/2 bg-white`}>
+			<div className={`modalContent flex flex-col rounded-r-lg p-10 w-full h-full bg-white`}>
 				
-				<div className="w-100 h-100">
+				<div className="w-full h-full flex flex-col justify-between">
 					
-					<input
+					<TextField id="standard-basic" label="Project Title" variant="standard" onChange={handleChange} value={collab.title} name="title" autoComplete="off"/>
+					<TextField
+						id="standard-multiline-static"
+						label="Links"
+						multiline
+						rows={4}
+						defaultValue="Default Value"
+						variant="standard"
+						name="links"
+						value={collab.links}
+						onChange={handleChange}
+					/>
+
+					{/* <input
 						className="w-full mx-1 my-2"
 						name="title"
 						onChange={handleChange}
@@ -69,18 +83,18 @@ function NewCollab(props) {
 						onChange={handleChange}
 						value={collab.links}
 						placeholder="Links Here"
-						rows="4"/>
+						rows="4"/> */}
 
 				<div className="flex flex-row w-full justify-end">
 					<button
-					className="p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+					className="p-2 m-1 hover:bg-blue-700 font-bold rounded bg-blue-600"
 					onClick={() => {
 						props.addCollab(collab);
 						closePopup();
 					}}>Add</button>
 
 					<button
-					className="p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+					className="p-2 m-1 hover:bg-blue-700 font-bold rounded bg-blue-600"
 					onClick={closePopup}
 					>Close</button>
 				</div>
@@ -91,12 +105,26 @@ function NewCollab(props) {
     	);
 	};
 	// ALl the contents tab2 ,rendering and fucntionality are taken care of
- 	const tab2 = () => {	return (
+ 	const tab2 = () => {	
+		return (
 		
-		<div className={`modalContent flex flex-col justify-start rounded-r-lg p-10 sm-custom:w-{240} md:w-6/12 lg:w-5/12 xl:w-4/12 h-1/2 bg-white`}>
+		<div className={`modalContent flex flex-col justify-start rounded-r-lg p-10 w-full h-full bg-white`}>
 			
-			<div className="w-100 h-100">
-				<input
+			<div className="w-full h-full justify-between flex flex-col">
+
+				<TextField id="standard-basic" label="Name of Author" variant="standard" onChange={handleChange} value={collab.author} name="author" autoComplete="off"/>
+				<TextField
+					id="standard-multiline-static"
+					label="Description"
+					multiline
+					rows={4}
+					defaultValue="Default Value"
+					variant="standard"
+					name="description"
+					value={collab.description}
+					onChange={handleChange}
+				/>
+				{/* <input
 					className="w-full mx-1 my-2"
 					name="author"
 					onChange={handleChange}
@@ -110,17 +138,17 @@ function NewCollab(props) {
 					value={collab.description}
 					placeholder="Description"
 					rows="4"
-				/>
+				/> */}
 				<div className="flex flex-row w-full justify-end">
 					<button
-					className="p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+					className="p-2 m-1 hover:bg-blue-700 font-bold rounded bg-blue-600"
 					onClick={() => {
 						props.addCollab(collab);
 						closePopup();
 					}}>Add</button>
 					
 					<button
-						className="p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+						className="p-2 m-1 hover:bg-blue-700 font-bold rounded bg-blue-600"
 						onClick={closePopup}
 					>Close</button>
 			
@@ -135,8 +163,8 @@ function NewCollab(props) {
 	//   This consists of the leftside of the popup.
 	const SideTabMini = () => {
 		return (
-		<aside className=" bg-whit text-blue-100 w-25 h-1/2 space-y-6 px-2 py-4 rounded-l-lg">
-			<nav className="text-blac">
+		<aside className=" bg-blue-300 text-blue-100 w-25 h-1/2 space-y-6 px-2 py-4 rounded-l-lg m-2">
+			<nav className="text-blac flex flex-col h-full p-2 ">
 			<Tab number={0} text="Overview" />
 			<Tab number={1} text="Description" />
 			</nav>
@@ -145,7 +173,7 @@ function NewCollab(props) {
 	};
 	// Rendering the popup
 	return (
-		<div className="modalBackground flex flex-row w-screen h-screen rounded-lg my-2 bg-gray-200 fixed justify-center items-center">
+		<div className="modalBackground flex flex-row w-2/5 h-1/2 rounded-lg my-2 bg-blue-300 ">
 		<SideTabMini />
 		{Tabs[tabNumber]}
 		</div>

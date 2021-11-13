@@ -7,6 +7,7 @@ import { useAuth } from "../../authContext/AuthContext";
 import "./Collab.css";
 import Spinner from "../Spinner";
 import { SidebarH } from "../../App";
+import Edit from "../Edit";
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
@@ -141,6 +142,13 @@ export function Collab() {
                   {" "}
                   Description{" "}
                 </h1>
+                {/* <Edit 
+                  sendTo = {"http://localhost:3001/api/collab/id"}
+                  id = {id}
+                  expData = {collabData}
+                /> */}
+
+                {/* {collabData} */}
                 <div
                   className={
                     "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +

@@ -5,6 +5,12 @@ HomePage,collab,Experiences
 3.whole Collab UI +editor
 4.New EXp/collab UI
 
+Bug fixes:
+    1. Couldn't add new exp due to some editor problem.
+    2. Popup UI(new exp/collab )
+
+
+
 CLubs
 1.Feed UI
 2.Post UI

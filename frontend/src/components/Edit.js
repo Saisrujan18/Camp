@@ -17,6 +17,7 @@ import Spinner from "./Spinner";
 function Edit( {sendTo, id, expData} ) {
 
     // const [showEditor, setShowEditor] = useState(false);
+    const initString = {"blocks":[{"key":"8r134","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
     const [mode, setMode] = useState("readOnly");
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(expData.description))));
     const [loading, setLoading] = useState(false);
@@ -48,10 +49,11 @@ function Edit( {sendTo, id, expData} ) {
         
         <div className="flex flex-col mb-10">
 
-            {/* {console.log(EditorState.createEmpty())}
-            {console.log(expData.description)}
-            {console.log(convertFromRaw(JSON.parse(expData.description)))} */}
-            {mode == "readOnly"?
+            {/* {console.log(EditorState.createEmpty())} */}
+            {console.log(JSON.parse(expData.description))}
+            {console.log(EditorState.createWithContent(convertFromRaw(initString)))}
+            {/* {console.log(convertFromRaw(JSON.parse(expData.description)))} */}
+            {mode === "readOnly"?
                 <button className=" place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
                 onClick={() => {setMode("readWrite")}}> Edit
                 </button>
@@ -59,8 +61,8 @@ function Edit( {sendTo, id, expData} ) {
             }
             <div className="flex flex-col flex-1">
                 <Editor
-                    toolbarHidden={mode == "readOnly"}
-                    readOnly= {mode == "readOnly"}
+                    toolbarHidden={mode === "readOnly"}
+                    readOnly= {mode === "readOnly"}
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     wrapperClassName="wrapperClassName"

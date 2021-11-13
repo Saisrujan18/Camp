@@ -11,6 +11,7 @@ import NewCollab from "./NewCollab";
 import { SidebarH } from "../../App";
 
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
+import Backdrop from '@mui/material/Backdrop';
 
 function CollabHome() {
   // All the neccessary useState variables are declared over here.
@@ -122,7 +123,7 @@ function CollabHome() {
   // Renders the content of the page when popup is not triggered.
   const renderContent = () => {
     return (
-      !popupVisible && (
+      (
         <div className="h-screen flex flex-row">
           {/* <SidebarH /> */}
           <SidebarH />
@@ -160,7 +161,13 @@ function CollabHome() {
 
   return (
     <div>
-      {renderPopup()}
+      { popupVisible && <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={popupVisible}
+        // onClick={handleClose}
+      >
+        {renderPopup()}
+      </Backdrop> }
       {renderContent()}
     </div>
   );

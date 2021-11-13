@@ -11,6 +11,7 @@ import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 
 import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
+import Backdrop from '@mui/material/Backdrop';
 
 import Edit from "../Edit";
 
@@ -42,6 +43,10 @@ function Experiences() {
     setVisibility(true);
     e.preventDefault();
   }
+
+  // function handleClose() {
+  //   setVisibility(!popupVisible);
+  // }
 
   // Handles the request to add new experience
   const addNewExp = async (exp) => {
@@ -128,7 +133,7 @@ function Experiences() {
   // Renders the content if the popup visibility is false.
   const renderContent = () => {
     return (
-      !popupVisible && (
+      (
         <div className="h-screen flex flex-row">
           <SidebarH />
           <div className="flex-grow bg-white medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
@@ -171,7 +176,14 @@ function Experiences() {
   // rendering of whole is done over here.
   return (
     <div>
-      {renderPopup()}
+      { popupVisible && <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={popupVisible}
+        // onClick={handleClose}
+      >
+        {renderPopup()}
+      </Backdrop> }
+      
       {renderContent()}
     </div>
   );
