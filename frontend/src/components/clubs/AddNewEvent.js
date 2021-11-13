@@ -6,9 +6,15 @@ import { useAuth } from "../../authContext/AuthContext";
 
 
 import TextField from '@mui/material/TextField';
+import {
+    Publish,
+	AddAPhoto
+} from "@material-ui/icons";
+
 import Switch from '@mui/material/Switch';
 import axios from "axios";
 import Spinner from "../Spinner";
+import InputBase from "@mui/material/InputBase";
 
 
 export default function AddNewEvent(props) 
@@ -18,7 +24,6 @@ export default function AddNewEvent(props)
 	const [loading,setLoading]=useState(false);
 	
 	let {user}=useAuth();
-
 	const [post,setPost]=useState({
 		club:props.club,
 		hasImage:false,
@@ -77,9 +82,9 @@ export default function AddNewEvent(props)
 	const closePopup = () => {props.visibility(false)};
 
 return (
-    <div className="flex flex-row">
+    <div className="flex flex-row h-screen">
       	<Sidebar />
-		<div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+		<div className="flex-grow bg-whit min-h-screen medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             	<div className="flex-grow"></div>
@@ -103,10 +108,10 @@ return (
 							clip-rule="evenodd"
 						/>
 					</svg>
-            </button>
+            	</button>
             </div>
 			{/* Input fields */}
-			<div className="flex flex-col mt-3 place-content-center bg-whit">
+			<div className="flex flex-col max-h-screen px-4 py-2 w-2/3 rounded-lg justify-start self-center items-stretch bg-white overflow-y-scroll">
 				
 				
 				<Switch  
@@ -128,20 +133,22 @@ return (
 				<TextField 
 					className="p-3"
 					id="outlined-basic" 
-					helperText="Please enter the title of the post"
+					helperText="Enter the title for the post"
 					label="Title" 
-					variant="outlined" 
+					variant="filled" 
 					name="title"
 					value={post.title} 
 					onChange={handleChange}
 				/>
 				<div className="mt-3"></div>
 				<TextField 
-					className="p-3"
+					className="p-4"
 					id="outlined-basic" 
-					helperText="Please enter the description"
+					helperText="Enter the Description"
 					label="Description" 
 					variant="outlined"
+					multiline
+					minRows={4}
 					name="description" 
 					value={post.description} 
 					onChange={handleChange}
@@ -156,9 +163,10 @@ return (
 				{post.hasImage && 
 				
 					<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
-						<label className="text-xl md:text-2xl text-justify mb-5" for="iamge">Choose an image to upload</label>
+						<label className="text-xl md:text-2xl text-justify mb-5" for="image">Choose an image to upload</label>
 							<input type="file" id="image" name="image"
-							accept="image/png, image/jpeg" onChange={handleFileChange}/>
+							accept="image/png, image/jpeg" onChange={handleFileChange}>
+							</input>
 					</div>
 				}
 				{loading?
@@ -171,6 +179,7 @@ return (
 				<button
 					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
 					onClick={handleUpload}>
+					<Publish/>
 					Post
 				</button>
 				}

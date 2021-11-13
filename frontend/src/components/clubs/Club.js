@@ -70,7 +70,7 @@ export default function Club(props)
 			hasImage={props.hasImage}
 			imageData={props.imageData}
 			title={props.title}
-			userid="cs19b043@iittp.ac.in"
+			userid={props.userid}
 			username={props.author}
 			verified={true}
 			description={props.description}
@@ -98,7 +98,7 @@ export default function Club(props)
     const renderContent = ()=>{
 		return(
 		!popup &&
-		(<div className="flex flex-row">
+		(<div className="flex flex-row h-screen">
             <Sidebar/>
             <div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
