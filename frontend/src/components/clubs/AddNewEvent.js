@@ -19,7 +19,8 @@ import InputBase from "@mui/material/InputBase";
 export default function AddNewEvent(props) 
 {
 	const [des, setDes] = useState();
-	const [file, setfile] = useState();
+	const [file, setFile] = useState();
+	const [imgSrc, setImgSrc] = useState("");
 	const [loading,setLoading]=useState(false);
 	
 	let {user}=useAuth();
@@ -53,8 +54,13 @@ export default function AddNewEvent(props)
 		setPost(temp);
     };
 
+	// const handleFileChange = async (e) => {
+	// 	await setFile(e.target.files[0])
+	// 	console.log(file)
+	// }
 	const handleFileChange = (e) => {
-		setfile(e.target.files[0]);
+		setFile(e.target.files[0])
+		imageHandler()
 	}
 	const handleUpload = async () =>{
 
@@ -79,7 +85,9 @@ export default function AddNewEvent(props)
 	}
 	const addImageOption = () => {
 		return (  
-			<button className="flex flex-row gap-x-2 block p-2 m-1 self-center hover:text-darkBlu hover:bg-gray-200 font-bold rounded" name="hasImage">
+			<button className={"flex flex-row gap-x-2 block p-2 m-1 self-center font-bold rounded "
+				+(!post.hasImage?"hover:text-darkBlu hover:bg-gray-200 ":"text-darkBlu bg-gray-200 hover:text-black hover:bg-darkOrang25")} 
+				name="hasImage" onClick={handleToggle}>
 				<svg className="h-6 w-6 self-center">
                 	<AddAPhotoOutlined/>
               	</svg>
@@ -87,13 +95,24 @@ export default function AddNewEvent(props)
 			</button>
 		);
 	}
+	function imageHandler(e)
+	{
+		const reader = new FileReader();
+		reader.onload = () =>{
+		  if(reader.readyState === 2){
+			setImgSrc(reader.result)
+		  }
+		}
+		if(file)
+			reader.readAsDataURL(file)
+	};
 	const closePopup = () => {props.visibility(false)};
 	
 
 return (
     <div className="flex flex-row h-screen">
       	<Sidebar />
-		<div className="flex-grow bg-whit min-h-screen medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
+		<div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             	<div className="flex-grow"></div>
@@ -120,7 +139,7 @@ return (
             	</button>
             </div>
 			{/* Input fields */}
-			<div className="flex flex-col max-h-screen px-4 py-2 w-2/3 rounded-lg justify-start self-center items-stretch bg-white overflow-y-scroll">
+			<div className="flex flex-col h-auto px-4 py-2 w-2/3 rounded-lg justify-start self-center items-stretch bg-white overflow-y-scroll">
 				
 				
 				<Switch  
@@ -155,28 +174,34 @@ return (
 					id="outlined-basic" 
 					helperText="Enter the Description"
 					label="Description" 
-					variant="outlined"
+					variant="filled"
 					multiline
 					minRows={4}
 					name="description" 
 					value={post.description} 
 					onChange={handleChange}
 				/>
-				<Switch  
+				{/* <Switch  
 					className="self-center"
 					name="hasImage" 
 					checked={post.hasImage}
 					onChange={handleToggle}
 					size="small"	
-				/>
+				/> */}
 				{addImageOption()}	
 				{post.hasImage && 
 				
-					<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
-						<label className="text-xl md:text-2xl text-justify mb-5" for="image">Choose an image to upload</label>
-							<input type="file" id="image" name="image"
-							accept="image/png, image/jpeg" onChange={handleFileChange}>
-							</input>
+					<div className="flex flex-col p-4 shadow-lg bg-whit mb-3 rounded-lg w-auto h-auto">
+							<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
+							<label for="image" className="h-auto w-48 cursor-pointer flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
+								<svg className="h-6 w-6 self-center">
+									<Publish/>
+								</svg>
+								Select from Files
+							</label>
+							<div className="self-center px-2 h-auto">
+                				{imgSrc!=="" && <img className="w-full h-auto rounded-lg" src={imgSrc} alt="Couldn't load. Please try again"></img>}
+            				</div>
 					</div>
 				}
 				{loading?
@@ -196,8 +221,6 @@ return (
 				</button>
 				}
 			</div>
-
-			<div className="flex-grow bg-whit"></div>
       	</div>
     </div>
   );

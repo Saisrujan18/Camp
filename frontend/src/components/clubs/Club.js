@@ -101,7 +101,7 @@ export default function Club(props)
 		!popup &&
 		(<div className="flex flex-row h-screen">
             <Sidebar/>
-            <div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
+            <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
