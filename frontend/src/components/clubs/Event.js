@@ -26,7 +26,7 @@ export default function Event(props)
                     <div className="text-2xl font-camp">{props.title}</div>
                     <div className="user_info flex flex-row w-auto">
                         <div className="font-semibold italic text-black">{props.username}</div>
-                        {props.verified && <VerifiedUser/>}
+                        {props.verified && <VerifiedUser className="text-darkBlu"/>}
                         <div className="italic text-gre">{"@"+props.userid}</div>
                         <div className="flex-grow bg-white"></div>
                     </div>

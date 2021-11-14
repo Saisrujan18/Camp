@@ -7,10 +7,9 @@ import { useAuth } from "../../authContext/AuthContext";
 
 import TextField from '@mui/material/TextField';
 import {
-    Publish,
-	AddAPhoto
+    Publish
 } from "@material-ui/icons";
-
+import {AddAPhotoOutlined} from '@mui/icons-material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
 import Spinner from "../Spinner";
@@ -50,7 +49,7 @@ export default function AddNewEvent(props)
 	{
 		let temp={...post};
 		if(e.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
-		else{temp.registrable=!temp.registrable;}
+		else if(e.target.name==="registrable"){temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
 
@@ -78,8 +77,18 @@ export default function AddNewEvent(props)
 		// 	.then((res)=>{closePopup();})
 		// 	.catch((err)=>{console.log(err);})
 	}
-	
+	const addImageOption = () => {
+		return (  
+			<button className="flex flex-row gap-x-2 block p-2 m-1 self-center hover:text-darkBlu hover:bg-gray-200 font-bold rounded" name="hasImage">
+				<svg className="h-6 w-6 self-center">
+                	<AddAPhotoOutlined/>
+              	</svg>
+				Add Image
+			</button>
+		);
+	}
 	const closePopup = () => {props.visibility(false)};
+	
 
 return (
     <div className="flex flex-row h-screen">
@@ -159,7 +168,8 @@ return (
 					checked={post.hasImage}
 					onChange={handleToggle}
 					size="small"	
-				/>	
+				/>
+				{addImageOption()}	
 				{post.hasImage && 
 				
 					<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
@@ -177,9 +187,11 @@ return (
 				</button>
 				:
 				<button
-					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
+					className="flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
 					onClick={handleUpload}>
-					<Publish/>
+					<svg className="h-6 w-6 self-center">
+                		<Publish/>
+              		</svg>
 					Post
 				</button>
 				}
