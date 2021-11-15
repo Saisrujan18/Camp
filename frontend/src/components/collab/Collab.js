@@ -8,6 +8,7 @@ import "./Collab.css";
 import Spinner from "../Spinner";
 import { SidebarH } from "../../App";
 import Edit from "../Edit";
+import BackImg from "../experiences/images/Jupiter.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
@@ -34,7 +35,7 @@ export function Collab() {
   // A resuable component to show the members of the collab.
   const getMember = (member) => {
     return (
-      <div className="bg-white rounded-lg p-4 shadow-lg border ">
+      <div className=" rounded-lg p-2 border ">
         <p className=""> {member} </p>
       </div>
     );
@@ -73,19 +74,28 @@ export function Collab() {
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1  p-3 bg-white my-2 mr-2 rounded-r-lg">
+        <div className=" overflow-y-auto flex-1  p-3 bg-white my-2 mr-2 rounded-r-lg relative"
+          style={{
+            backgroundImage: "url(" + BackImg + ")"
+          }}
+        >
           {loading ? (
             <Spinner />
           ) : (
-            <div className="max-w-3xl mx-auto pt-1">
+            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 absolute h-full top-0 inset-x-0 rounded-lg"
+              style={{
+                backgroundImage: "url(" + BackImg + ")"
+              }}
+            >
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
-                  <div className="rounded-lg text-sm md:text-lg m-2 my-4">{collabData.author}</div>
+                  
                   <div className="rounded-lg">
-                    <h1 className="text-3xl md:text-4xl text-justify font-bold my-14">
-                      {collabData.title}
+                    <h1 className="flex place-content-center text-3xl md:text-4xl text-justify font-bold my-10">
+                      <u>{collabData.title}</u>
                     </h1>
+                    <div className="flex place-content-end rounded-lg text-sm md:text-lg m-2 my-4"><u>{collabData.author}</u></div>
                     {/* Inpage navigation */}
                     <div className="flex flex-row">
                       <div
@@ -136,12 +146,17 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 p-2 bg-white ">
+              <main className="flex-1 p-2 bg-white "
+                style={{
+                  backgroundImage: "url(" + BackImg + ")"
+                }}
+              >
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
-                  Description{" "}
+                  <u>Description{" "}</u>
                 </h1>
+                
                 {/* <Edit 
                   sendTo = {"http://localhost:3001/api/collab/id"}
                   id = {id}
@@ -151,10 +166,11 @@ export function Collab() {
                 {/* {collabData} */}
                 <div
                   className={
-                    "bg-white rounded-lg text-1xl p-2 shadow-md font-sans " +
+                    " rounded-lg text-1xl my-2 p-2 font-sans " +
                     (showInfo ? "" : "hidden")
                   }
                 >
+                  <hr></hr>
                   <p>{collabData.description} </p>
                 </div>
 
