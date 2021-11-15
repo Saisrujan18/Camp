@@ -136,7 +136,7 @@ function Experiences() {
       (
         <div className="h-screen flex flex-row">
           <SidebarH />
-          <div className="flex-grow bg-white medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+          <div className="flex-grow bg-white large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
             <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
             <div className="flex-grow"></div>
@@ -144,8 +144,7 @@ function Experiences() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
               </svg>
-                Experiences
-              
+              Experiences
               </div>
               <div className="flex-grow"></div>
               <button

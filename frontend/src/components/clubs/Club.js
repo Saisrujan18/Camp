@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Sidebar from '../Sidebar'
 import Spinner from '../Spinner';
+import {PostAdd} from "@mui/icons-material";
 
 import Event from './Event';
 import AddNewEvent from './AddNewEvent';
@@ -22,20 +23,20 @@ export default function Club(props)
 	const [ownerData,setOwnerData]=useState([]);
 	const {history} = useHistory();
 
-	const whichClub=props;
+	const whichClub=props.name;
 
 	const [popup,setPopup]=useState(false);
 
     useEffect(() => {
 		axios
-		.get("http://localhost:3001/api/clubs/"+props)
+		.get("http://localhost:3001/api/clubs/"+whichClub)
 		.then((res) => {
 			// console.log(res.data);
 			updatePosts(res.data);
 			setLoading(false);
 		})
 		.catch((err) => console.log(err));
-		axios.get("http://localhost:3001/api/clubs/"+props+"/access")
+		axios.get("http://localhost:3001/api/clubs/"+whichClub+"/access")
 			.then((res)=>{
 				setOwnerData(res.data[0].members);
 			})
@@ -52,9 +53,9 @@ export default function Club(props)
 		return (  
 			<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
 				onClick={showPopup}>
-				<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
-					<path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
-				</svg>
+				<svg className="h-6 w-6 self-center">
+                	<PostAdd/>
+              	</svg>
 			</button>
 		);
 	}
@@ -70,7 +71,7 @@ export default function Club(props)
 			hasImage={props.hasImage}
 			imageData={props.imageData}
 			title={props.title}
-			userid="cs19b043@iittp.ac.in"
+			userid={props.userid}
 			username={props.author}
 			verified={true}
 			description={props.description}
@@ -85,7 +86,7 @@ export default function Club(props)
 		setLoading(true);
 		await axios.post("http://localhost:3001/api/clubs/newpost",data);
 	
-		await axios.get("http://localhost:3001/api/clubs/"+props)
+		await axios.get("http://localhost:3001/api/clubs/"+whichClub)
 					.then((res) => {
 						  updatePosts(res.data);
 						  setLoading(false);
@@ -98,9 +99,9 @@ export default function Club(props)
     const renderContent = ()=>{
 		return(
 		!popup &&
-		(<div className="flex flex-row">
+		(<div className="flex flex-row h-screen">
             <Sidebar/>
-            <div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
+            <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             
@@ -109,10 +110,11 @@ export default function Club(props)
 						<svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 self-end" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
 						</svg>
-						{props}
+						{props.name}
               		</div>
               		<div className="flex-grow"></div>
-             		{loading?<Spinner/>:ownerData.includes(user.email) && addButton}
+					  {/* {Loading?<Spinner/>:ownerData.includes(user.email) && addButton()} */}
+					  {Loading?<Spinner/>:addButton()}
             	</div>
 				
 

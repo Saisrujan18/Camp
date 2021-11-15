@@ -6,19 +6,24 @@ import { useAuth } from "../../authContext/AuthContext";
 
 
 import TextField from '@mui/material/TextField';
+import {
+    Publish
+} from "@material-ui/icons";
+import {AddAPhotoOutlined} from '@mui/icons-material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
 import Spinner from "../Spinner";
+import InputBase from "@mui/material/InputBase";
 
 
 export default function AddNewEvent(props) 
 {
 	const [des, setDes] = useState();
-	const [file, setfile] = useState();
+	const [file, setFile] = useState();
+	const [imgSrc, setImgSrc] = useState("");
 	const [loading,setLoading]=useState(false);
 	
 	let {user}=useAuth();
-
 	const [post,setPost]=useState({
 		club:props.club,
 		hasImage:false,
@@ -45,12 +50,17 @@ export default function AddNewEvent(props)
 	{
 		let temp={...post};
 		if(e.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
-		else{temp.registrable=!temp.registrable;}
+		else if(e.target.name==="registrable"){temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
 
+	// const handleFileChange = async (e) => {
+	// 	await setFile(e.target.files[0])
+	// 	console.log(file)
+	// }
 	const handleFileChange = (e) => {
-		setfile(e.target.files[0]);
+		setFile(e.target.files[0])
+		imageHandler()
 	}
 	const handleUpload = async () =>{
 
@@ -73,13 +83,36 @@ export default function AddNewEvent(props)
 		// 	.then((res)=>{closePopup();})
 		// 	.catch((err)=>{console.log(err);})
 	}
-	
+	const addImageOption = () => {
+		return (  
+			<button className={"flex flex-row gap-x-2 block p-2 m-1 self-center font-bold rounded "
+				+(!post.hasImage?"hover:text-darkBlu hover:bg-gray-200 ":"text-darkBlu bg-gray-200 hover:text-black hover:bg-darkOrang25")} 
+				name="hasImage" onClick={handleToggle}>
+				<svg className="h-6 w-6 self-center">
+                	<AddAPhotoOutlined/>
+              	</svg>
+				Add Image
+			</button>
+		);
+	}
+	function imageHandler(e)
+	{
+		const reader = new FileReader();
+		reader.onload = () =>{
+		  if(reader.readyState === 2){
+			setImgSrc(reader.result)
+		  }
+		}
+		if(file)
+			reader.readAsDataURL(file)
+	};
 	const closePopup = () => {props.visibility(false)};
+	
 
 return (
-    <div className="flex flex-row">
+    <div className="flex flex-row h-screen">
       	<Sidebar />
-		<div className="flex-grow bg-whit medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+		<div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
             	<div className="flex-grow"></div>
@@ -103,10 +136,10 @@ return (
 							clip-rule="evenodd"
 						/>
 					</svg>
-            </button>
+            	</button>
             </div>
 			{/* Input fields */}
-			<div className="flex flex-col mt-3 place-content-center bg-whit">
+			<div className="flex flex-col h-auto px-4 py-2 w-2/3 rounded-lg justify-start self-center items-stretch bg-white overflow-y-scroll">
 				
 				
 				<Switch  
@@ -128,37 +161,47 @@ return (
 				<TextField 
 					className="p-3"
 					id="outlined-basic" 
-					helperText="Please enter the title of the post"
+					helperText="Enter the title for the post"
 					label="Title" 
-					variant="outlined" 
+					variant="filled" 
 					name="title"
 					value={post.title} 
 					onChange={handleChange}
 				/>
 				<div className="mt-3"></div>
 				<TextField 
-					className="p-3"
+					className="p-4"
 					id="outlined-basic" 
-					helperText="Please enter the description"
+					helperText="Enter the Description"
 					label="Description" 
-					variant="outlined"
+					variant="filled"
+					multiline
+					minRows={4}
 					name="description" 
 					value={post.description} 
 					onChange={handleChange}
 				/>
-				<Switch  
+				{/* <Switch  
 					className="self-center"
 					name="hasImage" 
 					checked={post.hasImage}
 					onChange={handleToggle}
 					size="small"	
-				/>	
+				/> */}
+				{addImageOption()}	
 				{post.hasImage && 
 				
-					<div className="flex flex-col p-4 border-2 mb-3 rounded-lg">
-						<label className="text-xl md:text-2xl text-justify mb-5" for="iamge">Choose an image to upload</label>
-							<input type="file" id="image" name="image"
-							accept="image/png, image/jpeg" onChange={handleFileChange}/>
+					<div className="flex flex-col p-4 shadow-lg bg-whit mb-3 rounded-lg w-auto h-auto">
+							<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
+							<label for="image" className="h-auto w-48 cursor-pointer flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
+								<svg className="h-6 w-6 self-center">
+									<Publish/>
+								</svg>
+								Select from Files
+							</label>
+							<div className="self-center px-2 h-auto">
+                				{imgSrc!=="" && <img className="w-full h-auto rounded-lg" src={imgSrc} alt="Couldn't load. Please try again"></img>}
+            				</div>
 					</div>
 				}
 				{loading?
@@ -169,14 +212,15 @@ return (
 				</button>
 				:
 				<button
-					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
+					className="flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
 					onClick={handleUpload}>
+					<svg className="h-6 w-6 self-center">
+                		<Publish/>
+              		</svg>
 					Post
 				</button>
 				}
 			</div>
-
-			<div className="flex-grow bg-whit"></div>
       	</div>
     </div>
   );

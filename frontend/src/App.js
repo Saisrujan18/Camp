@@ -43,10 +43,10 @@ function App() {
 				<ProtectedRoute exact path="/experiences/:id" component={SingleExp}/>				
 				<ProtectedRoute exact path="/experiences" component={Experiences}/>
 				
-				<ProtectedRoute exact path="/sports" component={()=>{return Club("sports")}}/>
-				<ProtectedRoute exact path="/digitalwizards" component={()=>{return Club("digitalwizards")}}/>
-				<ProtectedRoute exact path="/sargam" component={()=>{return Club("sargam")}}/>
-				<ProtectedRoute exact path="/techmaniacs" component={()=>{return Club("techmaniacs")}}/>
+				<ProtectedRoute exact path="/sports" component={()=>{return <Club name="sports"/>}}/>
+				<ProtectedRoute exact path="/digitalwizards" component={()=>{return <Club name="digitalwizards"/>}}/>
+				<ProtectedRoute exact path="/sargam" component={()=>{return <Club name="sargam"/>}}/>
+				<ProtectedRoute exact path="/techmaniacs" component={()=>{return <Club name="techmaniacs"/>}}/>
 				<ProtectedRoute exact path="/Testing3D" component={homepage_anim}/>
 
 				<ProtectedRoute exact path="/profile" component={Profile}/>

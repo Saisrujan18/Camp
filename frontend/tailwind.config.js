@@ -11,8 +11,9 @@ module.exports = {
         blac:"#070809",
         darkBlu:"#4171E5",
         gre:"#54575B",
-        darkOrang:"#F86E25",
-        orang:"#D59055",
+        darkOrang:"#FF5349",
+        orang:"#F86E25",
+        darkOrang25:"#FF534940",
 
         whit80:"#F2F4F9CC",
         darkBlu80:"#4171E5CC",
@@ -37,6 +38,9 @@ module.exports = {
       },
       maxWidth:{
           'post-feed':'800px'
+      },
+      maxHeight:{
+          'pic-preview':'300px'
       },
       height:{
         'avatar-dp':'100px',
