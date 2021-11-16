@@ -67,7 +67,7 @@ export function Collab() {
   }
 
   return (
-    <div className="h-screen flex relative">
+    <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
       <SidebarH />
 

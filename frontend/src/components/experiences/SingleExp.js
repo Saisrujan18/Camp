@@ -38,7 +38,7 @@ export function SingleExp() {
   // Renders the content of the whole screen.
   return (
     // total screen
-    <div className="h-screen flex relative">
+    <div className="h-screen flex flex-row">
       {/* left sidebar */}
       <SidebarH />
 
