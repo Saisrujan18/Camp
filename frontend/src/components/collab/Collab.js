@@ -74,11 +74,11 @@ export function Collab() {
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg ">
+        <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white">
+            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full my-2 rounded-lg shadow-lg bg-white">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
@@ -89,11 +89,11 @@ export function Collab() {
                     </h1>
                     
                     {/* Inpage navigation */}
-                    <div className="flex ">
+                    <div className="flex cursor-pointer">
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1  "  +
+                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer"  +
                           (showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -107,7 +107,7 @@ export function Collab() {
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 "  +
+                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer" +
                           (showMembers ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -138,7 +138,7 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 p-2 bg-white">
+              <main className="flex-1 mx-2 mb-4 bg-white">
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
