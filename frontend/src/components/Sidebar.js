@@ -75,7 +75,7 @@ function Sidebar()
           " bg-whit text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
           " left-0 transform medium_l:relative transition duration-200 ease-in-out " +
           (open
-            ? " translate-x-0 mt-2 mb-2 ml-2 rounded-l-lg border-r-2"
+            ? " translate-x-0 mt-2 mb-2 small:ml-2 medium:ml-2 large:ml-2 small:rounded-l-lg medium:rounded-l-lg large:rounded-l-lg border-r-2"
             : "-translate-x-full")
         }
       >

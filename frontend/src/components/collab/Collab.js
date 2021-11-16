@@ -67,14 +67,14 @@ export function Collab() {
   }
 
   return (
-    <div className="h-screen flex relative">
+    <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
       <SidebarH />
 
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1 p-3 bg-white my-2 mr-2 rounded-r-lg "
+        <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"
           style={{
             backgroundImage: "url(" + BackImg + ")"
           }}
@@ -82,7 +82,7 @@ export function Collab() {
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 rounded-lg"
+            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full top-0 rounded-lg"
               style={{
                 opacity: 1,
                 backgroundImage: "url(" + BackImg + ")"
