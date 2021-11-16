@@ -60,6 +60,7 @@ export default function AddNewEvent(props)
 	// }
 	const handleFileChange = (e) => {
 		setFile(e.target.files[0])
+		console.log(file)
 		imageHandler()
 	}
 	const handleUpload = async () =>{
