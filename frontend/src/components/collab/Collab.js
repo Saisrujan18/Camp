@@ -8,7 +8,7 @@ import "./Collab.css";
 import Spinner from "../Spinner";
 import { SidebarH } from "../../App";
 import Edit from "../Edit";
-import BackImg from "../experiences/images/Jupiter.jpg"
+import BackImg from "../experiences/images/Portrait.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
@@ -90,12 +90,12 @@ export function Collab() {
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
-                  
+                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4"><u>{collabData.author}</u></div>
                   <div className="rounded-lg">
-                    <h1 className="flex place-content-center text-3xl md:text-4xl text-justify font-bold my-10">
+                    <h1 className="text-3xl md:text-4xl text-justify font-bold my-10">
                       <u>{collabData.title}</u>
                     </h1>
-                    <div className="flex place-content-end rounded-lg text-sm md:text-lg m-2 my-4"><u>{collabData.author}</u></div>
+                    
                     {/* Inpage navigation */}
                     <div className="flex flex-row">
                       <div
@@ -157,11 +157,7 @@ export function Collab() {
                   <u>Description{" "}</u>
                 </h1>
                 
-                {/* <Edit 
-                  sendTo = {"http://localhost:3001/api/collab/id"}
-                  id = {id}
-                  expData = {collabData}
-                /> */}
+                
 
                 {/* {collabData} */}
                 <div
@@ -171,7 +167,12 @@ export function Collab() {
                   }
                 >
                   <hr></hr>
-                  <p>{collabData.description} </p>
+                  <Edit 
+                    sendTo = {"http://localhost:3001/api/collab/id"}
+                    id = {id}
+                    data = {collabData}
+                    turn = {0}
+                  />
                 </div>
 
                 {/* Members */}

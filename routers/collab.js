@@ -23,6 +23,13 @@ router.post("/id", (req,res) => {
              .catch(err=>{console.log(err)})    
 })
 
+router.post("/id/edit", (req,res) => {
+    const {id, data} = req.body;
+    CollabModel.findByIdAndUpdate(id, data)
+             .then(response=>{res.json(response)})
+             .catch(err=>{console.log(err)})    
+})
+
 // This will add the current user to the collaboration if not already.
 router.post("/id/join",(req,res)=>{
     // extracting the data from the request

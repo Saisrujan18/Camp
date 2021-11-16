@@ -12,7 +12,7 @@ import "./Experiences.css";
 import Edit from "../Edit";
 import draftToHtml from 'draftjs-to-html';
 import Parser from 'html-react-parser'
-import BackImg from "./images/Jupiter.jpg"
+import BackImg from "./images/Portrait.jpg"
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
@@ -61,12 +61,12 @@ export function SingleExp() {
             <div className="mx-3">
               {/* The Whole Project Description */}
               <div>
-                
+                <div className=" rounded-lg text-sm md:text-lg m-2 my-4"><u>{expData.author}</u></div>
                 <div className="rounded-lg">
-                  <h1 className="flex place-content-center text-3xl md:text-4xl text-justify font-bold my-14">
+                  <h1 className=" text-3xl md:text-4xl text-justify font-bold my-14">
                     <u>{expData.title}</u>
                   </h1>
-                  <div className="flex place-content-end rounded-lg text-sm md:text-lg m-2 my-4"><u>{expData.author}</u></div>
+                  
                   {/* Inpage navigation */}
                   <div className="flex">
                     <button
@@ -102,7 +102,8 @@ export function SingleExp() {
               <Edit 
                 sendTo = {"http://localhost:3001/api/experiences/id"}
                 id = {id}
-                expData = {expData}
+                data = {expData}
+                turn = {1}
               />
             </main>
           </div>

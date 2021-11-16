@@ -14,21 +14,24 @@ import Spinner from "./Spinner";
 // 3) should be able to delete/edit one.
 // this will take years now.
 
-function Edit( {sendTo, id, expData} ) {
+function Edit( {sendTo, id, data, turn} ) {
     const [mode, setMode] = useState("readOnly");
-    const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(expData.description))));
+    const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(data.description))));
+    // const [editorStateCollab, setEditorStateCollab] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(collabData.description))));
     const [loading, setLoading] = useState(false);
     const [editorContent, setEditorContent] = useState();
     function onEditorStateChange(editorState) {
         setEditorState(editorState);
         setEditorContent(convertToRaw(editorState.getCurrentContent()));
     }
+
     const sendData = async () => {
-        expData.description = JSON.stringify(editorContent);
+        data.description = JSON.stringify(editorContent);
+        // console.log(data.description);
         setLoading(true);
         console.log(id);
         await axios
-        .post(sendTo+"/edit", {id, expData})
+        .post(sendTo+"/edit", {id, data})
         .then((res) => {
             setLoading(false);
             console.log(res);

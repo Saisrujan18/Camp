@@ -30,8 +30,10 @@ router.post("/id", (req,res) => {
 
 router.post("/id/edit", (req,res) => {
     console.log(req);
-    const {id, expData}=req.body;
-    ExpModel.findByIdAndUpdate(id, expData)
+    const {id, data}=req.body;
+    console.log(id);
+    console.log(data);
+    ExpModel.findByIdAndUpdate(id, data)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    
 }
