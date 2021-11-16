@@ -35,14 +35,14 @@ export default function Event(props)
             </div>
             
             <div className="font-title_1 italic px-6 py-1">{props.description}</div>
-            <div className="self-center px-2 w-98">
+            <div className="self-center px-2 py-2 w-98">
                 {props.hasImage && <img className="w-full h-auto rounded-lg" src={props.imageData} alt="Couldn't load. Please try again"></img>}
             </div>
-            <div className="flex flex-row w-full px-4 py-1 justify-around">
+            {/* <div className="flex flex-row w-full px-4 py-1 justify-around">
                 <div><Favorite/></div>
                 <div><Bookmark/></div>
                 <div><AddComment/></div>
-            </div>
+            </div> */}
             {props.registarable && <button>R</button>}
         </div>
     )
