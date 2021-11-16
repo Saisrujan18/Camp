@@ -41,15 +41,15 @@ function Sidebar()
 
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
-	<div className="absolute medium_l:relative min-h-screen medium_l:flex">
+	<div className="absolute medium_l:relative min-h-screen medium_l:flex z-100 ">
       {/* Top Bar */}
       <div
         className={
-          "bg-gray-800 text-gray-100 medium_l:hidden " + (open ? " hidden" : "")
+          "bg-gray-800 text-gray-100 medium_l:hidden relative " + (open ? " hidden" : "")
         }
       >
         <button
-          className="p-2 focus:outline-none hover:bg-gray-700 rounded"
+          className="bg-black p-2 focus:outline-none hover:bg-gray-700 rounded absolute top-0"
           onClick={() => setOpen(!open)}
         >
           <svg
@@ -72,7 +72,7 @@ function Sidebar()
 
       <aside
         className={
-          " bg-whit text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0" +
+          " bg-whit text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
           " left-0 transform medium_l:relative transition duration-200 ease-in-out " +
           (open
             ? " translate-x-0 mt-2 mb-2 ml-2 rounded-l-lg border-r-2"

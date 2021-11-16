@@ -103,7 +103,7 @@ export default function Club(props)
             <Sidebar/>
             <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
-				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
+				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
             
             		<div className="flex-grow"></div>
               		<div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row ">

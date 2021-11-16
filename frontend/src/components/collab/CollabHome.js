@@ -12,6 +12,8 @@ import { SidebarH } from "../../App";
 
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 import Backdrop from '@mui/material/Backdrop';
+import draftToHtml from 'draftjs-to-html'
+import Parser from 'html-react-parser'
 
 function CollabHome() {
   // All the neccessary useState variables are declared over here.
@@ -72,7 +74,7 @@ function CollabHome() {
         _id={collab._id}
         navigate={navigate}
         title={collab.title}
-        description={collab.description}
+        description={Parser(draftToHtml(JSON.parse(collab.description)))}
         author={collab.author}
       />
     );
@@ -127,8 +129,8 @@ function CollabHome() {
         <div className="h-screen flex flex-row">
           {/* <SidebarH /> */}
           <SidebarH />
-          <div className="flex-grow bg-white large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
-          <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 sticky top-0">
+          <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+          <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
             
             <div className="flex-grow"></div>
               <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">

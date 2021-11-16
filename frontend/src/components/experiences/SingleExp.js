@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { useParams } from "react-router";
 import { useAuth } from "../../authContext/AuthContext";
-import Sidebar from "../Sidebar";
+import { SidebarH } from "../../App";
 import Spinner from "../Spinner";
 import "./Experiences.css";
 import Edit from "../Edit";
@@ -38,13 +38,13 @@ export function SingleExp() {
   // Renders the content of the whole screen.
   return (
     // total screen
-    <div className="h-screen flex ">
+    <div className="h-screen flex relative">
       {/* left sidebar */}
-      <Sidebar />
+      <SidebarH />
 
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className=" overflow-y-auto flex-1 py-3 my-2 mr-2 rounded-r-lg relative"
+      <div className=" overflow-y-auto flex-1 py-3 my-2 mr-2 rounded-r-lg "
         style={{
           backgroundImage: "url(" + BackImg + ")"
         }}
@@ -53,12 +53,12 @@ export function SingleExp() {
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 absolute h-full top-0 inset-x-0 rounded-lg"
+          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 rounded-lg"
             style={{
               backgroundImage: "url(" + BackImg + ")"
             }}
           >
-            <div className="mx-3">
+            <div className="mx-3 ">
               {/* The Whole Project Description */}
               <div>
                 <div className=" rounded-lg text-sm md:text-lg m-2 my-4"><u>{expData.author}</u></div>
@@ -89,7 +89,7 @@ export function SingleExp() {
             </div>
 
             {/* below of center */}
-            <main className="flex-1 p-2 bg-white "
+            <main className="flex-1 p-2 "
               style={{
                 backgroundImage: "url(" + BackImg + ")"
               }}
@@ -99,12 +99,14 @@ export function SingleExp() {
                 <u>Description{" "}</u>
               </h1>
               <hr></hr>
-              <Edit 
-                sendTo = {"http://localhost:3001/api/experiences/id"}
-                id = {id}
-                data = {expData}
-                turn = {1}
-              />
+              <div className=' '>
+                <Edit 
+                  sendTo = {"http://localhost:3001/api/experiences/id"}
+                  id = {id}
+                  data = {expData}
+                  turn = {1}
+                />
+              </div>
             </main>
           </div>
         )}
