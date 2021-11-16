@@ -74,18 +74,18 @@ export function Collab() {
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg ">
+        <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg z-m10">
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white">
+            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white z-m30 ">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
-                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 "><u>{collabData.author}</u></div>
+                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 ">{collabData.author}</div>
                   <div className="rounded-lg">
                     <h1 className="text-3xl md:text-4xl text-justify font-bold my-14">
-                      <u>{collabData.title}</u>
+                      {collabData.title}
                     </h1>
                     
                     {/* Inpage navigation */}
@@ -138,14 +138,12 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 p-2 bg-white">
+              <main className="flex-1 p-2 bg-white ">
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
-                  <u>Description{" "}</u>
+                  Description{" "}
                 </h1>
-                
-                
 
                 {/* {collabData} */}
                 <div
@@ -154,13 +152,17 @@ export function Collab() {
                     (showInfo ? "" : "hidden")
                   }
                 >
-                  <hr></hr>
-                  <Edit 
-                    sendTo = {"http://localhost:3001/api/collab/id"}
-                    id = {id}
-                    data = {collabData}
-                    turn = {0}
-                  />
+                  <div className="">
+                    <Edit 
+                      sendTo = {"http://localhost:3001/api/collab/id"}
+                      id = {id}
+                      data = {collabData}
+                      turn = {0}
+                      style = {{
+                        backgroundColor: 'lightblue'
+                      }}
+                    />
+                    </div>
                 </div>
 
                 {/* Members */}

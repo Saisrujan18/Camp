@@ -41,16 +41,24 @@ function Edit( {sendTo, id, data, turn} ) {
         });
     }
 
+    const customeStyle = {
+        'hide' : {
+            backgroundColor: 'blue',
+            color: 'black',
+
+        }
+    }
+
     return (
         
-        <div className="flex flex-col mb-10 z-negative ">
+        <div className="flex flex-col mb-10 ">
             {mode == "readOnly"?
                 <button className=" place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
                 onClick={() => {setMode("readWrite")}}> Edit
                 </button>
                 : ""
             }
-            <div className={"flex flex-col flex-1"}>
+            <div className={"flex flex-col flex-1 "}>
                 <Editor
                     placeholder={"Start writing something...."}
                     toolbarHidden={mode == "readOnly"}
@@ -60,9 +68,10 @@ function Edit( {sendTo, id, data, turn} ) {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={onEditorStateChange}
+                    style = {customeStyle}
                 />
             {loading && <Spinner />}
-            {!loading && mode == "readWrite" ? <div className="flex place-self-end">
+            {!loading && mode == "readWrite" ? <div className="flex place-self-end ">
                 <button className=" block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
                 onClick = {() => {setMode("readOnly"); sendData()}}> Save </button> 
                 <button className="place-self-end block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"

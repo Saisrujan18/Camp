@@ -44,7 +44,7 @@ export function SingleExp() {
 
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className=" overflow-y-auto flex-1  my-2 mr-2 rounded-r-lg bg-whit ">
+      <div className=" overflow-y-auto flex-1  my-2 mr-2 rounded-r-lg bg-whit z-m10">
         {/* above of center */}
         {loading ? (
           <Spinner />
