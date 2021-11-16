@@ -43,7 +43,7 @@ function Edit( {sendTo, id, data, turn} ) {
 
     return (
         
-        <div className="flex flex-col mb-10">
+        <div className="flex flex-col mb-10 z-negative ">
             {mode == "readOnly"?
                 <button className=" place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
                 onClick={() => {setMode("readWrite")}}> Edit

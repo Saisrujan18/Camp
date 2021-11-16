@@ -44,27 +44,19 @@ export function SingleExp() {
 
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className=" overflow-y-auto flex-1 py-3 my-2 mr-2 rounded-r-lg "
-        style={{
-          backgroundImage: "url(" + BackImg + ")"
-        }}
-      >
+      <div className=" overflow-y-auto flex-1  my-2 mr-2 rounded-r-lg bg-whit ">
         {/* above of center */}
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 rounded-lg"
-            style={{
-              backgroundImage: "url(" + BackImg + ")"
-            }}
-          >
+          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white">
             <div className="mx-3 ">
               {/* The Whole Project Description */}
               <div>
-                <div className=" rounded-lg text-sm md:text-lg m-2 my-4"><u>{expData.author}</u></div>
+                <div className=" rounded-lg text-sm md:text-lg m-2 my-4">{expData.author}</div>
                 <div className="rounded-lg">
                   <h1 className=" text-3xl md:text-4xl text-justify font-bold my-14">
-                    <u>{expData.title}</u>
+                    {expData.title}
                   </h1>
                   
                   {/* Inpage navigation */}
@@ -73,7 +65,7 @@ export function SingleExp() {
                       to="/collab"
                       className={
                         "text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
-                        (showInfo ? "border-darkBlu" : "")
+                        (showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
                       }
                       onClick={() => {
                         setShowInfo(true);
@@ -89,16 +81,11 @@ export function SingleExp() {
             </div>
 
             {/* below of center */}
-            <main className="flex-1 p-2 "
-              style={{
-                backgroundImage: "url(" + BackImg + ")"
-              }}
-            >
+            <main className="flex-1 p-2 bg-white">
               <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                 {" "}
-                <u>Description{" "}</u>
+                Description{" "}
               </h1>
-              <hr></hr>
               <div className=' '>
                 <Edit 
                   sendTo = {"http://localhost:3001/api/experiences/id"}

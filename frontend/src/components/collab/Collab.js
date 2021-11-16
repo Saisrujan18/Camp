@@ -74,31 +74,22 @@ export function Collab() {
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1 p-3 bg-white my-2 mr-2 rounded-r-lg "
-          style={{
-            backgroundImage: "url(" + BackImg + ")"
-          }}
-        >
+        <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg ">
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 rounded-lg"
-              style={{
-                opacity: 1,
-                backgroundImage: "url(" + BackImg + ")"
-              }}
-            >
+            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
-                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4"><u>{collabData.author}</u></div>
+                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 "><u>{collabData.author}</u></div>
                   <div className="rounded-lg">
-                    <h1 className="text-3xl md:text-4xl text-justify font-bold my-10">
+                    <h1 className="text-3xl md:text-4xl text-justify font-bold my-14">
                       <u>{collabData.title}</u>
                     </h1>
                     
                     {/* Inpage navigation */}
-                    <div className="flex flex-row">
+                    <div className="flex ">
                       <div
                         to="/collab"
                         className={
@@ -147,11 +138,7 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 p-2 bg-white "
-                style={{
-                  backgroundImage: "url(" + BackImg + ")"
-                }}
-              >
+              <main className="flex-1 p-2 bg-white">
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
