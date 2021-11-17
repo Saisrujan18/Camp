@@ -2,7 +2,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios';
 
-import Sidebar from '../Sidebar'
 import Spinner from '../Spinner';
 import {PostAdd} from "@mui/icons-material";
 
@@ -11,6 +10,7 @@ import AddNewEvent from './AddNewEvent';
 
 import { useHistory } from "react-router";
 import { useAuth } from '../../authContext/AuthContext';
+import { SidebarH } from '../../App';
 
 
 
@@ -94,19 +94,13 @@ export default function Club(props)
 					.catch((err) => console.log(err));
 	  };
 
-	  //callback
-	const childToParent = (open) => {
-		setSidebarState(open); 
-	}
-
-
 	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub} />);}
 
     const renderContent = ()=>{
 		return(
 		!popup &&
 		(<div className="flex flex-row h-screen">
-            <Sidebar childToParent={childToParent}/>
+            <SidebarH hasEditor={false}/>
             <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">

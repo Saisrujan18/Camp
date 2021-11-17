@@ -99,12 +99,6 @@ function CollabHome() {
     );
   };
 
-  //callback
-  const childToParent = (open) => {
-    setSidebarState(open); 
-  }
-
-  
   function max(l,r)
   {
     if(l<=r)return r;

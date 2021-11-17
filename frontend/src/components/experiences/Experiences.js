@@ -45,20 +45,8 @@ function Experiences() {
     e.preventDefault();
   }
 
-  //callback
-  const childToParent = (open) => {
-    setSidebarState(open); 
-  }
-
-  // function handleClose() {
-  //   setVisibility(!popupVisible);
-  // }
-
   // Handles the request to add new experience
   const addNewExp = async (exp) => {
-    // let updatedexpData = [...expData];
-    // updatedexpData.push(exp);
-    // setexpData(updatedexpData);
     // redirect to the post.
     setLoading(true);
     await axios.post("http://localhost:3001/api/experiences",exp);

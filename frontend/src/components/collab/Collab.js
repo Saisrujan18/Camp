@@ -71,11 +71,6 @@ export function Collab() {
     setNegative(flag)
   }
 
-  //callback
-  const childToParent = (open) => {
-    setSidebarState(open);
-  }
-
   return (
     <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
@@ -87,7 +82,7 @@ export function Collab() {
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white z-m30 ">
+            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full my-2 rounded-lg shadow-lg bg-white">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
@@ -147,8 +142,7 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 p-2 bg-white ">
-              {/* <main className="flex-1 mx-2 mb-4 bg-white"> */}
+              <main className="flex-1 mx-2 mb-4 bg-white">
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}

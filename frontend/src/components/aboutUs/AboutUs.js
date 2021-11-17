@@ -17,10 +17,6 @@ function AboutUs()
     const url2 = DP;
     const url3 = DP;
     const url4 = DP;
-    // //callback
-    // const childToParent = (open) => {
-    //     setSidebarState(open); 
-    // }
 
     return (
         <div className="flex flex-col rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto">
@@ -35,9 +31,6 @@ function AboutUs()
               <div className="flex-grow bg-white h-0.5 rounded-br-lg"></div>
 
             <div className=" flex flex-row rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto">
-                {/* <Sidebar childToParent={childToParent}/> */}
-                
-
                 <AboutMe url={url1} description={p1}/>
                 <AboutMe url={url2} description={p2}/>
                 <AboutMe url={url3} description={p3}/>

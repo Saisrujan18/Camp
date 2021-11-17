@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "../Sidebar";
+import { SidebarH } from "../../App"
 import { postsRef, uB } from "../../firebase";
 import { getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../authContext/AuthContext";
@@ -54,11 +54,6 @@ export default function AddNewEvent(props)
 		else if(e.target.name==="registrable"){temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
-
-	//callback
-	const childToParent = (open) => {
-		setSidebarState(open); 
-	  }	
 
 	// const handleFileChange = async (e) => {
 	// 	await setFile(e.target.files[0])
@@ -118,7 +113,7 @@ export default function AddNewEvent(props)
 
 return (
     <div className="flex flex-row h-screen">
-      	<Sidebar childToParent={childToParent}/>
+      	<SidebarH hasEditor={false}/>
 		<div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
 			{/* Header */}
 			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
