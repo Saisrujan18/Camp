@@ -18,8 +18,12 @@ function Sidebar( {childToParent} )
 	useLayoutEffect(() => {
 		function updateOpen() {
 			if (window.innerWidth < 1100) {
-			setOpen(false);
-			} else setOpen(true);
+				handleCallBack();
+				setOpen(false);
+			} else {
+				handleCallBack();
+				setOpen(true);
+			}
 		}
 
 		window.addEventListener("resize", updateOpen);
@@ -47,6 +51,7 @@ function Sidebar( {childToParent} )
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
 	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
+	  {console.log(open)}
       <div
         className={
           "bg-gray-800 text-gray-100 medium_l:hidden relative " + (open ? " hidden" : "")

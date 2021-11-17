@@ -52,7 +52,7 @@ export function SingleExp() {
         />
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg " + (!sidebarState ? "z-m1 " : " ")}>
+      <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg " + (!sidebarState ? "small:z-m1 " : " ")}>
         {/* above of center */}
         {loading ? (
           <Spinner />
