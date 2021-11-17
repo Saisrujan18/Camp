@@ -10,7 +10,7 @@ import { yellow } from "@mui/material/colors";
 function NewExperience(props) 
 {
     // Variables required for the popup are declared over here.
-    const initString = {"blocks":[{"key":"8r134","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
+    const initString = {"blocks":[{"key":"8r134","text":" ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
     const [tabNumber, setTabNumber] = useState(0);
     const [exp, setExp] = useState({
         title: "",

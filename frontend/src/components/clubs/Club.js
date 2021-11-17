@@ -17,7 +17,7 @@ import { useAuth } from '../../authContext/AuthContext';
 export default function Club(props) 
 {
 	let {user,loading}=useAuth();
-
+	const [sidebarState, setSidebarState] = useState(false);
 	const [postsData,updatePosts]=useState([]);
 	const [Loading,setLoading]=useState(true);
 	const [ownerData,setOwnerData]=useState([]);
@@ -94,13 +94,19 @@ export default function Club(props)
 					.catch((err) => console.log(err));
 	  };
 
+	  //callback
+	const childToParent = (open) => {
+		setSidebarState(open); 
+	}
+
+
 	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub} />);}
 
     const renderContent = ()=>{
 		return(
 		!popup &&
 		(<div className="flex flex-row h-screen">
-            <Sidebar/>
+            <Sidebar childToParent={childToParent}/>
             <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
 			
 				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">

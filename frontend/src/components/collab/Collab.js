@@ -12,7 +12,7 @@ import BackImg from "../experiences/images/Portrait.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -71,11 +71,15 @@ export function Collab() {
     setNegative(flag)
   }
 
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open);
+  }
+
   return (
     <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
       <SidebarH hasEditor={true} handleEditor={setEditor}/>
-
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
@@ -83,7 +87,7 @@ export function Collab() {
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full my-2 rounded-lg shadow-lg bg-white">
+            <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white z-m30 ">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
@@ -143,14 +147,13 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 mx-2 mb-4 bg-white">
+              <main className="flex-1 p-2 bg-white ">
+              {/* <main className="flex-1 mx-2 mb-4 bg-white"> */}
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
                   Description{" "}
                 </h1>
-                
-                
 
                 {/* {collabData} */}
                 <div

@@ -17,7 +17,7 @@ import Parser from 'html-react-parser'
 
 function CollabHome() {
   // All the neccessary useState variables are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const [collabData, setCollabData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
@@ -98,6 +98,11 @@ function CollabHome() {
       )
     );
   };
+
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
+  }
 
   
   function max(l,r)

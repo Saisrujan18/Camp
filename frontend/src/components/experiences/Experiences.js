@@ -12,12 +12,13 @@ import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
 import Backdrop from '@mui/material/Backdrop';
+import Sidebar from "../../components/Sidebar.js"
 
 import Edit from "../Edit";
 
 function Experiences() {
   // All the neccessary variables are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const [expData, setexpData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
@@ -42,6 +43,11 @@ function Experiences() {
   function showPopup(e) {
     setVisibility(true);
     e.preventDefault();
+  }
+
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
   }
 
   // function handleClose() {

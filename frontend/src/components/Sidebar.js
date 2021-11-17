@@ -17,9 +17,9 @@ export default function Sidebar(props)
 
 	useLayoutEffect(() => {
 		function updateOpen() {
-			if (window.innerWidth < 1100) {
-			set_Open(false);
-			} else set_Open(true);
+			if (window.innerWidth < 1100)
+        set_Open(false);
+			else set_Open(true);
 		}
 
 		window.addEventListener("resize", updateOpen);
@@ -46,8 +46,9 @@ export default function Sidebar(props)
 	}
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
-	<div className="absolute medium_l:relative min-h-screen medium_l:flex z-100 ">
+	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
+	  {console.log(open)}
       <div
         className={
           "bg-gray-800 text-gray-100 medium_l:hidden relative " + (open ? " hidden" : "")

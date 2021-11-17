@@ -6,11 +6,12 @@ import { TextField } from "@mui/material";
 function NewCollab(props) {
 
 	// Variables required for the popup are declared over here.
-    const [tabNumber, setTabNumber] = useState(0);
+	const initString = {"blocks":[{"key":"8r134","text":" ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
+	const [tabNumber, setTabNumber] = useState(0);
     const [collab, setCollab] = useState({
         title: "",
         author: "",
-        description: "",
+        description: JSON.stringify(initString),
         links: "",
     });
 	//  Handles the change in content of the collab.
@@ -113,7 +114,7 @@ function NewCollab(props) {
 			<div className="w-full h-full justify-between flex flex-col">
 
 				<TextField id="standard-basic" label="Name of Author" variant="standard" onChange={handleChange} value={collab.author} name="author" autoComplete="off"/>
-				<TextField
+				{/* <TextField
 					id="standard-multiline-static"
 					label="Description"
 					multiline
@@ -123,7 +124,7 @@ function NewCollab(props) {
 					name="description"
 					value={collab.description}
 					onChange={handleChange}
-				/>
+				/> */}
 				{/* <input
 					className="w-full mx-1 my-2"
 					name="author"

@@ -13,9 +13,11 @@ import Edit from "../Edit";
 import draftToHtml from 'draftjs-to-html';
 import Parser from 'html-react-parser'
 import BackImg from "./images/Portrait.jpg"
+import Sidebar from "../../components/Sidebar.js"
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
+  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -54,7 +56,7 @@ export function SingleExp() {
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full my-2 rounded-lg shadow-lg bg-white">
+          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full inset-y-0 inset-x-0 shadow-xl bg-white ">
             <div className="mx-3 ">
               {/* The Whole Project Description */}
               <div>
@@ -86,7 +88,7 @@ export function SingleExp() {
             </div>
 
             {/* below of center */}
-            <main className="flex-1 mx-2 mb-4 bg-white">
+            <main className="flex-1 p-4 bg-white ">
               <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                 {" "}
                 Description{" "}

@@ -1,0 +1,7 @@
+.expCard{
+    transition: transform 300ms;
+}
+
+.expCard:hover{
+    transform: scale(1.02);
+}
