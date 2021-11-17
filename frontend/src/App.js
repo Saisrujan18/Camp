@@ -22,6 +22,7 @@ import {SingleExp} from "./components/experiences/SingleExp";
 import Club from "./components/clubs/Club";
 import Sidebar from './components/Sidebar';
 import Profile from './components/profile/Profile';
+import AboutUs from './components/aboutUs/AboutUs';
 
 export const SidebarH = () => <Sidebar />
 
@@ -50,6 +51,7 @@ function App() {
 				<ProtectedRoute exact path="/Testing3D" component={homepage_anim}/>
 
 				<ProtectedRoute exact path="/profile" component={Profile}/>
+				<ProtectedRoute exact path="/aboutUs" component={AboutUs}/>
 
 				{/*Routing to different pages of the webapp is done over here.*/}
 
