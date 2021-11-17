@@ -39,7 +39,6 @@ export function SingleExp() {
   function setEditor(flag)
   {
     setNegative(flag)
-    console.log(editorNegative)
   }
   // Renders the content of the whole screen.
   return (
@@ -81,7 +80,7 @@ export function SingleExp() {
                       
                     </button>
                   </div>
-                  <hr className="bg-whit h-0.5 border-none rounded-sm"></hr>
+                  <hr className="bg-whit h-0.5 border-none rounded-sm"/>
                 </div>
               </div>
             </div>

@@ -44,7 +44,6 @@ export default function Sidebar(props)
 		if(props.hasEditor)
 			props.handleEditor(!open)
 	}
-  console.log(props);
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
 	<div className="absolute medium_l:relative min-h-screen medium_l:flex z-100 ">

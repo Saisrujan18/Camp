@@ -69,7 +69,6 @@ export function Collab() {
   function setEditor(flag)
   {
     setNegative(flag)
-    console.log(editorNegative)
   }
 
   return (
@@ -88,18 +87,18 @@ export function Collab() {
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div>
-                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 "><u>{collabData.author}</u></div>
+                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 ">{collabData.author}</div>
                   <div className="rounded-lg">
                     <h1 className="text-3xl md:text-4xl text-justify font-bold my-14">
-                      <u>{collabData.title}</u>
+                      {collabData.title}
                     </h1>
                     
                     {/* Inpage navigation */}
-                    <div className="flex cursor-pointer">
+                    <div className="flex flex-row">
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer"  +
+                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer "  +
                           (showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -113,7 +112,7 @@ export function Collab() {
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer" +
+                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer " +
                           (showMembers ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -140,7 +139,7 @@ export function Collab() {
                     </div>
                   </div>
 
-                  <hr className="bg-whit h-0.5 border-none rounded-sm"></hr>
+                  <hr className="bg-whit h-0.5 border-none rounded-sm"/>
                 </div>
               </div>
 
@@ -148,7 +147,7 @@ export function Collab() {
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
-                  <u>Description{" "}</u>
+                  Description{" "}
                 </h1>
                 
                 
@@ -160,7 +159,6 @@ export function Collab() {
                     (showInfo ? "" : "hidden")
                   }
                 >
-                  <hr></hr>
                   <Edit 
                     sendTo = {"http://localhost:3001/api/collab/id"}
                     id = {id}
