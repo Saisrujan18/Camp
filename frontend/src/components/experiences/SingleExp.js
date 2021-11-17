@@ -44,12 +44,12 @@ export function SingleExp() {
 
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className=" overflow-y-auto flex-1  my-2 mr-2 rounded-r-lg bg-whit z-m10">
+      <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg z-m10">
         {/* above of center */}
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white">
+          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white z-m30 ">
             <div className="mx-3 ">
               {/* The Whole Project Description */}
               <div>
@@ -81,7 +81,7 @@ export function SingleExp() {
             </div>
 
             {/* below of center */}
-            <main className="flex-1 p-2 bg-white">
+            <main className="flex-1 mx-2 mb-4 bg-white">
               <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                 {" "}
                 Description{" "}

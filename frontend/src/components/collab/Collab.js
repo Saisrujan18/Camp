@@ -89,11 +89,11 @@ export function Collab() {
                     </h1>
                     
                     {/* Inpage navigation */}
-                    <div className="flex ">
+                    <div className="flex cursor-pointer">
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1  "  +
+                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer"  +
                           (showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -107,7 +107,7 @@ export function Collab() {
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 "  +
+                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer" +
                           (showMembers ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -139,6 +139,7 @@ export function Collab() {
               </div>
 
               <main className="flex-1 p-2 bg-white ">
+              {/* <main className="flex-1 mx-2 mb-4 bg-white"> */}
                 {/* Description*/}
                 <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                   {" "}
