@@ -81,7 +81,7 @@ export function Collab() {
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg "+ (!sidebarState ? "small:z-m1 " : " ")}>
+        <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg "+ (!sidebarState ? "z-m1 " : " ")}>
           {loading ? (
             <Spinner />
           ) : (
