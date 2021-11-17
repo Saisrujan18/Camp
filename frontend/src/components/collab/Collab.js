@@ -19,6 +19,7 @@ export function Collab() {
   const [collabData, setCollabData] = useState({});
   const [showInfo, setShowInfo] = useState(true);
   const [showMembers, setShowMembers] = useState(false);
+  const [editorNegative, setNegative] =useState(false);
 
   // Fetching all the data required to show in this page
   useEffect(() => {
@@ -65,16 +66,21 @@ export function Collab() {
       })
       .catch((err) => console.log(err));
   }
+  function setEditor(flag)
+  {
+    setNegative(flag)
+    console.log(editorNegative)
+  }
 
   return (
     <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
-      <SidebarH />
+      <SidebarH hasEditor={true} handleEditor={setEditor}/>
 
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+      <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
           {loading ? (
             <Spinner />
           ) : (

@@ -23,7 +23,7 @@ import Club from "./components/clubs/Club";
 import Sidebar from './components/Sidebar';
 import Profile from './components/profile/Profile';
 
-export const SidebarH = () => <Sidebar />
+export const SidebarH = (props) => <Sidebar hasEditor={props.hasEditor} handleEditor={props.handleEditor}/>
 
 function App() {
   return (

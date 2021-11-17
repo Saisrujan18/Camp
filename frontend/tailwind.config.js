@@ -62,7 +62,10 @@ module.exports = {
        '3': '3 3 0%',
     },
     zIndex:{
-      'negaive': -1,
+      '-1': -1,
+      '-10': -10,
+      '-20': -20,
+      '-30': -30
     },
     screens:{
       'sm-custom':{'min': '300px', 'max': '767px'},

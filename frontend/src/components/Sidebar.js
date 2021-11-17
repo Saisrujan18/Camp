@@ -5,7 +5,7 @@ import { useAuth } from "../authContext/AuthContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-function Sidebar() 
+export default function Sidebar(props) 
 {
 	let { logOut } = useAuth();
 	const history = useHistory();
@@ -18,8 +18,8 @@ function Sidebar()
 	useLayoutEffect(() => {
 		function updateOpen() {
 			if (window.innerWidth < 1100) {
-			setOpen(false);
-			} else setOpen(true);
+			set_Open(false);
+			} else set_Open(true);
 		}
 
 		window.addEventListener("resize", updateOpen);
@@ -38,7 +38,13 @@ function Sidebar()
 		logOut();
 		history.replace("/");
 	}
-
+	function set_Open(flag)
+	{
+		setOpen(flag)
+		if(props.hasEditor)
+			props.handleEditor(!open)
+	}
+  console.log(props);
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
 	<div className="absolute medium_l:relative min-h-screen medium_l:flex z-100 ">
@@ -50,7 +56,7 @@ function Sidebar()
       >
         <button
           className="bg-black p-2 focus:outline-none hover:bg-gray-700 rounded absolute top-0"
-          onClick={() => setOpen(!open)}
+          onClick={() => set_Open(!open)}
         >
           <svg
             className="h-6"
@@ -88,7 +94,7 @@ function Sidebar()
 
           <button
             className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
-            onClick={() => setOpen(!open)}
+            onClick={() => set_Open(!open)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -202,6 +208,3 @@ function Sidebar()
     </div>
   );
 }
-
-export default Sidebar;
-

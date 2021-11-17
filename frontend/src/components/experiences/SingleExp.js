@@ -22,6 +22,7 @@ export function SingleExp() {
 
   const [expData, setExpData] = useState({});
   const [showInfo, setShowInfo] = useState(true);
+  const [editorNegative, setNegative] =useState(false);
 
   // Fetching all the neccessary data
   
@@ -35,16 +36,21 @@ export function SingleExp() {
       .catch((err) => console.log(err));
   }, []);
 
+  function setEditor(flag)
+  {
+    setNegative(flag)
+    console.log(editorNegative)
+  }
   // Renders the content of the whole screen.
   return (
     // total screen
     <div className="h-screen flex flex-row">
       {/* left sidebar */}
-      <SidebarH />
+      <SidebarH hasEditor={true} handleEditor={setEditor}/>
 
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+      <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
         {/* above of center */}
         {loading ? (
           <Spinner />
