@@ -5,7 +5,7 @@ import { useAuth } from "../authContext/AuthContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-function Sidebar( {childToParent} ) 
+export default function Sidebar(props) 
 {
 	let { logOut } = useAuth();
 	const history = useHistory();
@@ -17,13 +17,9 @@ function Sidebar( {childToParent} )
 
 	useLayoutEffect(() => {
 		function updateOpen() {
-			if (window.innerWidth < 1100) {
-				handleCallBack();
-				setOpen(false);
-			} else {
-				handleCallBack();
-				setOpen(true);
-			}
+			if (window.innerWidth < 1100)
+        set_Open(false);
+			else set_Open(true);
 		}
 
 		window.addEventListener("resize", updateOpen);
@@ -42,11 +38,12 @@ function Sidebar( {childToParent} )
 		logOut();
 		history.replace("/");
 	}
-
-	function handleCallBack(){
-		childToParent(open);
+	function set_Open(flag)
+	{
+		setOpen(flag)
+		if(props.hasEditor)
+			props.handleEditor(!open)
 	}
-
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
 	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
@@ -59,7 +56,7 @@ function Sidebar( {childToParent} )
       >
         <button
           className="bg-black p-2 focus:outline-none hover:bg-gray-700 rounded absolute top-0"
-          onClick={() => {setOpen(!open); handleCallBack();}}
+          onClick={() => set_Open(!open)}
         >
           <svg
             className="h-6"
@@ -97,7 +94,7 @@ function Sidebar( {childToParent} )
 
           <button
             className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
-            onClick={() => {setOpen(!open); handleCallBack();}}
+            onClick={() => set_Open(!open)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -211,6 +208,3 @@ function Sidebar( {childToParent} )
     </div>
   );
 }
-
-export default Sidebar;
-

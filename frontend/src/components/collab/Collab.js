@@ -19,6 +19,7 @@ export function Collab() {
   const [collabData, setCollabData] = useState({});
   const [showInfo, setShowInfo] = useState(true);
   const [showMembers, setShowMembers] = useState(false);
+  const [editorNegative, setNegative] =useState(false);
 
   // Fetching all the data required to show in this page
   useEffect(() => {
@@ -65,6 +66,10 @@ export function Collab() {
       })
       .catch((err) => console.log(err));
   }
+  function setEditor(flag)
+  {
+    setNegative(flag)
+  }
 
   //callback
   const childToParent = (open) => {
@@ -74,14 +79,11 @@ export function Collab() {
   return (
     <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
-      <Sidebar
-        childToParent = {childToParent}
-      />
-
+      <SidebarH hasEditor={true} handleEditor={setEditor}/>
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg "+ (!sidebarState ? "z-m1 " : " ")}>
+      <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
           {loading ? (
             <Spinner />
           ) : (
@@ -96,11 +98,11 @@ export function Collab() {
                     </h1>
                     
                     {/* Inpage navigation */}
-                    <div className="flex cursor-pointer">
+                    <div className="flex flex-row">
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer"  +
+                          "text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer "  +
                           (showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -114,7 +116,7 @@ export function Collab() {
                       <div
                         to="/collab"
                         className={
-                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer" +
+                          "text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer " +
                           (showMembers ? "border-darkBlu" : "border-whit hover:border-gray-300")
                         }
                         onClick={() => {
@@ -141,7 +143,7 @@ export function Collab() {
                     </div>
                   </div>
 
-                  <hr className="bg-whit h-0.5 border-none rounded-sm"></hr>
+                  <hr className="bg-whit h-0.5 border-none rounded-sm"/>
                 </div>
               </div>
 
@@ -160,17 +162,12 @@ export function Collab() {
                     (showInfo ? "" : "hidden")
                   }
                 >
-                  <div className="">
-                    <Edit 
-                      sendTo = {"http://localhost:3001/api/collab/id"}
-                      id = {id}
-                      data = {collabData}
-                      turn = {0}
-                      style = {{
-                        backgroundColor: 'lightblue'
-                      }}
-                    />
-                    </div>
+                  <Edit 
+                    sendTo = {"http://localhost:3001/api/collab/id"}
+                    id = {id}
+                    data = {collabData}
+                    turn = {0}
+                  />
                 </div>
 
                 {/* Members */}

@@ -24,6 +24,7 @@ export function SingleExp() {
 
   const [expData, setExpData] = useState({});
   const [showInfo, setShowInfo] = useState(true);
+  const [editorNegative, setNegative] =useState(false);
 
   // Fetching all the neccessary data
   
@@ -37,22 +38,20 @@ export function SingleExp() {
       .catch((err) => console.log(err));
   }, []);
 
-  //callback
-  const childToParent = (open) => {
-    setSidebarState(open); 
+  function setEditor(flag)
+  {
+    setNegative(flag)
   }
-
   // Renders the content of the whole screen.
   return (
     // total screen
-    <div className="h-screen flex flex-row ">
-      {/* left sidebar */ }
-        <Sidebar 
-          childToParent = {childToParent}
-        />
+    <div className="h-screen flex flex-row">
+      {/* left sidebar */}
+      <SidebarH hasEditor={true} handleEditor={setEditor}/>
+
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg " + (!sidebarState ? "z-m1 " : " ")}>
+      <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
         {/* above of center */}
         {loading ? (
           <Spinner />
@@ -83,7 +82,7 @@ export function SingleExp() {
                       
                     </button>
                   </div>
-                  <hr className="bg-whit h-0.5 border-none rounded-sm"></hr>
+                  <hr className="bg-whit h-0.5 border-none rounded-sm"/>
                 </div>
               </div>
             </div>
