@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import Sidebar from "../Sidebar";
 import axios from "axios";
 import { useAuth } from "../../authContext/AuthContext";
 import "./Collab.css";
@@ -12,7 +11,6 @@ import BackImg from "../experiences/images/Portrait.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
-  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);

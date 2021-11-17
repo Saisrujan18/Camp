@@ -17,7 +17,6 @@ import Sidebar from "../../components/Sidebar.js"
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
-  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);

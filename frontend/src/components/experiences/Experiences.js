@@ -12,19 +12,18 @@ import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
 import Backdrop from '@mui/material/Backdrop';
-import Sidebar from "../../components/Sidebar.js"
 
 import Edit from "../Edit";
 
 function Experiences() {
   // All the neccessary variables are declared over here.
-  const [sidebarState, setSidebarState] = useState(false);
   const [expData, setexpData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
   const history = useHistory();
   const [curr,setCurr]=useState(0);
   const [len,setLen]=useState(0);
+  const [editorNegative, setNegative] =useState(false);
 
   // Fetching all the content at the beggining itself.
   useEffect(() => {
@@ -124,13 +123,17 @@ function Experiences() {
     let temp=min(curr+1,(len-len%9)/9);
     setCurr(temp);
   }
+  function setEditor(flag)
+  {
+    setNegative(flag)
+  }
   // Renders the content if the popup visibility is false.
   const renderContent = () => {
     return (
       (
         <div className="h-screen flex flex-row">
-          <SidebarH hasEditor={false}/>
-          <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+          <SidebarH hasEditor={true} handleEditor={setEditor}/>
+          <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
             <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
             
             <div className="flex-grow"></div>

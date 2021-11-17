@@ -7,7 +7,6 @@ import { SidebarH } from '../../App';
 
 export default function Profile() 
 {
-    const [sidebarState, setSidebarState] = useState(false);
     let {user,loading} =useAuth();
     const [userData,setUserData]=useState({});
     const [isLoading,setLoading]=useState(true);
@@ -24,11 +23,8 @@ export default function Profile()
 
     return (
         <div className="h-screen flex flex-row ">
-            <div>
-                <SidebarH hasEditor={false}/>
-            </div>
-            
-            <div className={"flex-1 bg-whit  md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2  w-1/2 max-h-full " + (!sidebarState? "z-m10" : " ")}>
+            <SidebarH hasEditor={false}/>
+            <div className={"flex-1 bg-whit  md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2  w-1/2 max-h-full"}>
                 <Avatar />
            </div>
         </div>

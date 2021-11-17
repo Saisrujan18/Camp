@@ -17,7 +17,6 @@ import { SidebarH } from '../../App';
 export default function Club(props) 
 {
 	let {user,loading}=useAuth();
-	const [sidebarState, setSidebarState] = useState(false);
 	const [postsData,updatePosts]=useState([]);
 	const [Loading,setLoading]=useState(true);
 	const [ownerData,setOwnerData]=useState([]);

@@ -18,7 +18,6 @@ import InputBase from "@mui/material/InputBase";
 
 export default function AddNewEvent(props) 
 {
-	const [sidebarState, setSidebarState] = useState(false);
 	const [des, setDes] = useState();
 	const [file, setFile] = useState();
 	const [imgSrc, setImgSrc] = useState("");
