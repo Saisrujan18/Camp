@@ -7,6 +7,7 @@ import Avatar from './Avatar';
 
 export default function Profile() 
 {
+    const [sidebarState, setSidebarState] = useState(false);
     let {user,loading} =useAuth();
     const [userData,setUserData]=useState({});
     const [isLoading,setLoading]=useState(true);
@@ -21,10 +22,18 @@ export default function Profile()
         //     .catch((err)=>console.log(err))
     },[])
 
+    //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
+  }
+
     return (
-        <div className="flex flex-row">
-            <Sidebar/>
-            <div className="flex-grow bg-whit  md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2  w-screen-lg max-h-full">
+        <div className="h-screen flex flex-row ">
+            <div>
+                <Sidebar childToParent={childToParent}/>
+            </div>
+            
+            <div className={"flex-1 bg-whit  md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2  w-1/2 max-h-full " + (!sidebarState? "z-m10" : " ")}>
                 <Avatar />
            </div>
         </div>

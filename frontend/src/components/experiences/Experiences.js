@@ -12,12 +12,13 @@ import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
 import Backdrop from '@mui/material/Backdrop';
+import Sidebar from "../../components/Sidebar.js"
 
 import Edit from "../Edit";
 
 function Experiences() {
   // All the neccessary variables are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const [expData, setexpData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
@@ -42,6 +43,11 @@ function Experiences() {
   function showPopup(e) {
     setVisibility(true);
     e.preventDefault();
+  }
+
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
   }
 
   // function handleClose() {
@@ -135,7 +141,7 @@ function Experiences() {
     return (
       (
         <div className="h-screen flex flex-row">
-          <SidebarH />
+          <Sidebar childToParent={childToParent}/>
           <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
             <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
             

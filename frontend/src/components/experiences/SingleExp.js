@@ -13,9 +13,11 @@ import Edit from "../Edit";
 import draftToHtml from 'draftjs-to-html';
 import Parser from 'html-react-parser'
 import BackImg from "./images/Portrait.jpg"
+import Sidebar from "../../components/Sidebar.js"
 
 export function SingleExp() {
   //  ALl the neccessary variables are declared over here.
+  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -35,21 +37,27 @@ export function SingleExp() {
       .catch((err) => console.log(err));
   }, []);
 
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
+  }
+
   // Renders the content of the whole screen.
   return (
     // total screen
-    <div className="h-screen flex flex-row">
-      {/* left sidebar */}
-      <SidebarH />
-
+    <div className="h-screen flex flex-row ">
+      {/* left sidebar */ }
+        <Sidebar 
+          childToParent = {childToParent}
+        />
       {/* Loads the spinner if its still loading or else rendering the content */}
 
-      <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg z-m10">
+      <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg " + (!sidebarState ? "z-m1 " : " ")}>
         {/* above of center */}
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full top-0 inset-x-0 shadow-xl bg-white z-m30 ">
+          <div className="flex flex-col md:max-w-3xl sm:max-w-2xl mx-auto pt-1 h-full inset-y-0 inset-x-0 shadow-xl bg-white ">
             <div className="mx-3 ">
               {/* The Whole Project Description */}
               <div>
@@ -81,7 +89,7 @@ export function SingleExp() {
             </div>
 
             {/* below of center */}
-            <main className="flex-1 mx-2 mb-4 bg-white">
+            <main className="flex-1 p-4 bg-white ">
               <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
                 {" "}
                 Description{" "}

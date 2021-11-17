@@ -12,7 +12,7 @@ import BackImg from "../experiences/images/Portrait.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const { user } = useAuth();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -66,15 +66,22 @@ export function Collab() {
       .catch((err) => console.log(err));
   }
 
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
+  }
+
   return (
     <div className="h-screen flex flex-row">
       {/* Side bar appears on the left as default.*/}
-      <SidebarH />
+      <Sidebar
+        childToParent = {childToParent}
+      />
 
       {/* If the data is being processed we render a loading spinner */}
       {/* Or else we show the content of the page */}
 
-        <div className=" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg z-m10">
+        <div className={" overflow-y-auto flex-1 bg-whit my-2 mr-2 rounded-r-lg "+ (!sidebarState ? "z-m1 " : " ")}>
           {loading ? (
             <Spinner />
           ) : (

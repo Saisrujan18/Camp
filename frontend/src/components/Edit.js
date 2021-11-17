@@ -41,14 +41,6 @@ function Edit( {sendTo, id, data, turn} ) {
         });
     }
 
-    const customeStyle = {
-        'hide' : {
-            backgroundColor: 'blue',
-            color: 'black',
-
-        }
-    }
-
     return (
         
         <div className="flex flex-col mb-10 ">
@@ -68,7 +60,6 @@ function Edit( {sendTo, id, data, turn} ) {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={onEditorStateChange}
-                    style = {customeStyle}
                 />
             {loading && <Spinner />}
             {!loading && mode == "readWrite" ? <div className="flex place-self-end ">

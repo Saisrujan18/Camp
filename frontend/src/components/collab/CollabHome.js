@@ -17,7 +17,7 @@ import Parser from 'html-react-parser'
 
 function CollabHome() {
   // All the neccessary useState variables are declared over here.
-
+  const [sidebarState, setSidebarState] = useState(false);
   const [collabData, setCollabData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popupVisible, setVisibility] = useState(false);
@@ -99,6 +99,11 @@ function CollabHome() {
     );
   };
 
+  //callback
+  const childToParent = (open) => {
+    setSidebarState(open); 
+  }
+
   
   function max(l,r)
   {
@@ -127,7 +132,7 @@ function CollabHome() {
     return (
       (
         <div className="h-screen flex flex-row">
-          <SidebarH />
+          <Sidebar childToParent={childToParent} />
           <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
           <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
             

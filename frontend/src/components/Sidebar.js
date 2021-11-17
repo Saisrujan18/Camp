@@ -5,7 +5,7 @@ import { useAuth } from "../authContext/AuthContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-function Sidebar() 
+function Sidebar( {childToParent} ) 
 {
 	let { logOut } = useAuth();
 	const history = useHistory();
@@ -39,9 +39,13 @@ function Sidebar()
 		history.replace("/");
 	}
 
+	function handleCallBack(){
+		childToParent(open);
+	}
+
   return (
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
-	<div className="absolute medium_l:relative min-h-screen medium_l:flex z-100 ">
+	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
       <div
         className={
@@ -50,7 +54,7 @@ function Sidebar()
       >
         <button
           className="bg-black p-2 focus:outline-none hover:bg-gray-700 rounded absolute top-0"
-          onClick={() => setOpen(!open)}
+          onClick={() => {setOpen(!open); handleCallBack();}}
         >
           <svg
             className="h-6"
@@ -88,7 +92,7 @@ function Sidebar()
 
           <button
             className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
-            onClick={() => setOpen(!open)}
+            onClick={() => {setOpen(!open); handleCallBack();}}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
