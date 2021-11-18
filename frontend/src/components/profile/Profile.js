@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { useAuth } from '../../authContext/AuthContext'
 import axios from 'axios';
 import Avatar from './Avatar';
+import Scene from './Scene'
 import { SidebarH } from '../../App';
 
 export default function Profile() 
@@ -10,6 +11,7 @@ export default function Profile()
     let {user,loading} =useAuth();
     const [userData,setUserData]=useState({});
     const [isLoading,setLoading]=useState(true);
+    const [isPlaying, setPlaying]=useState(false);
 
     useEffect(() => {
         // axios
@@ -21,12 +23,18 @@ export default function Profile()
         //     .catch((err)=>console.log(err))
     },[])
 
+    async function handleAnim()
+    {
+        console.log(`It was ${isPlaying}`)
+        setPlaying(!isPlaying)
+        console.log(`It is ${isPlaying} now`)
+    }
     return (
-        <div className="h-screen flex flex-row ">
-            <SidebarH hasEditor={false}/>
-            <div className={"flex-1 bg-whit  md:rounded-r-lg md:mr-2 my-2 sm-custom:rounded-lg sm-custom:mx-2  w-1/2 max-h-full"}>
-                <Avatar />
+        <div className="h-screen w-screen flex flex-row bg-black">
+            <div onMouseOver={handleAnim} onMouseOut={handleAnim} className={"bg-darkOrang m-4 w-1/4 h-1/2"}>
+                <Avatar isPlaying={isPlaying}/>
            </div>
+           <div className="flex flex-grow"/>
         </div>
     )
 }

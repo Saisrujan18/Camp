@@ -11,7 +11,7 @@ export default function Model({ ...props }) {
   });
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0, 0, -5]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+      <group position={[0, 0, -10]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <primitive object={nodes.mixamorig2Hips} />
         <skinnedMesh
           geometry={nodes.Ch22_Body.geometry}

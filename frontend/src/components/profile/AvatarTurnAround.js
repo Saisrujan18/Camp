@@ -6,12 +6,24 @@ export default function Model({ ...props }) {
   const { nodes, materials, animations } = useGLTF('/avatarTurnAround.glb')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
-    console.log(actions);
-    actions.turnaround.play();
+    if(props.isPlaying && !actions.turnaround.isRunning())
+    {
+        actions.turnaround.play();
+    }
+      else
+      actions.turnaround.stop();
   });
+
+  function handleClick(e)
+  {
+    console.log(e)
+    console.log('Avatar Clicked')
+    if(actions.turnaround.isRunning())
+      actions.turnaround.stop()
+  }
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+    <group onClick={(e)=>{handleClick(e)}} ref={group} {...props} dispose={null}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01} position={[0, 0, 0]}>
         <primitive object={nodes.Hips} />
         <skinnedMesh
           geometry={nodes.Erika_Archer_Body_Mesh.geometry}

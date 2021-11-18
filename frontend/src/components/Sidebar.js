@@ -48,8 +48,7 @@ export default function Sidebar(props)
     // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
 	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
-	  {console.log(open)}
-      <div
+	  <div
         className={
           "bg-gray-800 text-gray-100 medium_l:hidden relative " + (open ? " hidden" : "")
         }
