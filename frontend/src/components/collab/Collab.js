@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useAuth } from "../../authContext/AuthContext";
-import "./Collab.css";
 import Spinner from "../Spinner";
 import { SidebarH } from "../../App";
 import Edit from "../Edit";
-import BackImg from "../experiences/images/Portrait.jpg"
 
 export function Collab() {
   // All the useState variables that might be used are declared over here.

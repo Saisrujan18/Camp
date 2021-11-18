@@ -118,7 +118,7 @@ function CollabHome() {
   }
   function handleR()
   {
-    let temp=min(curr+1,(len-len%6)/6);
+    let temp=min(curr+1,(len-len%9)/9-(len%9===0?1:0));
     setCurr(temp);
   }
 

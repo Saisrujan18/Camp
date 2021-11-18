@@ -8,11 +8,9 @@ import { useParams } from "react-router";
 import { useAuth } from "../../authContext/AuthContext";
 import { SidebarH } from "../../App";
 import Spinner from "../Spinner";
-import "./Experiences.css";
 import Edit from "../Edit";
 import draftToHtml from 'draftjs-to-html';
 import Parser from 'html-react-parser'
-import BackImg from "./images/Portrait.jpg"
 import Sidebar from "../../components/Sidebar.js"
 
 export function SingleExp() {

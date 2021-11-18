@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import "./ExpCard.css"
+import "../Card.css"
 // A reusable card to the contents of different Experiences.
 export default function ExpCard(props) 
 {
@@ -10,7 +10,7 @@ export default function ExpCard(props)
   let cssAuthor="bg-red-400 mr-auto truncate text-xs text-white font-semibold rounded-full py-1 px-2 mb-1 "+selected
 	const { title, author, description, _id, navigate, type,company } = props;
     return (
-        <div className="card ml-1.5 mr-1.5 mt-1.5 mb-1.5 cursor-pointer expCard">
+        <div className="card ml-1.5 mr-1.5 mt-1.5 mb-1.5 cursor-pointer CarD">
           <div className="flex flex-col bg-white w-full h-full p-3 rounded-md shadow-md" onClick={() => navigate(_id)}>
             
             <div className="flex flex-row">
