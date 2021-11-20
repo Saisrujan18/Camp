@@ -12,8 +12,14 @@ module.exports = {
         darkBlu:"#4171E5",
         gre:"#54575B",
         darkOrang:"#FF5349",
-        orang:"#F86E25",
         darkOrang25:"#FF534940",
+        blackBlue:"#000010",
+
+        gree:"#10CF40",
+        re:"#CD0010",
+        purpl:"#8000A3",
+        orang:"#F86E25",
+
 
         whit80:"#F2F4F9CC",
         darkBlu80:"#4171E5CC",
@@ -44,12 +50,14 @@ module.exports = {
       },
       height:{
         'avatar-dp':'100px',
-        'avatar-dp-small':'70px'
+        'avatar-dp-small':'70px',
+        'avatar-display-home':'480px'
       },
       width:{
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
-        'post':'350px'
+        'post':'350px',
+        'avatar-display-home':'400px'
       }
     },
     flex:{
@@ -74,7 +82,22 @@ module.exports = {
       'medium':{'min': '1100px', 'max': '1599px'},
       'medium_l':{'min':'1100px'},
       'large':{'min': '1600px'},
+
+      // Only for Profile Page
+      'small_profile': {'min': '840px', 'max':'1249px'},
+      'medium_profile':{'min': '1250px', 'max': '1599px'},
+
       ...defaultTheme.screens
+    },
+    boxShadow:{
+      'glow':'0px 0px 6px 3px rgba(31, 81, 255, 0.3)',
+      'glow_b':'-4px -4px 6px 3px rgba(31, 81, 255, 0.2)',
+      'glow_w':'1px 1px 3px 2px rgba(0, 0, 150, 0.1)',
+      ...defaultTheme.boxShadow
+    },
+    blur:{
+      'custom': '25px',
+      ...defaultTheme.blur
     }
   },
   variants: {

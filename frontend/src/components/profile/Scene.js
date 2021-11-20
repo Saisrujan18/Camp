@@ -11,8 +11,8 @@ import Grid from "./Grid";
 export default function Avatar(props) {
 
   return (
-    <Canvas camera={{position:[1, 1, 2.5], rotation:[0, Math.PI, 0]}}>
-      {/* <Grid size={10}/> */}
+    <Canvas camera={{position:[1.2, 1.5, 3], fov:[75], rotation:[0, Math.PI, 0]}}>
+      <Grid size={10}/>
       <OrbitControls />
 
       <ambientLight intensity={0.1} />

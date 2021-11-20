@@ -25,7 +25,7 @@ export default function Model({ ...props }) {
   })
   return (
     <a.group ref={group} {...props} dispose={null} rotation={rotateCamera.rotate}>
-      <group position={[0, 0.01, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+      <group position={[0, -1, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.02}>
         <primitive object={nodes.Hips_vC_green} />
         <skinnedMesh
           geometry={nodes.viking_C.geometry}
