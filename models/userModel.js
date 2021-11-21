@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
     email: {type: String, require: true, unique: true}, 
-    avatar: {type: String},
+    avatar: {type: String,default:"default"},
     coins:{type:Number,default:0}
 });
   

@@ -4,11 +4,13 @@ import "./Home.css";
 import {BigTile} from "./AltTile"
 import fire from "../home/assets/Camp.png";
 import { Link } from 'react-router-dom';
-
 //  Neglect the files starting wuth "_" in the home folder
 // This page is the page that appears after loggining in
 // This page shows the all the different pages of webapp
 //  User can navigate through the webapp using this.
+
+
+
 
 export function AltHome() 
 {

@@ -51,17 +51,23 @@ function CollabHome() {
     // setCollabData(updatedCollabData);
     // // redirect to the post.
     setLoading(true);
-    await axios.post("http://localhost:3001/api/collab", collab);
-    await axios
-              .get("http://localhost:3001/api/collab")
-              .then((res) => {
-                    setCollabData(res.data);
-                    setLen(res.data.length);
-                    setCurr(0);
-                    setLoading(false);
-                  })
-              .catch((err) => console.log(err));
-  };
+
+    axios.post("http://localhost:3001/api/collab", collab)
+              .then((res)=>{
+                console.log(res)
+                axios
+                  .get("http://localhost:3001/api/collab")
+                  .then((res) => {
+                                setCollabData(res.data);
+                                setLen(res.data.length);
+                                setCurr(0);
+                                setLoading(false);
+                              })
+                          .catch((err) => console.log(err));
+              })
+              .catch((err)=>{console.lof(err)})
+    console.log("Fetched after inserting");
+    };
 
   // A function to render all the collaborations in the community
   const renderCard = (collab) => {

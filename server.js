@@ -35,11 +35,13 @@ async function dbConnect()
 const collabRouter = require ('./routers/collab');
 const expRouter=require('./routers/experiences');
 const clubsRouter = require('./routers/clubs');
+const userRouter = require('./routers/user');
 
 // use the routers 
 app.use ('/api/collab', collabRouter);
 app.use('/api/experiences',expRouter);
 app.use('/api/clubs', clubsRouter);
+app.use('/api/user',userRouter);
 
 // server listening on Port - PORT
 app.listen (PORT, () => console.log (`server running on ${PORT}`));

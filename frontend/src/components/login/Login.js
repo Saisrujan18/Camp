@@ -7,6 +7,7 @@ import bg from "../login/assets/BG.png"
 import { useAuth } from '../../authContext/AuthContext';
 import { useHistory } from 'react-router';
 import Spinner from '../Spinner';
+import axios from 'axios';
 
 const styles = 
 {
@@ -37,7 +38,10 @@ export function Login()
             await signInWithGoogle(); 
             // insert into the collection..
             console.log(auth.currentUser.email);
-            history.push("/home");
+            axios
+                .post("http://localhost:3001/api/user",(auth.currentUser.email))
+                .then((res) => {console.log(res);history.push("/home");})
+                .catch((err) => console.log(err));
         }
         catch(event){
             setLoading(false);

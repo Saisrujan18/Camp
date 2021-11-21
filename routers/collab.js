@@ -43,8 +43,10 @@ router.post("/id/join",(req,res)=>{
 // This adds a new collaboration to the database
 router.post("/", (req, res) => 
 {   
+    console.log("Once");
     // extracting the data from the request
     const collab = req.body;
+    console.log(collab);
 
     // creating a new document
     const newCollab = new CollabModel({
@@ -57,7 +59,7 @@ router.post("/", (req, res) =>
     // saving it.
     newCollab
         .save ()
-        .then (result => {console.log("New collab added");})
+        .then (result => {console.log("New collab added");res.json(result)})
         .catch (err => {
             console.log(err);
             return res.send ('Error while inserting collab');

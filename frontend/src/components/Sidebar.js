@@ -37,7 +37,7 @@ export default function Sidebar(props)
 	function handleLogOut()
 	{
 		logOut();
-		history.replace("/");
+		// history.replace("/");
 	}
 	function set_Open(flag)
 	{
@@ -59,7 +59,6 @@ export default function Sidebar(props)
 	}
 	
   return (
-
 	//Button
     <div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
