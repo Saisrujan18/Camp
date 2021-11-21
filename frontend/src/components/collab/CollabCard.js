@@ -1,5 +1,4 @@
 import React from 'react'
-import "../Card.css"
 // A resuable to show all the ongoing collaborations in the community.
 export default function CollabCard(props) 
 {
@@ -9,8 +8,8 @@ export default function CollabCard(props)
     let cssAuthor="bg-red-400 mr-auto truncate text-xs text-white font-semibold rounded-full py-1 px-2 mb-1 "+selected
     const { title, author, description, _id, navigate} = props;
     return (
-        <div className="card ml-1.5 mr-1.5 mt-1.5 mb-1.5 cursor-pointer CarD">
-        <div className="flex flex-col bg-white w-full h-full p-3 rounded-md shadow-md" onClick={() => navigate(_id)}>
+        <div className="card ml-2 mr-2 mt-1.5 mb-1.5 cursor-pointer transition duration-500 ease-in-out transform hover:scale-105">
+        <div className="flex flex-col bg-white w-full h-full p-3 rounded-md shadow-md hover:shadow-glow_db" onClick={() => navigate(_id)}>
           <div className={cssAuthor}>{author}</div>
           <div className="truncate text-xl font-bold">{title}</div> 
           <div className="flex-grow"></div>

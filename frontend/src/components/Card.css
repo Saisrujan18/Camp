@@ -1,9 +1,0 @@
-.CarD
-{
-    transition: transform 400ms;
-}
-
-.CarD:hover
-{
-    transform: scale(1.05);
-}

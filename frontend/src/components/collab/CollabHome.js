@@ -39,9 +39,9 @@ function CollabHome() {
   }, []);
 
   // Triggers the popup
-  function showPopup(e) {
+  function showPopup(event) {
     setVisibility(true);
-    e.preventDefault();
+    event.preventDefault();
   }
 
   // Handles the request of adding a new collaboration
@@ -85,7 +85,7 @@ function CollabHome() {
   const collabContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 gap-x-1">
         {collabData.map((collab,index) =>  index>=9*curr && index<9*curr+9 && renderCard(collab))}
       </div>
     );

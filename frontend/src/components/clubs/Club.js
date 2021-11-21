@@ -42,10 +42,10 @@ export default function Club(props)
 			.catch((err)=>console.log(err));
 	},[]);
 
-	function showPopup(e)
+	function showPopup(event)
 	{
 		setPopup(true);
-		e.preventDefault();
+		event.preventDefault();
 	}
 
 	const addButton = () => {

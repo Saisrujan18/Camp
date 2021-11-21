@@ -92,6 +92,8 @@ module.exports = {
     boxShadow:{
       'glow':'0px 0px 6px 3px rgba(31, 81, 255, 0.3)',
       'glow_b':'-4px -4px 6px 3px rgba(31, 81, 255, 0.2)',
+      'glow_sb':'1px 1px 4px 2px rgba(4,217,255,0.2)',
+      'glow_db':'3px 3px 1px 0.5px rgba(0,0,105,0.1)',
       'glow_w':'1px 1px 3px 2px rgba(0, 0, 150, 0.1)',
       ...defaultTheme.boxShadow
     },

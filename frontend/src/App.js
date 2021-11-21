@@ -24,7 +24,7 @@ import Sidebar from './components/Sidebar';
 import Profile from './components/profile/Profile';
 import AboutUs from './components/aboutUs/AboutUs';
 
-export const SidebarH = (props) => <Sidebar hasEditor={props.hasEditor} handleEditor={props.handleEditor}/>
+export const SidebarH = (props) => <Sidebar hasEditor={props.hasEditor} handleEditor={props.handleEditor} sidebarForSM={props.sidebarForSM}/>
 
 function App() {
   return (

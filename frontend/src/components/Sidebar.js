@@ -43,10 +43,13 @@ export default function Sidebar(props)
 		setOpen(flag)
 		if(props.hasEditor)
 			props.handleEditor(!open)
+		// if (window.innerWidth < 1100)
+		//     props.sidebarForSM()
 	}
   return (
-    // <div className="absolute medium_l:relative min-h-screen medium_l:flex" onKeyPress={escToClose}>
-	<div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
+
+	//Button
+    <div className="z-100 absolute medium_l:relative min-h-screen medium_l:flex ">
       {/* Top Bar */}
 	  <div
         className={
@@ -91,8 +94,7 @@ export default function Sidebar(props)
             <span className="text-black text-2xl font-extrabold">Camp</span>
           </a>
 
-          <button
-            className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
+          <button className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
             onClick={() => set_Open(!open)}
           >
             <svg

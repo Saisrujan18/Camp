@@ -39,9 +39,9 @@ export function Login()
             console.log(auth.currentUser.email);
             history.push("/home");
         }
-        catch(e){
+        catch(event){
             setLoading(false);
-            setError(e.message);
+            setError(event.message);
         }
     }
     

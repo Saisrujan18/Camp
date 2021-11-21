@@ -46,20 +46,20 @@ export default function AddNewEvent(props)
         });
     };
 
-	const handleToggle=(e) => 
+	const handleToggle=(event) => 
 	{
 		let temp={...post};
-		if(e.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
-		else if(e.target.name==="registrable"){temp.registrable=!temp.registrable;}
+		if(event.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
+		else if(event.target.name==="registrable"){temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
 
-	// const handleFileChange = async (e) => {
-	// 	await setFile(e.target.files[0])
+	// const handleFileChange = async (event) => {
+	// 	await setFile(event.target.files[0])
 	// 	console.log(file)
 	// }
-	const handleFileChange = (e) => {
-		setFile(e.target.files[0])
+	const handleFileChange = (event) => {
+		setFile(event.target.files[0])
 		console.log(file)
 		imageHandler()
 	}
@@ -96,7 +96,7 @@ export default function AddNewEvent(props)
 			</button>
 		);
 	}
-	function imageHandler(e)
+	function imageHandler(event)
 	{
 		const reader = new FileReader();
 		reader.onload = () =>{
