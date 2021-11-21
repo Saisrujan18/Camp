@@ -6,10 +6,8 @@ import { useAuth } from "../../authContext/AuthContext";
 
 
 import TextField from '@mui/material/TextField';
-import {
-    Publish
-} from "@material-ui/icons";
-import {AddAPhotoOutlined} from '@mui/icons-material';
+import {Publish} from "@material-ui/icons";
+import {AddAPhotoOutlined, UploadFileTwoTone} from '@mui/icons-material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
 import Spinner from "../Spinner";
@@ -89,7 +87,7 @@ export default function AddNewEvent(props)
 			<button className={"flex flex-row gap-x-2 block p-2 m-1 self-center font-bold rounded "
 				+(!post.hasImage?"hover:text-darkBlu hover:bg-gray-200 ":"text-darkBlu bg-gray-200 hover:text-black hover:bg-darkOrang25")} 
 				name="hasImage" onClick={handleToggle}>
-				<svg className="h-6 w-6 self-center">
+				<svg className="h-svg-icon-small w-svg-icon-small self-center">
                 	<AddAPhotoOutlined/>
               	</svg>
 				Add Image
@@ -195,8 +193,8 @@ return (
 					<div className="flex flex-col p-4 shadow-lg bg-whit mb-3 rounded-lg w-auto h-auto">
 							<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
 							<label for="image" className="h-auto w-48 cursor-pointer flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
-								<svg className="h-6 w-6 self-center">
-									<Publish/>
+								<svg className="h-svg-icon-small w-svg-icon-small self-center">
+									<UploadFileTwoTone/>
 								</svg>
 								Select from Files
 							</label>
@@ -215,7 +213,7 @@ return (
 				<button
 					className="flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
 					onClick={handleUpload}>
-					<svg className="h-6 w-6 self-center">
+					<svg className="h-svg-icon-small w-svg-icon-small self-center">
                 		<Publish/>
               		</svg>
 					Post

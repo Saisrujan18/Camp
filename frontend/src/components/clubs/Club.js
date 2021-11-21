@@ -52,7 +52,7 @@ export default function Club(props)
 		return (  
 			<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
 				onClick={showPopup}>
-				<svg className="h-6 w-6 self-center">
+				<svg className="h-svg-icon-small w-svg-icon-small self-center">
                 	<PostAdd/>
               	</svg>
 			</button>

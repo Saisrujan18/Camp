@@ -37,27 +37,34 @@ module.exports = {
       },
       minHeight:{
         'home-content':'75vh',
-        'home-title':'20vh'
+        'home-title':'20vh',
+        'new-collab-experience':'500px'
       },
       minWidth:{
-        'post-feed':'500px'
+        'post-feed':'500px',
+        'new-collab-experience':'500px'
       },
       maxWidth:{
           'post-feed':'800px'
       },
       maxHeight:{
-          'pic-preview':'300px'
+          'pic-preview':'300px',
+          'new-collab-experience':'600px'
       },
       height:{
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
-        'avatar-display-home':'480px'
+        'avatar-display-home':'480px',
+        'svg-icon-small':'25px',
+        'svg-icon':'40px'
       },
       width:{
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
         'post':'350px',
-        'avatar-display-home':'400px'
+        'avatar-display-home':'400px',
+        'svg-icon-small':'25px',
+        'svg-icon':'40px'
       }
     },
     flex:{

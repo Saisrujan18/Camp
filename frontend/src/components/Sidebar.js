@@ -27,13 +27,7 @@ export default function Sidebar(props)
 		updateOpen();
 		return () => window.removeEventListener("resize", updateOpen);
 	}, []);
-
-	// function escToClose(event)
-	// {
-	// 	if(event.key === 'Escape' && window.innerWidth < 1100)
-	// 		setOpen(open)
-	// 	event.preventDefault()
-	// }
+	
 	function handleLogOut()
 	{
 		logOut();
@@ -44,18 +38,6 @@ export default function Sidebar(props)
 		setOpen(flag)
 		if(props.hasEditor)
 			props.handleEditor(!open)
-	}
-	function menuToggle()
-	{
-		return(
-			<button
-				className={"block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded medium_l:hidden"+((open)?" hidden":"")}
-				onClick={() => set_Open(!open)} ref>
-				<svg className="h-6 w-6 self-center">
-					<Menu/>
-				</svg>
-			</button>
-		)
 	}
 	
   return (
