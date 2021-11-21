@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { AuthProvider } from "../../authContext/AuthContext";
+import { AuthProvider, useAuth } from "../../authContext/AuthContext";
 import { TextField } from "@mui/material";
 
 function NewCollab(props) {
@@ -8,9 +8,10 @@ function NewCollab(props) {
 	// Variables required for the popup are declared over here.
 	const initString = {"blocks":[{"key":"8r134","text":" ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
 	const [tabNumber, setTabNumber] = useState(0);
+	const {user} = useAuth();
     const [collab, setCollab] = useState({
         title: "",
-        author: "",
+        author: user.email,
         description: JSON.stringify(initString),
         links: "",
     });
@@ -113,7 +114,7 @@ function NewCollab(props) {
 			
 			<div className="w-full h-full justify-between flex flex-col">
 
-				<TextField id="standard-basic" label="Name of Author" variant="standard" onChange={handleChange} value={collab.author} name="author" autoComplete="off"/>
+				<TextField id="standard-basic" label="Name of Author" variant="standard" onChange={handleChange} value={collab.author} name="author" autoComplete="off" disabled/>
 				{/* <TextField
 					id="standard-multiline-static"
 					label="Description"

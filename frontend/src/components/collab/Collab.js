@@ -157,6 +157,7 @@ export function Collab() {
                     id = {id}
                     data = {collabData}
                     turn = {0}
+                    editable = {user.email === collabData.author}
                   />
                 </div>
 
