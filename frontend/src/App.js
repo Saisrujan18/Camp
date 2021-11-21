@@ -12,7 +12,6 @@ import {
 
 import {Login} from "./components/login/Login"
 import {AltHome} from "./components/home/AltHome";
-import {Home} from "./components/home/Home";
 
 import {homepage_anim} from  "./Animations/src/third"
 
