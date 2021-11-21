@@ -1,6 +1,5 @@
 const mongoose = require ('mongoose');
 
-
 // This is the schema for a collaboration
 
 const Schema = mongoose.Schema;

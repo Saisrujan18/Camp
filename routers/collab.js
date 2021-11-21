@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Importing the collaboration model
 const CollabModel = require("../models/collabModel");
-
 router.use(express.json());
 
 // here we are fetching the entire data (i.e all the collaborations)

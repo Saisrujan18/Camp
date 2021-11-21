@@ -9,6 +9,8 @@ const mongoose = require ('mongoose');
 app.use(cors());
 app.use(express.json());
 
+// Getting sensitive information from .env file.
+
 const MONGO_DB_URI = process.env.MONGO_DB_URI;
 const PORT = process.env.PORT || 3001;
 
@@ -27,10 +29,9 @@ async function dbConnect()
 	  );	  
 }
 
-// routers (more will be added in the coming releases)
 // 1. collabRouter -> this will handle requests to "url/api/collab"
 // 2. expRouter -> this will handle requests to "url/api/experiences"
-
+// 3. clubsRouter -> this will handle requests to "url/api/clubs"
 const collabRouter = require ('./routers/collab');
 const expRouter=require('./routers/experiences');
 const clubsRouter = require('./routers/clubs');
@@ -39,10 +40,6 @@ const clubsRouter = require('./routers/clubs');
 app.use ('/api/collab', collabRouter);
 app.use('/api/experiences',expRouter);
 app.use('/api/clubs', clubsRouter);
+
 // server listening on Port - PORT
 app.listen (PORT, () => console.log (`server running on ${PORT}`));
-
-/// CLUBS
-	// - DM
-	// - TM
-	// .....

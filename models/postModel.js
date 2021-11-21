@@ -2,6 +2,7 @@ const mongoose = require ('mongoose');
 
 // Same Post model across clubs
 // club field can be used for querying
+
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema ({

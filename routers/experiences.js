@@ -12,12 +12,6 @@ router.get("/", (req, res) => {
         .catch(err => console.log(err));  
 });
 
-// router.get("/id", (req, res) => {
-//     ExpModel.findById(id)
-
-// })
-
-// This for fetching data of a particular collaboration (given: id)
 
 router.post("/id", (req,res) => {
     console.log(req);
@@ -39,7 +33,7 @@ router.post("/id/edit", (req,res) => {
 }
 )
 
-// This adds a new collaboration to the database
+// This adds a new experience to the database
 router.post("/", (req, res) => 
 {   
     // extracting the data.

@@ -1,14 +1,19 @@
+/* eslint-disable no-unused-vars */
+
 import './App.css';
 import { AuthProvider } from './authContext/AuthContext';
+
 import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link
-  } from "react-router-dom";
+		BrowserRouter as Router,
+		Switch,
+		Route,
+		Link
+  	} from "react-router-dom";
 
 import {Login} from "./components/login/Login"
 import {AltHome} from "./components/home/AltHome";
+import {Home} from "./components/home/Home";
+
 import {homepage_anim} from  "./Animations/src/third"
 
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -39,6 +44,7 @@ function App() {
 					If user is not logged in ,then we redirect to the login page */}
 				
 				<ProtectedRoute exact path="/home" component={AltHome}/>
+
 				<ProtectedRoute exact path="/collab/:id" component={Collab}/>
 				<ProtectedRoute exact path="/collab" component={CollabHome}/>
 				<ProtectedRoute exact path="/experiences/:id" component={SingleExp}/>				

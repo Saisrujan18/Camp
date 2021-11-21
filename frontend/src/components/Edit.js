@@ -14,7 +14,8 @@ import Spinner from "./Spinner";
 // 3) should be able to delete/edit one.
 // this will take years now.
 
-function Edit( {sendTo, id, data, turn} ) {
+function Edit( {sendTo, id, data, turn,editable} )
+{
     const [mode, setMode] = useState("readOnly");
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(data.description))));
     // const [editorStateCollab, setEditorStateCollab] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(collabData.description))));
@@ -44,25 +45,29 @@ function Edit( {sendTo, id, data, turn} ) {
     return (
         
         <div className="flex flex-col mb-10 ">
-            {mode == "readOnly"?
-                <button className=" place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
+            {mode === "readOnly"?
+                <button className={" ml-auto place-self-end bg-gray-200 block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "}
                 onClick={() => {setMode("readWrite")}}> Edit
                 </button>
                 : ""
             }
+
             <div className={"flex flex-col flex-1 "}>
+                
                 <Editor
                     placeholder={"Start writing something...."}
-                    toolbarHidden={mode == "readOnly"}
-                    readOnly= {mode == "readOnly"}
+                    toolbarHidden={mode === "readOnly"}
+                    readOnly= {mode === "readOnly"}
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={onEditorStateChange}
                 />
+            
             {loading && <Spinner />}
-            {!loading && mode == "readWrite" ? <div className="flex place-self-end ">
+            
+            {!loading && mode === "readWrite" ? <div className="flex place-self-end ">
                 <button className=" block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded "
                 onClick = {() => {setMode("readOnly"); sendData()}}> Save </button> 
                 <button className="place-self-end block py-1 px-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"

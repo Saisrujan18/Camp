@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from "react";
-import { AuthProvider } from "../../authContext/AuthContext";
+import { AuthProvider,useAuth } from "../../authContext/AuthContext";
 import { EditorState, convertFromRaw } from 'draft-js';
 import { TextField } from "@mui/material";
 import { yellow } from "@mui/material/colors";
+
 // import CancelIcon from '@mui/icons-material/Cancel';
 
 function NewExperience(props) 
@@ -12,14 +13,18 @@ function NewExperience(props)
     // Variables required for the popup are declared over here.
     const initString = {"blocks":[{"key":"8r134","text":" ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}};
     const [tabNumber, setTabNumber] = useState(0);
+    const {user}=useAuth();
+
     const [exp, setExp] = useState({
         title: "",
-        author: "",
+        author:user.email,
         company:"",
         type:"",
         description: JSON.stringify(initString),
     });
+
     //  Handles the change in content of the experiences.
+
     const handleChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -30,6 +35,7 @@ function NewExperience(props)
         };
         });
     };
+
   
     // Closes the popup and renders the content of experiences page
     const closePopup = () => {props.visibility(false)};
@@ -53,6 +59,7 @@ function NewExperience(props)
             </button>
         );
     };
+
     // ALl the contents tab1 ,rendering and fucntionality are taken care of
     const tab1 = () => {
         return (
@@ -125,7 +132,7 @@ function NewExperience(props)
           {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" onChange={handleChange}/>
           <TextField id="filled-basic" label="Filled" variant="filled" /> */}
 
-          <TextField id="standard-basic" label="Author" variant="standard" onChange={handleChange} value={exp.author} name="author" autoComplete="off"/>
+          <TextField id="outlined-basic" label="Author" variant="filled" onChange={handleChange} value={exp.author} name="author" autoComplete="off" disabled/>
           {/* <textarea
             className="w-full mx-1 my-2"
             name="description"
@@ -171,7 +178,7 @@ function NewExperience(props)
     };
     // Rendering the popup
     return (
-        <div className="modalBackground flex flex-row w-2/5 h-1/2 rounded-lg my-2 bg-blue-300 ">
+        <div className="modalBackground flex flex-row w-3/5 h-2/3 rounded-lg my-2 bg-blue-300 ">
             <SideTabMini />
             {Tabs[tabNumber]}
         </div>

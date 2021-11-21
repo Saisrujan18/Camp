@@ -52,10 +52,10 @@ function Experiences() {
       .then((res) => {
             setexpData(res.data);
             setLen(res.data.length);
-            setCurr(0);
-            setLoading(false);
           })
-      .catch((err) => console.log(err));
+          .catch((err) => console.log(err));
+      setCurr(0);
+      setLoading(false);
     
   };
 
@@ -92,7 +92,7 @@ function Experiences() {
   const renderPopup = () => {
     return (
       popupVisible && (
-        <NewExperience visibility={setVisibility} addExp={addNewExp} />
+        <NewExperience visibility={setVisibility} addExp={addNewExp}/>
       )
     );
   };

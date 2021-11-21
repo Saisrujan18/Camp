@@ -3,16 +3,12 @@ const router = express.Router();
 
 // This handles all the requests to "url/api/club/?"
 
-// Importing the post model
-
 const PostModel = require("../models/postModel");
 const ClubModel = require("../models/clubModel");
 router.use(express.json());
 
-// here we are fetching the entire data (i.e all the post which belong to a club)
-// Clubs - DigitalWizards -> DW
-//       - TechManiacs -> TM
-//       - LL
+// Each router.get("/someclubname") fetches posts related to that club
+// and send that to the frontend.
 
 router.get("/digitalwizards", (req, res) => {
     PostModel.find({club: "digitalwizards"}).sort({createdAt: 'asc'})
@@ -47,7 +43,7 @@ router.get("/sargam", (req, res) => {
 
 // .....
 // This for fetching data of a particular post (given: id)
-router.post("/DW/id", (req,res) => {
+router.post("/digitalwizards/id", (req,res) => {
     const {id}=req.body;
     PostModel.findById(id)
              .then(response=>{res.json(response)})
@@ -55,7 +51,7 @@ router.post("/DW/id", (req,res) => {
 })
 
 // This will add the current user to the collaboration if not already.
-router.post("/DW/id/register",(req,res)=>{
+router.post("/digitalwizards/id/register",(req,res)=>{
     // extracting the data from the request
     const {email, id, registered}=req.body;
     // adding the new member
@@ -65,13 +61,14 @@ router.post("/DW/id/register",(req,res)=>{
                 .catch(err=>{console.log(err);})
 })
 
-// This adds a new collaboration to the database
+
+// This adds a new Post to the database
 router.post("/newpost", (req, res) => 
 {   
     // extracting the data from the request
     const post = req.body;
-    // creating a new document 
-    // TODO: add image field
+
+    // creating a new document file.
     const newPost = new PostModel({
         club: post.club,
         title: post.title, 
@@ -89,7 +86,4 @@ router.post("/newpost", (req, res) =>
         .then (result => {console.log("New Post added");res.json(result);})
         .catch (err => {console.log(err);});
 })
-
-
-
 module.exports=router;

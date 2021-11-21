@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 
-// Model for memberswho has the power to post .
+// Model for members who have the power to post .
 
 const Schema = mongoose.Schema;
 

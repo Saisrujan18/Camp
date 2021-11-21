@@ -31,6 +31,7 @@ export function SingleExp() {
       .then((res) => {
         setExpData(res.data);
         setLoading(false);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -91,12 +92,14 @@ export function SingleExp() {
                 Description{" "}
               </h1>
               <div className=' '>
+                { user.email===expData.author && 
                 <Edit 
                   sendTo = {"http://localhost:3001/api/experiences/id"}
                   id = {id}
                   data = {expData}
                   turn = {1}
                 />
+                }
               </div>
             </main>
           </div>
