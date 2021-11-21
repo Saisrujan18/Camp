@@ -83,7 +83,7 @@ function Experiences() {
   const expContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-2 gap-x-1">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-2 gap-x-1 overflow-y-auto">
         {expData.map((exp,index) =>  index>=9*curr && index<9*curr+9 && renderCard(exp))}
       </div>
     );
@@ -129,7 +129,7 @@ function Experiences() {
       (
         <div className="h-screen flex flex-row">
           <SidebarH hasEditor={true} handleEditor={setEditor}/>
-          <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
+          <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
             <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
               
               <div className="flex-grow"/>
