@@ -4,6 +4,7 @@ import fire from "../components/login/assets/Camp.png";
 import { useAuth } from "../authContext/AuthContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import {Menu} from '@mui/icons-material'
 
 export default function Sidebar(props) 
 {
@@ -43,9 +44,20 @@ export default function Sidebar(props)
 		setOpen(flag)
 		if(props.hasEditor)
 			props.handleEditor(!open)
-		// if (window.innerWidth < 1100)
-		//     props.sidebarForSM()
 	}
+	function menuToggle()
+	{
+		return(
+			<button
+				className={"block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded medium_l:hidden"+((open)?" hidden":"")}
+				onClick={() => set_Open(!open)} ref>
+				<svg className="h-6 w-6 self-center">
+					<Menu/>
+				</svg>
+			</button>
+		)
+	}
+	
   return (
 
 	//Button

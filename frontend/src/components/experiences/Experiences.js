@@ -8,7 +8,6 @@ import Spinner from "../Spinner";
 import NewExperience from "./NewExperience";
 import { SidebarH } from "../../App";
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
-import {Menu} from '@mui/icons-material'
 
 import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
@@ -23,9 +22,6 @@ function Experiences() {
   const [curr,setCurr]=useState(0);
   const [len,setLen]=useState(0);
   const [editorNegative, setNegative]=useState(false);
-
-  //To toggle sidebar for smaller screens true-open false-closed
-  const [sidebarToggle, setSidebarToggle]=useState(false);
 
   // Fetching all the content at the beggining itself.
   useEffect(() => {
@@ -101,11 +97,6 @@ function Experiences() {
     );
   };
 
-  function handleSidebarToggle()
-  {
-    setSidebarToggle(!sidebarToggle)
-  }
-
   function max(l,r)
   {
     if(l<=r)return r;
@@ -137,16 +128,10 @@ function Experiences() {
     return (
       (
         <div className="h-screen flex flex-row">
-          <SidebarH hasEditor={true} handleEditor={setEditor} sidebarForSM={handleSidebarToggle}/>
+          <SidebarH hasEditor={true} handleEditor={setEditor}/>
           <div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
             <div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
-              <button
-                className={"block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded medium_l:hidden"+((sidebarToggle)?" hidden":"")}
-                onClick={handleSidebarToggle}>
-                <svg className="h-6 w-6 self-center">
-                  <Menu/>
-                </svg>
-              </button>
+              
               <div className="flex-grow"/>
               <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
