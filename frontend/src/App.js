@@ -34,12 +34,10 @@ function App() {
   return (
     <AuthProvider>
 		<Router>
-
 			<Switch>
+				<Route exact path={["/", "/login"]}><Login /></Route>
 				
-				<Route exact path={["/login","/"]}><Login /></Route>
-				
-				{/* Protected Route checks whether a user is logined or not.
+				{/* Protected Route checks whether a user is logged in or not.
 					If user is not logged in ,then we redirect to the login page */}
 				
 				<ProtectedRoute exact path="/home" component={AltHome}/>
