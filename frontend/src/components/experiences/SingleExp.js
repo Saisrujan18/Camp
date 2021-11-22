@@ -85,7 +85,7 @@ export function SingleExp()
 						</div>
 
 				{/* below of center */}
-				<main className="flex-1 mx-4  my-2 flex flex-col">
+				<main className="flex-1 mx-4  my-2 flex flex-col overflow-y-auto ">
 					<h1 className={"rounded-full py-1 px-2  font-semibold m-1 m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
 					{" "}
 					Description{" "}

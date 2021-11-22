@@ -14,6 +14,15 @@ app.use(express.json());
 const MONGO_DB_URI = process.env.MONGO_DB_URI;
 const PORT = process.env.PORT || 3001;
 
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('frontend/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    } );
+}
+
 // Connecting to Data Base
 
 dbConnect().catch(err => console.log(err));

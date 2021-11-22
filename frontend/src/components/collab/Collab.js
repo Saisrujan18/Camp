@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
@@ -32,8 +33,8 @@ export function Collab() {
   // A resuable component to show the members of the collab.
   const getMember = (member) => {
     return (
-      <div className=" rounded-lg p-2 border ">
-        <p className=""> {member} </p>
+      <div className=" rounded-lg p-2 mt-1 border hover:bg-whit">
+        <p> {member} </p>
       </div>
     );
   };
@@ -138,7 +139,7 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 mx-4 my-2 flex flex-col">
+              <main className="flex-1 mx-4 my-2 flex flex-col overflow-y-auto">
                 {/* Description*/}
                 <h1 className={"rounded-full py-1 px-2  font-semibold m-1 m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
                   {" "}
@@ -148,7 +149,7 @@ export function Collab() {
                 {/* {collabData} */}
                 <div
                   className={
-                    " rounded-lg text-1xl my-2 p-2 font-sans " +
+                    "pl-2 bg-whit rounded-t-lg  " +
                     (showInfo ? "" : "hidden")
                   }
                 >
@@ -162,9 +163,10 @@ export function Collab() {
                 </div>
 
                 {/* Members */}
-                <div className={showMembers ? "space-y-1 m-2" : "hidden"}>
+                <div className={showMembers ? "space-y-2 m-2" : "hidden"}>
                   {collabData.members.map((member) => getMember(member))}
                 </div>
+                <div className={"flex-grow bg-white mb-2 rounded-b-lg "+(showInfo?"bg-whit":"bg-white")}></div>
               </main>
             </div>
           )}
