@@ -14,24 +14,19 @@ app.use(express.static('frontend/build'))
 
 // Getting sensitive information from .env file.
 
-const MONGO_DB_URI = "mongodb+srv://camp:camp@cluster0.oxtqr.mongodb.net/camp?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 3001;
-
-
 // Connecting to Data Base
 
-dbConnect().catch(err => console.log(err));
+mongoose.connect(process.env.MONGO_DB_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
-async function dbConnect() 
-{
-	await mongoose.connect (
-		MONGO_DB_URI,
-		{
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		}
-	  );	  
-}
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log('Database connected');
+});
 
 // 1. collabRouter -> this will handle requests to "url/api/collab"
 // 2. expRouter -> this will handle requests to "url/api/experiences"
