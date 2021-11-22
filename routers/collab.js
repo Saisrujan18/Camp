@@ -43,7 +43,6 @@ router.post("/id/join",(req,res)=>{
 // This adds a new collaboration to the database
 router.post("/", (req, res) => 
 {   
-    console.log("Once");
     // extracting the data from the request
     const collab = req.body;
     console.log(collab);
@@ -53,7 +52,8 @@ router.post("/", (req, res) =>
         title: collab.title, 
         author: collab.author,
         description: collab.description,
-        members: collab.members
+        members: collab.members,
+        email:collab.email
     });
     
     // saving it.
@@ -62,7 +62,6 @@ router.post("/", (req, res) =>
         .then (result => {console.log("New collab added");res.json(result)})
         .catch (err => {
             console.log(err);
-            return res.send ('Error while inserting collab');
         });
 })
 

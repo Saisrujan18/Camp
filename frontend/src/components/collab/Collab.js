@@ -78,13 +78,13 @@ export function Collab() {
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full my-2 rounded-lg shadow-lg bg-white">
+            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full mt-4 mb-2 rounded-lg shadow-lg bg-white ">
               <div className="mx-3">
                 {/* The Whole Project Description */}
-                <div>
-                  <div className=" rounded-lg text-sm md:text-lg m-2 my-4 ">{collabData.author}</div>
+                <div className="flex flex-col">
+                  <div className=" rounded-full py-1 px-2 text-sm font-semibold  text-white mr-auto mt-4 bg-green-400">{collabData.author}</div>
                   <div className="rounded-lg">
-                    <h1 className="text-3xl md:text-4xl text-justify font-bold my-14">
+                    <h1 className="text-2xl md:text-3xl text-justify font-bold my-6">
                       {collabData.title}
                     </h1>
                     
@@ -124,7 +124,7 @@ export function Collab() {
                       {!collabData.members.includes(user.email) && (
                         <button
                           className={
-                            "font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-500 transition duration-500 ease-in-out"
+                            "font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-200 transition duration-500 ease-in-out"
                           }
                           onClick={addMember}
                         >
@@ -138,9 +138,9 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 mx-2 mb-4 bg-white">
+              <main className="flex-1 mx-4 my-2 flex flex-col">
                 {/* Description*/}
-                <h1 className={"font-bold m-1 " + (showInfo ? "" : " hidden")}>
+                <h1 className={"rounded-full py-1 px-2  font-semibold m-1 m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
                   {" "}
                   Description{" "}
                 </h1>
@@ -157,7 +157,7 @@ export function Collab() {
                     id = {id}
                     data = {collabData}
                     turn = {0}
-                    editable = {user.email === collabData.author}
+                    editable = {user.email === collabData.email}
                   />
                 </div>
 

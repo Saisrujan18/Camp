@@ -45,19 +45,23 @@ function Experiences()
 
 	// Handles the request to add new experience
 	const addNewExp = async (exp) => {
-		// redirect to the post.
 		setLoading(true);
-		await axios.post("http://localhost:3001/api/experiences",exp);
 
-		await axios.get("http://localhost:3001/api/experiences")
-		.then((res) => {
-				setexpData(res.data);
-				setLen(res.data.length);
-			})
-			.catch((err) => console.log(err));
-		setCurr(0);
-		setLoading(false);
-		
+		axios.post("http://localhost:3001/api/experiences",exp)
+				.then((res)=>{
+						console.log(res)
+						axios
+							.get("http://localhost:3001/api/experiences")
+							.then((res) => {
+											setexpData(res.data);
+											setLen(res.data.length);
+											setCurr(0);
+											setLoading(false);
+										})
+							.catch((err) => console.log(err));
+				})
+				.catch((err)=>{console.log(err)})
+    	console.log("Fetched after inserting");
 	};
 
 	// A function to render the contents of all experiences

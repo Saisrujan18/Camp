@@ -46,16 +46,15 @@ router.post("/", (req, res) =>
         description: exp.description,
         type: exp.type,
         company:exp.company,
-        tags:exp.tags
+        email:exp.email
     });
     
     // saving it to the database
     newExp
         .save ()
-        .then (result => {console.log("New experience added");})
+        .then (result => {console.log("New experience added");res.json(result);})
         .catch (err => {
             console.log(err);
-            return res.send ('Error while inserting experience');
         });
 })
 

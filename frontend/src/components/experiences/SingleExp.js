@@ -66,7 +66,7 @@ export function SingleExp()
 									{/* Inpage navigation */}
 									<div className="flex">
 										<button
-											to="/collab"
+											to="/experiences"
 											className={
 											"text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
 											(showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
@@ -96,7 +96,7 @@ export function SingleExp()
 						id = {id}
 						data = {expData}
 						turn = {1}
-						editable = {user.email === expData.author}
+						editable = {user.email === expData.email}
 					/>
 					</div>
 					<div className="flex-grow bg-whit mb-2 rounded-b-lg "></div>

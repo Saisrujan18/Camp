@@ -82,6 +82,7 @@ function CollabHome() {
         title={collab.title}
         description={Parser(draftToHtml(JSON.parse(collab.description)))}
         author={collab.author}
+        email={collab.email}
       />
     );
   };
