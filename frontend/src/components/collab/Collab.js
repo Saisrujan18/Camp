@@ -24,6 +24,7 @@ export function Collab() {
       .get("api/collab/id", { params: {id} })
       .then((res) => {
         // receive the data.
+        console.log(res.data);
         setCollabData(res.data);
         setLoading(false);
       })
