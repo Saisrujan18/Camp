@@ -10,7 +10,7 @@ const path=require("path");
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static('client/build'))
+app.use(express.static('frontend/build'))
 
 // Getting sensitive information from .env file.
 
