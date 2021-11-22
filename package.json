@@ -5,7 +5,6 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "frontendinstall": "npm install --prefix frontend",
     "frontend-install": "npm install --perfix frontend",
     "start": "node server.js",
     "server": "nodemon server.js",

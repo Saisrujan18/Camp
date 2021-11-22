@@ -14,7 +14,7 @@ app.use(express.static('frontend/build'))
 
 // Getting sensitive information from .env file.
 
-const MONGO_DB_URI = process.env.MONGO_DB_URI;
+const MONGO_DB_URI = "mongodb+srv://camp:camp@cluster0.oxtqr.mongodb.net/camp?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 3001;
 
 
