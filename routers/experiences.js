@@ -13,9 +13,8 @@ router.get("/", (req, res) => {
 });
 
 
-router.post("/id", (req,res) => {
-    console.log(req);
-    const {id}=req.body;
+router.get("/id", (req,res) => {
+    const {id}=req.query;
     ExpModel.findById(id)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    
@@ -23,10 +22,7 @@ router.post("/id", (req,res) => {
 )
 
 router.post("/id/edit", (req,res) => {
-    console.log(req);
     const {id, data}=req.body;
-    console.log(id);
-    console.log(data);
     ExpModel.findByIdAndUpdate(id, data)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    

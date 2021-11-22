@@ -15,8 +15,8 @@ router.get("/", (req, res) => {
 });
 
 // This for fetching data of a particular collaboration (given: id)
-router.post("/id", (req,res) => {
-    const {id}=req.body;
+router.get("/id", (req,res) => {
+    const {id}=req.query;
     CollabModel.findById(id)
              .then(response=>{res.json(response)})
              .catch(err=>{console.log(err)})    

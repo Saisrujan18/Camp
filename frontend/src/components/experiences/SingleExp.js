@@ -27,7 +27,7 @@ export function SingleExp()
 
 	useEffect(() => {
 	axios
-		.post("api/experiences/id", { id })
+		.get("api/experiences/id", { params: {id} })
 		.then((res) => {
 		setExpData(res.data);
 		setLoading(false);

@@ -21,7 +21,7 @@ export function Collab() {
   // Fetching all the data required to show in this page
   useEffect(() => {
     axios
-      .post("api/collab/id", { id })
+      .get("api/collab/id", { params: {id} })
       .then((res) => {
         // receive the data.
         setCollabData(res.data);
