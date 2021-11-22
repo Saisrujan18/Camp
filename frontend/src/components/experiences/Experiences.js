@@ -47,11 +47,11 @@ function Experiences()
 	const addNewExp = async (exp) => {
 		setLoading(true);
 
-		axios.post("/api/experiences",exp)
+		axios.post("api/experiences",exp)
 				.then((res)=>{
 						console.log(res)
 						axios
-							.get("/api/experiences")
+							.get("api/experiences")
 							.then((res) => {
 											setexpData(res.data);
 											setLen(res.data.length);

@@ -27,7 +27,7 @@ export function SingleExp()
 
 	useEffect(() => {
 	axios
-		.post("/api/experiences/id", { id })
+		.post("api/experiences/id", { id })
 		.then((res) => {
 		setExpData(res.data);
 		setLoading(false);
@@ -92,7 +92,7 @@ export function SingleExp()
 					</h1>
 					<div className=' pl-2 bg-whit rounded-t-lg '>
 					<Edit 
-						sendTo = {"/api/experiences/id"}
+						sendTo = {"api/experiences/id"}
 						id = {id}
 						data = {expData}
 						turn = {1}
