@@ -13,116 +13,98 @@ import draftToHtml from 'draftjs-to-html'
 import Parser from 'html-react-parser'
 import Backdrop from '@mui/material/Backdrop';
 
-function Experiences() {
-  // All the neccessary variables are declared over here.
-  const [expData, setexpData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [popupVisible, setVisibility] = useState(false);
-  const history = useHistory();
-  const [curr,setCurr]=useState(0);
-  const [len,setLen]=useState(0);
-  const [editorNegative, setNegative]=useState(false);
+function Experiences() 
+{
+    // All the neccessary variables are declared over here.
+    const [expData, setexpData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [popupVisible, setVisibility] = useState(false);
+    const history = useHistory();
+    const [curr,setCurr]=useState(0);
+    const [len,setLen]=useState(0);
+    const [editorNegative, setNegative]=useState(false);
 
-  // Fetching all the content at the beggining itself.
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/experiences")
-      .then((res) => {
-        setexpData(res.data);
-        setLen(res.data.length);
-        setCurr(0);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+	// Fetching all the content at the beggining itself.
+	useEffect(() => {
+		axios
+		.get("http://localhost:3001/api/experiences")
+		.then((res) => {
+			setexpData(res.data);
+			setLen(res.data.length);
+			setCurr(0);
+			setLoading(false);
+		})
+		.catch((err) => console.log(err));
+	}, []);
 
-  // Triggers the popup visibility
-  function showPopup(event) {
-    setVisibility(true);
-    event.preventDefault();
-  }
+	// Triggers the popup visibility
+	function showPopup(event) {
+		setVisibility(true);
+		event.preventDefault();
+	}
 
-  // Handles the request to add new experience
-  const addNewExp = async (exp) => {
-    // redirect to the post.
-    setLoading(true);
-    await axios.post("http://localhost:3001/api/experiences",exp);
+	// Handles the request to add new experience
+	const addNewExp = async (exp) => {
+		// redirect to the post.
+		setLoading(true);
+		await axios.post("http://localhost:3001/api/experiences",exp);
 
-    await axios.get("http://localhost:3001/api/experiences")
-      .then((res) => {
-            setexpData(res.data);
-            setLen(res.data.length);
-          })
-          .catch((err) => console.log(err));
-      setCurr(0);
-      setLoading(false);
-    
-  };
+		await axios.get("http://localhost:3001/api/experiences")
+		.then((res) => {
+				setexpData(res.data);
+				setLen(res.data.length);
+			})
+			.catch((err) => console.log(err));
+		setCurr(0);
+		setLoading(false);
+		
+	};
 
-  // A function to render the contents of all experiences
-  const renderCard = (exp) => {
-    const navigate = (exp_id) => {
-      history.push("/experiences/" + exp_id);
-    };
+	// A function to render the contents of all experiences
+	const renderCard = (exp) => {
+		const navigate = (exp_id) => {
+		history.push("/experiences/" + exp_id);
+		};
 
-    return (
-      <ExpCard
-        _id={exp._id}
-        navigate={navigate}
-        title={exp.title}
-        company={exp.company}
-        description={Parser(draftToHtml(JSON.parse(exp.description)))}
-        type={exp.type}
-        author={exp.author}
-      />
-    );
-  };
+		return (
+		<ExpCard
+			_id={exp._id}
+			navigate={navigate}
+			title={exp.title}
+			company={exp.company}
+			description={Parser(draftToHtml(JSON.parse(exp.description)))}
+			type={exp.type}
+			author={exp.author}
+			email={exp.email}
+		/>
+		);
+	};
 
-  // Loads a spinner if the content is being fetched
-  // or else renders the content in a certain format.
-  const expContent = (loading) => {
-    if (loading) return <Spinner />;
-    return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-2 gap-x-1 overflow-y-auto">
-        {expData.map((exp,index) =>  index>=9*curr && index<9*curr+9 && renderCard(exp))}
-      </div>
-    );
-  };
-  // Renders the popup
-  const renderPopup = () => {
-    return (
-      popupVisible && (
-        <NewExperience visibility={setVisibility} addExp={addNewExp}/>
-      )
-    );
-  };
+	// Loads a spinner if the content is being fetched
+	// or else renders the content in a certain format.
+	const expContent = (loading) => {
+	if (loading) return <Spinner />;
+	return (
+		<div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-2 gap-x-1 overflow-y-auto">
+		{expData.map((exp,index) =>  index>=9*curr && index<9*curr+9 && renderCard(exp))}
+		</div>
+	);
+	};
+	// Renders the popup
+	const renderPopup = () => {
+	return (
+		popupVisible && (
+		<NewExperience visibility={setVisibility} addExp={addNewExp}/>
+		)
+	);
+	};
 
-  function max(l,r)
-  {
-    if(l<=r)return r;
-    return l;
-  }
-  function min(l,r)
-  {
-    if(l<=r)return l;
-    return r;
-  }
+	function max(l,r){if(l<=r){return r;}return l;}
+	function min(l,r){if(l<=r){return l;}return r;}
+	function handleL(){let temp=max(0,curr-1);setCurr(temp);}
+	function handleR(){let temp=min(curr+1,(len-len%9)/9-(len%9===0?1:0));setCurr(temp);}
+	function setEditor(flag){setNegative(flag)}
 
-
-  function handleL()
-  {
-    let temp=max(0,curr-1);
-    setCurr(temp);
-  }
-  function handleR()
-  {
-    let temp=min(curr+1,(len-len%9)/9-(len%9===0?1:0));
-    setCurr(temp);
-  }
-  function setEditor(flag)
-  {
-    setNegative(flag)
-  }
   // Renders the content if the popup visibility is false.
   const renderContent = () => {
     return (
@@ -164,19 +146,19 @@ function Experiences() {
   };
 
 
-  // rendering of whole is done over here.
-  return (
-    <div>
-      { popupVisible && <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={popupVisible}
-        // onClick={handleClose}
-      >
-        {renderPopup()}
-      </Backdrop> }
-      
-      {renderContent()}
-    </div>
-  );
+	// rendering of whole is done over here.
+	return (
+	<div>
+		{ popupVisible && <Backdrop
+		sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+		open={popupVisible}
+		// onClick={handleClose}
+		>
+		{renderPopup()}
+		</Backdrop> }
+		
+		{renderContent()}
+	</div>
+	);
 }
 export default Experiences;

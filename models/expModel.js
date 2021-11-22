@@ -10,7 +10,7 @@ const expSchema = new Schema ({
     type:{type:String,require:true},
     title:{type:String,require:true},
     description: {type: String,require:true},
-    tags:{type:String,require:true}
+    email:{type:String}
 });
   
 const ExpModel = mongoose.model('experiences', expSchema);

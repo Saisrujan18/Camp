@@ -38,10 +38,11 @@ export function Login()
             await signInWithGoogle(); 
             // insert into the collection..
             console.log(auth.currentUser.email);
-            axios
-                .post("http://localhost:3001/api/user",(auth.currentUser.email))
-                .then((res) => {console.log(res);history.push("/home");})
-                .catch((err) => console.log(err));
+            history.push("/home");
+            // axios
+            //     .post("http://localhost:3001/api/user",(auth.currentUser.email))
+            //     .then((res) => {console.log(res);history.push("/home");})
+            //     .catch((err) => console.log(err));
         }
         catch(event){
             setLoading(false);

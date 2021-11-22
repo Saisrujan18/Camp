@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import { useState } from "react";
 import { AuthProvider,useAuth } from "../../authContext/AuthContext";
 import { EditorState, convertFromRaw } from 'draft-js';
@@ -17,7 +16,8 @@ function NewExperience(props)
 
     const [exp, setExp] = useState({
         title: "",
-        author:user.email,
+        email:user.email,
+		author:"",
         company:"",
         type:"",
         description: JSON.stringify(initString),
