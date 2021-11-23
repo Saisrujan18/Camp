@@ -27,7 +27,7 @@ module.exports = {
 
         whit85:"#F2F4F9D9",
         darkBlu85:"#4171E5D9",
-        darkBlue85:"#08109AD9"
+        darkBlue85:"#0810C1D9"
       },
       fontFamily:{
         camp: ['Bangers'],
@@ -36,8 +36,6 @@ module.exports = {
         title_3:['Lora', 'serif']
       },
       minHeight:{
-        'home-content':'75vh',
-        'home-title':'20vh',
         'new-collab-experience':'400px'
       },
       minWidth:{
@@ -54,7 +52,9 @@ module.exports = {
         'avatar-dp-small':'70px',
         'avatar-display-home':'480px',
         'svg-icon-small':'25px',
-        'svg-icon':'40px'
+        'svg-icon':'40px',
+        'home-title-small':'120px',
+        'home-title':'150px'
       },
       width:{
         'avatar-dp':'100px',
@@ -62,7 +62,9 @@ module.exports = {
         'post':'350px',
         'avatar-display-home':'400px',
         'svg-icon-small':'25px',
-        'svg-icon':'40px'
+        'svg-icon':'40px',
+        // 'home-fire-icon':'120px',
+        // 'home-fire-icon-small':'50px'
       }
     },
     flex:{
@@ -84,6 +86,7 @@ module.exports = {
       'sm-custom':{'min': '300px', 'max': '767px'},
       
       'small':{'min': '700px', 'max': '1099px'},
+      'small_l':{'min':'700px'},
       'medium':{'min': '1100px', 'max': '1599px'},
       'medium_l':{'min':'1100px'},
       'large':{'min': '1600px'},
