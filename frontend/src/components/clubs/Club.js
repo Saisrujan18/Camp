@@ -28,14 +28,14 @@ export default function Club(props)
 
     useEffect(() => {
 		axios
-		.get("api/clubs/"+whichClub)
+		.get("/api/clubs/"+whichClub)
 		.then((res) => {
 			// console.log(res.data);
 			updatePosts(res.data);
 			setLoading(false);
 		})
 		.catch((err) => console.log(err));
-		axios.get("api/clubs/"+whichClub+"/access")
+		axios.get("/api/clubs/"+whichClub+"/access")
 			.then((res)=>{
 				setOwnerData(res.data[0].members);
 			})
@@ -83,9 +83,9 @@ export default function Club(props)
 
 	const addNewEvent = async (data) => {
 		setLoading(true);
-		await axios.post("api/clubs/newpost",data);
+		await axios.post("/api/clubs/newpost",data);
 	
-		await axios.get("api/clubs/"+whichClub)
+		await axios.get("/api/clubs/"+whichClub)
 					.then((res) => {
 						  updatePosts(res.data);
 						  setLoading(false);

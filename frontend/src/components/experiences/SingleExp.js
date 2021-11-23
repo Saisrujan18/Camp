@@ -27,11 +27,11 @@ export function SingleExp()
 
 	useEffect(() => {
 	axios
-		.get("api/experiences/id", { params: {id} })
+		.get("/api/experiences/id", { params: {id} })
 		.then((res) => {
-		setExpData(res.data);
-		setLoading(false);
-		console.log(res.data);
+			console.log("here" + res.data)
+			setExpData(res.data);
+			setLoading(false);
 		})
 		.catch((err) => console.log(err));
 	}, []);
@@ -92,7 +92,7 @@ export function SingleExp()
 					</h1>
 					<div className=' pl-2 bg-whit rounded-t-lg '>
 					<Edit 
-						sendTo = {"api/experiences/id"}
+						sendTo = {"/api/experiences/id"}
 						id = {id}
 						data = {expData}
 						turn = {1}

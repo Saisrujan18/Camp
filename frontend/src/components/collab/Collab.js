@@ -21,7 +21,7 @@ export function Collab() {
   // Fetching all the data required to show in this page
   useEffect(() => {
     axios
-      .get("api/collab/id", { params: {id} })
+      .get("/api/collab/id", { params: {id} })
       .then((res) => {
         // receive the data.
         console.log(res.data);
@@ -54,7 +54,7 @@ export function Collab() {
     const { email } = user;
     const { members } = collabData;
     axios
-      .post("api/collab/id/join", { email, id, members })
+      .post("/api/collab/id/join", { email, id, members })
       .then((res) => {
         const newCollabData = collabData;
         newCollabData.members = [...res.data];
@@ -155,7 +155,7 @@ export function Collab() {
                   }
                 >
                   <Edit 
-                    sendTo = {"api/collab/id"}
+                    sendTo = {"/api/collab/id"}
                     id = {id}
                     data = {collabData}
                     turn = {0}

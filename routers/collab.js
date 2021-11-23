@@ -45,7 +45,6 @@ router.post("/", (req, res) =>
 {   
     // extracting the data from the request
     const collab = req.body;
-    console.log(collab);
 
     // creating a new document
     const newCollab = new CollabModel({

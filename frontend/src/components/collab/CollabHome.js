@@ -28,7 +28,7 @@ function CollabHome() {
   // get the data for collabCards.
   useEffect(() => {
     axios
-      .get("api/collab")
+      .get("/api/collab")
       .then((res) => {
         setCollabData(res.data);
         setLen(res.data.length);
@@ -52,11 +52,11 @@ function CollabHome() {
     // // redirect to the post.
     setLoading(true);
 
-    axios.post("api/collab", collab)
+    axios.post("/api/collab", collab)
               .then((res)=>{
                 console.log(res)
                 axios
-                  .get("api/collab")
+                  .get("/api/collab")
                   .then((res) => {
                                 setCollabData(res.data);
                                 setLen(res.data.length);
