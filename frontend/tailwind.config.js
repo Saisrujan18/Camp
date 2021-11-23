@@ -38,18 +38,16 @@ module.exports = {
       minHeight:{
         'home-content':'75vh',
         'home-title':'20vh',
-        'new-collab-experience':'500px'
+        'new-collab-experience':'400px'
       },
       minWidth:{
-        'post-feed':'500px',
-        'new-collab-experience':'500px'
+        'post-feed':'300px',
+        'new-collab-experience':'400px'
       },
       maxWidth:{
           'post-feed':'800px'
       },
       maxHeight:{
-          'pic-preview':'300px',
-          'new-collab-experience':'600px'
       },
       height:{
         'avatar-dp':'100px',
