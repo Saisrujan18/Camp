@@ -26,6 +26,8 @@ export default function Profile()
     const [verified, setVerified] = useState(true)
     const [username, setUsername] = useState("Hello")
     const [userid, setUserid] = useState("World")
+    const [avatarid, setAvatarid] = useState(2);
+    
     //Can be extracted from userid aka email
     const [batchYear, setBatch] = useState(2019)
     const SVG=[<AutoStoriesTwoTone/>, <NoteAddTwoTone/>, <AddToHomeScreenTwoTone/>, <PeopleAltTwoTone/>]
@@ -81,7 +83,7 @@ export default function Profile()
             <div className="top-part flex flex-row w-auto h-auto">
                 <div className="flex flex-col w-auto h-auto">
                     <div onMouseEnter={setAnimTrue} onMouseLeave={setAnimFalse} className="p-4 w-avatar-display-home h-avatar-display-home">
-                        <Scene isPlaying={isPlaying}/>
+                        <Scene isPlaying={isPlaying} avatarid={avatarid}/>
                     </div>
                     {userInfo()}
                 </div>
@@ -96,7 +98,7 @@ export default function Profile()
     }
     //document.documentElement.style.setProperty("--bg-master", "#000000")
     return (
-        <div className="h-screen ml-1 mr-1 mt-1 mb-1">
+        <div className="h-screen w-screen">
         <div className="flex flex-col h-full w-full p-2 bg-blackBlue large:rounded-lg medium_profile:rounded-lg small_profile:rounded-lg shadow-glow_b">
             {TopPart()}
             <div className="flex-grow"></div>

@@ -49,7 +49,7 @@ export function AltHome()
     const getContent = () => {
         return ( 
             <div className="main h-full w-full overflow-y-auto">    
-                <div className="grid medium_l:grid-cols-2 grid-rows-auto grid-cols-1 place-content-center place-items-center gap-x-6 gap-y-4 p-4 small_l:p-6">
+                <div className="grid medium_l:grid-cols-2 grid-rows-auto grid-cols-1 place-content-center place-items-center gap-x-8 gap-y-4 p-4 small_l:p-6">
                     {
                         tiles.map((tile, index)=>(
                             getTile(tile, index)

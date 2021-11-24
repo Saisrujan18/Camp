@@ -19,7 +19,7 @@ export const Tile = (props) => {
     const redirection ="/"+props.title.toLowerCase()
     return ( 
         <Link className="flex flex-row w-full h-full rounded-lg py-4 px-6 cursor-pointer bg-whit" to={redirection}>
-            <p className="font-semibold text-md overflow-ellipsis overflow-hidden mr-2 ml-2">{props.title}</p>
+            <p className="font-semibold text-lg overflow-ellipsis overflow-hidden mr-2 ml-2">{props.title}</p>
         </Link>
     );
 }
