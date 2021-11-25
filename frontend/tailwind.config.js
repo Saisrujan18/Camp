@@ -20,6 +20,8 @@ module.exports = {
         purpl:"#8000A3",
         orang:"#F86E25",
 
+        lightBlu20:"#ADC9FE33",
+        lightBlu30:"#ADC9FE4D",
 
         whit80:"#F2F4F9CC",
         darkBlu80:"#4171E5CC",
@@ -51,6 +53,8 @@ module.exports = {
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
         'avatar-display-home':'480px',
+        'avatar-display-home-medium':'360px',
+        'avatar-display-home-small':'240px',
         'svg-icon-small':'25px',
         'svg-icon':'40px',
         'home-title-small':'120px',
@@ -61,10 +65,10 @@ module.exports = {
         'avatar-dp-small':'70px',
         'post':'350px',
         'avatar-display-home':'400px',
+        'avatar-display-home-medium':'300px',
+        'avatar-display-home-small':'200px',
         'svg-icon-small':'25px',
         'svg-icon':'40px',
-        // 'home-fire-icon':'120px',
-        // 'home-fire-icon-small':'50px'
       }
     },
     flex:{
@@ -83,8 +87,6 @@ module.exports = {
       '-30': -30
     },
     screens:{
-      'sm-custom':{'min': '300px', 'max': '767px'},
-      
       'small':{'min': '700px', 'max': '1099px'},
       'small_l':{'min':'700px'},
       'medium':{'min': '1100px', 'max': '1599px'},
@@ -98,11 +100,11 @@ module.exports = {
       ...defaultTheme.screens
     },
     boxShadow:{
-      'glow':'0px 0px 6px 3px rgba(31, 81, 255, 0.3)',
       'glow_b':'-4px -4px 6px 3px rgba(31, 81, 255, 0.2)',
-      'glow_sb':'1px 1px 4px 2px rgba(4,217,255,0.2)',
-      'glow_db':'3px 3px 1px 0.5px rgba(0,0,105,0.1)',
-      'glow_w':'1px 1px 3px 2px rgba(0, 0, 150, 0.1)',
+      'glow_db':'3px 3px 2px 1px rgba(0,0,105,0.1)',
+      'glow_b_in':'0px 0px 180px 80px inset rgba(31, 81, 255, 0.1)',
+      'glow_sb1':'0px 0px 10px 5px inset rgba(4,217,255,0.1)',
+      'glow_sb2':'0px 0px 6px 3px inset rgba(4,217,255,0.3)',
       ...defaultTheme.boxShadow
     },
     blur:{

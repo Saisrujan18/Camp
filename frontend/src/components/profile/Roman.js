@@ -8,12 +8,19 @@ export default function Model({ ...props }) {
 	const { nodes, materials, animations } = useGLTF('/Roman.glb')
 	const { actions } = useAnimations(animations, group)
 	useEffect(() => {
+		var timer
 		if(props.isPlaying && !actions.roman.isRunning())
 		{
-			actions.roman.play();
+			actions.roman.play()
+			return
 		}
 		else
-		actions.roman.stop();
+		{
+			group.current.rotation.set(0, 0, 0)
+			timer = setTimeout(()=>{actions.roman.stop()}, 8000)
+		}
+		return () => {//actions.roman.stop()
+			clearTimeout(timer)}
 	})
 	const rotateCamera = useSpring({
 		cancel: !props.isPlaying,

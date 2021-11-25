@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, {Suspense} from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, CameraShake } from "@react-three/drei";
 import HighRes from "./HighRes"
@@ -15,6 +15,7 @@ export default function Scene(props)
 	const AvatarList = [<Viking isPlaying={props.isPlaying}/>,
 						<Roman isPlaying={props.isPlaying}/>, 
 						<Egyptian isPlaying={props.isPlaying}/>]
+	
 	return (
 		<Canvas camera={{position:[1.2, 1.5, 3], fov:[75], rotation:[0, Math.PI, 0]}}>
 			{/* <Grid size={10}/> */}

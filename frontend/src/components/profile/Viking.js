@@ -9,12 +9,19 @@ export default function Model({ ...props })
 	const { nodes, materials, animations } = useGLTF('/Viking.glb')
 	const { actions } = useAnimations(animations, group)
 	useEffect(() => {
+		var timer
 		if(props.isPlaying && !actions.viking.isRunning())
 		{
-			actions.viking.play();
+			actions.viking.play()
+			return
 		}
 		else
-		actions.viking.stop();
+		{
+			group.current.rotation.set(0, 0, 0)
+			timer = setTimeout(()=>{actions.viking.stop()}, 8000)
+		}
+		return () => {//actions.viking.stop()
+			clearTimeout(timer)}
 	})
 	const rotateCamera = useSpring({
 		cancel: !props.isPlaying,

@@ -9,12 +9,19 @@ export default function Model({ ...props })
 	const { nodes, materials, animations } = useGLTF('/Egyptian.glb')
 	const { actions } = useAnimations(animations, group)
 	useEffect(() => {
+		var timer
 		if(props.isPlaying && !actions.egyptian.isRunning())
 		{
-			actions.egyptian.play();
+			actions.egyptian.play()
+			return
 		}
 		else
-		actions.egyptian.stop();
+		{
+			group.current.rotation.set(0, 0, 0)
+			timer = setTimeout(()=>{actions.egyptian.stop()}, 8000)
+		}
+		return () => {//actions.egyptian.stop()
+			clearTimeout(timer)}
 	})
 	const rotateCamera = useSpring({
 		cancel: !props.isPlaying,
