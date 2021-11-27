@@ -80,7 +80,7 @@ export function Collab() {
           {loading ? (
             <Spinner />
           ) : (
-            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full mt-4 mb-2 rounded-lg shadow-lg bg-white ">
+            <div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center overflow-y-auto mt-0 mb-0 min-h-full overflow-y-auto shadow-lg bg-white ">
               <div className="mx-3">
                 {/* The Whole Project Description */}
                 <div className="flex flex-col">
@@ -140,9 +140,9 @@ export function Collab() {
                 </div>
               </div>
 
-              <main className="flex-1 mx-4 my-2 flex flex-col overflow-y-auto">
+              <main className="flex-1 mx-4 my-2 flex flex-col">
                 {/* Description*/}
-                <h1 className={"rounded-full py-1 px-2  font-semibold m-1 m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
+                <h1 className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
                   {" "}
                   Description{" "}
                 </h1>

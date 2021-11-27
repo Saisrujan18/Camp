@@ -50,7 +50,7 @@ export function SingleExp()
 				{/* above of center */}
 				{loading ? (<Spinner />) : 
 				(
-					<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center h-full mt-4 mb-2 rounded-lg shadow-lg bg-white ">
+					<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center mt-0 mb-0 overflow-y-auto min-h-full shadow-lg bg-white ">
 						<div className="mx-3 ">
 							{/* The Whole Project Description */}
 							<div className="flex flex-col">
@@ -85,10 +85,9 @@ export function SingleExp()
 						</div>
 
 				{/* below of center */}
-				<main className="flex-1 mx-4  my-2 flex flex-col overflow-y-auto ">
-					<h1 className={"rounded-full py-1 px-2  font-semibold m-1 m-auto bg-orange-400 mb-2 " + (showInfo ? "" : " hidden")}>
-					{" "}
-					Description{" "}
+				<main className="flex-1 mx-4  my-2 flex flex-col">
+					<h1 className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2 sticky top-0" + (showInfo ? "" : " hidden")}>
+					Description
 					</h1>
 					<div className=' pl-2 bg-whit rounded-t-lg '>
 					<Edit 

@@ -18,6 +18,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     
     const [user, setUser] = useState();
+    const [userData, setUserData] = useState();
     const [loading, setLoading] = useState(true);
 
     function signInWithGoogle() {
@@ -38,7 +39,8 @@ export function AuthProvider({ children }) {
         signInWithGoogle,
         loading,
         user,
-        logOut
+        logOut,
+        setUserData
     }
 
     return (
