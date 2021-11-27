@@ -50,7 +50,7 @@ export function SingleExp()
 				{/* above of center */}
 				{loading ? (<Spinner />) : 
 				(
-					<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full self-center mt-0 mb-0 overflow-y-auto min-h-full shadow-lg bg-white ">
+					<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full h-auto self-center mt-1 mb-1 min-h-full overflow-y-auto rounded-md shadow-lg bg-white">
 						<div className="mx-3 ">
 							{/* The Whole Project Description */}
 							<div className="flex flex-col">

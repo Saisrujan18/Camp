@@ -27,12 +27,21 @@ export default function Profile()
     const [verified, setVerified] = useState(true)
     const [username, setUsername] = useState("Hello")
     const [userid, setUserid] = useState("World")
-    const [avatarid, setAvatarid] = useState(1);
+    const [avatarid, setAvatarid] = useState(-1);
     
     //Can be extracted from userid aka email
     const [batchYear, setBatch] = useState(2019)
     const SVG=[<AutoStoriesTwoTone/>, <NoteAddTwoTone/>, <AddToHomeScreenTwoTone/>, <PeopleAltTwoTone/>]
 
+    function setRandomAvatar()
+    {
+        const rno = ~~user.email.substring(5, 8)
+        //No of Avatars are 3 currently
+        //Must save this value in backend
+        if(avatarid==-1)
+            setAvatarid(rno%3)
+    }
+    setRandomAvatar()
     useEffect(() => {
         // axios
         //     .get("http://localhost:3001/api/profile/"+user.email)
@@ -45,12 +54,10 @@ export default function Profile()
     function setAnimTrue()
     {
         setPlaying(true)
-        console.log("True Function : " + isPlaying)
     }
     function setAnimFalse()
     {
         setPlaying(false)
-        console.log("False Function : " + isPlaying)
     }
     const Card = (props) => 
     {
@@ -119,6 +126,7 @@ export default function Profile()
 			</Link>
         )
     }
+
     setBG()
     return (
         <div className="w-screen">

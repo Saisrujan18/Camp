@@ -11,6 +11,7 @@ import {AddAPhotoOutlined, UploadFileTwoTone} from '@mui/icons-material';
 import Switch from '@mui/material/Switch';
 import axios from "axios";
 import Spinner from "../Spinner";
+import {newpost_styles} from "./clubs_className"
 import InputBase from "@mui/material/InputBase";
 
 
@@ -84,10 +85,10 @@ export default function AddNewEvent(props)
 	}
 	const addImageOption = () => {
 		return (  
-			<button className={"flex flex-row gap-x-2 block p-2 m-1 self-center font-bold rounded "
-				+(!post.hasImage?"hover:text-darkBlu hover:bg-gray-200 ":"text-darkBlu bg-gray-200 hover:text-black hover:bg-darkOrang25")} 
+			<button className={newpost_styles.newpost__addImageButton
+				+(!post.hasImage?newpost_styles.addImageButton__hoverAddImg:newpost_styles.addImageButton__hoverRemoveImg)} 
 				name="hasImage" onClick={handleToggle}>
-				<svg className="h-svg-icon-small w-svg-icon-small self-center">
+				<svg className={newpost_styles.addImageButton__svg}>
                 	<AddAPhotoOutlined/>
               	</svg>
 				Add Image
@@ -109,18 +110,18 @@ export default function AddNewEvent(props)
 	
 
 return (
-    <div className="flex flex-row h-screen">
+    <div className={newpost_styles.newpost__screen}>
       	<SidebarH hasEditor={false}/>
-		<div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto">
+		<div className={newpost_styles.newpost__body}>
 			{/* Header */}
-			<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
-            	<div className="flex-grow"></div>
-              	<div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
+			<div className={newpost_styles.newpost__header}>
+            	<div className={newpost_styles.newpost__flexgrow}/>
+              	<div className={newpost_styles.newpost__title}>
 			  		{"Create a new "+props.club+" post"}
               	</div>
-              	<div className="flex-grow"></div>
+              	<div className={newpost_styles.newpost__flexgrow}/>
               	<button
-                	className="block p-2 my-1 mr-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
+                	className={newpost_styles.newpost__backButton}
 					onClick={closePopup}
 				>
 					<svg
@@ -138,9 +139,7 @@ return (
             	</button>
             </div>
 			{/* Input fields */}
-			<div className="flex flex-col h-auto px-4 py-2 w-2/3 rounded-lg justify-start self-center items-stretch bg-white overflow-y-scroll">
-				
-				
+			<div className={newpost_styles.newpost__inputFields}>
 				<Switch  
 					className="self-center"
 					name="registrable" 
@@ -150,15 +149,14 @@ return (
 				/>
 				<TextField 
 					label="Author" 
-					className="m-10" 
+					className="p-4" 
 					id="outlined-basic"  
 					variant="filled" 
 					value={post.author} 
 					disabled
 				/>
-				<div className="mt-3"></div>
 				<TextField 
-					className="p-3"
+					className="p-4"
 					id="outlined-basic" 
 					helperText="Enter the title for the post"
 					label="Title" 
@@ -167,7 +165,6 @@ return (
 					value={post.title} 
 					onChange={handleChange}
 				/>
-				<div className="mt-3"></div>
 				<TextField 
 					className="p-4"
 					id="outlined-basic" 
@@ -180,53 +177,37 @@ return (
 					value={post.description} 
 					onChange={handleChange}
 				/>
-				{/* <Switch  
-					className="self-center"
-					name="hasImage" 
-					checked={post.hasImage}
-					onChange={handleToggle}
-					size="small"	
-				/> */}
 				{addImageOption()}	
 				{post.hasImage && 
 				
-					<div className="flex flex-col p-4 shadow-lg bg-whit mb-3 rounded-lg w-auto h-auto">
-							<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
-							<label for="image" className="h-auto w-48 cursor-pointer flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded">
-								<svg className="h-svg-icon-small w-svg-icon-small self-center">
-									<UploadFileTwoTone/>
-								</svg>
-								Select from Files
-							</label>
-							<div className="self-center px-2 h-auto">
-                				{imgSrc!=="" && <img className="w-full h-auto rounded-lg" src={imgSrc} alt="Couldn't load. Please try again"></img>}
-            				</div>
+					<div className={newpost_styles.newpost__imagePreview}>
+						<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
+						<label for="image" className={newpost_styles.newpost__selectFromFilesButton}>
+							<svg className={newpost_styles.selectFromFilesButton__svg}>
+								<UploadFileTwoTone/>
+							</svg>
+							Select from Files
+						</label>
+						<div className={newpost_styles.newpost__imageHolder}>
+							{imgSrc!=="" && <img className={newpost_styles.newpost__image} src={imgSrc} alt="Couldn't load. Please try again"/>}
+						</div>
 					</div>
 				}
 				{loading?
+					<div className={newpost_styles.publishButton_spinner}>
+						<Spinner/>
+					</div>:
 					<button
-					className="block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
-					>
-					<Spinner/>
-				</button>
-				:
-				<button
-					className="flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded ml-auto"
-					onClick={handleUpload}>
-					<svg className="h-svg-icon-small w-svg-icon-small self-center">
-                		<Publish/>
-              		</svg>
-					Post
-				</button>
+						className={newpost_styles.newpost__publishButton}
+						onClick={handleUpload}>
+						<svg className={newpost_styles.publishButton_svg}>
+							<Publish/>
+						</svg>
+						Post
+					</button>
 				}
 			</div>
       	</div>
     </div>
   );
 }
-
-// author uneditedable....email
-// Title ....input text
-// Description input field...wordlimit
-// Registrable checkbox
-// Image checkbox...?image:""

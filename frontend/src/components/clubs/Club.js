@@ -124,7 +124,7 @@ export default function Club(props)
 				</div>
 				}
 
-				<div className="flex-grow bg-whit rounded-br-lg"></div>
+				<div className="flex-grow bg-whit rounded-br-lg"/>
 			</div>
         </div>)
 		);
@@ -137,4 +137,3 @@ export default function Club(props)
 		</div>
 	);
 }
-		// <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 divide-y">

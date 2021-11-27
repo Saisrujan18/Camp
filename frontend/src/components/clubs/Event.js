@@ -1,42 +1,36 @@
 import React from 'react'
 import {
-    ChatBubbleOutline,
-    FavoriteBorder,
-    Publish,
-    Repeat,
     VerifiedUser,
-    Person,
-    Favorite,
-    Bookmark,
-    AddComment
+    Person
 } from "@material-ui/icons";
+import {post_styles} from "./clubs_className"
 
 export default function Event(props) 
 {
     return(
-        <div className="flex flex-col bg-white border shadow-lg w-full max-w-post-feed min-w-post-feed h-auto rounded-lg self-center">
+        <div className={post_styles.post__body}>
             
-            <div className="flex flex-row w-full">
-                <container className="Avatar w-avatar-dp-small h-avatar-dp-small md:w-avatar-dp md:h-avatar-dp">
-                    <svg className="w-full h-full">
-                        <Person className="w-auto flex flex-col"/>
+            <div className={post_styles.post__header}>
+                <container className={post_styles.post__avatar}>
+                    <svg className={post_styles.post__w_h_full}>
+                        <Person/>
                     </svg>
                 </container>
-                <div className="flex flex-col px-2 py-4">
-                    <div className="text-2xl font-camp">{props.title}</div>
-                    <div className="user_info flex flex-row w-auto">
-                        <div className="font-semibold italic text-black">{props.username}</div>
-                        {props.verified && <VerifiedUser className="text-darkBlu"/>}
-                        <div className="italic text-gre">{"@"+props.userid}</div>
-                        <div className="flex-grow bg-white"></div>
+                <div className={post_styles.post__info}>
+                    <div className={post_styles.post__title}>{props.title}</div>
+                    <div className={post_styles.post__userInfo}>
+                        <div className={post_styles.post__userName}>{props.username}</div>
+                        {props.verified && <VerifiedUser className={post_styles.post__verified}/>}
+                        <div className={post_styles.post__userID}>{"@"+props.userid}</div>
+                        <div className={post_styles.post__flex_grow}/>
                     </div>
-                    <div className="flex-grow bg-white"></div>
+                    <div className={post_styles.post__flex_grow}/>
                 </div>
             </div>
             
-            <div className="font-title_1 italic px-6 py-1">{props.description}</div>
-            <div className="self-center px-2 py-2 w-98">
-                {props.hasImage && <img className="w-full h-auto rounded-lg" src={props.imageData} alt="Couldn't load. Please try again"></img>}
+            <div className={post_styles.post__description}>{props.description}</div>
+            <div className={post_styles.post__imageHolder}>
+                {props.hasImage && <img className={post_styles.post__image} src={props.imageData} alt="Couldn't load. Please try again"></img>}
             </div>
             {/* <div className="flex flex-row w-full px-4 py-1 justify-around">
                 <div><Favorite/></div>
