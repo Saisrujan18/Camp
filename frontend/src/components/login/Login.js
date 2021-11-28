@@ -8,6 +8,7 @@ import { useAuth } from "../../authContext/AuthContext";
 import { useHistory } from "react-router";
 import Spinner from "../Spinner";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
 
 const styles = {
   body: "body flex flex-row rounded-lg text-blac",
@@ -26,6 +27,8 @@ const styles = {
 export function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [noUsername, setNoUsername] = useState(false);
+  const [username, setUsername] = useState("");
   const { auth, signInWithGoogle, setUserData } = useAuth();
   const history = useHistory();
 
@@ -37,23 +40,32 @@ export function Login() {
     try {
       setLoading(true);
       await signInWithGoogle();
-      
-	  // insert into the collection..
+
+      // insert into the collection..
       axios
         .post("/api/user", { email: auth.currentUser.email })
         .then((res) => {
-          setUserData(res.data);
-		  localStorage.setItem("userData", res.data);
           setLoading(false);
-          history.push("/home");
+          if (res.data == "nousername") {
+            setNoUsername(true);
+          } else {
+            // localStorage.setItem("userData", res.data);
+            history.push("/home");
+          }
         })
         .catch((err) => console.log(err));
-
     } catch (event) {
       setLoading(false);
       setError(event.message);
     }
   };
+
+  const handleNewUserLogin = () => {
+    setLoading(true);
+    axios.post("/api/user/newuser", {email: auth.currentUser.email, username: username})
+    .then(res => {setLoading(false); history.push("/home")})
+
+  }
 
   return (
     <div className={styles.body}>
@@ -64,6 +76,8 @@ export function Login() {
             <div className={styles.logofont}>Camp</div>
           </div>
           <div className={styles.login_header}>Login To Your Account</div>
+          {!noUsername?
+          <>
           <button
             disabled={loading}
             className={styles.login_button}
@@ -72,7 +86,31 @@ export function Login() {
             {loading && <Spinner />}
             Log in with Google
           </button>
-          {error && <div className="text-sm mx-auto text-red-600">{error}</div>}
+          {error?<div className="text-sm mx-auto text-red-600">{error}</div>:""}
+          </>
+          :
+          <div className="mx-auto"><TextField
+            className="p-4 w-60"
+            id="outlined-basic"
+            label="Username"
+            InputProps ={{ disableUnderline: true }}
+            variant="filled"
+            name="username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <button
+            disabled={loading}
+            className={styles.login_button}
+            onClick={handleNewUserLogin}
+          >
+            {loading && <Spinner />}
+            Login
+          </button>
+          </div>
+          }
         </div>
       </div>
       <div className={styles.login_image}>

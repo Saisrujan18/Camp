@@ -57,7 +57,7 @@ export function Collab()
 		axios
 		.post("/api/collab/id/join", { email, id, members })
 		.then((res) => {
-			const newCollabData = collabData;
+			const newCollabData = {...collabData};
 			newCollabData.members = [...res.data];
 			console.log(res.data);
 			setCollabData(newCollabData);

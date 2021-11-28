@@ -38,8 +38,8 @@ export function AltHome()
     const getTitle = () => {
         return (
             <div className="flex flex-row justify-center h-full">
-                <img src={fire} className="w-auto h-2/3 mx-2 self-center" alt="Not found"></img>
-                <div className="flex flex-col mx-2 justify-center">
+                <img src={fire} className="w-auto h-2/3 ml-0 self-center" alt="Not found"></img>
+                <div className="flex flex-col justify-center">
                     <div className="text-whit subpixel-antialiased font-bold text-lg medium_l:text-xl px-4 self-center">Welcome to </div>
                     <div className="font-camp text-whit subpixel-antialiased font-italic text-3xl medium_l:text-6xl px-4 self-center">Camp</div>
                 </div>
@@ -61,9 +61,9 @@ export function AltHome()
     }
     const getHomeScreen = () => {
         return (
-            <div className="BG bg-fixed w-screen">
+            <div className="BG bg-fixed w-screen p-2">
                 <div className="flex flex-col justify-center min-h-screen h-full py-4 small:mx-4 medium:mx-4 large:mx-4">
-                    <div className="bg-darkBlue85 p-5 h-home-title-small medium_l:h-home-title rounded-t-lg w-auto">
+                    <div className="bg-blue-400 pattern-bg p-5 h-home-title-small medium_l:h-home-title rounded-t-lg w-auto">
                         {getTitle()}
                     </div>
                     <div className="flex-grow bg-whit85 p-5 rounded-b-lg h-auto w-auto">
