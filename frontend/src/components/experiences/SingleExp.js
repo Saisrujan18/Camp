@@ -86,10 +86,10 @@ export function SingleExp()
 
 				{/* below of center */}
 				<main className="flex-1 mx-4  my-2 flex flex-col">
-					<h1 className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2 sticky top-0" + (showInfo ? "" : " hidden")}>
+					<div className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2" + (showInfo ? "" : " hidden")}>
 					Description
-					</h1>
-					<div className=' pl-2 bg-whit rounded-t-lg '>
+					</div>
+					<div className=' pl-2 rounded-t-lg '>
 					<Edit 
 						sendTo = {"/api/experiences/id"}
 						id = {id}

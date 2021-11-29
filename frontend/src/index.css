@@ -23,8 +23,8 @@ code {
 }
 
 ::-webkit-scrollbar{
-  display: none;
-  }  
+  display: none;  
+  } 
 /* width: 0.5rem;
   height: 0.5rem;
 }

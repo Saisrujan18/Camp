@@ -81,7 +81,7 @@ export function Collab()
 			{loading ? (
 				<Spinner />
 			) : (
-				<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full h-auto self-center mt-1 mb-1 min-h-full overflow-y-auto rounded-md shadow-lg bg-white">
+				<div className="flex flex-col large:w-3/4 medium:w-5/6 small:w-5/6 w-full h-auto self-center mt-1 mb-1 min-h-full rounded-md shadow-lg overflow-y-auto bg-white">
 				<div className="mx-3">
 					{/* The Whole Project Description */}
 					<div className="flex flex-col">
@@ -151,7 +151,7 @@ export function Collab()
 					{/* {collabData} */}
 					<div
 					className={
-						"pl-2 bg-whit rounded-t-lg " +
+						"pl-2  rounded-t-lg " +
 						(showInfo ? "" : "hidden")
 					}
 					>

@@ -4,6 +4,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import axios from 'axios';
 import Spinner from "./Spinner";
+import "./editor.css"
 
 
 // THINGS TO NOTE
