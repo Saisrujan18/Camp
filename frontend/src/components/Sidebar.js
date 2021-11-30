@@ -46,11 +46,11 @@ export default function Sidebar(props)
       {/* Top Bar */}
 	  <div
         className={
-          "bg-gray-800 text-gray-100 medium_l:hidden relative " + (open ? " hidden" : "")
+          "bg-gray-100 text-gray-800 medium_l:hidden relative " + (open ? " hidden" : "")
         }
       >
         <button
-          className="bg-black p-2 focus:outline-none hover:bg-gray-700 rounded absolute top-0"
+          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded absolute top-4 small:left-3"
           onClick={() => set_Open(!open)}
         >
           <svg
@@ -73,7 +73,7 @@ export default function Sidebar(props)
 
       <aside
         className={
-          " bg-whit text-blue-100 w-60 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
+          " bg-whit text-blue-100 w-60 mt-2 mb-2 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
           " left-0 transform medium_l:relative transition duration-200 ease-in-out " +
           (open
             ? " translate-x-0 mt-2 mb-2 small:ml-2 medium:ml-2 large:ml-2 small:rounded-l-lg medium:rounded-l-lg large:rounded-l-lg border-r-2"
@@ -87,7 +87,7 @@ export default function Sidebar(props)
             <span className="text-black text-2xl font-extrabold">Camp</span>
           </a>
 
-          <button className="p-2 hover:bg-gray-200 rounded focus:outline-none medium_l:hidden"
+          <button className="p-2 bg-whit text-gray-800 hover:bg-gray-200 hover:text-darkBlu rounded focus:outline-none medium_l:hidden"
             onClick={() => set_Open(!open)}
           >
             <svg

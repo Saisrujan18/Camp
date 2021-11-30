@@ -116,7 +116,7 @@ function Experiences()
 			<div className="h-screen flex flex-row">
 			<SidebarH hasEditor={true} handleEditor={setEditor}/>
 			<div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
-				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
+				<div className="flex flex-row bg-whit rounded-tr-lg rounded-tl-lg border-b-2 top-0">
 				
 				<div className="flex-grow"/>
 				<div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
