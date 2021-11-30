@@ -4,8 +4,6 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import axios from 'axios';
 import Spinner from "./Spinner";
-import "./editor.css"
-
 
 // THINGS TO NOTE
 // CONTENT page - blogs
@@ -62,7 +60,7 @@ function Edit( {sendTo, id, data, turn, editable } )
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     wrapperClassName="wrapperClassName"
-                    editorClassName="editorClassName"
+                    editorClassName="editorClassName mx-4"
                     onEditorStateChange={onEditorStateChange}
                 />
             

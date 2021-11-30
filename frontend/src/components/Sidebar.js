@@ -46,13 +46,11 @@ export default function Sidebar(props)
       {/* Top Bar */}
 	  <div
         className={
-          "bg-gray-100 text-gray-800 medium_l:hidden relative " + (open ? " hidden" : "")
+			"bg-whit text-gray-400 p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded relative z-200 opacity-20 transition duration-300 ease-in-out hover:opacity-100 "+
+          	"medium_l:hidden top-2 left-1 small_l:top-4 small_l:left-4 cursor-pointer" + (open ? " hidden" : "")
         }
+		onClick={() => set_Open(!open)}
       >
-        <button
-          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded relative top-2 small:top-4 small:left-3 opacity-10 hover:opacity-50 z-200"
-          onClick={() => set_Open(!open)}
-        >
           <svg
             className="h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +66,6 @@ export default function Sidebar(props)
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </button>
       </div>
 
       <aside
@@ -76,7 +73,7 @@ export default function Sidebar(props)
           " bg-whit text-blue-100 w-60 small:mt-2 small:mb-2 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
           " left-0 transform medium_l:relative transition duration-200 ease-in-out " +
           (open
-            ? " translate-x-0 small:mt-2 small:mb-2 small:ml-2 medium:ml-2 medium:mt-2 medium:mb-2 large:ml-2 small:rounded-l-lg medium:rounded-l-lg large:rounded-l-lg border-r-2"
+            ? " translate-x-0 small_l:my-2 small_l:ml-2 small_l:rounded-l-lg border-r-2"
             : "-translate-x-full")
         }
       >

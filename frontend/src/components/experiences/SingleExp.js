@@ -46,7 +46,7 @@ export function SingleExp()
 			<SidebarH hasEditor={true} handleEditor={setEditor}/>
 
 			{/* Loads the spinner if its still loading or else rendering the content */}
-			<div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 medium:my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
+			<div className={"flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
 				{/* above of center */}
 				{loading ? (<Spinner />) : 
 				(
@@ -89,16 +89,16 @@ export function SingleExp()
 					<div className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2" + (showInfo ? "" : " hidden")}>
 					Description
 					</div>
-					<div className=' pl-2 rounded-t-lg '>
-					<Edit 
-						sendTo = {"/api/experiences/id"}
-						id = {id}
-						data = {expData}
-						turn = {1}
-						editable = {user.email === expData.email}
-					/>
+					<div className='ml-1 px-2 rounded-lg h-full cursor-default'>
+						<Edit 
+							sendTo = {"/api/experiences/id"}
+							id = {id}
+							data = {expData}
+							turn = {1}
+							editable = {user.email === expData.email}
+						/>
 					</div>
-					<div className="flex-grow bg-whit mb-2 rounded-b-lg "></div>
+					<div className="flex-grow bg-white mb-2 rounded-b-lg "></div>
 				</main>
 				</div>
 			)}
