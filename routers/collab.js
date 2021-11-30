@@ -51,6 +51,7 @@ router.post("/", (req, res) =>
         title: collab.title, 
         author: collab.author,
         description: collab.description,
+        displayText: collab.displayText,
         members: collab.members,
         email:collab.email
     });

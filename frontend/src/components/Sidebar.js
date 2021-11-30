@@ -50,7 +50,7 @@ export default function Sidebar(props)
         }
       >
         <button
-          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded absolute top-4 small:left-3"
+          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded absolute top-2 small:top-4 small:left-3 opacity-10 hover:opacity-50 z-200"
           onClick={() => set_Open(!open)}
         >
           <svg
@@ -73,10 +73,10 @@ export default function Sidebar(props)
 
       <aside
         className={
-          " bg-whit text-blue-100 w-60 mt-2 mb-2 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
+          " bg-whit text-blue-100 w-60 small:mt-2 small:mb-2 space-y-6 px-2 py-4 absolute inset-y-0 z-100 " +
           " left-0 transform medium_l:relative transition duration-200 ease-in-out " +
           (open
-            ? " translate-x-0 mt-2 mb-2 small:ml-2 medium:ml-2 large:ml-2 small:rounded-l-lg medium:rounded-l-lg large:rounded-l-lg border-r-2"
+            ? " translate-x-0 small:mt-2 small:mb-2 small:ml-2 medium:ml-2 medium:mt-2 medium:mb-2 large:ml-2 small:rounded-l-lg medium:rounded-l-lg large:rounded-l-lg border-r-2"
             : "-translate-x-full")
         }
       >

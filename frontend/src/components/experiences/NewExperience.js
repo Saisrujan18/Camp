@@ -21,6 +21,7 @@ function NewExperience(props)
 		author:"",
         company:"",
         type:"",
+		displayText:"",
         description: JSON.stringify(initString),
     });
 
@@ -75,6 +76,7 @@ function NewExperience(props)
 			<TextField id="standard-basic" label="Role Offered" variant="standard" onChange={handleChange} value={exp.type} name="type" autoComplete="off" />
 			<TextField id="standard-basic" label="Company" variant="standard" onChange={handleChange} value={exp.company} name="company" autoComplete="off" />
 			<TextField id="standard-basic" label="Author" variant="standard" onChange={handleChange} value={exp.author} name="author" autoComplete="off" />
+			<TextField id="standard-basic" label="Short-Description" variant="standard" onChange={handleChange} value={exp.displayText} name="displayText" autoComplete="off" />
 			<div className="flex flex-col rounded">
 				<div className="text-red-300 font-semibold self-center">Please Edit the description,later on the wall.</div>
 				<div className="text-red-300 font-semibold self-center">Answer all the questions - How did u get that job, what skills u possess etc..,</div>

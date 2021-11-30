@@ -41,6 +41,7 @@ router.post("/", (req, res) =>
         author: exp.author,
         description: exp.description,
         type: exp.type,
+        displayText: collab.displayText,
         company:exp.company,
         email:exp.email
     });

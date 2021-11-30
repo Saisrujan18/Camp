@@ -80,7 +80,7 @@ function CollabHome() {
         _id={collab._id}
         navigate={navigate}
         title={collab.title}
-        description={Parser(draftToHtml(JSON.parse(collab.description)))}
+        description={collab.displayText}
         author={collab.author}
         email={collab.email}
       />
@@ -139,7 +139,7 @@ function CollabHome() {
       (
         <div className="h-screen flex flex-row">
           <SidebarH hasEditor={true} handleEditor={setEditor}/>
-          <div className={"flex-grow bg-whit large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
+          <div className={"flex-grow bg-whit large:mr-2 medium:rounded-r-lg medium:mr-2 small:my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
           <div className="flex flex-row bg-whit rounded-t-lg top:rounded-tr-lg border-b-2 top-0">
             
             <div className="flex-grow"></div>

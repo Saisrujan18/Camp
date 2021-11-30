@@ -76,7 +76,7 @@ function Experiences()
 			navigate={navigate}
 			title={exp.title}
 			company={exp.company}
-			description={Parser(draftToHtml(JSON.parse(exp.description)))}
+			description={exp.displayText}
 			type={exp.type}
 			author={exp.author}
 			email={exp.email}
@@ -115,7 +115,7 @@ function Experiences()
 		(
 			<div className="h-screen flex flex-row">
 			<SidebarH hasEditor={true} handleEditor={setEditor}/>
-			<div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
+			<div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 small:my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
 				<div className="flex flex-row bg-whit rounded-tr-lg rounded-tl-lg border-b-2 top-0">
 				
 				<div className="flex-grow"/>
