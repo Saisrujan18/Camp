@@ -8,11 +8,8 @@ import { useAuth } from "../../authContext/AuthContext";
 import TextField from '@mui/material/TextField';
 import {Publish} from "@material-ui/icons";
 import {AddAPhotoOutlined, UploadFileTwoTone} from '@mui/icons-material';
-import Switch from '@mui/material/Switch';
-import axios from "axios";
 import Spinner from "../Spinner";
 import {newpost_styles} from "./clubs_className"
-import InputBase from "@mui/material/InputBase";
 
 
 export default function AddNewEvent(props) 
@@ -29,9 +26,7 @@ export default function AddNewEvent(props)
 		imageData:"",
 		title:"",
 		author:user.email,
-		description: "",
-		registrable: false,
-		registered:[]
+		description: ""
 	});
 
     const handleChange = (event) => {
@@ -140,13 +135,7 @@ return (
             </div>
 			{/* Input fields */}
 			<div className={newpost_styles.newpost__inputFields}>
-				<Switch  
-					className="self-center"
-					name="registrable" 
-					checked={post.registrable}
-					onChange={handleToggle}
-					size="small"	
-				/>
+				
 				<TextField 
 					label="Author" 
 					className="p-4" 
@@ -188,9 +177,9 @@ return (
 							</svg>
 							Select from Files
 						</label>
-						<div className={newpost_styles.newpost__imageHolder}>
+						{/* <div className={newpost_styles.newpost__imageHolder}>
 							{imgSrc!=="" && <img className={newpost_styles.newpost__image} src={imgSrc} alt="Couldn't load. Please try again"/>}
-						</div>
+						</div> */}
 					</div>
 				}
 				{loading?

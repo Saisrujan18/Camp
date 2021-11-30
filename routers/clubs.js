@@ -59,23 +59,23 @@ router.get("/sargam/access", (req, res) => {
 
 // .....
 // This for fetching data of a particular post (given: id)
-router.post("/digitalwizards/id", (req,res) => {
-    const {id}=req.body;
-    PostModel.findById(id)
-             .then(response=>{res.json(response)})
-             .catch(err=>{console.log(err)})    
-})
+// router.post("/digitalwizards/id", (req,res) => {
+//     const {id}=req.body;
+//     PostModel.findById(id)
+//              .then(response=>{res.json(response)})
+//              .catch(err=>{console.log(err)})    
+// })
 
-// This will add the current user to the collaboration if not already.
-router.post("/digitalwizards/id/register",(req,res)=>{
-    // extracting the data from the request
-    const {email, id, registered}=req.body;
-    // adding the new member
-    registered.push(email);
-    PostModel.findByIdAndUpdate(id, { $set: { registered: registered }})
-                .then(response=>{res.json(registered)})
-                .catch(err=>{console.log(err);})
-})
+// // This will add the current user to the collaboration if not already.
+// router.post("/digitalwizards/id/register",(req,res)=>{
+//     // extracting the data from the request
+//     const {email, id, registered}=req.body;
+//     // adding the new member
+//     registered.push(email);
+//     PostModel.findByIdAndUpdate(id, { $set: { registered: registered }})
+//                 .then(response=>{res.json(registered)})
+//                 .catch(err=>{console.log(err);})
+// })
 
 
 // This adds a new Post to the database
@@ -90,10 +90,8 @@ router.post("/newpost", (req, res) =>
         title: post.title, 
         author: post.author,
         description: post.description,
-        registrable: post.registrable,
         hasImage:post.hasImage,
-        imageData:post.imageData,
-        registered:post.registered
+        imageData:post.imageData
     });
     
     // saving it.

@@ -11,9 +11,7 @@ const postSchema = new Schema ({
     imageData:{type: String,unique:true},
     title:{type: String, required: true},
     author:{type: String, required: true},
-    description: {type: [String], default: ["Description"]},
-    registrable: {type: Boolean, required: true},
-    registered: {type:[String], default:[]}
+    description: {type: [String], default: ["Description"],required:true}
 });
   
 const PostModel = mongoose.model('post', postSchema);
