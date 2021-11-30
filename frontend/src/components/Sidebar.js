@@ -50,7 +50,7 @@ export default function Sidebar(props)
         }
       >
         <button
-          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded absolute top-2 small:top-4 small:left-3 opacity-10 hover:opacity-50 z-200"
+          className="bg-whit p-2 focus:outline-none hover:text-darkBlu hover:bg-gray-200 rounded relative top-2 small:top-4 small:left-3 opacity-10 hover:opacity-50 z-200"
           onClick={() => set_Open(!open)}
         >
           <svg
