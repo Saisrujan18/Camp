@@ -38,7 +38,8 @@ module.exports = {
         title_3:['Lora', 'serif']
       },
       minHeight:{
-        'new-collab-experience':'400px'
+        'new-collab-experience':'400px',
+        'collab-exp-card':'132px'
       },
       minWidth:{
         'post-feed':'300px',

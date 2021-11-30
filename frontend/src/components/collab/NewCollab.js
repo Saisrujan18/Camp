@@ -13,6 +13,7 @@ function NewCollab(props) {
         title: "",
         author: "",
 		email:user.email,
+		displayText:"",
         description: JSON.stringify(initString)
     });
 
@@ -66,6 +67,7 @@ function NewCollab(props) {
 				<TextField id="outlined-basic" label="Email" variant="filled" onChange={handleChange} value={collab.email} name="email" autoComplete="off" disabled/>
 				<TextField id="standard-basic" label="Author" variant="standard" onChange={handleChange} value={collab.author} name="author" autoComplete="off" />
 				<TextField id="standard-basic" label="Title" variant="standard" onChange={handleChange} value={collab.title} name="title" autoComplete="off" />
+				<TextField id="standard-basic" label="Short-Description" variant="standard" onChange={handleChange} value={collab.displayText} name="displayText" autoComplete="off" />
 				<div className="flex flex-col rounded">
 					<div className="text-red-300 font-semibold self-center">Please Edit the description of the collaboration later on the wall.</div>
 					<div className="text-red-300 font-semibold self-center">Please be very precise !!!</div>

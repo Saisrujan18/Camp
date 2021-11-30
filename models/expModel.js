@@ -9,6 +9,7 @@ const expSchema = new Schema ({
     author: {type: String, require: true},
     type:{type:String,require:true},
     title:{type:String,require:true},
+    displayText: {type:String, default:"New Experience"},
     description: {type: String,require:true},
     email:{type:String}
 });

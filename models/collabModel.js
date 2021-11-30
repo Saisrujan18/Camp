@@ -9,6 +9,7 @@ const collabSchema = new Schema ({
     author: {type: String, required: true},
     email:{type:String,required:true},
     createdAt: {type: Date, default: Date.now},
+    displayText: {type: String, default: "New Collaboration"},
     description:{type:String, required: true},
     members: {type: [String]}
 });

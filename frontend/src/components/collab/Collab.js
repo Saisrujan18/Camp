@@ -77,7 +77,7 @@ export function Collab()
 		{/* If the data is being processed we render a loading spinner */}
 		{/* Or else we show the content of the page */}
 
-		<div className={"flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 medium:my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
+		<div className={"flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
 			{loading ? (
 				<Spinner />
 			) : (
@@ -151,17 +151,15 @@ export function Collab()
 					{/* {collabData} */}
 					<div
 					className={
-						"pl-2  rounded-t-lg " +
-						(showInfo ? "" : "hidden")
-					}
-					>
-					<Edit 
-						sendTo = {"/api/collab/id"}
-						id = {id}
-						data = {collabData}
-						turn = {0}
-						editable = {user.email === collabData.email}
-					/>
+						"ml-1 px-2 rounded-lg h-full" +
+						(showInfo ? "" : "hidden")}>
+						<Edit 
+							sendTo = {"/api/collab/id"}
+							id = {id}
+							data = {collabData}
+							turn = {0}
+							editable = {user.email === collabData.email}
+						/>
 					</div>
 
 					{/* Members */}

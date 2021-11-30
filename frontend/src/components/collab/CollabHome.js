@@ -80,7 +80,7 @@ function CollabHome() {
         _id={collab._id}
         navigate={navigate}
         title={collab.title}
-        description={Parser(draftToHtml(JSON.parse(collab.description)))}
+        description={collab.displayText}
         author={collab.author}
         email={collab.email}
       />
@@ -92,7 +92,7 @@ function CollabHome() {
   const collabContent = (loading) => {
     if (loading) return <Spinner />;
     return (
-      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-4 gap-x-1 overflow-y-auto">
+      <div className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 large:grid-cols-4 bg-whit items-center p-2 gap-y-2 gap-x-2 mx-2 overflow-y-auto">
         {collabData.map((collab,index) =>  index>=9*curr && index<9*curr+9 && renderCard(collab))}
       </div>
     );
@@ -139,7 +139,7 @@ function CollabHome() {
       (
         <div className="h-screen flex flex-row">
           <SidebarH hasEditor={true} handleEditor={setEditor}/>
-          <div className={"flex-grow bg-whit large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg"+((editorNegative)?" -z-10":"")}>
+          <div className={"flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
           <div className="flex flex-row bg-whit rounded-t-lg top:rounded-tr-lg border-b-2 top-0">
             
             <div className="flex-grow"></div>
