@@ -112,8 +112,7 @@ export default function Club(props)
 						{props.name}
               		</div>
               		<div className="flex-grow"></div>
-					  {/* {Loading?<Spinner/>:ownerData.includes(user.email) && addButton()} */}
-					  {Loading?<Spinner/>:addButton()}
+					  {Loading?<Spinner/>:ownerData.includes(user.email) && addButton()}
             	</div>
 				
 

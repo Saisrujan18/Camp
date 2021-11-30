@@ -3,18 +3,18 @@ const feed_styles={
 }
 
 const post_styles={
-    post__body:"post__body flex flex-col bg-white border shadow-lg w-full max-w-post-feed min-w-post-feed h-auto rounded-lg self-center",
-    post__header:"post__header flex flex-row w-full",
+    post__body:"post__body flex flex-col bg-white border shadow-lg w-full max-w-post-feed min-w-post-feed h-auto rounded-lg self-center pb-2",
+    post__header:"post__header flex flex-col w-full ml-2",
     post__avatar:"post__avatar w-avatar-dp-small h-avatar-dp-small md:w-avatar-dp md:h-avatar-dp",
     post__info:"post__info flex flex-col px-2 py-4",
-    post__title:"post__title text-2xl font-camp",
-    post__userInfo:"post__userInfo user_info flex flex-row w-auto",
-    post__userName:"post__userName font-semibold italic text-black",
+    post__title:"post__title text-2xl font-bold",
+    post__userInfo:"post__userInfo user_info flex flex-col w-auto mb-2 bg-whit px-2 py-1  pt-4 px-4  mb-4  border-t-4 border-grey-400 rounded-lg",
+    post__userName:" truncate post__userName font-semibold text-gray-600 ml-auto rounded-full  py-1",
     post__verified:"post__verified text-darkBlu",
-    post__userID:"post__userID italic text-gre",
-    post__description:"post__description font-title_1 italic px-6 py-1",
-    post__imageHolder:"post__imageHolder self-center px-2 py-2 w-98",
-    post__image:"post__image w-full h-auto rounded-lg",
+    post__userID:"truncate post__userID text-gre ml-auto m-2",
+    post__description:"truncate post__description font-md px-10 py-1",
+    post__imageHolder:"post__imageHolder self-center px-2 pt-4 w-98",
+    post__image:"post__image w-full h-full rounded",
     post__w_h_full:"w_h_full w-full h-full",
     post__flex_grow:"post__flex_grow flex-grow bg-white",
 }
