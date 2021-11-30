@@ -9,7 +9,7 @@ export default function CollabCard(props)
     const { title, author, description, _id, navigate} = props;
     return (
         <div className="card ml-2 mr-2 mt-1.5 mb-1.5 cursor-pointer transition duration-500 ease-in-out transform hover:scale-105">
-        <div className="flex flex-col bg-white w-full h-full p-3 rounded-md shadow-md hover:shadow-glow_db" onClick={() => navigate(_id)}>
+        <div className="flex flex-col bg-white w-full h-full min-h-collab-exp-card p-3 rounded-md shadow-md hover:shadow-glow_db" onClick={() => navigate(_id)}>
           <div className={cssAuthor}>{author}</div>
           <div className="truncate text-xl font-bold">{title}</div> 
           <div className="flex-grow"></div>
