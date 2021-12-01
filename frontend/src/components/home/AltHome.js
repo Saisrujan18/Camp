@@ -52,7 +52,7 @@ export function AltHome()
     }
     const getTitle = () => {
         return (
-            <div className="flex flex-row justify-center bg-white rounded-t-lg py-2 ">
+            <div className="flex flex-row justify-center bg-white rounded-t-lg py-2">
                     <div className={styles.logo}>
                         <div className={styles.logofont}>Welcome to</div>
                         <img src={fire} className="w-12" alt="Not found"></img>
@@ -63,7 +63,7 @@ export function AltHome()
     }
     const getContent = () => {
         return ( 
-            <div className="main h-full w-full overflow-y-auto ">    
+            <div className="main h-full w-full overflow-y-auto">    
                 <div className="grid medium_l:grid-cols-2 grid-rows-auto grid-cols-1 place-content-center place-items-center gap-x-8 gap-y-4 p-4 small_l:p-6 ">
                     {
                         tiles.map((tile, index)=>(
@@ -76,13 +76,13 @@ export function AltHome()
     }
     const getHomeScreen = () => {
         return (
-            <div className="BG bg-fixed w-screen p-1">
-                <div className="flex flex-col my-2 min-h-screen h-full py-4 small:mx-4 medium:mx-4 large:mx-4">
+            <div className="BG bg-fixed h-screen w-screen py-2">
+                <div className="flex flex-col py-2 h-full small:mx-4 medium:mx-4 large:mx-4">
                     <div className="rounded-t-lg w-auto">
                         {getTitle()}
                     </div>
-                    <div className="bod flex flex-col">
-                        <div className="flex-grow py-12 px-8 rounded-b-lg h-auto w-auto ">
+                    <div className="bod flex flex-col flex-grow rounded-b-lg">
+                        <div className="py-12 px-8 rounded-b-lg h-full w-full">
                             {getContent()}
                             <div className="flex-grow bg-red-600"></div>
                         </div>
