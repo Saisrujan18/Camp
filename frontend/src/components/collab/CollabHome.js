@@ -65,7 +65,7 @@ function CollabHome() {
                               })
                           .catch((err) => console.log(err));
               })
-              .catch((err)=>{console.lof(err)})
+              .catch((err)=>{console.log(err)})
     console.log("Fetched after inserting");
     };
 
