@@ -15,6 +15,7 @@ module.exports = {
         darkOrang25:"#FF534940",
         blackBlue:"#000010",
 
+        yel:"#FFDF00",
         gree:"#10CF40",
         re:"#CD0010",
         purpl:"#8000A3",
@@ -54,6 +55,7 @@ module.exports = {
       height:{
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
+        'avatar-display-home-larger':'660px',
         'avatar-display-home-large':'600px',
         'avatar-display-home':'480px',
         'svg-icon-small':'25px',
@@ -65,6 +67,7 @@ module.exports = {
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
         'post':'350px',
+        'avatar-display-home-larger':'550px',
         'avatar-display-home-large':'500px',
         'avatar-display-home':'400px',
         'svg-icon-small':'25px',
@@ -98,6 +101,7 @@ module.exports = {
       'small_profile': {'min': '840px', 'max':'1249px'},
       'medium_profile_l':{'min': '1250px'},
       'medium_profile':{'min': '1250px', 'max': '1599px'},
+      'larger_profile':{'min':'1750px'},
 
       ...defaultTheme.screens
     },

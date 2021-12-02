@@ -3,33 +3,35 @@ import CountUp,{useCountUp} from 'react-countup'
 import { useAuth } from '../../authContext/AuthContext'
 import axios from 'axios';
 import Scene from './Scene'
-import {AutoStoriesTwoTone, NoteAddTwoTone, AddToHomeScreenTwoTone, PeopleAltTwoTone} from '@mui/icons-material';
+import {NoteAddTwoTone, AddToHomeScreenTwoTone, PeopleAltTwoTone, MonetizationOnTwoTone} from '@mui/icons-material';
 import {VerifiedUser} from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { SidebarH } from '../../App';
 
 export default function Profile() 
 {
     //Variables required for profile page
-    let {user,loading} =useAuth();
+    let {user} =useAuth();
+    const [loading,setLoading]=useState(true);
     const [userData,setUserData]=useState({});
-    const [isLoading,setLoading]=useState(true);
     const [isPlaying, setPlaying]=useState(false);
 
     // data required
     // set this in the user collection
-
-    const [blogsWritten, setBlogsWritten] = useState(10000)
-    const [blogsRead, setBlogsRead] = useState(20000)
-    const [collabsDone, setCollabs] = useState(5000)
-    const [postsMade, setPosts] = useState(5000)
-    const [verified, setVerified] = useState(true)
-    const [username, setUsername] = useState("Hello")
-    const [userid, setUserid] = useState("World")
     const [avatarid, setAvatarid] = useState(-1);
     const [batchYear, setBatch] = useState("")
 
-    const SVG=[<AutoStoriesTwoTone/>, <NoteAddTwoTone/>, <AddToHomeScreenTwoTone/>, <PeopleAltTwoTone/>]
+    const SVG=[<MonetizationOnTwoTone/>, <NoteAddTwoTone/>, <AddToHomeScreenTwoTone/>, <PeopleAltTwoTone/>]
+
+    useEffect(() => {
+        axios
+		.get("/api/user/email", {params:{email:user.email}})
+		.then((res) => {
+            console.log("New One Myy : "+res.data)
+            setUserData(res.data)
+		    setLoading(false)
+		})
+		.catch((err) => console.log(err));
+	}, []);
 
     //Set random avatar based on roll number and batch number
     function setAvatarAndBatch()
@@ -46,15 +48,6 @@ export default function Profile()
             setBatch(year)
     }
     setAvatarAndBatch()
-    useEffect(() => {
-        // axios
-        //     .get("http://localhost:3001/api/profile/"+user.email)
-        //     .then((res)=>{
-        //         setUserData(res.data);
-        //         setLoading(false);
-        //     })
-        //     .catch((err)=>console.log(err))
-    },[])
 
     //Toggle animation of avatar
     function setAnimTrue()
@@ -84,11 +77,11 @@ export default function Profile()
     //Card for User info
     const userInfo = () => {
         return (
-            <div className="flex flex-col items-center ml-4 mr-4 mt-4 px-2 py-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
+            <div className="flex flex-col items-center w-full ml-4 mr-4 mt-4 px-2 py-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
                 <div className="user_info flex flex-row w-auto">
-                    <div className="font-semibold italic text-white">{username}</div>
-                    {verified && <VerifiedUser className="h-1 w-1 text-darkBlu"/>}
-                    <div className="italic text-lightBlu">{"@"+userid}</div>
+                    <div className="font-semibold truncate overflow-ellipsis italic text-white">{userData.username}</div>
+                    {userData.verified && <VerifiedUser className="h-1 w-1 text-darkBlu"/>}
+                    <div className="truncate overflow-ellipsis italic text-lightBlu">{"@"+userData.email}</div>
                     <div className="flex-grow"/>
                 </div>
                 <div className="text-xl text-white font-camp">{batchYear+" batch"}</div>
@@ -104,16 +97,17 @@ export default function Profile()
                 <div className="flex flex-col w-auto h-auto items-center">
                     <div onMouseEnter={setAnimTrue} onMouseLeave={setAnimFalse} 
                         className="p-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_b_in
-                        w-avatar-display-home h-avatar-display-home large:w-avatar-display-home-large large:h-avatar-display-home-large">
+                        w-avatar-display-home h-avatar-display-home large:w-avatar-display-home-large large:h-avatar-display-home-large
+                        larger_profile:w-avatar-display-home-larger larger_profile:h-avatar-display-home-larger">
                         <Scene isPlaying={isPlaying} avatarid={avatarid}/>
                     </div>
                     {userInfo()}
                 </div>
                 <div className="grid grid-cols-1 medium_profile_l:grid-cols-2 items-center p-4 gap-y-4 gap-x-4 h-auto w-full justify-items-stretch content-center">
-                    <Card svgID={0} colorcode="gree" countStart={0} countEnd={blogsRead} desc="Blogs Read"/>
-                    <Card svgID={1} colorcode="re" countStart={0} countEnd={blogsWritten} desc="Blogs Written"/>
-                    <Card svgID={2} colorcode="purpl" countStart={0} countEnd={postsMade} desc="Posts Made"/>
-                    <Card svgID={3} colorcode="orang" countStart={0} countEnd={collabsDone} desc="Collabs Done"/>
+                    <Card svgID={0} colorcode="yel" countStart={0} countEnd={userData.coins} desc="Coins"/>
+                    <Card svgID={1} colorcode="re" countStart={0} countEnd={userData.blogswritten} desc="Blogs Written"/>
+                    <Card svgID={2} colorcode="purpl" countStart={0} countEnd={userData.postsmade} desc="Posts Made"/>
+                    <Card svgID={3} colorcode="orang" countStart={0} countEnd={userData.collabsdone} desc="Collabs Done"/>
                 </div>
             </div>
         );

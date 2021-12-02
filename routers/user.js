@@ -4,7 +4,13 @@ const router = express.Router();
 const UserModel=require("../models/userModel");
 router.use(express.json());
 
-// This for fetching data of a particular collaboration (given: id)
+router.get("/", (req,res) =>{
+    const {email} = req.query;
+    UserModel.find({email: email})
+    .then((user) => res.json(user))
+    .catch(err => console.log(err));
+})
+
 router.post("/newuser", (req,res) => {
     const {email, username} = req.body;
     UserModel.findOneAndUpdate({email: email}, {username: username})

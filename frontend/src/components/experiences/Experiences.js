@@ -10,7 +10,7 @@ import Backdrop from '@mui/material/Backdrop';
 
 function Experiences() 
 {
-    // All the neccessary variables are declared over here.
+    // All the necessary variables are declared over here.
     const [expData, setexpData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [popupVisible, setVisibility] = useState(false);
@@ -19,7 +19,7 @@ function Experiences()
     const [len,setLen]=useState(0);
     const [editorNegative, setNegative]=useState(false);
 
-	// Fetching all the content at the beggining itself.
+	// Fetching all the content at the beginning itself.
 	useEffect(() => {
 		axios
 		.get("/api/experiences")

@@ -24,7 +24,6 @@ export function SingleExp()
 	axios
 		.get("/api/experiences/id", { params: {id} })
 		.then((res) => {
-			console.log("here" + res.data)
 			setExpData(res.data);
 			setLoading(false);
 		})
