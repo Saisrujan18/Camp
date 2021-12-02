@@ -63,7 +63,7 @@ export default function Profile()
     const Card = (props) => 
     {
         return(
-        <div className="mx-4 my-2 p-2 min-h-user-details-card h-full w-full flex flex-col items-center justify-around rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
+        <div className="p-2 min-h-user-details-card h-full w-full flex flex-col items-center justify-around rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
             <div className="flex flex-row mb-1 w-full justify-center pt-1">
                 <svg className={`h-svg-icon w-svg-icon ml-4 mr-2 text-${props.colorcode} my-1`}>
                     {SVG[props.svgID]}
@@ -77,7 +77,7 @@ export default function Profile()
     //Card for User info
     const userInfo = () => {
         return (
-            <div className="flex flex-col items-center w-full ml-4 mr-4 mt-4 px-2 py-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
+            <div className="flex flex-col items-center w-full mx-6 my-3 px-2 py-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_db cursor-default">
                 <div className="user_info flex flex-row w-auto">
                     <div className="font-semibold truncate overflow-ellipsis italic text-white">{userData.username}</div>
                     {userData.verified && <VerifiedUser className="h-1 w-1 text-darkBlu"/>}
@@ -93,7 +93,7 @@ export default function Profile()
     //Render the content of the page
     const TopPart = () => {
         return (
-            <div className="top-part flex flex-col small_profile_l:flex-row w-auto h-full px-4">
+            <div className="top-part flex flex-col small_profile_l:flex-row w-auto h-full px-6">
                 <div className="flex flex-col w-auto h-auto items-center">
                     <div onMouseEnter={setAnimTrue} onMouseLeave={setAnimFalse} 
                         className="p-4 rounded-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-glow_b_in
@@ -131,7 +131,7 @@ export default function Profile()
     //Profile page body
     return (
         <div className="w-screen h-screen py-2">
-        <div className="flex flex-col items-stretch h-full py-2 small_profile:mx-2 medium_profile:mx-2 large:mx-2 bg-blackBlue large:rounded-lg medium_profile:rounded-lg small_profile:rounded-lg shadow-glow_b overflow-y-auto">
+        <div className="flex flex-col items-stretch h-full p-2 small_profile:mx-2 medium_profile:mx-2 large:mx-2 bg-blackBlue large:rounded-lg medium_profile:rounded-lg small_profile:rounded-lg shadow-glow_b overflow-y-auto">
             <HomeButton/>
             {TopPart()} 
             <div className="flex-grow"/>
