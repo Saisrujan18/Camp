@@ -10,6 +10,7 @@ router.use(express.json());
 
 // Each router.get("/someclubname") fetches posts related to that club
 // and send that to the frontend.
+// "/access" - for querying the admmins.
 
 router.get("/digitalwizards", (req, res) => {
     PostModel.find({club: "digitalwizards"}).sort({createdAt: 'asc'})
@@ -22,6 +23,8 @@ router.get("/digitalwizards/access", (req, res) => {
     .catch(err => console.log(err));  
 });
 
+// "/sports"
+
 router.get("/sports", (req, res) => {
     PostModel.find({club: "sports"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
@@ -33,6 +36,7 @@ router.get("/sports/access", (req, res) => {
     .catch(err => console.log(err));  
 });
 
+// "/techmaniacs"
 
 router.get("/techmaniacs", (req, res) => {
     PostModel.find({club: "techmaniacs"}).sort({createdAt: 'asc'})
@@ -45,6 +49,8 @@ router.get("/techmaniacs/access", (req, res) => {
     .catch(err => console.log(err));  
 });
 
+// "/sargam"
+
 router.get("/sargam", (req, res) => {
     PostModel.find({club: "sargam"}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
@@ -55,27 +61,6 @@ router.get("/sargam/access", (req, res) => {
     .then(club=> res.json(club))
     .catch(err => console.log(err));  
 });
-
-
-// .....
-// This for fetching data of a particular post (given: id)
-// router.post("/digitalwizards/id", (req,res) => {
-//     const {id}=req.body;
-//     PostModel.findById(id)
-//              .then(response=>{res.json(response)})
-//              .catch(err=>{console.log(err)})    
-// })
-
-// // This will add the current user to the collaboration if not already.
-// router.post("/digitalwizards/id/register",(req,res)=>{
-//     // extracting the data from the request
-//     const {email, id, registered}=req.body;
-//     // adding the new member
-//     registered.push(email);
-//     PostModel.findByIdAndUpdate(id, { $set: { registered: registered }})
-//                 .then(response=>{res.json(registered)})
-//                 .catch(err=>{console.log(err);})
-// })
 
 
 // This adds a new Post to the database

@@ -7,14 +7,14 @@ const router = express.Router();
 const CollabModel = require("../models/collabModel");
 router.use(express.json());
 
-// here we are fetching the entire data (i.e all the collaborations)
+// Fetching the entire data (i.e all the collaborations)
 router.get("/", (req, res) => {
-    CollabModel.find({}).sort({createdAt: 'asc'})
+    CollabModel.find({},{description: 0}).sort({createdAt: 'asc'})
     .then(collaborations => res.json(collaborations))
     .catch(err => console.log(err));  
 });
 
-// This for fetching data of a particular collaboration (given: id)
+//Fetching data of a particular collaboration (given: id)
 router.get("/id", (req,res) => {
     const {id}=req.query;
     CollabModel.findById(id)
@@ -22,6 +22,7 @@ router.get("/id", (req,res) => {
              .catch(err=>{console.log(err)})    
 })
 
+// Editing already created collaboration. 
 router.post("/id/edit", (req,res) => {
     const {id, data} = req.body;
     CollabModel.findByIdAndUpdate(id, data)
@@ -38,6 +39,15 @@ router.post("/id/join",(req,res)=>{
     CollabModel.findByIdAndUpdate(id, { $set: { members: members }})
                 .then(resp=>{res.json(members)})
                 .catch(err=>{console.log(err);})
+})
+
+router.post("/id/comment", (req,res) => {
+    const {id,comments} = req.body;
+    console.log(comments)
+    CollabModel.findByIdAndUpdate(id, { $set: { comments: comments }})
+                .then(resp=>{res.json("done")})
+                .catch(err=>{console.log(err);})
+    
 })
 
 // This adds a new collaboration to the database

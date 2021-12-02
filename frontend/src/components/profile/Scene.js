@@ -1,7 +1,6 @@
 import React, {Suspense} from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, CameraShake } from "@react-three/drei";
-import HighRes from "./HighRes"
 
 import Viking from "./Viking"
 import Roman from "./Roman"
@@ -12,10 +11,12 @@ import Grid from "./Grid";
 
 export default function Scene(props)
 {
+	//All the Avatars currently available
 	const AvatarList = [<Viking isPlaying={props.isPlaying}/>,
 						<Roman isPlaying={props.isPlaying}/>, 
 						<Egyptian isPlaying={props.isPlaying}/>]
 	
+	//The Scene containing Camera, Lights, Avatar etc
 	return (
 		<Canvas camera={{position:[1.2, 1.5, 3], fov:[75], rotation:[0, Math.PI, 0]}}>
 			{/* <Grid size={10}/> */}

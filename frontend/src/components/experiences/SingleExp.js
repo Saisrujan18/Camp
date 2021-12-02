@@ -17,15 +17,15 @@ export function SingleExp()
 	const [expData, setExpData] = useState({});
 	const [showInfo, setShowInfo] = useState(true);
 	const [editorNegative, setNegative] =useState(false);
-
+	const [comments, setComments] = useState([]);
 	// Fetching all the neccessary data
 
 	useEffect(() => {
 	axios
 		.get("/api/experiences/id", { params: {id} })
 		.then((res) => {
-			console.log("here" + res.data)
 			setExpData(res.data);
+			setComments(res.data.comments);
 			setLoading(false);
 		})
 		.catch((err) => console.log(err));
@@ -33,6 +33,15 @@ export function SingleExp()
 
 	function setEditor(flag){setNegative(flag)}
 
+	// adding a new comment : sending data to the backend and updating in the frontend.
+	const addComment = async (comment) => {
+		let updatedComments = [...comments];
+		updatedComments.push(comment);
+		setComments(updatedComments);
+		axios.post("/api/experiences/id/comment", {id: id, comments: updatedComments})
+		.then(res => console.log("done"))
+		.catch(err => console.log(err))
+	}
 	// Renders the content of the whole screen.
 	return (
 	// total screen
@@ -109,7 +118,7 @@ export function SingleExp()
 					</div>
 					<div className="flex-grow bg-white mb-2 rounded-b-lg "></div>
 				</main>
-				:<Comments currentUser={user.email} comments={[{text:"Hello this seems very interesting what are you up to now? asdf asdf asd asdf a", time:"13:40", username:"Dumped"}]}/>
+				:<Comments currentUser={user.email} comments={comments} addComment={addComment} author={expData.author}/>
 				}
 				</div>
 			)}
