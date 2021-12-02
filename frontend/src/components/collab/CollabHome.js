@@ -44,7 +44,7 @@ function CollabHome() {
 
     axios.post("/api/collab", collab)
       .then((res)=>{
-        console.log(res)
+        
         axios
           .get("/api/collab")
           .then((res) => {

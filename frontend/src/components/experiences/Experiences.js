@@ -44,7 +44,6 @@ function Experiences()
 
 		axios.post("/api/experiences",exp)
 			.then((res)=>{
-					console.log(res)
 					axios
 						.get("/api/experiences")
 						.then((res) => {

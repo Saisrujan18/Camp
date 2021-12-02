@@ -18,7 +18,7 @@ const styles = {
     content_body:"main h-full w-full overflow-y-auto",
     grid_links:"grid medium_l:grid-cols-2 grid-rows-auto grid-cols-1 place-content-center place-items-center gap-x-8 gap-y-4 p-4 small_l:p-6",
 
-    title:"patternTitle bg-darkBlue85 p-5 h-home-title-small medium_l:h-home-title rounded-t-lg w-auto cursor-default",
+    title:"patternTitle bg-darkBlue85 p-2 h-home-title-small medium_l:h-home-title rounded-t-lg w-auto cursor-default",
     title_body:"flex flex-row justify-center h-full",
     logo:"w-auto h-2/3 mx-2 self-center",
     heading:"flex flex-col mx-2 justify-center",

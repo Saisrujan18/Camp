@@ -27,7 +27,6 @@ export function Collab()
 		.get("/api/collab/id", { params: {id} })
 		.then((res) => {
 			// receive the data.
-			console.log(res.data);
 			setCollabData(res.data);
 			setComments(res.data.comments);
 			setLoading(false);
@@ -68,7 +67,7 @@ export function Collab()
 		updatedComments.push(comment);
 		setComments(updatedComments);
 		axios.post("/api/collab/id/comment", {id: id, comments: updatedComments})
-		.then(res => console.log("done"))
+		.then()
 		.catch(err => console.log(err))
 	}
 
