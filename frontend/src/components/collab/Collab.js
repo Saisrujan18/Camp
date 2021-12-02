@@ -139,7 +139,16 @@ export function Collab()
 							Comments
 							
 						</div>
-
+						{!collabData.members.includes(user.email) && (
+							<button
+							className={
+								"font-bold rounded-lg text-md m-2 pl-4 pr-4 p-1 ml-auto hover:bg-blue-200 transition duration-500 ease-in-out"
+							}
+							onClick={addMember}
+							>
+							Join
+							</button>
+						)}
 						<hr className="bg-whit h-0.5 border-none rounded-sm"/>
 						</div>
 					</div>
