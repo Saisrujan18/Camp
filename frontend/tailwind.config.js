@@ -21,8 +21,14 @@ module.exports = {
         purpl:"#8000A3",
         orang:"#F86E25",
 
+        lightYel2:"#FEF8EB",
+        lightYel1:"#F9FFB333",
+
         lightBlu20:"#ADC9FE33",
         lightBlu30:"#ADC9FE4D",
+
+        lightRed40:"#FFAFAD66",
+        lightRed30:"#FFAFAD4D",
 
         whit80:"#F2F4F9CC",
         darkBlu80:"#4171E5CC",
@@ -60,8 +66,8 @@ module.exports = {
         'avatar-display-home':'480px',
         'svg-icon-small':'25px',
         'svg-icon':'40px',
-        'home-title-small':'120px',
-        'home-title':'150px'
+        'home-title-small':'108px',
+        'home-title':'132px'
       },
       width:{
         'avatar-dp':'100px',
@@ -111,6 +117,13 @@ module.exports = {
       'glow_b_in':'0px 0px 180px 80px inset rgba(31, 81, 255, 0.1)',
       'glow_sb1':'0px 0px 10px 5px inset rgba(4,217,255,0.1)',
       'glow_sb2':'0px 0px 6px 3px inset rgba(4,217,255,0.3)',
+
+      'glow_r1':'0px 0px 10px 5px inset rgba(255,83,73,0.1)',
+      'glow_r2':'0px 0px 6px 3px inset rgba(255,83,73,0.3)',
+      'glow_r_in':'0px 0px 180px 80px inset rgba(249,255,179,0.4)',
+      'glow_y_in':'0px 0px 80px 40px inset rgba(255,223,0,0.2)',
+      'glow_y':'0px 3px 4px 2px rgba(255,223,0,0.2)',
+
       ...defaultTheme.boxShadow
     },
     blur:{
