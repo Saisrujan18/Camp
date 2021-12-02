@@ -54,7 +54,8 @@ module.exports = {
         'new-collab-experience':'400px'
       },
       maxWidth:{
-          'post-feed':'800px'
+          'post-feed':'800px',
+          'comment-section':'750px'
       },
       maxHeight:{
       },
@@ -122,7 +123,7 @@ module.exports = {
       'glow_r2':'0px 0px 6px 3px inset rgba(255,83,73,0.3)',
       'glow_r_in':'0px 0px 180px 80px inset rgba(249,255,179,0.4)',
       'glow_y_in':'0px 0px 80px 40px inset rgba(255,223,0,0.2)',
-      'glow_y':'0px 3px 4px 2px rgba(255,223,0,0.2)',
+      'glow_y':'0px 3px 4px 2px rgba(255,223,0,0.1)',
 
       ...defaultTheme.boxShadow
     },
