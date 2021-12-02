@@ -11,7 +11,8 @@ const collabSchema = new Schema ({
     createdAt: {type: Date, default: Date.now},
     displayText: {type: String, default: "New Collaboration"},
     description:{type:String, required: true},
-    members: {type: [String]}
+    members: {type: [String]},
+    comments: [{text: {type: String}, username:{type:String, required: true}, time:{type: String, required: true}}]
 });
   
 const CollabModel = mongoose.model('collaborations', collabSchema);

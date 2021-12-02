@@ -1,7 +1,7 @@
 # Camp
 ##Description <br>
   
-  Through this project, students gain access to a common platform that allows them to collaborate on projects and view different club activities, as well as learn more about senior interview experiences.The need for certain modules is evident.<br>
+  Through this project, students gain access to a common platform that allows them to collaborate on projects (or any other collaborative work) and view different club activities, as well as learn more about various experiences. The need for certain module is evident.<br>
 
 As a way to make this project unique, we will introduce an avatar system for the users, which can be upgraded with coins they earn through their activities on the platform such as contributing. <br>
 

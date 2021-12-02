@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 
-// Model for members who have the power to post .
+// This Model is to maintain the admins of the club.
 
 const Schema = mongoose.Schema;
 
