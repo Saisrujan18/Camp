@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { TextField } from "@mui/material";
-import { yellow } from "@mui/material/colors";
 import AboutMe from "./AboutMe.js"
 import pavan from "./images/pavan.jpg"
 import harish from "./images/harish.jpg"
@@ -10,13 +7,14 @@ import { Link } from "react-router-dom";
 
 function AboutUs() 
 {
-    // Variables required for the popup are declared over here.
+    // Variables for the images
 
     const url1 = pavan;
     const url2 = harish;
     const url3 = manjunath;
     const url4 = srujan;
 
+    // Button component to divert back to Home
     const HomeButton = () => {
       return(
         <Link to="/home"
@@ -40,8 +38,11 @@ function AboutUs()
       )
     }
 
+    // Rendering the About Us Content
     return (
         <div className="flex flex-col h-screen rounded-lg mx-2 my-2 bg-whit overflow-y-auto">
+            
+            {/* The header of the page */}
             <div className="flex flex-row w-full mx-auto sm:justify-between ">
                 
               <HomeButton />
@@ -58,15 +59,13 @@ function AboutUs()
 
             
             <div className="bg-white h-0.5 rounded-br-lg"></div>
-
+            
             <div className=" grid grid-cols-1 small:grid-cols-2 medium:grid-cols-4 rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto flex-grow small:flex-col gap-y-2">
                 <AboutMe url={url1} description={"FrontEnd Developer"}/>
                 <AboutMe url={url2} description={"FrontEnd Developer"}/>
                 <AboutMe url={url3} description={"FullStack Developer"}/>
                 <AboutMe url={url4} description={"FullStack Developer"}/>
             </div>
-
-            
         </div>
     );
 }

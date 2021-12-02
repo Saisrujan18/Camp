@@ -1,16 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
-
 import ExpCard from "./ExpCard";
 import Spinner from "../Spinner";
 import NewExperience from "./NewExperience";
 import { SidebarH } from "../../App";
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
-
-import draftToHtml from 'draftjs-to-html'
-import Parser from 'html-react-parser'
 import Backdrop from '@mui/material/Backdrop';
 
 function Experiences() 
@@ -48,20 +43,19 @@ function Experiences()
 		setLoading(true);
 
 		axios.post("/api/experiences",exp)
-				.then((res)=>{
-						console.log(res)
-						axios
-							.get("/api/experiences")
-							.then((res) => {
-											setexpData(res.data);
-											setLen(res.data.length);
-											setCurr(0);
-											setLoading(false);
-										})
-							.catch((err) => console.log(err));
-				})
-				.catch((err)=>{console.log(err)})
-    	console.log("Fetched after inserting");
+			.then((res)=>{
+					console.log(res)
+					axios
+						.get("/api/experiences")
+						.then((res) => {
+										setexpData(res.data);
+										setLen(res.data.length);
+										setCurr(0);
+										setLoading(false);
+									})
+						.catch((err) => console.log(err));
+			})
+			.catch((err)=>{console.log(err)})
 	};
 
 	// A function to render the contents of all experiences
@@ -103,6 +97,7 @@ function Experiences()
 	);
 	};
 
+	// Handles the side navigation in the experience page
 	function max(l,r){if(l<=r){return r;}return l;}
 	function min(l,r){if(l<=r){return l;}return r;}
 	function handleL(){let temp=max(0,curr-1);setCurr(temp);}
@@ -114,6 +109,7 @@ function Experiences()
 		return (
 		(
 			<div className="h-screen flex flex-row">
+			{/* Sidebar */}
 			<SidebarH hasEditor={true} handleEditor={setEditor}/>
 			<div className={"flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
 				<div className="flex flex-row bg-whit rounded-tr-lg rounded-tl-lg border-b-2 top-0">
@@ -152,11 +148,11 @@ function Experiences()
 
 	// rendering of whole is done over here.
 	return (
+	// Renders the popup when the popup button is clicked
 	<div>
 		{ popupVisible && <Backdrop
 		sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
 		open={popupVisible}
-		// onClick={handleClose}
 		>
 		{renderPopup()}
 		</Backdrop> }

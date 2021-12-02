@@ -1,20 +1,16 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
+
 // A reusable card to the contents of different Experiences.
 export default function ExpCard(props) 
 {
-  const truncate = function(str, length){
-    var dots = str.length > length ? '...' : '';
-    return str.slice(0, length)+dots;
-  };
+  // Variables required
   let colors=["blue","green","pink","orange","gray","yellow","indigo","red"];
   let selected=colors[Math.floor(Math.random()*colors.length)];
   selected=" bg-"+selected+"-500";
   let cssAuthor="bg-red-400 mr-auto truncate text-xs text-white font-semibold rounded-full py-1 px-2 mb-1 "+selected
 	const { title, author, description, _id, navigate, type,company } = props;
 
-
-
+  // Renders a single experience card
   return (
         <div className="card ml-2 mr-2 mt-1.5 mb-1.5 cursor-pointer transition duration-500 ease-in-out transform hover:scale-105">
           <div className="flex flex-col bg-white w-full h-full min-h-collab-exp-card p-3 rounded-md shadow-md hover:shadow-glow_db" onClick={() => navigate(_id)}>

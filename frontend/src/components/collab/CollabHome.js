@@ -1,19 +1,12 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
-
-import Sidebar from "../Sidebar";
 import CollabCard from "./CollabCard";
 import Spinner from "../Spinner";
 import NewCollab from "./NewCollab";
 import { SidebarH } from "../../App";
-
 import {BsCaretLeft, BsCaretRight} from "react-icons/bs"
 import Backdrop from '@mui/material/Backdrop';
-import draftToHtml from 'draftjs-to-html'
-import Parser from 'html-react-parser'
 
 function CollabHome() {
   // All the neccessary useState variables are declared over here.
@@ -46,27 +39,23 @@ function CollabHome() {
 
   // Handles the request of adding a new collaboration
   const addNewCollab = async (collab) => {
-    // let updatedCollabData = [...collabData];
-    // updatedCollabData.push(collab);
-    // setCollabData(updatedCollabData);
     // // redirect to the post.
     setLoading(true);
 
     axios.post("/api/collab", collab)
-              .then((res)=>{
-                console.log(res)
-                axios
-                  .get("/api/collab")
-                  .then((res) => {
-                                setCollabData(res.data);
-                                setLen(res.data.length);
-                                setCurr(0);
-                                setLoading(false);
-                              })
-                          .catch((err) => console.log(err));
-              })
-              .catch((err)=>{console.log(err)})
-    console.log("Fetched after inserting");
+      .then((res)=>{
+        console.log(res)
+        axios
+          .get("/api/collab")
+          .then((res) => {
+                        setCollabData(res.data);
+                        setLen(res.data.length);
+                        setCurr(0);
+                        setLoading(false);
+                      })
+                  .catch((err) => console.log(err));
+      })
+      .catch((err)=>{console.log(err)})
     };
 
   // A function to render all the collaborations in the community
@@ -117,12 +106,13 @@ function CollabHome() {
     return r;
   }
 
-
+  // Handles the left button transition in the Collab Home page
   function handleL()
   {
     let temp=max(0,curr-1);
     setCurr(temp);
   }
+  // Handles the right button transition in the Collab Home page
   function handleR()
   {
     let temp=min(curr+1,(len-len%9)/9-(len%9===0?1:0));
@@ -138,10 +128,12 @@ function CollabHome() {
     return (
       (
         <div className="h-screen flex flex-row">
+          {/* Sidebar */}
           <SidebarH hasEditor={true} handleEditor={setEditor}/>
           <div className={"flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto"+((editorNegative)?" -z-10":"")}>
           <div className="flex flex-row bg-whit rounded-t-lg top:rounded-tr-lg border-b-2 top-0">
             
+            {/* The Header for the page */}
             <div className="flex-grow"></div>
               <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 self-end" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -150,6 +142,8 @@ function CollabHome() {
                 Collab
               </div>
               <div className="flex-grow"></div>
+
+              {/* Button to add a Single Collab */}
               <button
                 className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
                 onClick={showPopup}
@@ -160,6 +154,8 @@ function CollabHome() {
               </button>
             </div>
             {collabContent(loading)}
+
+            {/* the side nav */}
             <div className="flex-grow bg-whit rounded-br-lg"></div>
             <div className="flex flex-row place-content-center bg-whit p-1 rounded-lg sticky bottom-0">
               <button className="hover:bg-gray-200 py-1" onClick={handleL}> <BsCaretLeft size={20}/></button>
@@ -171,12 +167,12 @@ function CollabHome() {
     );
   };
 
+  // Render Content of the Collab Home
   return (
     <div>
       { popupVisible && <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={popupVisible}
-        // onClick={handleClose}
       >
         {renderPopup()}
       </Backdrop> }

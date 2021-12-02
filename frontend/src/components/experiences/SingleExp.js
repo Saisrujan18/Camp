@@ -1,16 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
 import { useParams } from "react-router";
 import { useAuth } from "../../authContext/AuthContext";
 import { SidebarH } from "../../App";
 import Spinner from "../Spinner";
 import Edit from "../Edit";
-import draftToHtml from 'draftjs-to-html';
-import Parser from 'html-react-parser'
-import Sidebar from "../../components/Sidebar.js"
 
 export function SingleExp() 
 {

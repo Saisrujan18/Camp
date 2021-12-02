@@ -1,7 +1,5 @@
 import {React, useState} from 'react'
 import "./Home.css";
-
-//import {BigTile} from "./AltTile"
 import {Tile} from "./AltTile"
 import fire from "../home/assets/Camp.png";
 
@@ -9,7 +7,7 @@ import fire from "../home/assets/Camp.png";
 // This page shows the links to all the pages of the webapp
 // User can navigate through the webapp from the home
 
-
+// 
 const styles = {
     body: "body flex flex-row rounded-lg text-blac",
     login_menu:
