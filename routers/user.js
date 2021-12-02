@@ -20,7 +20,7 @@ router.post("/", (req,res) => {
         .findOne({email: email})
         .then(user => {
             if( user ) {
-                if ( user.username == "RandomCamper")
+                if ( user.username == email)
                     return res.json("nousername");
                 console.log(user);
                 return res.json(user);

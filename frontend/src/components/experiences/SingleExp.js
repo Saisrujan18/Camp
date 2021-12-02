@@ -11,6 +11,7 @@ import Edit from "../Edit";
 import draftToHtml from 'draftjs-to-html';
 import Parser from 'html-react-parser'
 import Sidebar from "../../components/Sidebar.js"
+import Comments from "../Comments";
 
 export function SingleExp() 
 {
@@ -64,12 +65,12 @@ export function SingleExp()
 									</h1>
 						
 									{/* Inpage navigation */}
-									<div className="flex">
-										<button
+									<div className="flex flex-row">
+										<div
 											to="/experiences"
 											className={
-											"text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
-											(showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
+											"text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 " +
+											(showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300 cursor-pointer")
 											}
 											onClick={() => {
 											setShowInfo(true);
@@ -77,7 +78,20 @@ export function SingleExp()
 										>
 											Info
 											
-										</button>
+										</div>
+										<div
+											to="/experiences"
+											className={
+											"text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
+											(!showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300 cursor-pointer")
+											}
+											onClick={() => {
+											setShowInfo(false);
+											}}
+										>
+											Comments
+											
+										</div>
 									</div>
 									<hr className="bg-whit h-0.5 border-none rounded-sm"/>
 								</div>
@@ -85,6 +99,7 @@ export function SingleExp()
 						</div>
 
 				{/* below of center */}
+				{showInfo?
 				<main className="flex-1 mx-4  my-2 flex flex-col">
 					<div className={"rounded-full py-1 px-2  font-semibold m-auto bg-orange-400 mb-2" + (showInfo ? "" : " hidden")}>
 					Description
@@ -100,6 +115,8 @@ export function SingleExp()
 					</div>
 					<div className="flex-grow bg-white mb-2 rounded-b-lg "></div>
 				</main>
+				:<Comments currentUser={user.email} comments={[{text:"Hello this seems very interesting what are you up to now? asdf asdf asd asdf a", time:"13:40", username:"Dumped"}]}/>
+				}
 				</div>
 			)}
 			</div>
