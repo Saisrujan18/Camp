@@ -126,8 +126,8 @@ export function Collab()
 						<div
 							to="/collab"
 							className={
-							"text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
-							(showComments ? "border-darkBlu" : "border-whit hover:border-gray-300 cursor-pointer")
+							"text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer " +
+							(showComments ? "border-darkBlu" : "border-whit hover:border-gray-300")
 							}
 							onClick={() => {
 							setShowInfo(false);

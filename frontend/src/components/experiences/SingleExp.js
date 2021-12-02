@@ -72,8 +72,8 @@ export function SingleExp()
 										<div
 											to="/experiences"
 											className={
-											"text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 " +
-											(showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300 cursor-pointer")
+											"text-md border-b-2 mt-2 mr-3 pl-4 pr-4 p-1 cursor-pointer " +
+											(showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
 											}
 											onClick={() => {
 											setShowInfo(true);
@@ -85,8 +85,8 @@ export function SingleExp()
 										<div
 											to="/experiences"
 											className={
-											"text-md border-b-2 mt-2 pl-4 pr-4 p-1 " +
-											(!showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300 cursor-pointer")
+											"text-md border-b-2 mt-2 pl-4 pr-4 p-1 cursor-pointer " +
+											(!showInfo ? "border-darkBlu" : "border-whit hover:border-gray-300")
 											}
 											onClick={() => {
 											setShowInfo(false);
