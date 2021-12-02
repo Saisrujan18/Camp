@@ -1,5 +1,6 @@
 import React from "react";
 
+// Symbolizes the loading process
 function Spinner() {
   return (
     <div className="m-auto">

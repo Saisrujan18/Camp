@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "./Login.css";
-
 import fire from "../login/assets/Camp.png";
 import bg from "../login/assets/BG.png";
 import { useAuth } from "../../authContext/AuthContext";
@@ -10,6 +9,7 @@ import Spinner from "../Spinner";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 
+// styles object to reduce the inline css content
 const styles = {
   body: "body flex flex-row rounded-lg text-blac",
   login_menu:
@@ -25,6 +25,8 @@ const styles = {
 };
 
 export function Login() {
+
+  // Variables required are defined here
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [noUsername, setNoUsername] = useState(false);
@@ -49,7 +51,6 @@ export function Login() {
           if (res.data == "nousername") {
             setNoUsername(true);
           } else {
-            // localStorage.setItem("userData", res.data);
             history.push("/home");
           }
         })
@@ -64,9 +65,9 @@ export function Login() {
     setLoading(true);
     axios.post("/api/user/newuser", {email: auth.currentUser.email, username: username})
     .then(res => {setLoading(false); history.push("/home")})
-
   }
 
+  // renders the Login Page with a simple login button
   return (
     <div className={styles.body}>
       <div className={styles.login_menu}>
@@ -101,6 +102,8 @@ export function Login() {
               setUsername(e.target.value);
             }}
           />
+
+          {/* Shows spinner symbolizing the loading process */}
           <button
             disabled={loading}
             className={styles.login_button}

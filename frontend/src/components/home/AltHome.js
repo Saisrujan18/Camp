@@ -7,7 +7,7 @@ import fire from "../home/assets/Camp.png";
 // This page shows the links to all the pages of the webapp
 // User can navigate through the webapp from the home
 
-// 
+// styles object to reduce inline styling
 const styles = {
     body: "body flex flex-row rounded-lg text-blac",
     login_menu:
@@ -34,6 +34,7 @@ export function AltHome()
         {title:'Techmaniacs', id:7},
         {title:'Sargam', id:8}
     ])
+    // Fetches and returns the single tile/card
     const getTile = (tile, index) => {
         if(index===tiles.length-1 && tiles.length%2===1)
         {
@@ -59,6 +60,8 @@ export function AltHome()
             </div>
         )
     }
+
+    // Every thing is shown in grid layout
     const getContent = () => {
         return ( 
             <div className="main h-full w-full overflow-y-auto">    
@@ -72,6 +75,8 @@ export function AltHome()
             </div>
         )
     }
+
+    // The whole thing is wrapped and presented
     const getHomeScreen = () => {
         return (
             <div className="BG bg-fixed h-screen w-screen py-2">
@@ -89,33 +94,6 @@ export function AltHome()
             </div>
         )
     }
-    // return (
-    //     <div className="bod rounded-lg bg-darkBlu">
-    //         <div className="flex flex-row">
-    //             {/* <div className="flex-grow"></div> */}
-    //             <div className="grid md:grid-cols-2 grid-rows-auto grid-cols-1 gap-x-6 gap-y-4 flex-wrap place-content-center overflow-y-auto justify-center pt-6 m-auto">
-                            
-    //                 <Link className="flex flex-row w-full h-full  content-center md:col-span-2 col-span-1 " to={"/home"} >
-    //                         <div className="my-14 mx-auto flex items-center gap-x-2 text-white">
-    //                             <div className="subpixel-antialiased font-bold text-2xl">Welcome to </div>
-    //                                 <img src={fire} className="w-9" alt="Not found"></img>
-    //                             <div className="subpixel-antialiased font-bold text-2xl">Camp</div>
-    //                         </div>
-    //                 </Link>
-
-    //                 <BigTile title={"Collab"}/>           
-    //                 <BigTile title={"Experiences"}/>
-    //                 <BigTile title={"Profile"}/>
-    //                 <BigTile title={"AboutUs"}/>
-    //                 <BigTile title={"Sports"}/>
-    //                 <BigTile title={"DigitalWizards"}/>
-    //                 <BigTile title={"Techmaniacs"}/>
-    //                 <BigTile title={"Sargam"}/>
-    //             </div>
-    //             {/* <div className="flex-grow"></div> */}
-    //         </div>
-    //     </div>
-    // );
     return(
         getHomeScreen()
     )

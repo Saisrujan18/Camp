@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
+import {Link} from "react-router-dom";
 
 // These are the reusable components that are used in the Home page
 // Created a seperate component to avoid code repetition. 
-
-import {Link} from "react-router-dom";
  
 export const BigTile = (props) => {
 

@@ -1,14 +1,8 @@
-.BG
-{
-    /* background-image: url("./assets/BG.png");
-    background-size: cover;
-    background-attachment: scroll;
-    background-position: center; */
-}
 .pattern-bg{
     background-color: #798cf5;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%230128ff' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
 }
+
 .content
 {
     opacity: 1;
@@ -19,17 +13,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     background-image: url("./assets/BG.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    
-    /* opacity: 0.5; */
-
-    /* margin-top: 3vh;
-    margin-bottom: 3vh;
-    margin-left: 2vw;
-    margin-right: 2vw; */
-    /* height: 94vh; */
-    /* width: 96vw; */
-    
+    background-position: center;    
     font-family: 'Source Sans Pro', sans-serif;
 }
  
