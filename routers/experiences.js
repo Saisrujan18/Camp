@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
-// Importing the collaboration model
+// Importing the experience model
 const ExpModel = require("../models/expModel");
 
 // fetching all the experiences
@@ -29,11 +29,14 @@ router.post("/id/edit", (req,res) => {
 }
 )
 
+
+
 // This adds a new experience to the database
 router.post("/", (req, res) => 
 {   
     // extracting the data.
     const exp = req.body;
+    console.log(exp);
 
     // creating a new document
     const newExp = new ExpModel({
@@ -41,7 +44,7 @@ router.post("/", (req, res) =>
         author: exp.author,
         description: exp.description,
         type: exp.type,
-        displayText: collab.displayText,
+        displayText: exp.displayText,
         company:exp.company,
         email:exp.email
     });

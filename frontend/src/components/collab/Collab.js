@@ -151,7 +151,7 @@ export function Collab()
 					{/* {collabData} */}
 					<div
 					className={
-						"ml-1 px-2 rounded-lg h-full" +
+						"ml-1 px-2 rounded-lg h-full " +
 						(showInfo ? "" : "hidden")}>
 						<Edit 
 							sendTo = {"/api/collab/id"}

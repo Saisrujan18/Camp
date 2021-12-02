@@ -10,8 +10,8 @@ The main goal of this project is to strengthen the student community, help stude
 
 ##Profile of Users <br>
 
-	The end-users of this project are students who will be greatly benefited. Rather than wasting time in finding out what they should do in the first two years of college, they can establish a concrete plan ahead of time. <br>
+The end-users of this project are students who will be greatly benefited. Rather than wasting time in finding out what they should do in the first two years of college, they can establish a concrete plan ahead of time. <br>
 
 ##Technology Stack <br>
 
-	We plan to use the MERN stack to complete this project and may also use other technologies or frameworks as we progress.<br>
+We plan to use the MERN stack to complete this project and may also use other technologies or frameworks as we progress.<br>

@@ -2,39 +2,71 @@ import { useState } from "react";
 import { TextField } from "@mui/material";
 import { yellow } from "@mui/material/colors";
 import AboutMe from "./AboutMe.js"
-import DP from "./images/deadpool.jpg"
-// import Sidebar from "../Sidebar.js";
+import pavan from "./images/pavan.jpg"
+import harish from "./images/harish.jpg"
+import manjunath from "./images/manjunathr.jpg"
+import srujan from "./images/srujanr.jpg"
+import { Link } from "react-router-dom";
 
 function AboutUs() 
 {
     // Variables required for the popup are declared over here.
-    const p1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus, urna et accumsan fermentum, elit est commodo nisl, at iaculis neque dui vitae arcu. Nulla et ante ornare, pharetra arcu in, tincidunt felis. Phasellus auctor odio nec est porttitor, nec rutrum sapien scelerisque. Vivamus id quam eget magna commodo pharetra vitae non augue. Vestibulum ullamcorper est ac lobortis luctus. Curabitur pharetra nisi et lacus ultricies, sit amet semper nunc pretium. Morbi at mauris sodales, lacinia sapien eget, dignissim turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum fermentum accumsan purus. Donec risus magna, vehicula sit amet felis quis, vehicula pharetra metus. Nam aliquam lorem congue augue convallis dignissim. Pellentesque vel nunc sed ligula bibendum ultricies ac ac erat. Fusce lobortis mattis lorem, eget tempus mauris consequat sed."
-    const p2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus, urna et accumsan fermentum, elit est commodo nisl, at iaculis neque dui vitae arcu. Nulla et ante ornare, pharetra arcu in, tincidunt felis. Phasellus auctor odio nec est porttitor, nec rutrum sapien scelerisque. Vivamus id quam eget magna commodo pharetra vitae non augue. Vestibulum ullamcorper est ac lobortis luctus. Curabitur pharetra nisi et lacus ultricies, sit amet semper nunc pretium. Morbi at mauris sodales, lacinia sapien eget, dignissim turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum fermentum accumsan purus. Donec risus magna, vehicula sit amet felis quis, vehicula pharetra metus. Nam aliquam lorem congue augue convallis dignissim. Pellentesque vel nunc sed ligula bibendum ultricies ac ac erat. Fusce lobortis mattis lorem, eget tempus mauris consequat sed."
-    const p3 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus, urna et accumsan fermentum, elit est commodo nisl, at iaculis neque dui vitae arcu. Nulla et ante ornare, pharetra arcu in, tincidunt felis. Phasellus auctor odio nec est porttitor, nec rutrum sapien scelerisque. Vivamus id quam eget magna commodo pharetra vitae non augue. Vestibulum ullamcorper est ac lobortis luctus. Curabitur pharetra nisi et lacus ultricies, sit amet semper nunc pretium. Morbi at mauris sodales, lacinia sapien eget, dignissim turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum fermentum accumsan purus. Donec risus magna, vehicula sit amet felis quis, vehicula pharetra metus. Nam aliquam lorem congue augue convallis dignissim. Pellentesque vel nunc sed ligula bibendum ultricies ac ac erat. Fusce lobortis mattis lorem, eget tempus mauris consequat sed."
-    const p4 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus, urna et accumsan fermentum, elit est commodo nisl, at iaculis neque dui vitae arcu. Nulla et ante ornare, pharetra arcu in, tincidunt felis. Phasellus auctor odio nec est porttitor, nec rutrum sapien scelerisque. Vivamus id quam eget magna commodo pharetra vitae non augue. Vestibulum ullamcorper est ac lobortis luctus. Curabitur pharetra nisi et lacus ultricies, sit amet semper nunc pretium. Morbi at mauris sodales, lacinia sapien eget, dignissim turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum fermentum accumsan purus. Donec risus magna, vehicula sit amet felis quis, vehicula pharetra metus. Nam aliquam lorem congue augue convallis dignissim. Pellentesque vel nunc sed ligula bibendum ultricies ac ac erat. Fusce lobortis mattis lorem, eget tempus mauris consequat sed."
-    const url1 = DP;
-    const url2 = DP;
-    const url3 = DP;
-    const url4 = DP;
+
+    const url1 = pavan;
+    const url2 = harish;
+    const url3 = manjunath;
+    const url4 = srujan;
+
+    const HomeButton = () => {
+      return(
+        <Link to="/home"
+            className="bg-lightBlu30 py-3 px-4 m-2 w-30 rounded flex flex-row gap-x-4 place-self-start 
+            font-semibold text-darkBlu shadow-glow_sb1 transition duration-500 ease-in-out transform hover:bg-lightBlu20 hover:scale-105 hover:shadow-glow_sb2">
+    
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+            Home
+        </Link>
+      )
+    }
 
     return (
-        <div className="flex flex-col rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto">
-            <div className="flex-grow"></div>
-              <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2 place-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
-  					<path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-				</svg>
-              About Us
-              </div>
-              <div className="flex-grow"></div>
-              <div className="flex-grow bg-white h-0.5 rounded-br-lg"></div>
-
-            <div className=" flex flex-row rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto">
-                <AboutMe url={url1} description={p1}/>
-                <AboutMe url={url2} description={p2}/>
-                <AboutMe url={url3} description={p3}/>
-                <AboutMe url={url4} description={p4}/>
+        <div className="flex flex-col h-screen rounded-lg mx-2 my-2 bg-whit overflow-y-auto">
+            <div className="flex flex-row w-full mx-auto sm:justify-between ">
+                
+              <HomeButton />
+              
+              <div className=" justify-between m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2 place-self-center">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                </svg>
+                About Us
+                </div>
+                <div className=""></div>
             </div>
+
+            
+            <div className="bg-white h-0.5 rounded-br-lg"></div>
+
+            <div className=" grid grid-cols-1 small:grid-cols-2 medium:grid-cols-4 rounded-lg mx-2 my-2 bg-whit justify-between overflow-y-auto flex-grow small:flex-col gap-y-2">
+                <AboutMe url={url1} description={"FrontEnd Developer"}/>
+                <AboutMe url={url2} description={"FrontEnd Developer"}/>
+                <AboutMe url={url3} description={"FullStack Developer"}/>
+                <AboutMe url={url4} description={"FullStack Developer"}/>
+            </div>
+
+            
         </div>
     );
 }
