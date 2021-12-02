@@ -21,7 +21,6 @@ function Edit( {sendTo, id, data, turn, editable } )
     const sendData = async () => {
         data.description = JSON.stringify(editorContent);
         setLoading(true);
-        console.log(id);
         await axios
         .post(sendTo+"/edit", {id, data})
         .then((res) => {

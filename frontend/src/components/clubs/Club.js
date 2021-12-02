@@ -33,7 +33,6 @@ export default function Club(props)
 		axios
 		.get("/api/clubs/"+whichClub)
 		.then((res) => {
-			// console.log(res.data);
 			updatePosts(res.data);
 			setLoading(false);
 		})

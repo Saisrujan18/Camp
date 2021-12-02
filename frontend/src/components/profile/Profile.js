@@ -26,7 +26,6 @@ export default function Profile()
         axios
 		.get("/api/user/email", {params:{email:user.email}})
 		.then((res) => {
-            console.log("New One Myy : "+res.data)
             setUserData(res.data)
 		    setLoading(false)
 		})

@@ -39,7 +39,7 @@ export function SingleExp()
 		updatedComments.push(comment);
 		setComments(updatedComments);
 		axios.post("/api/experiences/id/comment", {id: id, comments: updatedComments})
-		.then(res => console.log("done"))
+		.then()
 		.catch(err => console.log(err))
 	}
 	// Renders the content of the whole screen.
