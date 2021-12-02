@@ -24,7 +24,6 @@ export function Collab()
 		.get("/api/collab/id", { params: {id} })
 		.then((res) => {
 			// receive the data.
-			console.log(res.data);
 			setCollabData(res.data);
 			setLoading(false);
 		})
@@ -49,7 +48,6 @@ export function Collab()
 		.then((res) => {
 			const newCollabData = {...collabData};
 			newCollabData.members = [...res.data];
-			console.log(res.data);
 			setCollabData(newCollabData);
 			setLoading(false);
 		})

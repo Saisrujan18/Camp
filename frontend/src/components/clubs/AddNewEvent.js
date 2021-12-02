@@ -48,13 +48,8 @@ export default function AddNewEvent(props)
 		setPost(temp);
     };
 
-	// const handleFileChange = async (event) => {
-	// 	await setFile(event.target.files[0])
-	// 	console.log(file)
-	// }
 	const handleFileChange = (event) => {
 		setFile(event.target.files[0])
-		console.log(file)
 		imageHandler()
 	}
 	const handleUpload = async () =>{
@@ -74,9 +69,6 @@ export default function AddNewEvent(props)
 		}
 		props.addEvent(temp);
 		closePopup();
-		// axios.post("http://localhost:3001/api/clubs/newpost",temp)
-		// 	.then((res)=>{closePopup();})
-		// 	.catch((err)=>{console.log(err);})
 	}
 	const addImageOption = () => {
 		return (  
