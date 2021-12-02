@@ -1,5 +1,11 @@
 const feed_styles={
-
+    feed__body:"feed__body flex flex-row h-screen",
+    feed__content:"feed__content flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto",
+    feed__header:"feed__header flex flex-row bg-whit rounded-tr-lg border-b-2 top-0",
+    feed__posts:"feed__posts flex flex-col h-auto small_l:mx-1 my-2 bg-whit divide-y space-y-4 items-stretch",
+    feed__flex_grow:"feed__flex_grow flex-grow bg-whit",
+    header__title:"header__title m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row ",
+    header__svg:"header__svg h-7 w-7 self-end"
 }
 
 const post_styles={
@@ -16,7 +22,7 @@ const post_styles={
     post__imageHolder:"post__imageHolder self-center px-2 pt-4 w-98",
     post__image:"post__image w-full h-full rounded ",
     post__w_h_full:"w_h_full w-full h-full",
-    post__flex_grow:"post__flex_grow flex-grow bg-white",
+    post__flex_grow:"post__flex_grow flex-grow bg-white"
 }
 
 const newpost_styles={
@@ -41,7 +47,6 @@ const newpost_styles={
     addImageButton__hoverAddImg:"hover:text-darkBlu hover:bg-gray-200",
     addImageButton__hoverRemoveImg:"text-darkBlu bg-gray-200 hover:text-black hover:bg-darkOrang25",
     addImageButton__svg:"addImageButton__svg h-svg-icon-small w-svg-icon-small self-center"
-
 }
 
 export {feed_styles, post_styles, newpost_styles}

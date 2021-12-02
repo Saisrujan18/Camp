@@ -39,6 +39,7 @@ module.exports = {
       },
       minHeight:{
         'new-collab-experience':'400px',
+        'user-details-card':'145px',
         'collab-exp-card':'132px'
       },
       minWidth:{
@@ -53,9 +54,8 @@ module.exports = {
       height:{
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
+        'avatar-display-home-large':'600px',
         'avatar-display-home':'480px',
-        'avatar-display-home-medium':'360px',
-        'avatar-display-home-small':'240px',
         'svg-icon-small':'25px',
         'svg-icon':'40px',
         'home-title-small':'120px',
@@ -65,9 +65,8 @@ module.exports = {
         'avatar-dp':'100px',
         'avatar-dp-small':'70px',
         'post':'350px',
+        'avatar-display-home-large':'500px',
         'avatar-display-home':'400px',
-        'avatar-display-home-medium':'300px',
-        'avatar-display-home-small':'200px',
         'svg-icon-small':'25px',
         'svg-icon':'40px',
       }
@@ -95,7 +94,9 @@ module.exports = {
       'large':{'min': '1600px'},
 
       // Only for Profile Page
+      'small_profile_l':{'min':'840px'},
       'small_profile': {'min': '840px', 'max':'1249px'},
+      'medium_profile_l':{'min': '1250px'},
       'medium_profile':{'min': '1250px', 'max': '1599px'},
 
       ...defaultTheme.screens

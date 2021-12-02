@@ -11,11 +11,13 @@ import AddNewEvent from './AddNewEvent';
 import { useHistory } from "react-router";
 import { useAuth } from '../../authContext/AuthContext';
 import { SidebarH } from '../../App';
+import {feed_styles} from './clubs_className'
 
 
 
 export default function Club(props) 
 {
+	//Variables required for a Club page
 	let {user,loading}=useAuth();
 	const [postsData,updatePosts]=useState([]);
 	const [Loading,setLoading]=useState(true);
@@ -26,7 +28,8 @@ export default function Club(props)
 
 	const [popup,setPopup]=useState(false);
 
-    useEffect(() => {
+    //Fetch posts from the Server
+	useEffect(() => {
 		axios
 		.get("/api/clubs/"+whichClub)
 		.then((res) => {
@@ -42,12 +45,14 @@ export default function Club(props)
 			.catch((err)=>console.log(err));
 	},[]);
 
+	//Function that is called to toggle the popup for adding new posts
 	function showPopup(event)
 	{
 		setPopup(true);
 		event.preventDefault();
 	}
 
+	//Button i.e. Toggle for the popup
 	const addButton = () => {
 		return (  
 			<button className="block p-2 m-1 hover:text-darkBlu hover:bg-gray-200 font-bold rounded"
@@ -59,6 +64,7 @@ export default function Club(props)
 		);
 	}
 
+	//Renders every post in the feed using the Event component
 	function renderPost(props)
 	{
 		const navigate = (exp_id) => {
@@ -81,6 +87,7 @@ export default function Club(props)
 		);
 	}
 
+	//Handles addition of a new post to the feed and updates feed
 	const addNewEvent = async (data) => {
 		setLoading(true);
 		await axios.post("/api/clubs/newpost",data);
@@ -93,37 +100,41 @@ export default function Club(props)
 					.catch((err) => console.log(err));
 	  };
 
+	//Popup used to add new post
 	const renderPopup=()=>{return (popup && <AddNewEvent visibility={setPopup} addEvent={addNewEvent} club={whichClub} />);}
 
+	//Content of the clubs page i.e. the feed
     const renderContent = ()=>{
 		return(
 		!popup &&
-		(<div className="flex flex-row h-screen">
+		(
+		// Club Feed
+		<div className={feed_styles.feed__body}>
+			{/* Sidebar */}
             <SidebarH hasEditor={false}/>
-            <div className="flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg">
-			
-				<div className="flex flex-row bg-whit rounded-tr-lg border-b-2 top-0">
-            
-            		<div className="flex-grow"></div>
-              		<div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row ">
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 self-end" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+			{/* Feed Content */}
+            <div className={feed_styles.feed__content}>
+				{/* Header */}
+				<div className={feed_styles.feed__header}>
+            		<div className={feed_styles.feed__flex_grow}/>
+              		<div className={feed_styles.header__title}>
+						<svg xmlns="http://www.w3.org/2000/svg" className={feed_styles.header__svg} fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
 						</svg>
 						{props.name}
               		</div>
-              		<div className="flex-grow"></div>
+              		<div className={feed_styles.feed__flex_grow}></div>
 					  {Loading?<Spinner/>:ownerData.includes(user.email) && addButton()}
             	</div>
 				
 
 				{Loading?<Spinner/>:
-
-				<div className="flex flex-col sm:mx-1 my-2 mx-0 bg-whit divide-y space-y-4 items-stretch overflow-y-scroll">
-						{postsData.map((exp) => renderPost(exp))}
-				</div>
+					// Render all the posts for the feed. The actual content
+					<div className={feed_styles.feed__posts}>
+							{postsData.map((exp) => renderPost(exp))}
+					</div>
 				}
-
-				<div className="flex-grow bg-whit rounded-br-lg"/>
 			</div>
         </div>)
 		);

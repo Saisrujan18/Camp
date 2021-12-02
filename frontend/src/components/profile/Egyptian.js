@@ -4,8 +4,8 @@ import {useSpring, a} from "@react-spring/three"
 
 export default function Model({ ...props }) 
 {
+	//Avatar model Egyptian
 	const group = useRef()
-	// Store this file in Backend
 	const { nodes, materials, animations } = useGLTF('/Egyptian.glb')
 	const { actions } = useAnimations(animations, group)
 	useEffect(() => {
@@ -23,6 +23,8 @@ export default function Model({ ...props })
 		return () => {//actions.egyptian.stop()
 			clearTimeout(timer)}
 	})
+	//Rotate animation of the Avatar
+	//Camera is static Avatar rotates
 	const rotateCamera = useSpring({
 		cancel: !props.isPlaying,
 		from : {rotate: [0, 0, 0]},
@@ -31,6 +33,8 @@ export default function Model({ ...props })
 		loop : true,
 		reset : true
 	})
+
+	//The Avatar model
 	return (
 		<a.group ref={group} {...props} dispose={null} rotation={rotateCamera.rotate}>
 		<group position={[0, -1, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.02}>
@@ -44,5 +48,4 @@ export default function Model({ ...props })
 		</a.group>
 	)
 }
-// Store this file in Backend
 useGLTF.preload('/Egyptian.glb')

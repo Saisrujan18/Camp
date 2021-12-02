@@ -14,11 +14,13 @@ import {newpost_styles} from "./clubs_className"
 
 export default function AddNewEvent(props) 
 {
+	//Variables required for file upload
 	const [des, setDes] = useState();
 	const [file, setFile] = useState();
 	const [imgSrc, setImgSrc] = useState("");
 	const [loading,setLoading]=useState(false);
 	
+	//Get current user details
 	let {user}=useAuth();
 	const [post,setPost]=useState({
 		club:props.club,
@@ -29,6 +31,7 @@ export default function AddNewEvent(props)
 		description: ""
 	});
 
+	//Append details to the already existing post
     const handleChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -40,23 +43,23 @@ export default function AddNewEvent(props)
         });
     };
 
+	//Used to set/reset if the post contains a picture
 	const handleToggle=(event) => 
 	{
 		let temp={...post};
 		if(event.target.name==="hasImage"){temp.hasImage=!temp.hasImage;}
-		else if(event.target.name==="registrable"){temp.registrable=!temp.registrable;}
+		//else if(event.target.name==="registrable"){temp.registrable=!temp.registrable;}
 		setPost(temp);
     };
 
-	// const handleFileChange = async (event) => {
-	// 	await setFile(event.target.files[0])
-	// 	console.log(file)
-	// }
-	const handleFileChange = (event) => {
+	//Handle file change
+	const handleFileChange = async (event) => {
 		setFile(event.target.files[0])
 		console.log(file)
 		imageHandler()
 	}
+
+	//Handle the upload of post to the Server
 	const handleUpload = async () =>{
 
 		setLoading(true);
@@ -74,10 +77,9 @@ export default function AddNewEvent(props)
 		}
 		props.addEvent(temp);
 		closePopup();
-		// axios.post("http://localhost:3001/api/clubs/newpost",temp)
-		// 	.then((res)=>{closePopup();})
-		// 	.catch((err)=>{console.log(err);})
 	}
+
+	//Button for Adding Images
 	const addImageOption = () => {
 		return (  
 			<button className={newpost_styles.newpost__addImageButton
@@ -90,6 +92,8 @@ export default function AddNewEvent(props)
 			</button>
 		);
 	}
+
+	//Helper function to display preview of Image
 	function imageHandler(event)
 	{
 		const reader = new FileReader();
@@ -104,8 +108,10 @@ export default function AddNewEvent(props)
 	const closePopup = () => {props.visibility(false)};
 	
 
+//Returns the entire AddNewEvent component
 return (
     <div className={newpost_styles.newpost__screen}>
+		{/* Sidebar */}
       	<SidebarH hasEditor={false}/>
 		<div className={newpost_styles.newpost__body}>
 			{/* Header */}
@@ -166,9 +172,10 @@ return (
 					value={post.description} 
 					onChange={handleChange}
 				/>
-				{addImageOption()}	
+				{/* Toggle hasImage */}
+				{addImageOption()}
+				{/* Upload image file from system */}
 				{post.hasImage && 
-				
 					<div className={newpost_styles.newpost__imagePreview}>
 						<input className="hidden" type="file" id="image" name="image" accept="image/png, image/jpeg" onChange={handleFileChange}/>
 						<label for="image" className={newpost_styles.newpost__selectFromFilesButton}>
