@@ -13,7 +13,7 @@ export default function Sidebar(props) {
   const [drop, setDrop] = useState(false);
 
   let labelCss =
-    "bg-whit80 block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-semibold rounded ";
+    "bg-whit80 block py-2.5 px-4 hover:text-darkBlu hover:bg-gray-200 font-semibold rounded cursor-pointer ";
 
   // Shows/Hides the sidebar based on the screen size
   useLayoutEffect(() => {

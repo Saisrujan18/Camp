@@ -50,8 +50,9 @@ module.exports = {
         'collab-exp-card':'132px'
       },
       minWidth:{
-        'post-feed':'300px',
-        'new-collab-experience':'400px'
+        'post-feed':'400px',
+        'new-collab-experience':'400px',
+        'new-post':'400px'
       },
       maxWidth:{
           'post-feed':'800px',

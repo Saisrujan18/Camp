@@ -130,7 +130,7 @@ export default function Profile()
 
     //Profile page body
     return (
-        <div className="w-screen h-screen py-2">
+        <div className="w-screen h-screen small_profile:py-2 medium_profile:py-2 large:py-2">
         <div className="flex flex-col items-stretch h-full p-2 small_profile:mx-2 medium_profile:mx-2 large:mx-2 bg-lightYel2 large:rounded-lg medium_profile:rounded-lg small_profile:rounded-lg shadow-glow_b overflow-y-auto">
             <HomeButton/>
             {TopPart()} 

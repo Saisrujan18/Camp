@@ -4,8 +4,8 @@ const feed_styles={
     feed__header:"feed__header flex flex-row bg-whit rounded-tr-lg border-b-2 top-0",
     feed__posts:"feed__posts flex flex-col h-auto small_l:mx-1 my-2 bg-whit divide-y space-y-4 items-stretch",
     feed__flex_grow:"feed__flex_grow flex-grow bg-whit",
-    header__title:"header__title m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row ",
-    header__svg:"header__svg h-7 w-7 self-end"
+    header__title:"header__title mx-2 p-2 text-2xl small_l:text-3xl items-center cursor-default font-medium flex flex-row ",
+    header__svg:"header__svg h-6 w-6 self-center"
 }
 
 const post_styles={
@@ -26,12 +26,12 @@ const post_styles={
 }
 
 const newpost_styles={
-    newpost__screen:"newpost__screen flex flex-row h-screen",
-    newpost__body:"newpost__body flex-grow bg-whit large:rounded-r-lg large:mr-2 medium:rounded-r-lg medium:mr-2 my-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto ",
-    newpost__header:"newpost__header flex flex-row bg-whit rounded-tr-lg border-b-2 top-0",
-    newpost__title:"newpost__title m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2",
+    newpost__screen:"newpost__screen h-screen flex flex-row",
+    newpost__body:"newpost__body flex-grow bg-whit small_l:my-2 medium_l:rounded-r-lg medium_l:mr-2 small:rounded-lg small:mx-2 flex flex-col w-screen-lg overflow-y-auto",
+    newpost__header:"newpost__header flex flex-row bg-whit rounded-tr-lg border-b-2 top-0 justify-between",
+    newpost__title:"newpost__title mx-2 p-2 text-2xl small_l:text-3xl items-center cursor-default text-left font-medium flex flex-row gap-x-2",
     newpost__backButton:"newpost__backButton block p-2 my-1 mr-4 hover:text-darkBlu hover:bg-gray-200 font-bold rounded",
-    newpost__inputFields:"newpost__inputFields flex flex-col h-auto px-8 py-4 w-2/3 rounded-lg justify-start self-center items-stretch bg-white space-y-4 overflow-y-scroll mt-2",
+    newpost__inputFields:"newpost__inputFields flex flex-col h-auto px-8 py-4 w-2/3 rounded-lg justify-center self-center items-stretch bg-white space-y-4 overflow-y-scroll mt-2 w-3/5 min-w-new-post",
     newpost__selectFromFilesButton:"newpost__selectFromFilesButton h-auto w-48 cursor-pointer flex flex-row gap-x-2 block p-3 my-2 text-justify hover:text-darkBlu hover:bg-gray-200 font-bold rounded",
     selectFromFilesButton__svg:"selectFromFilesButton__svg h-svg-icon-small w-svg-icon-small self-center",
 

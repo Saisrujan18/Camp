@@ -19,6 +19,7 @@ export default function AddNewEvent(props)
 	const [file, setFile] = useState();
 	const [imgSrc, setImgSrc] = useState("");
 	const [loading,setLoading]=useState(false);
+	const [editorNegative, setNegative]=useState(false);
 	
 	//Get current user details
 	let {user}=useAuth();
@@ -105,14 +106,15 @@ export default function AddNewEvent(props)
 			reader.readAsDataURL(file)
 	};
 	const closePopup = () => {props.visibility(false)};
+	function setEditor(flag){setNegative(flag)}
 	
 
 //Returns the entire AddNewEvent component
 return (
     <div className={newpost_styles.newpost__screen}>
 		{/* Sidebar */}
-      	<SidebarH hasEditor={false}/>
-		<div className={newpost_styles.newpost__body}>
+      	<SidebarH hasEditor={true} handleEditor={setEditor}/>
+		<div className={newpost_styles.newpost__body+((editorNegative)?" -z-10":"")}>
 			{/* Header */}
 			<div className={newpost_styles.newpost__header}>
             	<div className={newpost_styles.newpost__flexgrow}/>
@@ -126,7 +128,7 @@ return (
 				>
 					<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
+					class="h-svg-icon-small w-svg-icon-small"
 					viewBox="0 0 20 20"
 					fill="currentColor"
 					>

@@ -58,7 +58,7 @@ export function SingleExp()
 						<div className="mx-3 ">
 							{/* The Whole Project Description */}
 							<div className="flex flex-col">
-								<div className="rounded-full py-1 px-2 text-sm font-semibold  text-white mr-auto mt-4 bg-green-400">
+								<div className="rounded-full py-1 px-2 text-sm font-semibold text-white mr-auto mt-4 bg-green-400">
 									{expData.author}
 								</div>
 								

@@ -135,8 +135,8 @@ function CollabHome() {
             
             {/* The Header for the page */}
             <div className="flex-grow"></div>
-              <div className="m-2 ml-4 mb-4 text-3xl text-left font-medium flex flex-row gap-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 self-end" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="mx-2 p-2 text-2xl small_l:text-3xl items-center cursor-default font-medium flex flex-row gap-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 self-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
                 Collab
